@@ -1,0 +1,145 @@
+Sample Name,solvent_name,solute_smiles,predicted_logS,predicted_logS_stdev
+(1-BROMOETHYL)BENZENE,water,CC(Br)c1ccccc1,0.28772783,0.1790207
+(2S)-2-{[(9H-fluoren-9-ylmethoxy)carbonyl]amino}-4-hydroxybutanoic acid,water,OCC[C@H](NC(=O)OCC1c2ccccc2c3ccccc13)C(O)=O,-2.1367688,0.29202947
+"(2S,5S)-1-Hydroxy-2,5-diphenylphospholane 1-oxide",water,O[P]1(=O)[C@@H](CC[C@H]1c2ccccc2)c3ccccc3,-1.1845362,0.08893558
+(R)-(-)-2-Methoxy-2-phenylethanol,water,CO[C@@H](CO)c1ccccc1,0.68253136,0.023560047
+"(S)-(-)-2-Amino-3-methyl-1,1-diphenyl-1-butanol",water,CC(C)[C@H](N)C(O)(c1ccccc1)c2ccccc2,-0.52310026,0.09692581
+(S)-Benzyl 2-(((S)-1-methoxy-4-methyl-1-oxopentan-2-yl)carbamoyl)pyrrolidine-1-carboxylate,water,COC(=O)[C@H](CC(C)C)NC(=O)[C@@H]1CCCN1C(=O)OCc2ccccc2,-0.7095966,0.12960649
+"1,1,1-Tris(4-hydroxyphenyl)ethane",water,CC(c1ccc(O)cc1)(c2ccc(O)cc2)c3ccc(O)cc3,-2.4510865,0.18574561
+"1,1,3-Triphenylpropargyl alcohol",water,OC(C#Cc1ccccc1)(c2ccccc2)c3ccccc3,-0.7616734,0.17219202
+"1,2-Bis(4-hydroxyphenyl)ethane-1,2-dione",water,Oc1ccc(cc1)C(=O)C(=O)c2ccc(O)cc2,-2.0782442,0.26224396
+"1,3-Bis(trifluoromethyl)-5-bromobenzene",water,FC(F)(F)c1cc(Br)cc(c1)C(F)(F)F,-0.22149034,0.12843075
+"1,3-Butanediol-diacrylate",water,CC(O)CCO.OC(=O)C=C.OC(=O)C=C,-2.1328921,0.23542337
+"1,3-Dimethyl 2-[(4-methoxyphenyl)methylene]propanedioate",water,COC(=O)C(=Cc1ccc(OC)cc1)C(=O)OC,-1.3167746,0.20331946
+"1,4-Cyclohexanedicarboxylic-acid",water,OC(=O)C1CCC(CC1)C(O)=O,-1.9413629,0.49304372
+"1,4-Dibromo-2,3-butanedione",water,BrCC(=O)C(=O)CBr,-1.3031678,0.30066684
+1-BROMO-3-METHYLBUTANE,water,CC(C)CCBr,0.39269677,0.14630869
+1-Benzylpiperidine,water,C1CCN(CC1)Cc2ccccc2,0.019774482,0.11715808
+1-Bromo-4-(trifluoromethoxy)benzene,water,FC(F)(F)Oc1ccc(Br)cc1,1.424706,0.06638542
+1-Pyrenemethanol,water,OCc1ccc2ccc3cccc4ccc1c2c34,-2.5019865,0.54660445
+"1-Tosyl-2,5-dihydro-1H-pyrrole",water,Cc1ccc(cc1)[S](=O)(=O)N2CC=CC2,-0.74601066,0.11978465
+"2,2,2-TRIFLUOROACETOPHENONE",water,FC(F)(F)C(=O)c1ccccc1,0.779153,0.15313886
+"2,3,4-Trifluorobenzoic acid",water,OC(=O)c1ccc(F)c(F)c1F,-0.5816783,0.090609446
+"2,3,6,7,10,11-Hexamethoxytriphenylene",water,COc1cc2c(cc1OC)c3cc(OC)c(OC)cc3c4cc(OC)c(OC)cc24,-2.8785753,0.37972212
+"2,4,6-Tris(bromomethyl)mesitylene",water,Cc1c(CBr)c(C)c(CBr)c(C)c1CBr,-1.9183669,0.31253225
+"2,4-Dichlorophenol",water,Oc1ccc(Cl)cc1Cl,-0.65248173,0.17328003
+"2,6-Bis[(4S)-4-phenyl-2-oxazolinyl]pyridine",water,C1OC(=N[C@H]1c2ccccc2)c3cccc(n3)C4=N[C@H](CO4)c5ccccc5,-1.3352101,0.1435639
+"2,6-Dichloroiodobenzene",water,Clc1cccc(Cl)c1I,-0.25415456,0.1428834
+"2,6-Diisopropylphenol",water,CC(C)c1cccc(C(C)C)c1O,0.6155559,0.17340766
+"2,6-Dimethoxy-1,4-benzoquinone",water,COC1=CC(=O)C=C(OC)C1=O,-1.0935812,0.22122267
+2-(3-Chlorophenoxy)propionic-acid,water,CC(Oc1cccc(Cl)c1)C(O)=O,-0.48080713,0.2432447
+2-(Diphenylphosphino)benzoic-acid,water,OC(=O)c1ccccc1P(c2ccccc2)c3ccccc3,-1.201385,0.27889603
+2-Amino-4-phenylphenol,water,Nc1cc(ccc1O)c2ccccc2,-1.0307523,0.23417215
+2-Amino-6-bromopyridine,water,Nc1cccc(Br)n1,-0.32358497,0.105936386
+"2-Bromo-2',6'-diisopropoxy-1,1'-biphenyl",water,CC(C)Oc1cccc(OC(C)C)c1c2ccccc2Br,-0.7966437,0.19101168
+2-Bromo-5-(trifluoromethyl)benzaldehyde,water,FC(F)(F)c1ccc(Br)c(C=O)c1,0.27380413,0.10871216
+2-Bromo-5-chlorotoluene,water,Cc1cc(Cl)ccc1Br,0.02490738,0.14793794
+2-Bromoanthraquinone,water,Brc1ccc2C(=O)c3ccccc3C(=O)c2c1,-2.7160711,0.46746388
+2-Bromonaphthalen-1-ol,water,Oc1c(Br)ccc2ccccc12,-1.1832213,0.24481526
+2-Bromophenethylamine,water,NCCc1ccccc1Br,-0.07352184,0.16088335
+2-Bromotoluene,water,Cc1ccccc1Br,0.48591885,0.15194653
+2-Hydroxy-4-(trifluoromethyl)aniline,water,Nc1ccc(cc1O)C(F)(F)F,-0.570756,0.12545846
+2-Iodobenzaldehyde,water,Ic1ccccc1C=O,-0.16896503,0.22674574
+2-Iodopyridine,water,Ic1ccccn1,-0.06721251,0.23091167
+2-Isopropylthioxanthone,water,CC(C)c1ccc2Sc3ccccc3C(=O)c2c1,-1.123082,0.10951955
+"2-Methyl-5-(trifluoromethyl)-1,3-benzoxazole",water,Cc1oc2ccc(cc2n1)C(F)(F)F,-0.29301935,0.21234429
+"3,3-Dimethyl-1-indanone",water,CC1(C)CC(=O)c2ccccc12,0.097950205,0.049771387
+"3,4,5-TRIBROMO-1H-PYRAZOLE",water,Brc1[nH]nc(Br)c1Br,-1.2036488,0.30002838
+"3,4,7,8-Tetramethyl-1,10-phenanthroline",water,Cc1cnc2c(ccc3c(C)c(C)cnc23)c1C,-2.1382155,0.27221617
+"3,5-Di-tert-butylbenzoic acid",water,CC(C)(C)c1cc(cc(c1)C(C)(C)C)C(O)=O,-0.55966014,0.12746547
+"3,5-Dibromotoluene",water,Cc1cc(Br)cc(Br)c1,0.066569686,0.092118464
+"3,6-Dimethoxy-9H-carbazole",water,COc1ccc2[nH]c3ccc(OC)cc3c2c1,-2.9540114,0.18366082
+3-(Phenylthio)propanoic-acid,water,OC(=O)CCSc1ccccc1,-0.51805127,0.4220353
+3-Chloro-4-methoxyaniline,water,COc1ccc(N)cc1Cl,-0.46832806,0.13933536
+3-[[(9H-Fluoren-9-ylmethoxy)carbonyl]amino]-2-naphthalenecarboxylic acid,water,OC(=O)c1cc2ccccc2cc1NC(=O)OCC3c4ccccc4c5ccccc35,-3.1177273,0.32276317
+"4,4',4''-Trimethoxytrityl chloride",water,COc1ccc(cc1)C(Cl)(c2ccc(OC)cc2)c3ccc(OC)cc3,-1.8132298,0.14281131
+"4,4'-Dihydroxybiphenyl",water,Oc1ccc(cc1)c2ccc(O)cc2,-1.8504505,0.30310887
+"4,4'-Dimethoxybenzophenone",water,COc1ccc(cc1)C(=O)c2ccc(OC)cc2,-1.3440083,0.1697479
+4-(Hydroxymethyl)phenylacetic-acid,water,OCc1ccc(CC(O)=O)cc1,-1.0731875,0.25980654
+4-(Trifluoroacetyl)phenacyl-bromide,water,FC(F)(F)C(=O)c1ccc(cc1)C(=O)CBr,-0.55854386,0.21597159
+4-(Trifluoromethyl)benzylamine,water,NCc1ccc(cc1)C(F)(F)F,-0.13176058,0.15323365
+"4-Bromo-3,5-dimethoxybenzoic acid",water,COc1cc(cc(OC)c1Br)C(O)=O,-1.1990883,0.20534047
+4-Bromo-L-phenylalanine,water,N[C@@H](Cc1ccc(Br)cc1)C(O)=O,-2.2022731,0.39439476
+"4-Hydroxy-3,5-diiodobenzoic acid",water,OC(=O)c1cc(I)c(O)c(I)c1,-1.4363166,0.17646983
+4-Methoxybiphenyl,water,COc1ccc(cc1)c2ccccc2,-0.17017311,0.2079337
+4-Methoxytriphenylamine,water,COc1ccc(cc1)N(c2ccccc2)c3ccccc3,-1.2881771,0.25194687
+"5,7-Dimethyl-[1,2,4]triazolo[1,5-a]pyrimidine-2-carboxylic acid",water,Cc1cc(C)n2nc(nc2n1)C(O)=O,-3.6030293,0.25904632
+5-(Trifluoromethyl)indole,water,FC(F)(F)c1ccc2[nH]ccc2c1,-0.51242113,0.073203355
+5-(Trifluoromethyl)pyridine-2-carboxaldehyde,water,FC(F)(F)c1ccc(C=O)nc1,0.0010832399,0.19420567
+5-Bromo-2-phenylpyridine,water,Brc1ccc(nc1)c2ccccc2,-0.9219649,0.16703413
+"2-Methyl-5-(trifluoromethyl)-1,3-benzoxazole",water,Cc1oc2ccc(cc2n1)C(F)(F)F,-0.29301935,0.21234429
+"3,3-Dimethyl-1-indanone",water,CC1(C)CC(=O)c2ccccc12,0.097950205,0.049771387
+"3,4,5-TRIBROMO-1H-PYRAZOLE",water,Brc1[nH]nc(Br)c1Br,-1.2036488,0.30002838
+"3,4,7,8-Tetramethyl-1,10-phenanthroline",water,Cc1cnc2c(ccc3c(C)c(C)cnc23)c1C,-2.1382155,0.27221617
+"3,5-Di-tert-butylbenzoic acid",water,CC(C)(C)c1cc(cc(c1)C(C)(C)C)C(O)=O,-0.55966014,0.12746547
+"3,5-Dibromotoluene",water,Cc1cc(Br)cc(Br)c1,0.066569686,0.092118464
+"3,6-Dimethoxy-9H-carbazole",water,COc1ccc2[nH]c3ccc(OC)cc3c2c1,-2.9540114,0.18366082
+3-(Phenylthio)propanoic-acid,water,OC(=O)CCSc1ccccc1,-0.51805127,0.4220353
+3-Chloro-4-methoxyaniline,water,COc1ccc(N)cc1Cl,-0.46832806,0.13933536
+3-[[(9H-Fluoren-9-ylmethoxy)carbonyl]amino]-2-naphthalenecarboxylic acid,water,OC(=O)c1cc2ccccc2cc1NC(=O)OCC3c4ccccc4c5ccccc35,-3.1177273,0.32276317
+"4,4',4''-Trimethoxytrityl chloride",water,COc1ccc(cc1)C(Cl)(c2ccc(OC)cc2)c3ccc(OC)cc3,-1.8132298,0.14281131
+"4,4'-Dihydroxybiphenyl",water,Oc1ccc(cc1)c2ccc(O)cc2,-1.8504505,0.30310887
+"4,4'-Dimethoxybenzophenone",water,COc1ccc(cc1)C(=O)c2ccc(OC)cc2,-1.3440083,0.1697479
+4-(Hydroxymethyl)phenylacetic-acid,water,OCc1ccc(CC(O)=O)cc1,-1.0731875,0.25980654
+4-(Trifluoroacetyl)phenacyl-bromide,water,FC(F)(F)C(=O)c1ccc(cc1)C(=O)CBr,-0.55854386,0.21597159
+4-(Trifluoromethyl)benzylamine,water,NCc1ccc(cc1)C(F)(F)F,-0.13176058,0.15323365
+"4-Bromo-3,5-dimethoxybenzoic acid",water,COc1cc(cc(OC)c1Br)C(O)=O,-1.1990883,0.20534047
+4-Bromo-L-phenylalanine,water,N[C@@H](Cc1ccc(Br)cc1)C(O)=O,-2.2022731,0.39439476
+"4-Hydroxy-3,5-diiodobenzoic acid",water,OC(=O)c1cc(I)c(O)c(I)c1,-1.4363166,0.17646983
+4-Methoxybiphenyl,water,COc1ccc(cc1)c2ccccc2,-0.17017311,0.2079337
+4-Methoxytriphenylamine,water,COc1ccc(cc1)N(c2ccccc2)c3ccccc3,-1.2881771,0.25194687
+"5,7-Dimethyl-[1,2,4]triazolo[1,5-a]pyrimidine-2-carboxylic acid",water,Cc1cc(C)n2nc(nc2n1)C(O)=O,-3.6030293,0.25904632
+5-(Trifluoromethyl)indole,water,FC(F)(F)c1ccc2[nH]ccc2c1,-0.51242113,0.073203355
+5-(Trifluoromethyl)pyridine-2-carboxaldehyde,water,FC(F)(F)c1ccc(C=O)nc1,0.0010832399,0.19420567
+5-Bromo-2-phenylpyridine,water,Brc1ccc(nc1)c2ccccc2,-0.9219649,0.16703413
+8-Isoquinolinecarboxaldehyde,water,O=Cc1cccc2ccncc12,-1.2110995,0.2558461
+Bis(diphenylphosphino)methane,water,C(P(c1ccccc1)c2ccccc2)P(c3ccccc3)c4ccccc4,-2.4587638,0.18556547
+DL-beta-Phenylalanine,water,NC(CC(O)=O)c1ccccc1,-1.3272994,0.47381046
+Di-tert-butylcyclopentadiene,water,CC(C)(C)C1=C(C=CC1)C(C)(C)C,-0.24696271,0.080918096
+Dibenzyl-malonate,water,[O-]C(=O)C(Cc1ccccc1)(Cc2ccccc2)C([O-])=O,-0.925318,0.20889343
+Dibromomaleic-acid,water,OC(=O)/C(Br)=C(/Br)C(O)=O,-1.8843782,0.36733836
+Diethyl 4-Methoxyphenylphosphonate,water,CCO[P](=O)(OCC)c1ccc(OC)cc1,-0.077265486,0.13628392
+"Dimethyl 1,3-cyclohexadiene-1,4-dicarboxylate",water,COC(=O)C1=CC=C(CC1)C(=O)OC,-1.5858569,0.18272136
+"Dimethyl 2,2'-bipyridine-4,4'-dicarboxylate",water,COC(=O)c1ccnc(c1)c2cc(ccn2)C(=O)OC,-2.6811552,0.2775018
+Dimethyl-propargylmalonate,water,COC(=O)C(CC#C)C(=O)OC,-0.35887465,0.2829216
+Ethyl 2-cyclohexanoneacetate,water,CCOC(=O)CC1CCCCC1=O,-0.27722484,0.19163118
+Ethyl 3-thiopheneacetate,water,CCOC(=O)Cc1cscc1,-0.0061065257,0.14964251
+"Ethyl 4,4,4-trifluoroacetoacetate",water,CCOC(=O)CC(=O)C(F)(F)F,0.51978076,0.42690986
+Ethyl mesitylglyoxylate,water,CCOC(=O)C(=O)c1c(C)cc(C)cc1C,-0.17050022,0.22580494
+Ethyl-3-oxohexanoate,water,CCCC(=O)CC(=O)OCC,0.21945643,0.1722334
+Ethyl-4-bromocrotonate,water,CCOC(=O)\C=C\CBr,0.23996055,0.20856142
+Ethyl-4-iodobenzoate,water,CCOC(=O)c1ccc(I)cc1,-0.4020292,0.13254619
+Flavanone,water,O=C1CC(Oc2ccccc12)c3ccccc3,-1.2189025,0.17505509
+Hematein,water,Oc1ccc2c(OCC3(O)CC4=CC(=O)C(=CC4=C23)O)c1O,-2.8954563,0.18385221
+METHYL 2-PHTHALIMIDOACETATE,water,COC(=O)CN1C(=O)c2ccccc2C1=O,-2.7461214,0.2909468
+"Methyl 6-oxo-1,6-dihydropyridine-2-carboxylate",water,COC(=O)C1=CC=CC(=O)N1,-0.9010444,0.092933305
+"Methyl-2,6-dimethoxybenzoate",water,COC(=O)c1c(OC)cccc1OC,-0.60945404,0.14125548
+Methyl-3-bromo-4-iodobenzoate,water,COC(=O)c1ccc(I)c(Br)c1,-1.3540927,0.33395582
+"Methyl-6-Oxo-1,6-dihydropyridazine-3-carboxylate",water,COC(=O)C1=NNC(=O)C=C1,-1.362103,0.37319887
+Methyl-diethylphosphonoacetate,water,CCO[P](=O)(OCC)C(C)C([O-])=O,-0.027430773,0.1062309
+N(im)-Trityl-L-histidine,water,N[C@@H](Cc1cn(cn1)C(c2ccccc2)(c3ccccc3)c4ccccc4)C(O)=O,-1.2581002,0.18104085
+"N,N-Dimethyl-L-phenylalanine",water,CN(C)[C@@H](Cc1ccccc1)C(O)=O,-0.59698814,0.2166095
+N-Acetyl-L-tryptophan,water,CC(=O)N[C@@H](Cc1c[nH]c2ccccc12)C(O)=O,-3.3370059,0.15471998
+N-Benzylidenebenzylamine,water,C(N=Cc1ccccc1)c2ccccc2,-0.32135788,0.11276326
+N-Phthaloylglycine,water,OC(=O)CN1C(=O)c2ccccc2C1=O,-2.9872646,0.3443917
+"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-methyl-D-lysine",water,CC(C)(C)OC(=O)NCCCC[C@@](C)(NC(=O)OCC1c2ccccc2c3ccccc13)C(O)=O,-2.1181645,0.11730576
+"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(phenylmethoxy)carbonyl]-L-lysine",water,CC(C)(C)OC(=O)NCCCC[C@H](NC(=O)OCc1ccccc1)C(O)=O,-1.6363819,0.113388024
+Nalpha-[(9H-Fluoren-9-ylmethoxy)carbonyl]-L-threonine tert-Butyl-Ester,water,C[C@@H](O)[C@H](NC(=O)OCC1c2ccccc2c3ccccc13)C(=O)OC(C)(C)C,-1.7686554,0.19709854
+Phenyl-benzoate,water,O=C(Oc1ccccc1)c2ccccc2,-0.4856108,0.18462911
+Pindolol,water,CC(C)NCC(O)COc1cccc2[nH]ccc12,-1.3377651,0.23267269
+Z-D-Phg-OH,water,OC(=O)[C@H](NC(=O)OCc1ccccc1)c2ccccc2,-1.1577417,0.27417168
+"meso-1,2-Dibromo-1,2-diphenylethane",water,Br[C@@H]([C@H](Br)c1ccccc1)c2ccccc2,-1.8827608,0.27137384
+pentafluorobenzyl-bromide,water,Fc1ccc(c(F)c1F)C(F)(F)Br,0.020145908,0.095439754
+"trans-1,2-Bis(phenylsulfonyl)ethylene",water,O=[S](=O)(\C=C\[S](=O)(=O)c1ccccc1)c2ccccc2,-2.1141338,0.24766313
+(1-BROMOETHYL)BENZENE,water,CC(Br)c1ccccc1,0.28772783,0.1790207
+(2S)-2-{[(9H-fluoren-9-ylmethoxy)carbonyl]amino}-4-hydroxybutanoic acid,water,OCC[C@H](NC(=O)OCC1c2ccccc2c3ccccc13)C(O)=O,-2.1367688,0.29202947
+"(2S,5S)-1-Hydroxy-2,5-diphenylphospholane 1-oxide",water,O[P]1(=O)[C@@H](CC[C@H]1c2ccccc2)c3ccccc3,-1.1845362,0.08893558
+(R)-(-)-2-Methoxy-2-phenylethanol,water,CO[C@@H](CO)c1ccccc1,0.68253136,0.023560047
+"(S)-(-)-2-Amino-3-methyl-1,1-diphenyl-1-butanol",water,CC(C)[C@H](N)C(O)(c1ccccc1)c2ccccc2,-0.52310026,0.09692581
+(S)-Benzyl 2-(((S)-1-methoxy-4-methyl-1-oxopentan-2-yl)carbamoyl)pyrrolidine-1-carboxylate,water,COC(=O)[C@H](CC(C)C)NC(=O)[C@@H]1CCCN1C(=O)OCc2ccccc2,-0.7095966,0.12960649
+"1,1,1-Tris(4-hydroxyphenyl)ethane",water,CC(c1ccc(O)cc1)(c2ccc(O)cc2)c3ccc(O)cc3,-2.4510865,0.18574561
+"1,1,3-Triphenylpropargyl alcohol",water,OC(C#Cc1ccccc1)(c2ccccc2)c3ccccc3,-0.7616734,0.17219202
+"1,2-Bis(4-hydroxyphenyl)ethane-1,2-dione",water,Oc1ccc(cc1)C(=O)C(=O)c2ccc(O)cc2,-2.0782442,0.26224396
+"1,3-Bis(trifluoromethyl)-5-bromobenzene",water,FC(F)(F)c1cc(Br)cc(c1)C(F)(F)F,-0.22149034,0.12843075
+"1,3-Butanediol-diacrylate",water,CC(O)CCO.OC(=O)C=C.OC(=O)C=C,-2.1328921,0.23542337
+"1,3-Dimethyl 2-[(4-methoxyphenyl)methylene]propanedioate",water,COC(=O)C(=Cc1ccc(OC)cc1)C(=O)OC,-1.3167746,0.20331946

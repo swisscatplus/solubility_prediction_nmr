@@ -2,15 +2,14 @@ import sys
 import os
 from rdkit import Chem
 
+
 # This bit of code allows the Interface to "see" the Engine folder
 # by looking at the parent directory (src)
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # fetch the predictor function
-from controller.predictor_runner import 'predictor_function'
-
-
+from controller.predictor_runner import predict_solubility
 
 def handle_user_request(solute_smi, solvent_name, temp=298.15):
     
@@ -37,7 +36,7 @@ def handle_user_request(solute_smi, solvent_name, temp=298.15):
 
     # 2. Call the Engine
     # We pass the heavy lifting to the other folder
-    raw_result = "predictor_function"(solute_smi, solvent_name, temp)
+    raw_result = predict_solubility(solute_smi, solvent_name, temp)
 
     # 3. Output Control
     #decide exactly what the user sees, in this example confidence seems kind of uselss to be honest

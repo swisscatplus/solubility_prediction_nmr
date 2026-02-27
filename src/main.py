@@ -1,8 +1,10 @@
 import pandas as pd
 from fastsolv import fastsolv
 
+
 def main():
-    # 1. Prepare your dataset
+    
+    """# 1. Prepare your dataset
     # You can replace this with pd.read_csv("your_big_file.csv") later
     data = {
         "solute_name": ["Aspirin", "Caffeine"],
@@ -34,7 +36,18 @@ def main():
     print(final_df)
     
     # Optional: Save to file
-    # final_df.to_csv("solubility_results.csv", index=False)
+    # final_df.to_csv("solubility_results.csv", index=False)"""
+
+
+    from controller.predictor_runner import process_sample_file
+    from controller.predictor_runner import solubility_calculator
+    from data_converter.hplc_data_handler import NMR_SOLVENTS
+    from data_converter.hplc_data_handler import prepare_fastsolv_input
+
+    """process_sample_file("/Users/arthurbenard/Project 1B/data/Fichier final (RT+sol).xlsx")"""
+
+    """df_orig, df_ready = prepare_fastsolv_input("/Users/arthurbenard/Project 1B/data/Fichier final (RT+sol)_with_smiles.csv", "water")
+    final_results = solubility_calculator(df_orig, df_ready,"/Users/arthurbenard/Project 1B/data/Fichier final (RT+sol)_with_smiles.csv")"""
 
 if __name__ == "__main__":
     # The guard is still necessary for the multiprocessing part
