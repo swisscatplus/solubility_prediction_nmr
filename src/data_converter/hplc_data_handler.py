@@ -9,11 +9,11 @@ import json
 
 # Dictionary for NMR solvents (i don't know how big this has to be)
 NMR_SOLVENTS = {
-    "chloroform": "ClC(Cl)Cl",
-    "dmso": "CS(=O)C",
-    "methanol": "CO",
-    "benzene": "c1ccccc1",
-    "water": "O"
+    "MeOH": "CO",
+    "ACN": "CC#N",
+    "DMSO": "CS(=O)C",
+    "DCM": "C(Cl)Cl",
+    "CHCl3": "ClC(Cl)Cl"
 }
 
 # this function will fetch the SMILES code of a molecule using the CAS number present in the file
@@ -41,33 +41,14 @@ def smiles_by_pubchem_cas(cas_number):
 
 # after reading the excel sheet with all the solvents, csv file generated and we need to read 
 # it in order to feed the correct data to the solubility calculator
-def prepare_fastsolv_input(csv_file, solvent_name, temp=298.15):
-# 1. make new data frame using the one obtained with process_sample_file
-    df = pd.read_csv(csv_file)
+def prepare_fastsolv_input(df_with_smiles):
 
-    # 2. Filter: Keep only rows where SMILES is NOT "Did not work"
-    # We use .copy() to ensure we have a fresh dataframe for the results
-    df_clean = df[df['solute_smiles'] != "Did not work"].copy()
-    print(df_clean)
+    df_clean = df_with_smiles[df_with_smiles['solute_smiles'] != "Did not work"].copy()
 
     if df_clean.empty:
-        print("No valid SMILES found. Stopping.")
+        print("No valid SMILES found in the file. Stopping.")
         return None
     
-    # 3. Get Solvent SMILES from your dictionary
-    solv_smi = NMR_SOLVENTS.get(solvent_name.lower())
-    if not solv_smi:
-        raise ValueError(f"Solvent '{solvent_name}' not supported.")
-    
-    # 4. Create the exact format FastSolv expects
-    # create a new dataframe with the specific column names
-    fastsolv_ready_df = pd.DataFrame({
-        "solute_smiles": df_clean['solute_smiles'].tolist(),
-        "solvent_smiles": [solv_smi] * len(df_clean),
-        "temperature": [temp] * len(df_clean)
-    }, index=df_clean.index) # Keep the original index!
+    print(f"Data cleaned. {len(df_clean)} compounds ready for prediction.")
 
-    # Add solvent_name to the clean df for the final display/file
-    df_clean['solvent_name'] = solvent_name
-
-    return df_clean, fastsolv_ready_df
+    return df_clean

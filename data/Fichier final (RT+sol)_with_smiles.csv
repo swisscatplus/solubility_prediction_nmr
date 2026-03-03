@@ -1050,7 +1050,7 @@ Sphinx,method_2,Protocatechuic_acid,99-50-3,0.0,0,matrix ID Sphinx 2,1,1,1,0,0,C
 Sphinx,method_2,Suberic_acid_monomethyl_ester,3946-32-5,0.0,0,matrix ID Sphinx 2,1,0,1,0,1,COC(=O)CCCCCCC(=O)O
 Sphinx,method_2,Z-D-Glu-OBzl,65706-99-2,3.553,1,matrix ID Sphinx 2,0,0,0,1,1,C1=CC=C(C=C1)COC(=O)[C@@H](CCC(=O)O)NC(=O)OCC2=CC=CC=C2
 Sphinx,method_2,Z-D-Phg-OH,17609-52-8,3.297,1,matrix ID Sphinx 2,1,0,1,1,1,C1=CC=C(C=C1)COC(=O)N[C@H](C2=CC=CC=C2)C(=O)O
-Sphinx,method_2,"meso-1,2-Dibromo-1,2-diphenylethane",13440-24-9,6.381,1,matrix ID Sphinx 2,0,0,0,1,0,C1=CC=C(C=C1)C(C(C2=CC=CC=C2)Br)Br
+Sphinx,method_2,"meso-1,2-Dibromo-1,2-diphenylethane",13440-24-9,6.381,1,matrix ID Sphinx 2,0,0,0,1,0,Did not work
 Sphinx,method_2,mono-tert-Butyl_succinate,15026-17-2,0.0,0,matrix ID Sphinx 2,1,1,1,0,0,CC(C)(C)OC(=O)CCC(=O)O
 Sphinx,method_2,pentafluorobenzyl-bromide,1765-40-8,6.066,1,matrix ID Sphinx 2,1,1,1,1,1,C(C1=C(C(=C(C(=C1F)F)F)F)F)Br
 Sphinx,method_2,"trans-1,2-Bis(phenylsulfonyl)ethylene",963-16-6,5.567,1,matrix ID Sphinx 2,0,0,0,0,0,C1=CC=C(C=C1)S(=O)(=O)/C=C/S(=O)(=O)C2=CC=CC=C2
