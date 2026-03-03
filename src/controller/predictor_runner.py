@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from fastsolv import fastsolv
 import os
-from data_converter.hplc_data_handler import smiles_code
+from data_converter.hplc_data_handler import smiles_by_pubchem_cas
 
 
 
@@ -21,18 +21,17 @@ def process_sample_file(input_path):
     else:
         raise ValueError("Unsupported file format. Please use .csv or .xlsx")
     
-    # 2. Check for the 'Sample Name' column (specific to what i'm working with)
-    if 'Sample Name' not in df.columns:
-        raise KeyError("Could not find a column named 'Sample Name' in the file.")
+    # 2. Check for the necessary columns 'Sample Name' and 'CAS' (specific to what i'm working with)
+   
+    if 'CAS ' not in df.columns:
+        raise KeyError("Could not find a column named 'CAS' in the file.")
     
     # 3. Apply the SMILES function
-    print("Fetching SMILES codes from NIH Cactus... (this may take a moment)")
-    # 'apply' runs function on every row
-    df['solute_smiles'] = df['Sample Name'].apply(smiles_code)
+    print("Fetching SMILES codes... (this may take a moment)")
+    df['solute_smiles'] = df['CAS '].apply(smiles_by_pubchem_cas)
 
     # 4. Clean up: remove rows where SMILES weren't found ("Did not work" text)
-    failed_mask = df['solute_smiles'] == "Did not work"
-    failed_count = failed_mask.sum()
+    failed_count = (df['solute_smiles'] == "Did not work").sum()
 
     if failed_count > 0:
         print(f"Warning: Could not find SMILES for {failed_count} samples.")
@@ -43,8 +42,8 @@ def process_sample_file(input_path):
     
     print(f"Success! File saved to: {output_path}")
 
-    
     return df
+
 
 
 def solubility_calculator(df_original, df_input, original_filename):

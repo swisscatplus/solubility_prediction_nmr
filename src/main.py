@@ -44,10 +44,10 @@ def main():
     from data_converter.hplc_data_handler import NMR_SOLVENTS
     from data_converter.hplc_data_handler import prepare_fastsolv_input
 
-    """process_sample_file("/Users/arthurbenard/Project 1B/data/Fichier final (RT+sol).xlsx")"""
+    process_sample_file("/Users/arthurbenard/Project 1B/data/Fichier final (RT+sol).xlsx")
 
-    """df_orig, df_ready = prepare_fastsolv_input("/Users/arthurbenard/Project 1B/data/Fichier final (RT+sol)_with_smiles.csv", "water")
-    final_results = solubility_calculator(df_orig, df_ready,"/Users/arthurbenard/Project 1B/data/Fichier final (RT+sol)_with_smiles.csv")"""
+""" df_orig, df_ready = prepare_fastsolv_input("/Users/arthurbenard/Project 1B/data/Fichier final (RT+sol)_with_smiles_2.csv", "water")
+    final_results = solubility_calculator(df_orig, df_ready,"/Users/arthurbenard/Project 1B/data/Fichier final (RT+sol)_with_smiles_2.csv")"""
 
 if __name__ == "__main__":
     # The guard is still necessary for the multiprocessing part

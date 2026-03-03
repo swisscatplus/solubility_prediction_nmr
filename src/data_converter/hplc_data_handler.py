@@ -3,6 +3,8 @@ from urllib.parse import quote
 import pandas as pd
 from fastsolv import fastsolv
 import os
+import pubchempy as pcp
+import json
 
 
 # Dictionary for NMR solvents (i don't know how big this has to be)
@@ -14,20 +16,31 @@ NMR_SOLVENTS = {
     "water": "O"
 }
 
+# this function will fetch the SMILES code of a molecule using the CAS number present in the file
+# it uses the url written under to efficiently find the code, puts it in a dictionary and extracts the SMILES code 
+def smiles_by_pubchem_cas(cas_number):
+    cas = str(cas_number).strip() if pd.notna(cas_number) else ""
 
-def smiles_code(name):
-    try:
-        url = 'http://cactus.nci.nih.gov/chemical/structure/' + quote(name) + '/smiles' #Opens up a page with SMILES code
-        ans = urlopen(url).read().decode('utf8') #Reads answer
-        return ans
-    except:
-        return 'Did not work' #If the molecule name is not well written or doesn't exist, it returns nothing
-    
+    if cas:
+        try:
+            url = 'https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/'+ quote(cas) +'/property/SMILES/JSON'
+            response = urlopen(url, timeout=5).read().decode('utf8')
+            data = json.loads(response)
+            
+            # Extract the properties list
+            props = data['PropertyTable']['Properties'][0]
+            
+            # Use .get() to look for 'SMILES'
+            # This is safer than props['SMILES'] because it won't crash if the key is missing
+            smiles = props.get('SMILES')
+            return smiles
+        except:
+            pass
+    return 'Did not work'
 
 
-
-#after reading the excel sheet with all the solvents, csv file generated and we need to read 
-#it in order to feed the correct data to the solubility calculator
+# after reading the excel sheet with all the solvents, csv file generated and we need to read 
+# it in order to feed the correct data to the solubility calculator
 def prepare_fastsolv_input(csv_file, solvent_name, temp=298.15):
 # 1. make new data frame using the one obtained with process_sample_file
     df = pd.read_csv(csv_file)
