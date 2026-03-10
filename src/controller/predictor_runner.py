@@ -2,7 +2,9 @@ import pandas as pd
 import numpy as np
 from fastsolv import fastsolv
 import os
-from data_converter.hplc_data_handler import smiles_by_pubchem_cas
+from data_converter.hplc_data_handler import smiles_by_pubchem_cas, cleaning_array_by_cas
+from rdkit import Chem
+from rdkit.Chem import Descriptors
 
 
 
@@ -95,7 +97,11 @@ def solubility_file_matrix(clean_results, solvent_dict, temperature=298.15):
 
 
 def compare_predictions(solubility_matrix, original_data, solvent_dict):
-    df_results = pd.read_excel(solubility_matrix)
+    # Clean the matrix by CAS first to remove redundancy
+    clean_matrix_path = cleaning_array_by_cas(solubility_matrix)
+    df_results = pd.read_excel(clean_matrix_path)
+
+    # Load original experimental data
     df_original = pd.read_excel(original_data)
 
     df_results.columns = df_results.columns.str.strip()
@@ -104,7 +110,7 @@ def compare_predictions(solubility_matrix, original_data, solvent_dict):
     # 2. THE BRIDGE: Merge them together temporarily
     # We only need the 'Sample Name' and the binary columns from the original
     binary_cols = list(solvent_dict.keys())
-    cols_to_keep = ['Sample Name'] + binary_cols
+    cols_to_keep = ['Sample Name', 'RT'] + binary_cols
 
     # We create a unique lookup table so each Sample Name appears only ONCE
     df_lookup = df_original[cols_to_keep].drop_duplicates(subset=['Sample Name'])
@@ -161,5 +167,20 @@ def compare_predictions(solubility_matrix, original_data, solvent_dict):
     
     print(f"Done! Coherence analysis saved to: {output_file}")
 
-    return df            
+    return df         
+
+
+def calculate_molecular_descriptors(smiles):
+    """
+    Converts a SMILES string into physical constants: LogP and Molecular Weight.
+    Returns (None, None) if the SMILES is invalid.
+    """
+    
+    mol = Chem.MolFromSmiles(smiles)
+    if mol:
+        logp = Descriptors.MolLogP(mol)
+        mw = Descriptors.MolWt(mol)
+        return logp, mw
+    else:
+        return None, None
     

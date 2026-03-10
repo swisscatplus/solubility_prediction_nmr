@@ -52,3 +52,39 @@ def prepare_fastsolv_input(df_with_smiles):
     print(f"Data cleaned. {len(df_clean)} compounds ready for prediction.")
 
     return df_clean
+
+# Cleaning function, because data was repeating i didn't notice all the different analytical columns used 
+# Using the cas number to do this
+def cleaning_array_by_cas(input_file, cas_column_name='CAS '):
+   
+    # 1. Load the "dirty" data
+    df = pd.read_excel(input_file)
+    initial_count = len(df)
+    
+   # Safety Check: Does the CAS column actually exist?
+    if cas_column_name not in df.columns:
+        print(f"Error: Could not find a column named '{cas_column_name}'.")
+        print(f"Available columns are: {df.columns.tolist()}")
+        return None
+
+    # 2. Remove rows where CAS is missing
+    df = df.dropna(subset=[cas_column_name])
+    
+    # 3. Drop Duplicates based ONLY on the CAS number
+    # 'keep=first' ensures we don't lose the molecule entirely
+    df_unique = df.drop_duplicates(subset=[cas_column_name], keep='first')
+    
+    final_count = len(df_unique)
+    removed = initial_count - final_count
+
+    print(f"Original Row Count: {initial_count}")
+    print(f"Unique Molecules (by CAS): {final_count}")
+    print(f"Redundant Rows Deleted: {removed}")
+    print("----------------------------------")
+
+    # 4. Save the lean version
+    output_file = input_file.replace(".xlsx", "_Unique_CAS.xlsx")
+    df_unique.to_excel(output_file, index=False)
+    
+    return output_file
+
