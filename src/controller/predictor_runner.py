@@ -184,3 +184,61 @@ def calculate_molecular_descriptors(smiles):
     else:
         return None, None
     
+
+# function that prepares the excel file given at the beginning of the notebook code to prepare it for sklearn
+def generate_ml_ready_file(input_excel, output_csv, solvent_dict, fingerprint_function):
+
+    print("1. Loading and reshaping data...")
+    df = pd.read_excel(input_excel)
+    
+    solvents = list(solvent_dict.keys())
+
+    id_columns = ['Sample Name', 'solute_smiles', 'RT']
+
+    # Melt the data so we have a 'Solvent' column and a 'Solubility' result column
+    df_long = pd.melt(
+        df,
+        id_vars=id_columns,
+        value_vars=solvents,
+        var_name='Solvent',
+        value_name='Solubility'
+    )
+    
+    # Drop rows where solubility data is missing
+    df_long = df_long.dropna(subset=['solute_smiles', 'RT', 'Solubility']).copy()
+    
+    # Lastly, add the solvent_smiles column
+    df_long['solvent_smiles'] = df_long['Solvent'].map(solvent_dict)
+    
+    # Save this exact file so you can inspect it
+    df_long.to_csv(output_csv, index=False)
+    print(f"Intermediate file saved to {output_csv}")
+    print("Columns:", df_long.columns.tolist())
+    
+
+
+    # this is the fingerprinting part to finalize the file
+    print("1. Fingerprinting Solutes...")
+    X_solute = pd.DataFrame(
+        df_long['solute_smiles'].apply(fingerprint_function).tolist(),
+        index=df_long.index
+    )
+    X_solute.columns = [f'Solute_Bit_{i}' for i in range(2048)]
+    
+    print("2. Fingerprinting Solvents...")
+    X_solvent = pd.DataFrame(
+        df_long['solvent_smiles'].apply(fingerprint_function).tolist(),
+        index=df_long.index
+    )
+    X_solvent.columns = [f'Solvent_Bit_{i}' for i in range(2048)]
+    
+    print("3. Assembling X and y...")
+    # Combine solute, solvent, and RT (and Signal if you want the AI to use it)
+    X = pd.concat([X_solute, X_solvent, df_long['RT']], axis=1)
+    X.columns = X.columns.astype(str)
+    
+    y = df_long['Solubility'].astype(int)
+    
+    print("Fingerprinting complete")
+
+    return X, y

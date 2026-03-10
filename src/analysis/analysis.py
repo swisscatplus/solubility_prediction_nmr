@@ -3,7 +3,7 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 from rdkit import Chem
-from rdkit.Chem import Descriptors
+from rdkit.Chem import Descriptors, rdMolDescriptors
 from controller.predictor_runner import calculate_molecular_descriptors
 
 
@@ -382,7 +382,7 @@ def analyze_plot_chemical_bias(compared_results_file, solvent_name):
     sns.scatterplot(
         data=df, 
         x='LogP', 
-        y='MW', 
+        y=f'predicted_logS_{solvent_name}', 
         hue=incoh_col,
         palette={True: '#bdc3c7', False: '#e74c3c'}, # Grey for Correct, Red for Error
         alpha=0.7,
@@ -393,7 +393,7 @@ def analyze_plot_chemical_bias(compared_results_file, solvent_name):
     # This shows if errors are skewed toward high LogP or high MW
     plt.title(f'Where does FastSolv fail in {solvent_name}?', fontsize=15)
     plt.xlabel('Hydrophobicity (LogP)', fontsize=12)
-    plt.ylabel('Molecular Weight (g/mol)', fontsize=12)
+    plt.ylabel('Solubility (logS)', fontsize=12)
     
     sns.despine()
     plt.show()
@@ -456,3 +456,150 @@ def plot_solvent_correlation_heatmap(compared_results_file, solvent_dict):
     plt.show()
 
     return corr_matrix
+
+
+def plot_mw_error_distribution(compared_results_file, solvent_name):
+    """
+    Compares the Molecular Weight distribution of correct predictions 
+    vs. incorrect predictions to identify size-based bias.
+    """
+    df = pd.read_excel(compared_results_file)
+    incoh_col = f'Coherence_{solvent_name}'
+    
+    if incoh_col not in df.columns:
+        print(f" Error: {incoh_col} not found in the file.")
+        return
+
+    # 1. Calculate MW if it's not already in the file
+    if 'MW' not in df.columns:
+        if 'solute_smiles' in df.columns:
+            print("--- Calculating Molecular Weights from SMILES ---")
+            df['MW'] = df['solute_smiles'].apply(
+                lambda x: Descriptors.MolWt(Chem.MolFromSmiles(x)) if pd.notnull(x) and Chem.MolFromSmiles(x) else None
+            )
+        else:
+            print(" Error: No 'MW' or 'solute_smiles' column found. Cannot calculate weight.")
+            return
+
+    # Drop missing values and standardize the Match column
+    df = df.dropna(subset=['MW', incoh_col])
+    df['Match'] = df[incoh_col].astype(str).str.upper()
+
+    # 2. Setup the Plot
+    plt.figure(figsize=(8, 6))
+    sns.set_theme(style="ticks")
+    
+    # Boxplot shows the median and the bulk of the distribution
+    sns.boxplot(
+        data=df, 
+        x='Match', 
+        y='MW', 
+        palette={'TRUE': '#bdc3c7', 'FALSE': '#e74c3c'}, 
+        showfliers=False, # We hide outliers here because the swarmplot handles them
+        width=0.5
+    )
+    
+    # Swarmplot overlays the actual individual molecules as dots
+    sns.swarmplot(
+        data=df, 
+        x='Match', 
+        y='MW', 
+        color=".25", 
+        alpha=0.6,
+        size=4
+    )
+    
+    # 3. Formatting
+    plt.title(f'Size Bias in FastSolv: Molecular Weight Errors ({solvent_name})', fontsize=15)
+    plt.xlabel('Did the model predict correctly?', fontsize=12)
+    plt.ylabel('Molecular Weight (g/mol)', fontsize=12)
+    sns.despine()
+    
+    # 4. Save and Show
+    plt.savefig(f'data/MW_Error_Dist/MW_Error_Dist_{solvent_name}.png', dpi=300, bbox_inches='tight')
+    plt.show()
+    
+    # 5. Print the hard numbers for your report
+    mean_true = df[df['Match'] == 'TRUE']['MW'].mean()
+    mean_false = df[df['Match'] == 'FALSE']['MW'].mean()
+    
+    print(f"\n--- Statistical Summary for {solvent_name} ---")
+    print(f"Average MW of Correct Predictions:   {mean_true:.1f} g/mol")
+    print(f"Average MW of Incorrect Predictions: {mean_false:.1f} g/mol")
+    print(f"Difference: {abs(mean_false - mean_true):.1f} g/mol")
+
+    return df
+
+
+
+
+
+def get_h_bonds(smiles):
+        mol = Chem.MolFromSmiles(smiles)
+        if mol:
+            hbd = rdMolDescriptors.CalcNumHBD(mol)
+            hba = rdMolDescriptors.CalcNumHBA(mol)
+            return hbd, hba
+        return None, None
+
+
+
+def plot_hydrogen_bonding_bias(compared_results_file, solvent_name):
+    """
+    Analyzes prediction errors based on the number of Hydrogen Bond 
+    Donors (HBD) and Acceptors (HBA) in the molecules.
+    """
+    df = pd.read_excel(compared_results_file)
+    incoh_col = f'Coherence_{solvent_name}'
+    
+    if incoh_col not in df.columns or 'solute_smiles' not in df.columns:
+        print(f" Error: Missing {incoh_col} or SMILES column.")
+        return
+
+    # 1. Calculate HBD and HBA using RDKit (H-bond donors, Hbond-acceptors)
+    print(f"--- Calculating HBD & HBA for {solvent_name} ---")
+    
+
+    df[['HBD', 'HBA']] = df['solute_smiles'].apply(lambda x: pd.Series(get_h_bonds(x)))
+    
+    # Drop missing values and standardize the Match column
+    df = df.dropna(subset=['HBD', 'HBA', incoh_col])
+    df['Match'] = df[incoh_col].astype(str).str.upper()
+
+    # 2. Setup the Plot
+    plt.figure(figsize=(9, 7))
+    sns.set_theme(style="whitegrid")
+    
+    # We use a jittered scatter plot so integer coordinates don't perfectly overlap
+    sns.stripplot(
+        data=df, 
+        x='HBD', 
+        y='HBA', 
+        hue='Match', 
+        palette={'TRUE': '#bdc3c7', 'FALSE': '#e74c3c'}, 
+        dodge=True,    # Separates the True and False dots slightly
+        jitter=0.25,   # Shakes the dots so we can see density
+        alpha=0.7, 
+        size=6
+    )
+    
+    # 3. Formatting
+    plt.title(f'Stickiness Bias: Hydrogen Bonding Errors ({solvent_name})', fontsize=16, pad=15)
+    plt.xlabel('Number of Hydrogen Bond Donors (HBD)', fontsize=12)
+    plt.ylabel('Number of Hydrogen Bond Acceptors (HBA)', fontsize=12)
+    
+    # Legend cleanup
+    plt.legend(title='Model Prediction Correct?', bbox_to_anchor=(0.90, 1), loc='upper left')
+    sns.despine()
+    
+    # 4. Save and Show
+    save_path = f'data/HBond_bias/HBond_Bias_{solvent_name}.png'
+    plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    plt.show()
+
+    # 5. Quick Stats
+    mismatches = df[df['Match'] == 'FALSE']
+    print(f"Average HBD of Errors: {mismatches['HBD'].mean():.1f}")
+    print(f"Average HBA of Errors: {mismatches['HBA'].mean():.1f}")
+
+    return df

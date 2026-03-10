@@ -5,7 +5,9 @@ from fastsolv import fastsolv
 import os
 import pubchempy as pcp
 import json
-
+from rdkit import Chem
+from rdkit.Chem import rdMolDescriptors
+import numpy as np
 
 # Dictionary for NMR solvents (i don't know how big this has to be)
 NMR_SOLVENTS = {
@@ -87,4 +89,18 @@ def cleaning_array_by_cas(input_file, cas_column_name='CAS '):
     df_unique.to_excel(output_file, index=False)
     
     return output_file
+
+
+
+def smiles_to_fingerprint(smiles):
+    try:
+        mol = Chem.MolFromSmiles(smiles)
+        if mol is None:
+            return np.zeros(2048) # Return empty barcode if SMILES is broken
+        
+        # Create a 2048-bit Morgan Fingerprint (radius 2 is standard)
+        fp = rdMolDescriptors.GetMorganFingerprintAsBitVect(mol, 2, nBits=2048)
+        return np.array(fp)
+    except:
+        return np.zeros(2048)
 
