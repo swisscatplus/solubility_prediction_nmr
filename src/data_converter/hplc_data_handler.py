@@ -56,7 +56,7 @@ def prepare_fastsolv_input(df_with_smiles):
     return df_clean
 
 # Cleaning function, because data was repeating i didn't notice all the different analytical columns used 
-# Using the cas number to do this
+# Using the cas number to do this, i'm also adding a line of code that removes rows where no signal was obtained
 def cleaning_array_by_cas(input_file, cas_column_name='CAS '):
    
     # 1. Load the "dirty" data
@@ -74,21 +74,26 @@ def cleaning_array_by_cas(input_file, cas_column_name='CAS '):
     
     # 3. Drop Duplicates based ONLY on the CAS number
     # 'keep=first' ensures we don't lose the molecule entirely
-    df_unique = df.drop_duplicates(subset=[cas_column_name], keep='first')
-    
-    final_count = len(df_unique)
-    removed = initial_count - final_count
+    df = df.drop_duplicates(subset=[cas_column_name], keep='first')
+    temp_count = len(df)
+    removed = initial_count - temp_count
 
+    df_unique = df[df['Signal'] != 0]
+    final_count = len(df_unique)
+    nothing = initial_count - final_count
+
+    
     print(f"Original Row Count: {initial_count}")
     print(f"Unique Molecules (by CAS): {final_count}")
     print(f"Redundant Rows Deleted: {removed}")
+    print(f"No Signal Rows Deleted: {nothing}")
     print("----------------------------------")
 
     # 4. Save the lean version
     output_file = input_file.replace(".xlsx", "_Unique_CAS.xlsx")
     df_unique.to_excel(output_file, index=False)
     
-    return output_file
+    return df_unique
 
 
 

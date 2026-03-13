@@ -186,59 +186,37 @@ def calculate_molecular_descriptors(smiles):
     
 
 # function that prepares the excel file given at the beginning of the notebook code to prepare it for sklearn
-def generate_ml_ready_file(input_excel, output_csv, solvent_dict, fingerprint_function):
+def generate_ml_ready_file(cleaned_df, solvent_name, solvent_dict, fingerprint_function):
 
-    print("1. Loading and reshaping data...")
-    df = pd.read_excel(input_excel)
+    if solvent_name not in cleaned_df.columns:
+        raise ValueError(f"Error: '{solvent_name}' is not a column in the provided DataFrame.")
     
-    solvents = list(solvent_dict.keys())
+    if solvent_name not in solvent_dict:
+        raise ValueError(f"Error: '{solvent_name}' is not in your solvent dictionary.")
+    
+    # this is a measure to make sure nothing will crash, but normally the iflée has already been cleaned
+    df_filtered = cleaned_df.dropna(subset=['solute_smiles', 'RT', solvent_name]).copy()
 
-    id_columns = ['Sample Name', 'solute_smiles', 'RT']
+    # this is the fingerprinting part
+    solvent_smiles = solvent_dict[solvent_name]
+    solvent_fp_array = fingerprint_function(solvent_smiles)
 
-    # Melt the data so we have a 'Solvent' column and a 'Solubility' result column
-    df_long = pd.melt(
-        df,
-        id_vars=id_columns,
-        value_vars=solvents,
-        var_name='Solvent',
-        value_name='Solubility'
-    )
+    # engineering of the exact df we want, ready for 
+    ml_df = pd.DataFrame({
+        # Apply the fingerprint function to every solute SMILES, storing the result as an array in the cell
+        'Sample Fingerprint': df_filtered['solute_smiles'].apply(fingerprint_function),
+                
+        # Ensure RT is a float
+        'RT': df_filtered['RT'].astype(float),
+        
+        # Populate every row with the exact same solvent fingerprint array
+        'Solvent': [solvent_fp_array for _ in range(len(df_filtered))],
+        
+        # The binary solubility result (0 or 1)
+        'Soluble': df_filtered[solvent_name].astype(int)
+    })
     
-    # Drop rows where solubility data is missing
-    df_long = df_long.dropna(subset=['solute_smiles', 'RT', 'Solubility']).copy()
-    
-    # Lastly, add the solvent_smiles column
-    df_long['solvent_smiles'] = df_long['Solvent'].map(solvent_dict)
-    
-    # Save this exact file so you can inspect it
-    df_long.to_csv(output_csv, index=False)
-    print(f"Intermediate file saved to {output_csv}")
-    print("Columns:", df_long.columns.tolist())
-    
+    # reset indexing step important, in case rows were removed
+    ml_df = ml_df.reset_index(drop=True)
 
-
-    # this is the fingerprinting part to finalize the file
-    print("1. Fingerprinting Solutes...")
-    X_solute = pd.DataFrame(
-        df_long['solute_smiles'].apply(fingerprint_function).tolist(),
-        index=df_long.index
-    )
-    X_solute.columns = [f'Solute_Bit_{i}' for i in range(2048)]
-    
-    print("2. Fingerprinting Solvents...")
-    X_solvent = pd.DataFrame(
-        df_long['solvent_smiles'].apply(fingerprint_function).tolist(),
-        index=df_long.index
-    )
-    X_solvent.columns = [f'Solvent_Bit_{i}' for i in range(2048)]
-    
-    print("3. Assembling X and y...")
-    # Combine solute, solvent, and RT (and Signal if you want the AI to use it)
-    X = pd.concat([X_solute, X_solvent, df_long['RT']], axis=1)
-    X.columns = X.columns.astype(str)
-    
-    y = df_long['Solubility'].astype(int)
-    
-    print("Fingerprinting complete")
-
-    return X, y
+    return ml_df
