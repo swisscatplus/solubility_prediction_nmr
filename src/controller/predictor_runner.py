@@ -186,7 +186,7 @@ def calculate_molecular_descriptors(smiles):
     
 
 # function that prepares the excel file given at the beginning of the notebook code to prepare it for sklearn
-def generate_ml_ready_file(cleaned_df, solvent_name, solvent_dict, fingerprint_function):
+def generate_ml_ready_file_fingerprint_solvent(cleaned_df, solvent_name, solvent_dict, fingerprint_function):
 
     if solvent_name not in cleaned_df.columns:
         raise ValueError(f"Error: '{solvent_name}' is not a column in the provided DataFrame.")
@@ -194,7 +194,7 @@ def generate_ml_ready_file(cleaned_df, solvent_name, solvent_dict, fingerprint_f
     if solvent_name not in solvent_dict:
         raise ValueError(f"Error: '{solvent_name}' is not in your solvent dictionary.")
     
-    # this is a measure to make sure nothing will crash, but normally the iflée has already been cleaned
+    # this is a measure to make sure nothing will crash, but normally the file has already been cleaned
     df_filtered = cleaned_df.dropna(subset=['solute_smiles', 'RT', solvent_name]).copy()
 
     # this is the fingerprinting part
@@ -213,7 +213,51 @@ def generate_ml_ready_file(cleaned_df, solvent_name, solvent_dict, fingerprint_f
         'Solvent': [solvent_fp_array for _ in range(len(df_filtered))],
         
         # The binary solubility result (0 or 1)
-        'Soluble': df_filtered[solvent_name].astype(int)
+        'Soluble': df_filtered[solvent_name].astype(int),
+
+        'SMILES': df_filtered['solute_smiles']
+    })
+    
+    # reset indexing step important, in case rows were removed
+    ml_df = ml_df.reset_index(drop=True)
+
+    return ml_df
+
+
+def generate_ml_ready_file_onehot_solvent(cleaned_df, solvent_name, solvent_dict, fingerprint_function):
+
+    if solvent_name not in cleaned_df.columns:
+        raise ValueError(f"Error: '{solvent_name}' is not a column in the provided DataFrame.")
+    
+    if solvent_name not in solvent_dict:
+        raise ValueError(f"Error: '{solvent_name}' is not in your solvent dictionary.")
+    
+    # this is a measure to make sure nothing will crash, but normally the file has already been cleaned
+    df_filtered = cleaned_df.dropna(subset=['solute_smiles', 'RT', solvent_name]).copy()
+
+    all_solvents = list(solvent_dict.keys())
+
+    # this creates an array filled with 0, then associates position of the solvent and where to insert a 1, that's why it looks for the index. don't forget it takes i a dictionary
+    one_hot_array = np.zeros(len(all_solvents), dtype=int)
+    solvent_index = all_solvents.index(solvent_name)
+    one_hot_array[solvent_index] = 1
+    
+
+    # engineering of the exact df we want, ready for 
+    ml_df = pd.DataFrame({
+        # Apply the fingerprint function to every solute SMILES, storing the result as an array in the cell
+        'Sample Fingerprint': df_filtered['solute_smiles'].apply(fingerprint_function),
+                
+        # Ensure RT is a float
+        'RT': df_filtered['RT'].astype(float),
+        
+        # Populate every row with the exact same solvent fingerprint array
+        'Solvent': [one_hot_array for _ in range(len(df_filtered))],
+        
+        # The binary solubility result (0 or 1)
+        'Soluble': df_filtered[solvent_name].astype(int),
+
+        'SMILES': df_filtered['solute_smiles']
     })
     
     # reset indexing step important, in case rows were removed
