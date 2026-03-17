@@ -1,0 +1,27 @@
+Original Row Count: 1057
+Unique Molecules (by CAS): 144
+Redundant Rows Deleted: 906
+No Signal Rows Deleted: 913
+----------------------------------
+Gathering data (No logS)...
+Added MeOH: 144 rows
+Added ACN: 144 rows
+Added DMSO: 144 rows
+Added DCM: 144 rows
+Added CHCl3: 144 rows
+Matrix shape (without logS): (720, 2054)
+
+--- RESULTS WITHOUT logS ---
+ Seed  Accuracy  Precision (Class 1)  Recall (Class 1)  F1 Score (Class 1)
+   42  0.675862             0.703704          0.835165            0.763819
+   93  0.675862             0.697479          0.882979            0.779343
+  123  0.772414             0.806452          0.917431            0.858369
+ 2024  0.682759             0.685484          0.923913            0.787037
+  777  0.668966             0.675000          0.900000            0.771429
+
+Summary Statistics:
+                         mean       std
+Accuracy             0.695172  0.043454
+Precision (Class 1)  0.713624  0.053056
+Recall (Class 1)     0.891898  0.035499
+F1 Score (Class 1)   0.791999  0.038102

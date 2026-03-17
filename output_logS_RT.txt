@@ -1,0 +1,35 @@
+Original Row Count: 1057
+Unique Molecules (by CAS): 144
+Redundant Rows Deleted: 906
+No Signal Rows Deleted: 913
+----------------------------------
+Successfully added 5 exact logS columns
+Gathering data for all solvents...
+Added MeOH: 144 rows
+Added ACN: 144 rows
+Added DMSO: 144 rows
+Added DCM: 144 rows
+Added CHCl3: 144 rows
+DataFrame built! Total Rows: 720
+ Final matrix shape: (720, 2055)
+
+Running 5-Fold Stability Test...
+
+=========================================
+  5-RUN STABILITY TEST RESULTS
+=========================================
+ Seed  Accuracy  Precision (Class 1)  Recall (Class 1)  F1 Score (Class 1)
+   42  0.765517             0.761468          0.912088            0.830000
+   93  0.806897             0.794643          0.946809            0.864078
+  123  0.820690             0.848739          0.926606            0.885965
+ 2024  0.758621             0.739496          0.956522            0.834123
+  777  0.724138             0.731481          0.877778            0.797980
+
+--- Summary Statistics ---
+                         mean       std
+Accuracy             0.775172  0.038891
+Precision (Class 1)  0.775166  0.047856
+Recall (Class 1)     0.923960  0.031077
+F1 Score (Class 1)   0.842429  0.033776
+
+Plots successfully saved as 'Average_Confusion_Matrix.png' and 'Metrics_Variance_Boxplot.png'

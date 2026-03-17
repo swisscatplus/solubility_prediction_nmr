@@ -87,7 +87,7 @@ def solubility_file_matrix(clean_results, solvent_dict, temperature=298.15):
         final_df = pd.concat([final_df, solvent_cols], axis=1)
 
     # 3. Final Save
-    output_name = "data/Master_Solubility_Matrix.xlsx"
+    output_name = "/Users/arthurbenard/Project 1B/data/Master_Solubility_Matrix.xlsx"
     final_df.to_excel(output_name, index=False)
     print(f"Mission Complete! File saved: {output_name}")
 
@@ -237,7 +237,7 @@ def generate_ml_ready_file_onehot_solvent(cleaned_df, solvent_name, solvent_dict
 
     all_solvents = list(solvent_dict.keys())
 
-    # this creates an array filled with 0, then associates position of the solvent and where to insert a 1, that's why it looks for the index. don't forget it takes i a dictionary
+    # One-hot Coding: this creates an array filled with 0, then associates position of the solvent and where to insert a 1, that's why it looks for the index. don't forget it takes i a dictionary
     one_hot_array = np.zeros(len(all_solvents), dtype=int)
     solvent_index = all_solvents.index(solvent_name)
     one_hot_array[solvent_index] = 1
@@ -264,3 +264,66 @@ def generate_ml_ready_file_onehot_solvent(cleaned_df, solvent_name, solvent_dict
     ml_df = ml_df.reset_index(drop=True)
 
     return ml_df
+
+
+
+
+
+
+# this next function works just like the one above but it adds the "logS" values for ONE SOLVENT, one more parameter to train on
+
+def generate_ml_file_with_logs(cleaned_df, solvent_name, solvent_dict, fingerprint_function):
+
+    logs_col = f"predicted_logS_{solvent_name}"
+    
+    # general checks
+    if solvent_name not in cleaned_df.columns:
+        raise ValueError(f"Missing binary column: '{solvent_name}'")
+    if logs_col not in cleaned_df.columns:
+        raise ValueError(f"Missing logS column: '{logs_col}'")
+
+
+    # this is the same measure taken before to make sure nothing will crash but this time we're making sure there's values in the logS column
+    # but normally the file has already been cleaned beforehand
+    df_filtered = cleaned_df.dropna(subset=['solute_smiles', 'RT', solvent_name, logs_col]).copy()
+
+    # one-hot coding
+    all_solvents = list(solvent_dict.keys())
+    one_hot_array = np.zeros(len(all_solvents), dtype=int)
+    solvent_index = all_solvents.index(solvent_name)
+    one_hot_array[solvent_index] = 1
+
+
+    # df construction: adding a new column
+    ml_df = pd.DataFrame({
+        'Sample Fingerprint': df_filtered['solute_smiles'].apply(fingerprint_function),
+        'RT': df_filtered['RT'].astype(float),
+        
+        # NEW
+        'logS': df_filtered[logs_col].astype(float),
+        
+        'Solvent': [one_hot_array for _ in range(len(df_filtered))],
+        'Soluble': df_filtered[solvent_name].astype(int),
+        'SMILES': df_filtered['solute_smiles']
+    })
+    
+    ml_df = ml_df.reset_index(drop=True)
+
+    return ml_df
+
+
+
+def add_logs_to_df(cleaned_df, sol_matrix,solvent_dict):
+    # to add the logs values
+    exact_log_cols = [f"predicted_logS_{sol}" for sol in solvent_dict.keys()]
+    valid_log_cols = [col for col in exact_log_cols if col in sol_matrix.columns]
+    if not valid_log_cols:
+        raise ValueError("Error: Could not find any of your specified predicted_logS columns")
+    
+    columns_to_keep = ['CAS '] + valid_log_cols
+    logs_only_df = sol_matrix[columns_to_keep].drop_duplicates(subset=['CAS '])
+
+    merged_df = pd.merge(cleaned_df, logs_only_df, on='CAS ', how='left')
+    
+    print(f"Successfully added {len(valid_log_cols)} exact logS columns")
+    return merged_df
