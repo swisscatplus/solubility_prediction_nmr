@@ -1,0 +1,16 @@
+=== RESULTS WITH [Sample Fingerprint, RT] REMOVED ===
+
+       Removed_Feature  Seed  Train_Accuracy  Accuracy  Precision   Recall  F1_Score
+Sample Fingerprint, RT    42           0.998  0.758621   0.785714 0.846154  0.814815
+Sample Fingerprint, RT    93           1.000  0.689655   0.855072 0.627660  0.723926
+Sample Fingerprint, RT   123           1.000  0.717241   0.869565 0.733945  0.796020
+Sample Fingerprint, RT  2024           1.000  0.731034   0.778947 0.804348  0.791444
+Sample Fingerprint, RT   777           1.000  0.710345   0.766667 0.766667  0.766667
+
+--- Summary Statistics ---
+                    mean       std
+Train_Accuracy  0.999600  0.000894
+Accuracy        0.721379  0.025620
+Precision       0.811193  0.047445
+Recall          0.755755  0.082970
+F1_Score        0.778574  0.035041

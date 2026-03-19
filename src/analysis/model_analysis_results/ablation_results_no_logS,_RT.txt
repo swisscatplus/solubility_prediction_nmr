@@ -1,0 +1,16 @@
+=== RESULTS WITH [logS, RT] REMOVED ===
+
+Removed_Feature  Seed  Train_Accuracy  Accuracy  Precision   Recall  F1_Score
+       logS, RT    42             1.0  0.765517   0.761468 0.912088  0.830000
+       logS, RT    93             1.0  0.806897   0.794643 0.946809  0.864078
+       logS, RT   123             1.0  0.820690   0.848739 0.926606  0.885965
+       logS, RT  2024             1.0  0.758621   0.739496 0.956522  0.834123
+       logS, RT   777             1.0  0.724138   0.731481 0.877778  0.797980
+
+--- Summary Statistics ---
+                    mean       std
+Train_Accuracy  1.000000  0.000000
+Accuracy        0.775172  0.038891
+Precision       0.775166  0.047856
+Recall          0.923960  0.031077
+F1_Score        0.842429  0.033776

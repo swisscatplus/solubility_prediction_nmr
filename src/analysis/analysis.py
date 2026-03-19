@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import seaborn as sns
 import numpy as np
@@ -5,6 +6,9 @@ import matplotlib.pyplot as plt
 from rdkit import Chem
 from rdkit.Chem import Descriptors, rdMolDescriptors
 from controller.predictor_runner import calculate_molecular_descriptors
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import precision_recall_fscore_support, accuracy_score
+from sklearn.model_selection import GroupShuffleSplit
 
 
 def count_over_under_estimation(compared_results_file, solvent_dict):
@@ -603,3 +607,193 @@ def plot_hydrogen_bonding_bias(compared_results_file, solvent_name):
     print(f"Average HBA of Errors: {mismatches['HBA'].mean():.1f}")
 
     return df
+
+
+
+
+
+# This next function is part of the model analysis trend i've been working on.
+# It's supposed to intake the big dataframe generated to input in Randomforest and dynamically remove one parameter
+# to test the accuracy of the model (and other things). It'll return a .txt file.
+# Basically and automation of the files seen in this very folder and 'future proof'.
+def run_ablation_study(mega_df, features_to_remove=None):
+   
+    # haden't even thougt of removing these two as options, i mean if we delete them there's no point of training the model i guess
+    target_col = 'Soluble'
+    group_col = 'SMILES'
+
+    all_features = [col for col in mega_df.columns if col not in [target_col, group_col]]
+
+
+    # the function intakes a feature to remove or several ones, it can also be interactive using the following code. i think this is useful 
+    # if no loop was expected to run.
+    if features_to_remove is None:
+        print("========================================")
+        print("  AVAILABLE FEATURES TO REMOVE:")
+        print("========================================")
+        for f in all_features:
+            print(f"  - {f}")
+        print("  - None (Keep all features)")
+        print("========================================")
+        
+        
+        user_input = input("Type the exact name of the feature to remove: ").strip()
+
+        # Convert the text string into a clean list of features: it cuts at commas, strips away the spaces
+        if user_input.lower() == 'none' or user_input == '':
+            features_to_remove = [] # Empty list = remove nothing
+        else:
+            features_to_remove = [f.strip() for f in user_input.split(',')]
+
+    # If the user bypassed the input and passed a single string directly in code
+    elif isinstance(features_to_remove, str):
+        if features_to_remove.lower() == 'none':
+            features_to_remove = []
+        else:
+            features_to_remove = [features_to_remove]
+    
+    removed_str = ", ".join(features_to_remove) if features_to_remove else "None"
+    print(f"\nRemoving [{removed_str}] from model...")
+
+
+    feature_arrays = []
+
+    for col in all_features:
+        if col in features_to_remove:
+            continue # This skips the one we are removing
+
+        # this is a 'type of data identificator', because it needs to check what it's holding in order to correctly stack (the if code after)
+        sample_val = mega_df[col].iloc[0]
+        if isinstance(sample_val, (list, np.ndarray)):
+        # If it's an array (like Fingerprints or One-Hot Solvents)
+            feature_arrays.append(np.vstack(mega_df[col].values))
+        else:
+        # If it's a single number (like RT, logS)
+            feature_arrays.append(mega_df[col].values.astype(float).reshape(-1, 1))
+            
+    # Smash everything together        
+    X_dynamic = np.hstack(feature_arrays)
+    y = mega_df[target_col].values.astype(int)
+    groups = mega_df[group_col].values
+    
+    print(f"Matrix shape after removal: {X_dynamic.shape}")
+
+
+    # Splitting and training part 
+    seeds = [42, 93, 123, 2024, 777]
+    results = []
+
+    for seed in seeds:
+        gss1 = GroupShuffleSplit(n_splits=1, test_size=0.30, random_state=seed)
+        train_idx, temp_idx = next(gss1.split(X_dynamic, y, groups))
+        X_train, y_train = X_dynamic[train_idx], y[train_idx]
+        X_temp, y_temp = X_dynamic[temp_idx], y[temp_idx]
+        groups_temp = groups[temp_idx]
+
+        gss2 = GroupShuffleSplit(n_splits=1, test_size=(1/3), random_state=seed)
+        val_idx, _ = next(gss2.split(X_temp, y_temp, groups_temp))
+        X_val, y_val = X_temp[val_idx], y_temp[val_idx]
+        
+        
+        rf = RandomForestClassifier(n_estimators=100, class_weight='balanced', random_state=seed, n_jobs=-1)
+        rf.fit(X_train, y_train)
+        y_val_pred = rf.predict(X_val)
+        y_train_pred = rf.predict(X_train)
+
+        # Metrics
+        acc = accuracy_score(y_val, y_val_pred)
+        train_acc = accuracy_score(y_train, y_train_pred)
+        precision, recall, f1, _ = precision_recall_fscore_support(y_val, y_val_pred, labels=[0, 1], zero_division=0)
+        
+        results.append({
+            'Removed_Feature': removed_str,
+            'Seed': seed,
+            'Train_Accuracy': train_acc,
+            'Accuracy': acc,
+            'Precision': precision[1],
+            'Recall': recall[1],
+            'F1_Score': f1[1]
+        })
+
+    # Saving the results, writing them in the text file
+    results_df = pd.DataFrame(results)
+    
+    if features_to_remove:
+        safe_feature_name = "_and_".join(features_to_remove).replace(" ", "_")
+    else:
+        safe_feature_name = "None"
+
+    txt_filename = f"ablation_results_no_{safe_feature_name}.txt"
+
+    output_folder = "/Users/arthurbenard/Project 1B/src/analysis/model_analysis_results"
+    full_filepath = os.path.join(output_folder, txt_filename)
+
+    with open(full_filepath, 'w') as f:
+        f.write(f"=== RESULTS WITH [{removed_str}] REMOVED ===\n\n")
+        f.write(results_df.to_string(index=False))
+        f.write("\n\n--- Summary Statistics ---\n")
+        f.write(results_df.drop(columns=['Removed_Feature', 'Seed']).agg(['mean', 'std']).T.to_string())
+        
+    print(f"   -> Results saved to {full_filepath}\n")
+    
+    return results_df
+
+
+
+# This function will combine all dataframes generated right before and plot them in a single graph. 
+# The aim is to observe the drop in accuracy each time features are removed.
+
+def plot_comparison(master_df):
+    metrics_to_plot = ['Accuracy', 'Recall', 'F1_Score', 'Train_Accuracy']
+
+    # .melt function is to turn metrics in long table so that Seaborn reads them more easily.
+    melted_df = master_df.melt(
+        id_vars=['Removed_Feature', 'Seed'], 
+        value_vars=metrics_to_plot,
+        var_name='Metric',
+        value_name='Score'
+    )
+
+    # This part is to establish the order of the x-axis, 'None' will be first.
+    unique_features = list(master_df['Removed_Feature'].unique())
+    if 'None' in unique_features:
+        unique_features.remove('None')
+        order = ['None'] + unique_features # 'None' goes first, then the rest
+    else:
+        order = unique_features
+
+    # The whole plotting code
+    num_x_categories = len(order)
+    dynamic_width = max(10, num_x_categories * 2.5)
+    plt.figure(figsize=(dynamic_width, 6))
+
+    sns.boxplot(
+        data=melted_df,
+        x='Removed_Feature',
+        y='Score',
+        hue='Metric',
+        order=order,
+        palette=['#4C72B0', '#55A868', '#C44E52','#FFFF00'] # Classic Blue, Green, Red
+    )
+
+    
+
+    plt.title('Ablation Study: Feature Importance Impact', fontsize=16, fontweight='bold')
+    plt.xlabel('Removed Feature(s)', fontsize=12, fontweight='bold')
+    plt.ylabel('Metric Score', fontsize=12, fontweight='bold')
+    plt.ylim(0, 1.05)
+
+
+    plt.legend(title='Metrics', bbox_to_anchor=(1.02, 1), loc='upper left')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+
+
+    output_folder = "/Users/arthurbenard/Project 1B/src/analysis/model_analysis_results"
+    save_path = os.path.join(output_folder, 'Ablation_SuperPlot.png')
+
+
+    plt.savefig(save_path, dpi=300)
+    print(f"Plot successfully saved to {save_path}")
+
+    plt.show()

@@ -1,0 +1,16 @@
+=== RESULTS WITH [Solvent] REMOVED ===
+
+Removed_Feature  Seed  Train_Accuracy  Accuracy  Precision   Recall  F1_Score
+        Solvent    42             1.0  0.751724   0.757009 0.890110  0.818182
+        Solvent    93             1.0  0.744828   0.756757 0.893617  0.819512
+        Solvent   123             1.0  0.772414   0.822034 0.889908  0.854626
+        Solvent  2024             1.0  0.813793   0.773109 1.000000  0.872038
+        Solvent   777             1.0  0.682759   0.707547 0.833333  0.765306
+
+--- Summary Statistics ---
+                    mean       std
+Train_Accuracy  1.000000  0.000000
+Accuracy        0.753103  0.047631
+Precision       0.763291  0.041039
+Recall          0.901394  0.060570
+F1_Score        0.825933  0.041006
