@@ -797,3 +797,167 @@ def plot_comparison(master_df):
     print(f"Plot successfully saved to {save_path}")
 
     plt.show()
+
+
+
+
+# This function cuts the model training data differently
+def run_data_fraction(mega_df, train_percent_of_total):
+    # quick reality check if wrong input
+    if train_percent_of_total > 1.0:
+        raise ValueError("Training data must be less than 1.0 so we have leftovers to test on.")
+    
+    print(f"\nRunning Learning Curve Step: {train_percent_of_total * 100:.0f}% of total data...")
+
+# This part builds the matrix and tells the model what to look at
+    target_col = 'Soluble'
+    group_col = 'SMILES'
+    all_features = [col for col in mega_df.columns if col not in [target_col, group_col]]
+    
+    feature_arrays = []
+    for col in all_features:
+        sample_val = mega_df[col].iloc[0]
+        if isinstance(sample_val, (list, np.ndarray)):
+            feature_arrays.append(np.vstack(mega_df[col].values))
+        else:
+            feature_arrays.append(mega_df[col].values.astype(float).reshape(-1, 1))
+            
+    X_dynamic = np.hstack(feature_arrays)
+    y = mega_df[target_col].values.astype(int)
+    groups = mega_df[group_col].values
+
+    seeds = [49, 90, 105, 1873, 1010]
+    results = []
+
+    for seed in seeds:
+            gss_train = GroupShuffleSplit(n_splits=1, train_size=train_percent_of_total, random_state=seed)
+            train_idx, remaining_idx = next(gss_train.split(X_dynamic, y, groups))
+            
+            X_train, y_train = X_dynamic[train_idx], y[train_idx]
+            
+            # This is whatever is left over (e.g., if train is 10%, this is 90%)
+            X_remaining, y_remaining = X_dynamic[remaining_idx], y[remaining_idx]
+            groups_remaining = groups[remaining_idx]
+
+            # Split the leftovers 2:1. 
+            # A test_size of 1/3 means 33.3% goes to Test, and 66.6% goes to Validation (a perfect 2:1 ratio)
+            gss_val_test = GroupShuffleSplit(n_splits=1, test_size=(1/3), random_state=seed)
+            val_idx, test_idx = next(gss_val_test.split(X_remaining, y_remaining, groups_remaining))
+            
+            X_val, y_val = X_remaining[val_idx], y_remaining[val_idx]
+            X_test, y_test = X_remaining[test_idx], y_remaining[test_idx]
+
+            # Train and Evaluate
+            rf = RandomForestClassifier(n_estimators=100, class_weight='balanced', random_state=seed, n_jobs=-1)
+            rf.fit(X_train, y_train)
+            
+            # The following is a measure taken to tell the model to be at a certain minimum sure of his answer, instead of having cases were at
+            # 51% he thinks it's fine.
+            # 1. Define how confident the AI must be to flag a molecule as Soluble (1)
+            # 0.70 means it must be 70% confident. 
+            CUSTOM_THRESHOLD = 0.70 
+
+            # 2. Ask the model for its raw confidence percentages instead of its final guess
+            # [:, 1] grabs the probability specifically for the "Soluble" class
+            y_train_probs = rf.predict_proba(X_train)[:, 1]
+            y_val_probs = rf.predict_proba(X_val)[:, 1]
+            y_test_probs = rf.predict_proba(X_test)[:, 1]
+
+            # 3. Apply the strict threshold to generate the new 1s and 0s
+            y_train_pred = (y_train_probs >= CUSTOM_THRESHOLD).astype(int)
+            y_val_pred = (y_val_probs >= CUSTOM_THRESHOLD).astype(int)
+            y_test_pred = (y_test_probs >= CUSTOM_THRESHOLD).astype(int)
+
+            # Metrics
+            train_acc = accuracy_score(y_train, y_train_pred)
+            val_acc = accuracy_score(y_val, y_val_pred)
+            test_acc = accuracy_score(y_test, y_test_pred)
+            
+            precision, recall, f1, _ = precision_recall_fscore_support(y_test, y_test_pred, labels=[0, 1], zero_division=0)
+            
+            results.append({
+                'Train_Size_Pct': int(train_percent_of_total * 100),
+                'Seed': seed,
+                'Train_Accuracy': train_acc,
+                'Val_Accuracy': val_acc,
+                'Test_Accuracy': test_acc,
+                'Precision': precision[1],
+                'Recall': recall[1],
+                'F1_Score': f1[1]
+            })
+
+    # 3. Save to Text File
+    results_df = pd.DataFrame(results)
+    txt_filename = f"dynamic_learning_curve_{int(train_percent_of_total * 100)}pct.txt"
+    
+    output_folder = "/Users/arthurbenard/Project 1B/src/analysis/learning_curve_results"
+    full_filepath = os.path.join(output_folder, txt_filename)
+
+    with open(full_filepath, 'w') as f:
+        f.write(f"=== LEARNING CURVE: {int(train_percent_of_total * 100)}% TRAINING DATA ===\n\n")
+        f.write(results_df.to_string(index=False))
+        f.write("\n\n--- Summary Statistics ---\n")
+        f.write(results_df.drop(columns=['Seed']).agg(['mean', 'std']).T.to_string())
+        
+    print(f"   -> Results saved to {full_filepath}")
+    
+    return results_df
+
+
+
+
+# Learning Curve plotting function
+def plot_learning_curve(master_lc_df):
+    
+    print("Generating Learning Curve Plot...")
+    
+    # Filter the metrics. 
+    # For a classic learning curve, comparing Train vs. Test is the gold standard to spot overfitting!
+    metrics_to_plot = ['Train_Accuracy', 'Val_Accuracy', 'Test_Accuracy']
+    
+    # The 'Melt' Trick
+    melted_df = master_lc_df.melt(
+        id_vars=['Train_Size_Pct', 'Seed'], 
+        value_vars=metrics_to_plot,
+        var_name='Metric',
+        value_name='Score'
+    )
+        
+    # Build the Plot Canvas
+    plt.figure(figsize=(10, 6))
+    
+    # Draw the Curve, lineplot
+    sns.lineplot(
+        data=melted_df,
+        x='Train_Size_Pct',
+        y='Score',
+        hue='Metric',
+        marker='o', # Adds a little dot at each actual data point (10%, 20%, etc.)
+        palette=['#4C72B0', '#55A868', '#C44E52'],
+        linewidth=2.5
+    )
+    
+    # Make it look professional
+    plt.title('Learning Curve: Model Performance vs. Training Data Size', fontsize=16, fontweight='bold')
+    plt.xlabel('Percentage of Total Data Used for Training (%)', fontsize=12, fontweight='bold')
+    plt.ylabel('Accuracy Score', fontsize=12, fontweight='bold')
+    plt.ylim(0.4, 1.05) # Adjusted slightly so the curves fill the screen better
+    
+    # Set the X-axis to actually show 10, 20, 30... instead of weird decimals
+    plt.xticks(master_lc_df['Train_Size_Pct'].unique()) 
+    
+    # Move the legend outside the plot
+    plt.legend(title='Metrics', bbox_to_anchor=(1.02, 1), loc='upper left')
+    
+    # Add a grid for both axes this time to make reading the curve easier
+    plt.grid(axis='both', linestyle='--', alpha=0.7) 
+    plt.tight_layout()
+    
+    # Save it to your results folder!
+    output_folder = "/Users/arthurbenard/Project 1B/src/analysis/learning_curve_results"
+    save_path = os.path.join(output_folder, 'Learning_Curve_Plot.png')
+    
+    plt.savefig(save_path, dpi=300)
+    print(f"-> Plot successfully saved to {save_path}")
+    
+    plt.show()

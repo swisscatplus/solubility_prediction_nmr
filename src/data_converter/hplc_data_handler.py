@@ -8,6 +8,7 @@ import json
 from rdkit import Chem
 from rdkit.Chem import rdMolDescriptors
 import numpy as np
+from sklearn.decomposition import PCA
 
 # Dictionary for NMR solvents (i don't know how big this has to be)
 NMR_SOLVENTS = {
@@ -109,3 +110,59 @@ def smiles_to_fingerprint(smiles):
     except:
         return np.zeros(2048)
 
+
+
+
+def scrub(df, smiles_col='SMILES'):
+    """
+    Tests every SMILES string with RDKit. 
+    Drops rows that are blank or chemically invalid.
+    """
+    print(f"🧹 Starting cleanup. Original rows: {len(df)}")
+    
+    # 1. Drop obvious blank cells first
+    df_clean = df.dropna(subset=[smiles_col]).copy()
+    
+    # 2. The RDKit Acid Test: Try to build a molecule from each string
+    # We use str(x) just in case a number accidentally sneaked into the column!
+    valid_mask = df_clean[smiles_col].apply(lambda x: Chem.MolFromSmiles(str(x)) is not None)
+    
+    # 3. Keep only the ones that passed
+    df_valid = df_clean[valid_mask].copy()
+    
+    # Report the casualties
+    dropped = len(df) - len(df_valid)
+    print(f"   -> Dropped {dropped} rows containing invalid or missing SMILES.")
+    print(f"✅ Cleaned row count: {len(df_valid)}")
+    
+    return df_valid
+
+
+# This function is to compress the 2000 something bits of the morgan fingerprints, using PCA.
+def compress_fingerprints_pca(df, fp_col_name, variance_to_keep=0.95):
+   
+    print(f"Compressing '{fp_col_name}' using PCA...")
+    print(f"-> Target: Keep {variance_to_keep * 100}% of the original chemical information.")
+    
+    new_df = df.copy()
+    
+    # 1. Extract and stack the fingerprints into a massive 2D matrix
+    # (np.vstack stacks all the individual lists on top of each other so PCA can read them)
+    fps_matrix = np.vstack(new_df[fp_col_name].values)
+    original_dims = fps_matrix.shape[1]
+    
+    # 2. Build and run the PCA compressor
+    # By passing a float, we tell PCA to figure out exactly how many 
+    # columns it needs to keep 95% of the variance.
+    pca = PCA(n_components=variance_to_keep, random_state=34)
+    compressed_matrix = pca.fit_transform(fps_matrix)
+    new_dims = compressed_matrix.shape[1]
+    
+    # 3. Pack the shiny new, dense arrays back into the dataframe, overwriting the old ones
+    new_df[fp_col_name] = list(compressed_matrix)
+    
+    print(f"   Compression Complete!")
+    print(f"   -> Original Dimensions: {original_dims} bits")
+    print(f"   -> New Dimensions:      {new_dims} dense features")
+    
+    return new_df

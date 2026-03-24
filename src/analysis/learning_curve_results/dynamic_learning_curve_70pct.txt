@@ -1,0 +1,18 @@
+=== LEARNING CURVE: 70% TRAINING DATA ===
+
+ Train_Size_Pct  Seed  Train_Accuracy  Val_Accuracy  Test_Accuracy  Precision   Recall  F1_Score
+             70    49             1.0      0.771036       0.789286   0.884831 0.803571  0.842246
+             70    90             1.0      0.709388       0.612451   0.809343 0.565894  0.666071
+             70   105             1.0      0.791078       0.693112   0.772922 0.691752  0.730088
+             70  1873             1.0      0.704898       0.754847   0.910411 0.746599  0.820407
+             70  1010             1.0      0.701030       0.786224   0.859397 0.843068  0.851155
+
+--- Summary Statistics ---
+                     mean       std
+Train_Size_Pct  70.000000  0.000000
+Train_Accuracy   1.000000  0.000000
+Val_Accuracy     0.735486  0.042303
+Test_Accuracy    0.727184  0.074887
+Precision        0.847381  0.055926
+Recall           0.730177  0.108243
+F1_Score         0.781993  0.080656

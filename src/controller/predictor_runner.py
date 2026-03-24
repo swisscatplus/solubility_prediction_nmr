@@ -5,7 +5,7 @@ import os
 from data_converter.hplc_data_handler import smiles_by_pubchem_cas, cleaning_array_by_cas
 from rdkit import Chem
 from rdkit.Chem import Descriptors
-
+from sklearn.preprocessing import OneHotEncoder
 
 
 # this is to obtain smiles code from given file
@@ -313,6 +313,12 @@ def generate_ml_file_with_logs(cleaned_df, solvent_name, solvent_dict, fingerpri
 
 
 
+
+
+
+
+
+
 def add_logs_to_df(cleaned_df, sol_matrix,solvent_dict):
     # to add the logs values
     exact_log_cols = [f"predicted_logS_{sol}" for sol in solvent_dict.keys()]
@@ -327,3 +333,35 @@ def add_logs_to_df(cleaned_df, sol_matrix,solvent_dict):
     
     print(f"Successfully added {len(valid_log_cols)} exact logS columns")
     return merged_df
+
+
+
+def add_matrix_id_to_df(mega_df, raw_df, matrix_col_name, smiles_col='solute_smiles'):
+
+    print(f"One-Hot Encoding the '{matrix_col_name}' column...")
+    
+    # 1. Grab just the SMILES and your matrix column
+    temp_data = raw_df[[smiles_col, matrix_col_name]]
+    
+    # 2. Merge it into the master dataframe
+    new_df = mega_df.merge(temp_data, on=smiles_col, how='left')
+    
+    # 3. Fill any missing rows with 'Unknown' so the math doesn't break
+    new_df[matrix_col_name] = new_df[matrix_col_name].fillna('Unknown')
+    
+    # 4. The One-Hot Encoder
+    encoder = OneHotEncoder(sparse_output=False, dtype=int)
+    encoded_grid = encoder.fit_transform(new_df[[matrix_col_name]])
+    
+    # 5. Pack the grid into lists inside a single new column
+    new_df['Matrix_Packed_Array'] = list(encoded_grid)
+    
+    # 6. Clean up: Drop the original text column
+    new_df = new_df.drop(columns=[matrix_col_name])
+    
+    # Print out exactly what the AI found so you can verify!
+    categories = encoder.categories_[0]
+    print(f"   Successfully packed {len(categories)} matrices: {categories}")
+    print(f"   -> Example array looks like: {new_df['Matrix_Packed_Array'].iloc[0]}")
+    
+    return new_df
