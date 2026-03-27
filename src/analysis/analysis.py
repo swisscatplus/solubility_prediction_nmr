@@ -9,6 +9,7 @@ from controller.predictor_runner import calculate_molecular_descriptors
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score
 from sklearn.model_selection import GroupShuffleSplit
+import xgboost as xgb
 
 
 def count_over_under_estimation(compared_results_file, solvent_dict):
@@ -961,3 +962,131 @@ def plot_learning_curve(master_lc_df):
     print(f"-> Plot successfully saved to {save_path}")
     
     plt.show()
+
+
+
+# Almost the exact same function as run_ablation_study, but uses XGBoost.
+def run_ablation_xgboost(mega_df, features_to_remove=None):
+   
+    target_col = 'Soluble'
+    group_col = 'SMILES'
+
+    all_features = [col for col in mega_df.columns if col not in [target_col, group_col]]
+
+    if features_to_remove is None:
+        print("========================================")
+        print("  AVAILABLE FEATURES TO REMOVE:")
+        print("========================================")
+        for f in all_features:
+            print(f"  - {f}")
+        print("  - None (Keep all features)")
+        print("========================================")
+        
+        user_input = input("Type the exact name of the feature to remove: ").strip()
+
+        if user_input.lower() == 'none' or user_input == '':
+            features_to_remove = [] 
+        else:
+            features_to_remove = [f.strip() for f in user_input.split(',')]
+
+    elif isinstance(features_to_remove, str):
+        if features_to_remove.lower() == 'none':
+            features_to_remove = []
+        else:
+            features_to_remove = [features_to_remove]
+    
+    removed_str = ", ".join(features_to_remove) if features_to_remove else "None"
+    print(f"\nRemoving [{removed_str}] from model...")
+
+    feature_arrays = []
+
+    for col in all_features:
+        if col in features_to_remove:
+            continue 
+
+        sample_val = mega_df[col].iloc[0]
+        if isinstance(sample_val, (list, np.ndarray)):
+            feature_arrays.append(np.vstack(mega_df[col].values))
+        else:
+            feature_arrays.append(mega_df[col].values.astype(float).reshape(-1, 1))
+            
+    # Smash everything together        
+    X_dynamic = np.hstack(feature_arrays)
+    y = mega_df[target_col].values.astype(int)
+    groups = mega_df[group_col].values
+    
+    print(f"Matrix shape after removal: {X_dynamic.shape}")
+
+    # Splitting and training part 
+    seeds = [42, 93, 123, 2024, 777]
+    results = []
+
+    for seed in seeds:
+        gss1 = GroupShuffleSplit(n_splits=1, test_size=0.30, random_state=seed)
+        train_idx, temp_idx = next(gss1.split(X_dynamic, y, groups))
+        X_train, y_train = X_dynamic[train_idx], y[train_idx]
+        X_temp, y_temp = X_dynamic[temp_idx], y[temp_idx]
+        groups_temp = groups[temp_idx]
+
+        gss2 = GroupShuffleSplit(n_splits=1, test_size=(1/3), random_state=seed)
+        val_idx, _ = next(gss2.split(X_temp, y_temp, groups_temp))
+        X_val, y_val = X_temp[val_idx], y_temp[val_idx]
+        
+        # --- XGBOOST REPLACEMENT LOGIC ---
+        # Calculate dynamic class weight to mimic RF's 'balanced'
+        neg_count = np.sum(y_train == 0)
+        pos_count = np.sum(y_train == 1)
+        scale_weight = neg_count / pos_count if pos_count > 0 else 1.0
+
+        xgb_model = xgb.XGBClassifier(
+            n_estimators=100,
+            learning_rate=0.1,
+            max_depth=6,
+            random_state=seed,
+            eval_metric='logloss',
+            scale_pos_weight=scale_weight, # Handles class imbalance
+            n_jobs=-1
+        )
+        xgb_model.fit(X_train, y_train)
+        y_val_pred = xgb_model.predict(X_val)
+        y_train_pred = xgb_model.predict(X_train)
+        # ---------------------------------
+
+        # Metrics
+        acc = accuracy_score(y_val, y_val_pred)
+        train_acc = accuracy_score(y_train, y_train_pred)
+        precision, recall, f1, _ = precision_recall_fscore_support(y_val, y_val_pred, labels=[0, 1], zero_division=0)
+        
+        results.append({
+            'Removed_Feature': removed_str,
+            'Seed': seed,
+            'Train_Accuracy': train_acc,
+            'Accuracy': acc,
+            'Precision': precision[1],
+            'Recall': recall[1],
+            'F1_Score': f1[1]
+        })
+
+    # Saving the results
+    results_df = pd.DataFrame(results)
+    
+    if features_to_remove:
+        safe_feature_name = "_and_".join(features_to_remove).replace(" ", "_")
+    else:
+        safe_feature_name = "None"
+
+    # Updated filename so it doesn't overwrite your Random Forest text files!
+    txt_filename = f"ablation_XGBOOST_no_{safe_feature_name}.txt"
+
+    output_folder = "/Users/arthurbenard/Project 1B/src/analysis/model_analysis_results"
+    
+    full_filepath = os.path.join(output_folder, txt_filename)
+
+    with open(full_filepath, 'w') as f:
+        f.write(f"=== XGBOOST RESULTS WITH [{removed_str}] REMOVED ===\n\n")
+        f.write(results_df.to_string(index=False))
+        f.write("\n\n--- Summary Statistics ---\n")
+        f.write(results_df.drop(columns=['Removed_Feature', 'Seed']).agg(['mean', 'std']).T.to_string())
+        
+    print(f"   -> Results saved to {full_filepath}\n")
+    return results_df

@@ -1,0 +1,16 @@
+=== XGBOOST RESULTS WITH [Solvent] REMOVED ===
+
+Removed_Feature  Seed  Train_Accuracy  Accuracy  Precision   Recall  F1_Score
+        Solvent    42        0.992362  0.740000   0.863158 0.759259  0.807882
+        Solvent    93        0.982814  0.686667   0.777778 0.721649  0.748663
+        Solvent   123        0.982814  0.773333   0.825688 0.857143  0.841121
+        Solvent  2024        0.979048  0.820000   0.890000 0.847619  0.868293
+        Solvent   777        0.982814  0.773333   0.912072 0.773704  0.837209
+
+--- Summary Statistics ---
+                    mean       std
+Train_Accuracy  0.983970  0.004966
+Accuracy        0.758667  0.049306
+Precision       0.853739  0.053299
+Recall          0.791875  0.058508
+F1_Score        0.820634  0.045575
