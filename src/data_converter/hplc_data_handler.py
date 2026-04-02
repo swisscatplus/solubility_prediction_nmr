@@ -6,7 +6,7 @@ import os
 import pubchempy as pcp
 import json
 from rdkit import Chem
-from rdkit.Chem import rdMolDescriptors
+from rdkit.Chem import rdMolDescriptors, Descriptors
 import numpy as np
 from sklearn.decomposition import PCA
 
@@ -166,3 +166,18 @@ def compress_fingerprints_pca(df, fp_col_name, variance_to_keep=0.95):
     print(f"   -> New Dimensions:      {new_dims} dense features")
     
     return new_df
+
+
+def calculate_descriptors(smiles):
+    try:
+        mol = Chem.MolFromSmiles(smiles)
+        if mol:
+            # The Big Three
+            logp = Descriptors.MolLogP(mol)
+            tpsa = Descriptors.TPSA(mol)
+            molwt = Descriptors.MolWt(mol)
+            return pd.Series([logp, tpsa, molwt])
+        else:
+            return pd.Series([0.0, 0.0, 0.0]) # Fallback for invalid SMILES
+    except:
+        return pd.Series([0.0, 0.0, 0.0])

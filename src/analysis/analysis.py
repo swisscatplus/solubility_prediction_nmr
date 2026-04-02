@@ -8,9 +8,9 @@ from rdkit.Chem import Descriptors, rdMolDescriptors
 from controller.predictor_runner import calculate_molecular_descriptors
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score
-from sklearn.model_selection import GroupShuffleSplit
+from sklearn.model_selection import GroupShuffleSplit, learning_curve, GroupKFold
+from sklearn.feature_selection import SelectKBest, chi2
 import xgboost as xgb
-
 
 def count_over_under_estimation(compared_results_file, solvent_dict):
     df = pd.read_excel(compared_results_file)
@@ -1090,3 +1090,120 @@ def run_ablation_xgboost(mega_df, features_to_remove=None):
         
     print(f"   -> Results saved to {full_filepath}\n")
     return results_df
+
+
+
+
+# This is the function that runs two analyses at the same time, (train data size and k selectors), used on the XGBoost model analysis.
+def learning_curve_trainsize_kselectors(mega_df_v4):
+    print("Starting Multi-Seed, Zero-Leakage Dual Analysis...")
+
+    # Grab raw data and SMILES groups, basically the same as simple evaluating before
+    X_fp_raw = np.vstack(mega_df_v4['Sample Fingerprint'].values)
+    X_solvent = np.vstack(mega_df_v4['Solvent'].values)
+    X_matrix = np.vstack(mega_df_v4['Matrix_Packed_Array'].values)
+    y = mega_df_v4['Soluble'].values.astype(int)
+    groups = mega_df_v4['SMILES'].values 
+
+    seeds = [42, 123, 999]
+    k_values = [10, 50, 100, 250, 500, 1000, 2048]
+
+    all_size_train_scores, all_size_test_scores = [], []
+    all_k_train_scores, all_k_test_scores = [], []
+
+    for seed in seeds:
+        print(f"\n--- Running Pipeline for Random Seed: {seed} ---")
+        
+        # SECURE GROUPED SPLITTING
+        gss = GroupShuffleSplit(n_splits=1, test_size=0.20, random_state=seed)
+        train_idx, test_idx = next(gss.split(X_fp_raw, y, groups))
+
+        X_fp_train, X_fp_test = X_fp_raw[train_idx], X_fp_raw[test_idx]
+        X_sol_train, X_sol_test = X_solvent[train_idx], X_solvent[test_idx]
+        X_mat_train, X_mat_test = X_matrix[train_idx], X_matrix[test_idx]
+        y_train, y_test = y[train_idx], y[test_idx]
+        groups_train = groups[train_idx]
+        
+        X_sol_mat_train = np.hstack((X_sol_train, X_mat_train))
+        X_sol_mat_test = np.hstack((X_sol_test, X_mat_test))
+
+        print("  -> Calculating Data Size Curve (k=100)...")
+        
+        # DIMENSION REDUCTION ON TRAIN ONLY
+        k_best_100 = SelectKBest(score_func=chi2, k=100)
+        X_fp_train_100 = k_best_100.fit_transform(X_fp_train, y_train) # FIT happens here!
+        X_train_final_100 = np.hstack((X_fp_train_100, X_sol_mat_train))
+
+        xgboost_base = xgb.XGBClassifier(n_estimators=100, learning_rate=0.1, max_depth=6, random_state=seed, eval_metric='logloss', n_jobs=-1)
+        
+        # PREVENT LEAKAGE DURING CROSS-VALIDATION
+        gkf = GroupKFold(n_splits=5) 
+
+        train_sizes, train_scores, test_scores = learning_curve(
+            estimator=xgboost_base, X=X_train_final_100, y=y_train, 
+            groups=groups_train, # <--- Keeps molecules together in CV
+            train_sizes=np.linspace(0.1, 1.0, 10), cv=gkf, scoring='accuracy', n_jobs=-1
+        )
+        all_size_train_scores.append(train_scores)
+        all_size_test_scores.append(test_scores)
+
+        print("  -> Calculating K-Features Validation Curve...")
+        seed_k_train, seed_k_test = [], []
+        
+        for k in k_values:
+            # TA FIX #2 AGAIN: Fit on train, transform on test
+            selector = SelectKBest(score_func=chi2, k=k)
+            X_fp_train_k = selector.fit_transform(X_fp_train, y_train) # Learns best bits
+            X_fp_test_k = selector.transform(X_fp_test)                # Applies blind to test
+            
+            X_train_k = np.hstack((X_fp_train_k, X_sol_mat_train))
+            X_test_k = np.hstack((X_fp_test_k, X_sol_mat_test))
+
+            xgb_k = xgb.XGBClassifier(n_estimators=100, learning_rate=0.1, max_depth=6, random_state=seed, eval_metric='logloss', n_jobs=-1)
+            xgb_k.fit(X_train_k, y_train)
+
+            seed_k_train.append(accuracy_score(y_train, xgb_k.predict(X_train_k)))
+            seed_k_test.append(accuracy_score(y_test, xgb_k.predict(X_test_k)))
+
+        all_k_train_scores.append(seed_k_train)
+        all_k_test_scores.append(seed_k_test)
+
+    print("\nAll seeds complete! Averaging data and building plots...")
+    final_size_train = np.mean(all_size_train_scores, axis=0) 
+    final_size_test = np.mean(all_size_test_scores, axis=0)
+    size_train_mean = np.mean(final_size_train, axis=1)
+    size_train_std = np.std(final_size_train, axis=1)
+    size_test_mean = np.mean(final_size_test, axis=1)
+    size_test_std = np.std(final_size_test, axis=1)
+
+    k_train_mean = np.mean(all_k_train_scores, axis=0)
+    k_train_std = np.std(all_k_train_scores, axis=0)
+    k_test_mean = np.mean(all_k_test_scores, axis=0)
+    k_test_std = np.std(all_k_test_scores, axis=0)
+
+    fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+
+    axes[0].plot(train_sizes, size_train_mean, 'o-', color='blue', label='Training Accuracy')
+    axes[0].fill_between(train_sizes, size_train_mean - size_train_std, size_train_mean + size_train_std, alpha=0.15, color='blue')
+    axes[0].plot(train_sizes, size_test_mean, 's--', color='green', label='Validation Accuracy')
+    axes[0].fill_between(train_sizes, size_test_mean - size_test_std, size_test_mean + size_test_std, alpha=0.15, color='green')
+    axes[0].set_title(f'Data Size Curve (Grouped, k=100) - {len(seeds)} Seeds')
+    axes[0].set_xlabel('Number of Training Examples')
+    axes[0].set_ylabel('Accuracy')
+    axes[0].grid(True, linestyle='--', alpha=0.7)
+    axes[0].legend(loc='lower right')
+
+    axes[1].plot(k_values, k_train_mean, 'o-', color='purple', label='Training Accuracy')
+    axes[1].fill_between(k_values, k_train_mean - k_train_std, k_train_mean + k_train_std, alpha=0.15, color='purple')
+    axes[1].plot(k_values, k_test_mean, 's--', color='orange', label='Validation (Test) Accuracy')
+    axes[1].fill_between(k_values, k_test_mean - k_test_std, k_test_mean + k_test_std, alpha=0.15, color='orange')
+    axes[1].set_title(f'K-Features Curve (Grouped) - {len(seeds)} Seeds')
+    axes[1].set_xlabel('Number of Features Retained (k)')
+    axes[1].set_ylabel('Accuracy')
+    axes[1].grid(True, linestyle='--', alpha=0.7)
+    axes[1].legend(loc='lower right')
+
+    plt.tight_layout()
+    plt.close(fig)
+    
+    return fig

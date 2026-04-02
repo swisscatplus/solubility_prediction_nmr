@@ -6,6 +6,11 @@ from data_converter.hplc_data_handler import smiles_by_pubchem_cas, cleaning_arr
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 from sklearn.preprocessing import OneHotEncoder
+from sklearn.model_selection import GroupShuffleSplit
+from sklearn.feature_selection import SelectKBest, chi2
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, precision_score
+import xgboost as xgb
 
 
 # this is to obtain smiles code from given file
@@ -365,3 +370,101 @@ def add_matrix_id_to_df(mega_df, raw_df, matrix_col_name, smiles_col='solute_smi
     print(f"   -> Example array looks like: {new_df['Matrix_Packed_Array'].iloc[0]}")
     
     return new_df
+
+
+
+
+def run_descriptor_competition(df_desc):
+    """
+    Takes a dataframe with calculated RDKit descriptors, splits it securely, 
+    scales the continuous variables, and runs a feature tournament.
+    """
+    print(" Preparing Data, Splitting, and Scaling (Leakage-Free)...")
+    
+    # Grab all the raw arrays
+    X_fp_raw = np.vstack(df_desc['Sample Fingerprint'].values)
+    X_solvent = np.vstack(df_desc['Solvent'].values)
+    X_matrix = np.vstack(df_desc['Matrix_Packed_Array'].values)
+    
+    # Grab the new descriptors as a 2D array
+    X_desc = df_desc[['MolLogP', 'TPSA', 'MolWt']].values
+    
+    y = df_desc['Soluble'].values.astype(int)
+    groups = df_desc['SMILES'].values
+    
+    # SECURE SPLIT FIRST
+    gss = GroupShuffleSplit(n_splits=1, test_size=0.20, random_state=34)
+    train_idx, test_idx = next(gss.split(X_fp_raw, y, groups))
+    
+    X_fp_train, X_fp_test = X_fp_raw[train_idx], X_fp_raw[test_idx]
+    X_sol_train, X_sol_test = X_solvent[train_idx], X_solvent[test_idx]
+    X_mat_train, X_mat_test = X_matrix[train_idx], X_matrix[test_idx]
+    X_desc_train, X_desc_test = X_desc[train_idx], X_desc[test_idx]
+    y_train, y_test = y[train_idx], y[test_idx]
+    
+    # DIMENSION REDUCTION (Train only!)
+    k_best = SelectKBest(score_func=chi2, k=200)
+    X_fp_train_best = k_best.fit_transform(X_fp_train, y_train)
+    X_fp_test_best = k_best.transform(X_fp_test)
+    
+    # SCALING DESCRIPTORS (Train only!)
+    scaler = StandardScaler()
+    X_desc_train_scaled = scaler.fit_transform(X_desc_train)
+    X_desc_test_scaled = scaler.transform(X_desc_test)
+    
+    # Slice and Reshape into 1D columns for the tournament
+    X_logp_train = X_desc_train_scaled[:, 0].reshape(-1, 1)
+    X_logp_test = X_desc_test_scaled[:, 0].reshape(-1, 1)
+    
+    X_tpsa_train = X_desc_train_scaled[:, 1].reshape(-1, 1)
+    X_tpsa_test = X_desc_test_scaled[:, 1].reshape(-1, 1)
+    
+    X_molwt_train = X_desc_train_scaled[:, 2].reshape(-1, 1)
+    X_molwt_test = X_desc_test_scaled[:, 2].reshape(-1, 1)
+
+    print(" Running the Descriptor Tournament...\n")
+
+    # Pre-glue the baseline 
+    X_base_train = np.hstack((X_fp_train_best, X_sol_train, X_mat_train))
+    X_base_test = np.hstack((X_fp_test_best, X_sol_test, X_mat_test))
+
+    # Define the 5 experimental setups
+    experiments = {
+        "1. Baseline (No Descriptors)": (X_base_train, X_base_test),
+        "2. Baseline + MolLogP":        (np.hstack((X_base_train, X_logp_train)), np.hstack((X_base_test, X_logp_test))),
+        "3. Baseline + TPSA":           (np.hstack((X_base_train, X_tpsa_train)), np.hstack((X_base_test, X_tpsa_test))),
+        "4. Baseline + MolWt":          (np.hstack((X_base_train, X_molwt_train)), np.hstack((X_base_test, X_molwt_test))),
+        "5. The Kitchen Sink (All 3)":  (np.hstack((X_base_train, X_desc_train_scaled)), np.hstack((X_base_test, X_desc_test_scaled)))
+    }
+
+    results = []
+
+    for name, (X_tr, X_te) in experiments.items():
+        # Train the model
+        model = xgb.XGBClassifier(
+            n_estimators=100, 
+            learning_rate=0.1, 
+            max_depth=6, 
+            random_state=69, 
+            eval_metric='logloss', 
+            n_jobs=-1
+        )
+        model.fit(X_tr, y_train)
+        
+        # Predict and evaluate
+        y_pred = model.predict(X_te)
+        acc = accuracy_score(y_test, y_pred)
+        prec = precision_score(y_test, y_pred, zero_division=0)
+        
+        results.append({"Experiment": name, "Accuracy": acc, "Precision": prec})
+
+    # Format the output into a nice pandas DataFrame
+    results_df = pd.DataFrame(results)
+
+    print("==================================================")
+    print("             TOURNAMENT RESULTS                   ")
+    print("==================================================")
+    print(results_df.to_string(index=False))
+    print("==================================================")
+    
+    return results_df
