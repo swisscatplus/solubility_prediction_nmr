@@ -544,9 +544,9 @@ def run_hyperparameter_competition(df_desc):
 
     # The Dials we want to tweak
     param_grid = {
-        'n_estimators': [100, 200],         # How many trees to build
-        'learning_rate': [0.01, 0.05, 0.1], # How aggressively it corrects mistakes
-        'max_depth': [4, 6, 8],             # How deep the logic questions go
+        'n_estimators': [50, 100, 150, 200, 250],         # How many trees to build
+        'learning_rate': [0.01, 0.05, 0.1, 0.2, 0.25, 0.3], # How aggressively it corrects mistakes
+        'max_depth': [4, 5, 6, 7, 8, 9],             # How deep the logic questions go
         'subsample': [0.8, 1.0]             # Uses a random % of data per tree to prevent memorization
     }
 
