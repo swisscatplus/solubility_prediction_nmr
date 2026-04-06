@@ -6,7 +6,7 @@ from data_converter.hplc_data_handler import smiles_by_pubchem_cas, cleaning_arr
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 from sklearn.preprocessing import OneHotEncoder
-from sklearn.model_selection import GroupShuffleSplit
+from sklearn.model_selection import GroupShuffleSplit, GroupKFold, GridSearchCV
 from sklearn.feature_selection import SelectKBest, chi2
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, precision_score
@@ -374,7 +374,7 @@ def add_matrix_id_to_df(mega_df, raw_df, matrix_col_name, smiles_col='solute_smi
 
 
 
-def run_descriptor_competition(df_desc):
+def run_descriptor_competition(df_desc, descriptors):
     """
     Takes a dataframe with calculated RDKit descriptors, splits it securely, 
     scales the continuous variables, and runs a feature tournament.
@@ -387,7 +387,7 @@ def run_descriptor_competition(df_desc):
     X_matrix = np.vstack(df_desc['Matrix_Packed_Array'].values)
     
     # Grab the new descriptors as a 2D array
-    X_desc = df_desc[['MolLogP', 'TPSA', 'MolWt']].values
+    X_desc = df_desc[['MolLogP', 'TPSA', 'MolWt', 'NumHDonors', 'NumHAcceptors']].values
     
     y = df_desc['Soluble'].values.astype(int)
     groups = df_desc['SMILES'].values
@@ -403,7 +403,7 @@ def run_descriptor_competition(df_desc):
     y_train, y_test = y[train_idx], y[test_idx]
     
     # DIMENSION REDUCTION (Train only!)
-    k_best = SelectKBest(score_func=chi2, k=200)
+    k_best = SelectKBest(score_func=chi2, k=descriptors)
     X_fp_train_best = k_best.fit_transform(X_fp_train, y_train)
     X_fp_test_best = k_best.transform(X_fp_test)
     
@@ -422,6 +422,17 @@ def run_descriptor_competition(df_desc):
     X_molwt_train = X_desc_train_scaled[:, 2].reshape(-1, 1)
     X_molwt_test = X_desc_test_scaled[:, 2].reshape(-1, 1)
 
+    X_hdon_train = X_desc_train_scaled[:, 3].reshape(-1, 1)
+    X_hdon_test = X_desc_test_scaled[:, 3].reshape(-1, 1)
+
+    X_hacc_train = X_desc_train_scaled[:, 4].reshape(-1, 1)
+    X_hacc_test = X_desc_test_scaled[:, 4].reshape(-1, 1)
+
+    neg_count = np.sum(y_train == 0)
+    pos_count = np.sum(y_train == 1)
+    scale_weight = neg_count / pos_count if pos_count > 0 else 1.0
+    print(f" -> Calculated scale_pos_weight: {scale_weight:.2f}")
+
     print(" Running the Descriptor Tournament...\n")
 
     # Pre-glue the baseline 
@@ -434,7 +445,12 @@ def run_descriptor_competition(df_desc):
         "2. Baseline + MolLogP":        (np.hstack((X_base_train, X_logp_train)), np.hstack((X_base_test, X_logp_test))),
         "3. Baseline + TPSA":           (np.hstack((X_base_train, X_tpsa_train)), np.hstack((X_base_test, X_tpsa_test))),
         "4. Baseline + MolWt":          (np.hstack((X_base_train, X_molwt_train)), np.hstack((X_base_test, X_molwt_test))),
-        "5. The Kitchen Sink (All 3)":  (np.hstack((X_base_train, X_desc_train_scaled)), np.hstack((X_base_test, X_desc_test_scaled)))
+        "5. Baseline + LogP + TPSA":    (np.hstack((X_base_train, X_logp_train, X_tpsa_train)), np.hstack((X_base_test, X_logp_test, X_tpsa_test))),
+        "6. Baseline + LogP + MolWt":   (np.hstack((X_base_train, X_logp_train, X_molwt_train)), np.hstack((X_base_test, X_logp_test, X_molwt_test))),
+        "7. Baseline + TPSA + MolWt":   (np.hstack((X_base_train, X_tpsa_train, X_molwt_train)), np.hstack((X_base_test, X_tpsa_test, X_molwt_test))),
+        "8. Baseline + H-Bonds (Donors & Acceptors)": (np.hstack((X_base_train, X_hdon_train, X_hacc_train)), np.hstack((X_base_test, X_hdon_test, X_hacc_test))),
+        "9. Baseline + TPSA + H-Bonds (Donors & Acceptors)": (np.hstack((X_base_train, X_tpsa_train, X_hdon_train, X_hacc_train)), np.hstack((X_base_test, X_tpsa_test, X_hdon_test, X_hacc_test))),
+        "10. All 5":  (np.hstack((X_base_train, X_desc_train_scaled)), np.hstack((X_base_test, X_desc_test_scaled)))
     }
 
     results = []
@@ -446,7 +462,8 @@ def run_descriptor_competition(df_desc):
             learning_rate=0.1, 
             max_depth=6, 
             random_state=69, 
-            eval_metric='logloss', 
+            eval_metric='logloss',
+            scale_pos_weight=scale_weight, 
             n_jobs=-1
         )
         model.fit(X_tr, y_train)
@@ -468,3 +485,106 @@ def run_descriptor_competition(df_desc):
     print("==================================================")
     
     return results_df
+
+
+def run_hyperparameter_competition(df_desc):
+    """
+    Isolates the Champion Dataset (Baseline + TPSA + MolWt), prevents leakage, 
+    calculates class weights, and runs a GridSearch to find the best XGBoost hyperparameters 
+    optimized for Precision.
+    """
+    print("1. Locking in 'Baseline + TPSA + MolWt' Dataset...")
+
+    # Grab raw arrays
+    X_fp_raw = np.vstack(df_desc['Sample Fingerprint'].values)
+    X_sol = np.vstack(df_desc['Solvent'].values)
+    X_mat = np.vstack(df_desc['Matrix_Packed_Array'].values)
+    X_desc = df_desc[['TPSA', 'MolWt']].values # Only extracting our two champion descriptors
+
+    y = df_desc['Soluble'].values.astype(int)
+    groups = df_desc['SMILES'].values
+
+    # SECURE SPLIT
+    gss = GroupShuffleSplit(n_splits=1, test_size=0.20, random_state=34)
+    train_idx, test_idx = next(gss.split(X_fp_raw, y, groups))
+
+    y_train, y_test = y[train_idx], y[test_idx]
+    groups_train = groups[train_idx] # Crucial for the GridSearch later!
+
+    # Calculate class weight
+    neg_count = np.sum(y_train == 0)
+    pos_count = np.sum(y_train == 1)
+    scale_weight = neg_count / pos_count if pos_count > 0 else 1.0
+
+    # PROCESS FEATURES (Strictly on Train to prevent leakage)
+    k_best = SelectKBest(score_func=chi2, k=200)
+    X_fp_train_best = k_best.fit_transform(X_fp_raw[train_idx], y_train)
+    X_fp_test_best = k_best.transform(X_fp_raw[test_idx])
+
+    scaler = StandardScaler()
+    X_desc_train_scaled = scaler.fit_transform(X_desc[train_idx])
+    X_desc_test_scaled = scaler.transform(X_desc[test_idx])
+
+    # Glue the Champion datasets together
+    X_train_champ = np.hstack((X_fp_train_best, X_sol[train_idx], X_mat[train_idx], X_desc_train_scaled))
+    X_test_champ = np.hstack((X_fp_test_best, X_sol[test_idx], X_mat[test_idx], X_desc_test_scaled))
+
+    print("2. Initializing Leak-Free Grid Search (Optimizing strictly for Precision)...")
+
+    # Force GridSearch to respect molecule boundaries
+    gkf = GroupKFold(n_splits=3) 
+
+    # The Base Engine
+    xgb_tuner = xgb.XGBClassifier(
+        random_state=69, 
+        eval_metric='logloss',
+        scale_pos_weight=scale_weight,
+        n_jobs=-1
+    )
+
+    # The Dials we want to tweak
+    param_grid = {
+        'n_estimators': [100, 200],         # How many trees to build
+        'learning_rate': [0.01, 0.05, 0.1], # How aggressively it corrects mistakes
+        'max_depth': [4, 6, 8],             # How deep the logic questions go
+        'subsample': [0.8, 1.0]             # Uses a random % of data per tree to prevent memorization
+    }
+
+    # The Tuner
+    grid_search = GridSearchCV(
+        estimator=xgb_tuner,
+        param_grid=param_grid,
+        scoring='precision',  # <--- Telling it to prioritize false-positive reduction!
+        cv=gkf,
+        verbose=1,
+        n_jobs=-1
+    )
+
+    # Run the tournament of hyperparameters
+    grid_search.fit(X_train_champ, y_train, groups=groups_train)
+
+    # ---------------------------------------------------------
+    # RESULTS
+    # ---------------------------------------------------------
+    best_model = grid_search.best_estimator_
+
+    print("\n==================================================")
+    print("              BEST HYPERPARAMETERS                ")
+    print("==================================================")
+    for key, value in grid_search.best_params_.items():
+        print(f"{key}: {value}")
+
+    # Test the ultimate tuned model on the untouched test set
+    y_pred_tuned = best_model.predict(X_test_champ)
+    final_acc = accuracy_score(y_test, y_pred_tuned)
+    final_prec = precision_score(y_test, y_pred_tuned, zero_division=0)
+
+    print("\n==================================================")
+    print("            TUNED CHAMPION RESULTS                ")
+    print("==================================================")
+    print(f"Final Accuracy:  {final_acc:.4f}")
+    print(f"Final Precision: {final_prec:.4f}")
+    print("==================================================")
+    
+    # Return both the trained model and the parameters so you can use them later!
+    return best_model, grid_search.best_params_

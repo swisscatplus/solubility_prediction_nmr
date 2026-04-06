@@ -6,7 +6,7 @@ import os
 import pubchempy as pcp
 import json
 from rdkit import Chem
-from rdkit.Chem import rdMolDescriptors, Descriptors
+from rdkit.Chem import rdMolDescriptors, Descriptors, Lipinski
 import numpy as np
 from sklearn.decomposition import PCA
 
@@ -176,7 +176,9 @@ def calculate_descriptors(smiles):
             logp = Descriptors.MolLogP(mol)
             tpsa = Descriptors.TPSA(mol)
             molwt = Descriptors.MolWt(mol)
-            return pd.Series([logp, tpsa, molwt])
+            h_donors = Lipinski.NumHDonors(mol)
+            h_acceptors = Lipinski.NumHAcceptors(mol)
+            return pd.Series([logp, tpsa, molwt, h_donors, h_acceptors])
         else:
             return pd.Series([0.0, 0.0, 0.0]) # Fallback for invalid SMILES
     except:
