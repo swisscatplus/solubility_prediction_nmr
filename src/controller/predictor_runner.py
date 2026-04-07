@@ -6,7 +6,7 @@ from data_converter.hplc_data_handler import smiles_by_pubchem_cas, cleaning_arr
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 from sklearn.preprocessing import OneHotEncoder
-from sklearn.model_selection import GroupShuffleSplit, GroupKFold, GridSearchCV
+from sklearn.model_selection import GroupShuffleSplit, GroupKFold, RandomizedSearchCV
 from sklearn.feature_selection import SelectKBest, chi2
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, precision_score
@@ -402,12 +402,12 @@ def run_descriptor_competition(df_desc, descriptors):
     X_desc_train, X_desc_test = X_desc[train_idx], X_desc[test_idx]
     y_train, y_test = y[train_idx], y[test_idx]
     
-    # DIMENSION REDUCTION (Train only!)
+    # DIMENSION REDUCTION 
     k_best = SelectKBest(score_func=chi2, k=descriptors)
     X_fp_train_best = k_best.fit_transform(X_fp_train, y_train)
     X_fp_test_best = k_best.transform(X_fp_test)
     
-    # SCALING DESCRIPTORS (Train only!)
+    # SCALING DESCRIPTORS 
     scaler = StandardScaler()
     X_desc_train_scaled = scaler.fit_transform(X_desc_train)
     X_desc_test_scaled = scaler.transform(X_desc_test)
@@ -491,9 +491,9 @@ def run_hyperparameter_competition(df_desc):
     """
     Isolates the Champion Dataset (Baseline + TPSA + MolWt), prevents leakage, 
     calculates class weights, and runs a GridSearch to find the best XGBoost hyperparameters 
-    optimized for Precision.
+    optimized for precision.
     """
-    print("1. Locking in 'Baseline + TPSA + MolWt' Dataset...")
+    print(" Locking in 'Baseline + TPSA + MolWt' Dataset...")
 
     # Grab raw arrays
     X_fp_raw = np.vstack(df_desc['Sample Fingerprint'].values)
@@ -529,7 +529,7 @@ def run_hyperparameter_competition(df_desc):
     X_train_champ = np.hstack((X_fp_train_best, X_sol[train_idx], X_mat[train_idx], X_desc_train_scaled))
     X_test_champ = np.hstack((X_fp_test_best, X_sol[test_idx], X_mat[test_idx], X_desc_test_scaled))
 
-    print("2. Initializing Leak-Free Grid Search (Optimizing strictly for Precision)...")
+    print(" Initializing Leak-Free Grid Search (Optimizing strictly for Precision)...")
 
     # Force GridSearch to respect molecule boundaries
     gkf = GroupKFold(n_splits=3) 
@@ -547,31 +547,36 @@ def run_hyperparameter_competition(df_desc):
         'n_estimators': [50, 100, 150, 200, 250],         # How many trees to build
         'learning_rate': [0.01, 0.05, 0.1, 0.2, 0.25, 0.3], # How aggressively it corrects mistakes
         'max_depth': [4, 5, 6, 7, 8, 9],             # How deep the logic questions go
-        'subsample': [0.8, 1.0]             # Uses a random % of data per tree to prevent memorization
+        'subsample': [0.8, 1.0],             # Uses a random % of data per tree to prevent memorization
+        'gamma': [0, 0.1, 1, 5],                  # Prunes weak logic trees
+        'min_child_weight': [1, 3, 5, 7],         # Forces rules to apply to groups, not single outliers
+        'reg_alpha': [0, 0.1, 1, 10],             # L1 Regularization: zero-outs useless fingerprint bits
+        'reg_lambda': [1, 1.5, 5, 10]             # L2 Regularization: shrinks over-dominant features
     }
 
     # The Tuner
-    grid_search = GridSearchCV(
+    random_search = RandomizedSearchCV(
         estimator=xgb_tuner,
-        param_grid=param_grid,
-        scoring='precision',  # <--- Telling it to prioritize false-positive reduction!
+        param_distributions=param_grid,
+        n_iter=100,           # Test 100 random combinations from the massive grid
+        scoring='precision',  # Telling it to prioritize false-positive reduction
         cv=gkf,
         verbose=1,
+        random_state=87,
         n_jobs=-1
     )
 
     # Run the tournament of hyperparameters
-    grid_search.fit(X_train_champ, y_train, groups=groups_train)
+    random_search.fit(X_train_champ, y_train, groups=groups_train)
 
-    # ---------------------------------------------------------
+   
     # RESULTS
-    # ---------------------------------------------------------
-    best_model = grid_search.best_estimator_
+    best_model = random_search.best_estimator_
 
     print("\n==================================================")
     print("              BEST HYPERPARAMETERS                ")
     print("==================================================")
-    for key, value in grid_search.best_params_.items():
+    for key, value in random_search.best_params_.items():
         print(f"{key}: {value}")
 
     # Test the ultimate tuned model on the untouched test set
@@ -586,5 +591,5 @@ def run_hyperparameter_competition(df_desc):
     print(f"Final Precision: {final_prec:.4f}")
     print("==================================================")
     
-    # Return both the trained model and the parameters so you can use them later!
-    return best_model, grid_search.best_params_
+    # Return both the trained model and the parameters so you can use them later
+    return best_model, random_search.best_params_

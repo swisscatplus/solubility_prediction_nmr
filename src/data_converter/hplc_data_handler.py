@@ -183,3 +183,22 @@ def calculate_descriptors(smiles):
             return pd.Series([0.0, 0.0, 0.0]) # Fallback for invalid SMILES
     except:
         return pd.Series([0.0, 0.0, 0.0])
+    
+
+
+# A dictionary holding the physical properties for specific solvents.
+# Hansen invented these parameters to map out solvents in a 3D grid based on three specific types of energy: Dispersion, Polarity, H-bonding
+solvent_physics_db = {
+    'MeOH': {'Dielectric': 32.7, 'Hansen_D': 15.1, 'Hansen_P': 12.3, 'Hansen_H': 22.3},
+    'ACN': {'Dielectric': 37.5, 'Hansen_D': 15.3, 'Hansen_P': 18.0, 'Hansen_H': 6.1},
+    'DMSO': {'Dielectric': 46.7, 'Hansen_D': 18.4, 'Hansen_P': 16.4, 'Hansen_H': 10.2},
+    'DCM': {'Dielectric': 8.93, 'Hansen_D': 18.2, 'Hansen_P': 6.3, 'Hansen_H': 6.1},
+    'CHCl3': {'Dielectric': 4.81, 'Hansen_D': 17.8, 'Hansen_P': 3.1, 'Hansen_H': 5.7}
+}
+
+
+def extract_solvent_physics(solvent_name):
+    """Looks up the solvent name and returns its physical properties."""
+    # If the solvent isn't in the dictionary, return a safe default (avoid crash)
+    props = solvent_physics_db.get(solvent_name, {'Dielectric': 0.0, 'Hansen_D': 0.0, 'Hansen_P': 0.0, 'Hansen_H': 0.0})
+    return pd.Series([props['Dielectric'], props['Hansen_D'], props['Hansen_P'], props['Hansen_H']])
