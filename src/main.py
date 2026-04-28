@@ -19,12 +19,11 @@ def main():
     """compare_predictions('/Users/arthurbenard/Project 1B/data/Master_Solubility_Matrix.xlsx','/Users/arthurbenard/Project 1B/data/Fichier final (RT+sol).xlsx', NMR_SOLVENTS)"""
     """count_over_under_estimation('/Users/arthurbenard/Project 1B/data/Compared_Results.xlsx',NMR_SOLVENTS)
     count_incoherence_molecule('/Users/arthurbenard/Project 1B/data/Compared_Results.xlsx',NMR_SOLVENTS)"""
-
-
-
-    """count = count_over_under_estimation('/Users/arthurbenard/Project 1B/data/Compared_Results.xlsx',NMR_SOLVENTS)
-    bar_plot_over_under_estimation(count)
-    butterfly_plot_over_under_estimation(count)"""
+    
+    """count = count_over_under_estimation('/Users/arthurbenard/Project 1B/data/Compared_Results.xlsx',NMR_SOLVENTS)"""
+    """bar_plot_over_under_estimation(count)"""
+    
+    """butterfly_plot_over_under_estimation(count)"""
     
     """plot_ordered_solubility_array('/Users/arthurbenard/Project 1B/data/Compared_Results.xlsx', 'CHCl3')"""
     
@@ -42,9 +41,9 @@ def main():
       
         plot_mw_error_distribution('/Users/arthurbenard/Project 1B/data/Compared_Results.xlsx',solvent)"""
     
-    """for solvent in NMR_SOLVENTS.keys():
+    for solvent in NMR_SOLVENTS.keys():
         print(f"\n=========================================")
-        analyze_plot_chemical_bias('/Users/arthurbenard/Project 1B/data/Compared_Results.xlsx',solvent)"""
+        analyze_plot_chemical_bias('/Users/arthurbenard/Project 1B/data/Compared_Results.xlsx',solvent)
     """plot_hydrogen_bonding_bias('/Users/arthurbenard/Project 1B/data/Compared_Results.xlsx',solvent)"""
 
     
