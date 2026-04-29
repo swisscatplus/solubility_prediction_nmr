@@ -7,7 +7,7 @@ from rdkit import Chem
 from rdkit.Chem import Descriptors, rdMolDescriptors
 from controller.predictor_runner import calculate_molecular_descriptors
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import precision_recall_fscore_support, accuracy_score
+from sklearn.metrics import precision_recall_fscore_support, accuracy_score, precision_score
 from sklearn.model_selection import GroupShuffleSplit, learning_curve, GroupKFold
 from sklearn.feature_selection import SelectKBest, chi2
 import xgboost as xgb
@@ -1207,3 +1207,57 @@ def learning_curve_trainsize_kselectors(mega_df_v4):
     plt.close(fig)
     
     return fig
+
+
+def run_matrix_ablation(model, X_train, X_test, y_train, y_test, train_matrices, test_matrices, matrix_names):
+    print("Running Matrix Ablation Study\n")
+    
+    # BASELINE (All matrices included)
+    model.fit(X_train, y_train)
+    y_pred_base = model.predict(X_test)
+    base_acc = accuracy_score(y_test, y_pred_base)
+    base_prec = precision_score(y_test, y_pred_base, zero_division=0)
+    
+    # Store results in a list of dictionaries
+    results = []
+    results.append({
+        'Dropped_Matrix': 'NONE (Baseline)',
+        'Accuracy': base_acc,
+        'Precision': base_prec,
+        'Acc_Change': 0.0000
+    })
+    
+    # Ablation loop here
+    for matrix in matrix_names:
+        keep_train = (train_matrices != matrix)
+        keep_test = (test_matrices != matrix)
+
+        X_train_temp = X_train[keep_train]
+        y_train_temp = y_train[keep_train]
+
+        X_test_temp = X_test[keep_test]
+        y_test_temp = y_test[keep_test]
+        
+        # Trains the model from scratch on the reduced dataset
+        model.fit(X_train_temp, y_train_temp)
+        y_pred = model.predict(X_test_temp)
+        
+        # Score reached
+        acc = accuracy_score(y_test_temp, y_pred)
+        prec = precision_score(y_test_temp, y_pred, zero_division=0)
+        
+        # Recording
+        results.append({
+            'Dropped_Matrix': matrix,
+            'Accuracy': acc,
+            'Precision': prec,
+            'Acc_Change': acc - base_acc # Negative = accuracy dropped
+        })
+        
+    # Cleaning
+    df_ablation = pd.DataFrame(results)
+    
+    # Sorting is done by 'Acc_Change' so the features that caused the biggest drop in accuracy are at the top
+    df_ablation = df_ablation.sort_values(by='Acc_Change', ascending=True).reset_index(drop=True)
+    
+    return df_ablation
