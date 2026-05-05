@@ -1261,3 +1261,43 @@ def run_matrix_ablation(model, X_train, X_test, y_train, y_test, train_matrices,
     df_ablation = df_ablation.sort_values(by='Acc_Change', ascending=True).reset_index(drop=True)
     
     return df_ablation
+
+
+
+def accuracy_per_matrix(model, X_test, y_test, test_matrices):
+    print("Evaluating Model Accuracy Per Machine\n")
+    
+    # Will only look at the unique matrix IDs present in the dataframe
+    unique_matrices = np.unique(test_matrices)
+    results = []
+    
+    for matrix in unique_matrices:
+        # Python asks a True/False question for every single row: "Does this row's machine name equal the current machine in the loop?" 
+        # Then creates a massive array of [False, False, True, False...] which acts as a digital bouncer
+        mask = (test_matrices == matrix)
+        
+        # Thanks to the bouncer, we're only looking at one matrix ID each time
+        X_test_machine = X_test[mask]
+        y_test_machine = y_test[mask]
+        
+        # Safety check, skips if this machine accidentally has no rows in the test set
+        if len(y_test_machine) == 0:
+            continue
+            
+        # Asks the model to predict only these rows, so we're rerunning the model
+        y_pred = model.predict(X_test_machine)
+        acc = accuracy_score(y_test_machine, y_pred)
+        prec = precision_score(y_test_machine, y_pred, zero_division=0)
+        
+        # Recording the results in a dictionnary
+        results.append({
+            'Matrix': matrix,
+            'Test_Rows': len(y_test_machine),
+            'Accuracy': acc,
+            'Precision': prec
+        })
+        
+    # Builds the dataframe and sorts it by the highest accuracy
+    df_results = pd.DataFrame(results).sort_values(by='Accuracy', ascending=False).reset_index(drop=True)
+    
+    return df_results

@@ -593,3 +593,137 @@ def run_hyperparameter_competition(df_desc):
     
     # Return both the trained model and the parameters so you can use them later
     return best_model, random_search.best_params_
+
+
+def unknown_column_machine_test(df, target_machine):
+    print(f"Running Test on Unseen Machine: {target_machine}\n")
+    
+
+    # Creating a mask to find ONLY the rows where the machine matches our target
+    # .copy() ensures we don't accidentally modify our master dataframe, which would be a shame
+    df_test = df[df['Matrix ID Name'] == target_machine].copy()
+    
+    # We keep all rows where the machine is NOT our target
+    df_train = df[df['Matrix ID Name'] != target_machine].copy()
+    
+    # Resetting the index just cleans up the row numbers so Pandas doesn't get confused later
+    df_train = df_train.reset_index(drop=True)
+    df_test = df_test.reset_index(drop=True)
+    
+    print(f"Training Rows (6 Machines, No Leaks): {len(df_train)}")
+    print(f"Testing Rows  (1 Machine):  {len(df_test)}")
+
+    
+
+
+    # Same thing as we usually do for defining model variables
+    y_train = df_train['Soluble'].values
+    
+    X_rt_train = df_train[['RT']].values 
+    X_phys_train = df_train[['MolWt', 'Sol_Dielectric', 'Sol_Hansen_D', 'Sol_Hansen_P', 'Sol_Hansen_H']].values
+    
+    X_mat_train = np.vstack(df_train['Matrix_Packed_Array'].values)
+    
+    # [Retention Time] + [Matrix Vectors] and the other available data
+    X_train_final = np.hstack((X_rt_train, X_phys_train, X_mat_train))
+    
+    # We do the exact same extraction process, but exclusively for our isolated test dataframe
+    y_test = df_test['Soluble'].values
+    X_rt_test = df_test[['RT']].values 
+    X_phys_test = df_test[['MolWt', 'Sol_Dielectric', 'Sol_Hansen_D', 'Sol_Hansen_P', 'Sol_Hansen_H']].values
+    X_mat_test = np.vstack(df_test['Matrix_Packed_Array'].values)
+    
+    X_test_final = np.hstack((X_rt_test, X_phys_test, X_mat_test))
+    
+    scale_weight = (len(y_train) - sum(y_train)) / sum(y_train)
+    
+    model = xgb.XGBClassifier(n_estimators=50, learning_rate=0.05, max_depth=4, subsample=0.8,
+                                  colsample_bytree=1.0, gamma=1, min_child_weight=5, reg_lambda=10, 
+                                  scale_pos_weight=scale_weight, random_state=72, n_jobs=-1)
+    
+
+    # The AI learns the rules of chemistry using ONLY the 6 known machines
+    model.fit(X_train_final, y_train)
+    
+    # The AI attempts to predict solubility on the 1 machine it has never seen
+    y_pred = model.predict(X_test_final)
+    
+    acc = accuracy_score(y_test, y_pred)
+    prec = precision_score(y_test, y_pred, zero_division=0)
+    
+    print("\n Experiment results:")
+    print(f"Accuracy on completely unseen {target_machine}:  {acc:.4f}")
+    print(f"Precision on completely unseen {target_machine}: {prec:.4f}")
+    print("-" * 50)
+    
+    return model, df_train, df_test
+
+
+
+def strict_unknown_column_machine_test(df, target_machine, test_size=0.3):
+    print(f"Running STRICT on Unknown Machine: {target_machine}...\n")
+    
+    # We group by 'SMILES' so a molecule and all of its machine runs go 100% to Train OR 100% to Test
+    gss = GroupShuffleSplit(n_splits=1, test_size=test_size, random_state=89)
+    
+    # Generate the row indices for our split, "groups=df['SMILES']" means do not separate twins
+    # gss.split(...) starts tossing them into a Train bucket and a Test bucket until it hits 70/30 split ratio
+    # 
+    train_idx, test_idx = next(gss.split(df, groups=df['SMILES']))
+    
+    # Create two completely isolated pools of molecules
+    df_train_pool = df.iloc[train_idx].copy()
+    df_test_pool = df.iloc[test_idx].copy()
+    
+    # Training Set: the "Train Pool" molecules, but ONLY on the 6 known machines
+    df_train = df_train_pool[df_train_pool['Matrix ID Name'] != target_machine].copy()
+    
+    # Testing Set: the "Test Pool" molecules, but ONLY on the 1 unknown machine
+    df_test = df_test_pool[df_test_pool['Matrix ID Name'] == target_machine].copy()
+    
+    # Reset indices to keep Pandas happy and avoid future problems
+    df_train = df_train.reset_index(drop=True)
+    df_test = df_test.reset_index(drop=True)
+    
+    print(f"Training Rows (Known Molecules on Known Machines):   {len(df_train)}")
+    print(f"Testing Rows  (Unknown Molecules on Unseen Machine): {len(df_test)}")
+    
+
+
+    # The same old thing (and dance lol)
+    y_train = df_train['Soluble'].values
+    X_rt_train = df_train[['RT']].values 
+    X_phys_train = df_train[['MolWt', 'Sol_Dielectric', 'Sol_Hansen_D', 'Sol_Hansen_P', 'Sol_Hansen_H']].values
+    X_mat_train = np.vstack(df_train['Matrix_Packed_Array'].values)
+    
+    X_train_final = np.hstack((X_rt_train, X_phys_train, X_mat_train))
+    
+    # Testing features like defined above
+    y_test = df_test['Soluble'].values
+    X_rt_test = df_test[['RT']].values 
+    X_phys_test = df_test[['MolWt', 'Sol_Dielectric', 'Sol_Hansen_D', 'Sol_Hansen_P', 'Sol_Hansen_H']].values
+    X_mat_test = np.vstack(df_test['Matrix_Packed_Array'].values)
+    
+    X_test_final = np.hstack((X_rt_test, X_phys_test, X_mat_test))
+    
+    # Training model
+    scale_weight = (len(y_train) - sum(y_train)) / sum(y_train)
+    model = xgb.XGBClassifier(n_estimators=50, learning_rate=0.05, max_depth=4, subsample=0.8,
+                                  colsample_bytree=1.0, gamma=1, min_child_weight=5, reg_lambda=10, 
+                                  scale_pos_weight=scale_weight, random_state=69, n_jobs=-1)
+    
+    model.fit(X_train_final, y_train)
+    
+
+
+    # Scoring
+    y_pred = model.predict(X_test_final)
+    acc = accuracy_score(y_test, y_pred)
+    prec = precision_score(y_test, y_pred, zero_division=0)
+    
+    print("\nSTRICT ZERO-SHOT RESULTS:")
+    print(f"Accuracy (Unseen Molecule + Unseen Machine):  {acc:.4f}")
+    print(f"Precision (Unseen Molecule + Unseen Machine): {prec:.4f}")
+    print("-" * 50)
+    
+    return model, df_train, df_test
