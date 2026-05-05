@@ -661,14 +661,14 @@ def unknown_column_machine_test(df, target_machine):
 
 
 def strict_unknown_column_machine_test(df, target_machine, test_size=0.3):
-    print(f"Running STRICT on Unknown Machine: {target_machine}...\n")
+    print(f"Running STRICT on Unknown Machine: {target_machine}\n")
     
     # We group by 'SMILES' so a molecule and all of its machine runs go 100% to Train OR 100% to Test
     gss = GroupShuffleSplit(n_splits=1, test_size=test_size, random_state=89)
     
     # Generate the row indices for our split, "groups=df['SMILES']" means do not separate twins
     # gss.split(...) starts tossing them into a Train bucket and a Test bucket until it hits 70/30 split ratio
-    # 
+    # next(...) extracts that split, it doesn't do it without it
     train_idx, test_idx = next(gss.split(df, groups=df['SMILES']))
     
     # Create two completely isolated pools of molecules
@@ -680,13 +680,17 @@ def strict_unknown_column_machine_test(df, target_machine, test_size=0.3):
     
     # Testing Set: the "Test Pool" molecules, but ONLY on the 1 unknown machine
     df_test = df_test_pool[df_test_pool['Matrix ID Name'] == target_machine].copy()
+
+    df_test_other_matrices = df_test_pool[df_test_pool['Matrix ID Name'] != target_machine].copy()
     
     # Reset indices to keep Pandas happy and avoid future problems
     df_train = df_train.reset_index(drop=True)
     df_test = df_test.reset_index(drop=True)
+    df_test_other_matrices = df_test_other_matrices.reset_index(drop=True)
     
     print(f"Training Rows (Known Molecules on Known Machines):   {len(df_train)}")
     print(f"Testing Rows  (Unknown Molecules on Unseen Machine): {len(df_test)}")
+    print(f"Testing Rows Differently (Unknown Molecules on Known Machines): {len(df_test_other_matrices)}")
     
 
 
@@ -705,8 +709,17 @@ def strict_unknown_column_machine_test(df, target_machine, test_size=0.3):
     X_mat_test = np.vstack(df_test['Matrix_Packed_Array'].values)
     
     X_test_final = np.hstack((X_rt_test, X_phys_test, X_mat_test))
+
+
+    # Testing features, unknown molecules with the other 6 matrices (to compare)
+    y_test_other_matrices = df_test_other_matrices['Soluble'].values
+    X_rt_test_other_matrices = df_test_other_matrices[['RT']].values 
+    X_phys_test_other_matrices = df_test_other_matrices[['MolWt', 'Sol_Dielectric', 'Sol_Hansen_D', 'Sol_Hansen_P', 'Sol_Hansen_H']].values
+    X_mat_test_other_matrices = np.vstack(df_test_other_matrices['Matrix_Packed_Array'].values)
     
-    # Training model
+    X_test_final_other_matrices = np.hstack((X_rt_test_other_matrices, X_phys_test_other_matrices, X_mat_test_other_matrices))
+    
+    # Training models
     scale_weight = (len(y_train) - sum(y_train)) / sum(y_train)
     model = xgb.XGBClassifier(n_estimators=50, learning_rate=0.05, max_depth=4, subsample=0.8,
                                   colsample_bytree=1.0, gamma=1, min_child_weight=5, reg_lambda=10, 
@@ -714,16 +727,27 @@ def strict_unknown_column_machine_test(df, target_machine, test_size=0.3):
     
     model.fit(X_train_final, y_train)
     
+    
 
 
     # Scoring
     y_pred = model.predict(X_test_final)
     acc = accuracy_score(y_test, y_pred)
     prec = precision_score(y_test, y_pred, zero_division=0)
+
+    y_pred_other_matrices = model.predict(X_test_final_other_matrices)
+    acc_2 = accuracy_score(y_test_other_matrices, y_pred_other_matrices)
+    prec_2 = precision_score(y_test_other_matrices, y_pred_other_matrices, zero_division=0)
     
-    print("\nSTRICT ZERO-SHOT RESULTS:")
+    print("\nSTRICT TESTING RESULTS:")
     print(f"Accuracy (Unseen Molecule + Unseen Machine):  {acc:.4f}")
     print(f"Precision (Unseen Molecule + Unseen Machine): {prec:.4f}")
     print("-" * 50)
+    print(f"Accuracy (Unseen Molecule + Seen Machines):  {acc_2:.4f}")
+    print(f"Precision (Unseen Molecule + Seen Machines): {prec_2:.4f}")
+    print("-" * 50)
     
-    return model, df_train, df_test
+    return acc, acc_2
+
+
+

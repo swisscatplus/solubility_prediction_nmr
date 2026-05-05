@@ -7,7 +7,7 @@ from rdkit import Chem
 from rdkit.Chem import Descriptors, rdMolDescriptors
 from controller.predictor_runner import calculate_molecular_descriptors
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import precision_recall_fscore_support, accuracy_score, precision_score
+from sklearn.metrics import precision_recall_fscore_support, accuracy_score, precision_score, confusion_matrix
 from sklearn.model_selection import GroupShuffleSplit, learning_curve, GroupKFold
 from sklearn.feature_selection import SelectKBest, chi2
 import xgboost as xgb
@@ -1267,7 +1267,7 @@ def run_matrix_ablation(model, X_train, X_test, y_train, y_test, train_matrices,
 def accuracy_per_matrix(model, X_test, y_test, test_matrices):
     print("Evaluating Model Accuracy Per Machine\n")
     
-    # Will only look at the unique matrix IDs present in the dataframe
+    # Will only look at the unique matrix IDs present in the dataframe, and also converts into a readable list for the loop coming
     unique_matrices = np.unique(test_matrices)
     results = []
     
@@ -1299,5 +1299,86 @@ def accuracy_per_matrix(model, X_test, y_test, test_matrices):
         
     # Builds the dataframe and sorts it by the highest accuracy
     df_results = pd.DataFrame(results).sort_values(by='Accuracy', ascending=False).reset_index(drop=True)
-    
+
     return df_results
+
+
+
+def rt_bin_analysis(df):
+    print("Running Retention Time Bin Analysis\n")
+    
+    # --- 1. SPLIT DATA BY MOLECULE (No Leakage) ---
+    gss = GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+    train_idx, test_idx = next(gss.split(df, groups=df['SMILES']))
+    
+    df_train = df.iloc[train_idx].copy()
+    df_test = df.iloc[test_idx].copy()
+    
+    # --- 2. EXTRACT TRAINING FEATURES ---
+    y_train = df_train['Soluble'].values
+    X_rt_train = df_train[['RT']].values 
+    X_phys_train = df_train[['MolWt','MolLogP', 'TPSA', 'Sol_Dielectric', 'Sol_Hansen_D', 'Sol_Hansen_P', 'Sol_Hansen_H']].values
+    X_mat_train = np.vstack(df_train['Matrix_Packed_Array'].values)
+    X_train_final = np.hstack((X_rt_train, X_phys_train, X_mat_train))
+    
+    # --- 3. TRAIN THE MODEL ON EVERYTHING ---
+    print(f"Training on {len(df_train)} rows (All RT values)...")
+    scale_weight = (len(y_train) - sum(y_train)) / sum(y_train)
+    model = xgb.XGBClassifier(n_estimators=50, learning_rate=0.05, max_depth=4, subsample=0.8,
+                              colsample_bytree=1.0, gamma=1, min_child_weight=5, reg_lambda=10, 
+                              scale_pos_weight=scale_weight, random_state=69, n_jobs=-1)
+    model.fit(X_train_final, y_train)
+    
+    # --- 4. CREATE THE 7 RT BINS FOR TESTING ---
+    # We define the edges of our bins: 0 to 2, 2 to 3... and anything above 7 goes into the last bin.
+    # (Starting at 0 catches any super-fast eluters before 1 min)
+    bin_edges = [0, 1, 2, 3, 4, 5, 6, np.inf]
+    bin_labels = ['<1 min', '1-2 min', '2-3 min', '3-4 min', '4-5 min', '5-6 min', '>6 min']
+    
+    # pd.cut automatically sorts every test row into one of these buckets based on its RT
+    df_test['RT_Bin'] = pd.cut(df_test['RT'], bins=bin_edges, labels=bin_labels)
+    
+    # --- 5. SCORE EACH BIN INDIVIDUALLY ---
+    accuracies = []
+    test_counts = []
+    
+    for label in bin_labels:
+        # Isolate just the test rows that fall into the current RT bin
+        df_bin = df_test[df_test['RT_Bin'] == label].copy()
+        test_counts.append(len(df_bin))
+        
+        # Failsafe: If a bin is completely empty, score it as 0
+        if len(df_bin) == 0:
+            accuracies.append(0.0)
+            continue
+            
+        # Extract features for just this bin
+        y_bin = df_bin['Soluble'].values
+        X_rt_bin = df_bin[['RT']].values 
+        X_phys_bin = df_bin[['MolWt','MolLogP', 'TPSA', 'Sol_Dielectric', 'Sol_Hansen_D', 'Sol_Hansen_P', 'Sol_Hansen_H']].values
+        X_mat_bin = np.vstack(df_bin['Matrix_Packed_Array'].values)
+        X_bin_final = np.hstack((X_rt_bin, X_phys_bin, X_mat_bin))
+        
+        # Predict and score
+        y_pred = model.predict(X_bin_final)
+        acc = accuracy_score(y_bin, y_pred)
+        accuracies.append(acc)
+        
+        print(f"Bin [{label:^8}] -> Test Rows: {len(df_bin):^4} | Accuracy: {acc:.4f}")
+
+        # Generates the Confusion Matrix
+        cm = confusion_matrix(y_bin, y_pred)
+
+        # Extract the four specific values
+        # .ravel() flattens the 2x2 grid perfectly into TN, FP, FN, TP
+        tn, fp, fn, tp = cm.ravel()
+
+        print("\n CONFUSION MATRIX BREAKDOWN:")
+        print(f"True Positives (TP) - Correctly guessed Soluble:   {tp}")
+        print(f"True Negatives (TN) - Correctly guessed Insoluble: {tn}")
+        print("-" * 50)
+        print(f"False Positives (FP) - Wrongly guessed Soluble:    {fp}  <-- (Type I Error)")
+        print(f"False Negatives (FN) - Wrongly guessed Insoluble:  {fn}  <-- (Type II Error)")
+        print("-" * 50)
+
+    return bin_labels, accuracies, test_counts

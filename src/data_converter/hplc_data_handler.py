@@ -172,7 +172,7 @@ def calculate_descriptors(smiles):
     try:
         mol = Chem.MolFromSmiles(smiles)
         if mol:
-            # The Big Three
+            
             logp = Descriptors.MolLogP(mol)
             tpsa = Descriptors.TPSA(mol)
             molwt = Descriptors.MolWt(mol)
@@ -180,10 +180,25 @@ def calculate_descriptors(smiles):
             h_acceptors = Lipinski.NumHAcceptors(mol)
             return pd.Series([logp, tpsa, molwt, h_donors, h_acceptors])
         else:
+            return pd.Series([0.0, 0.0, 0.0, 0.0, 0.0]) # Fallback for invalid SMILES
+    except:
+        return pd.Series([0.0, 0.0, 0.0, 0.0, 0.0])
+
+
+
+def calculate_mlwt(smiles):
+    try:
+        mol = Chem.MolFromSmiles(smiles)
+        if mol:
+            molwt = Descriptors.MolWt(mol)
+            h_donors = Lipinski.NumHDonors(mol)
+            h_acceptors = Lipinski.NumHAcceptors(mol)
+            return pd.Series([ molwt, h_donors, h_acceptors])
+        else:
             return pd.Series([0.0, 0.0, 0.0]) # Fallback for invalid SMILES
     except:
         return pd.Series([0.0, 0.0, 0.0])
-    
+
 
 
 # A dictionary holding the physical properties for specific solvents.
