@@ -12,6 +12,7 @@ from sklearn.model_selection import GroupShuffleSplit, learning_curve, GroupKFol
 from sklearn.feature_selection import SelectKBest, chi2
 import xgboost as xgb
 
+
 def count_over_under_estimation(compared_results_file, solvent_dict):
     df = pd.read_excel(compared_results_file)
     
@@ -1338,7 +1339,7 @@ def rt_bin_analysis(df):
     # pd.cut automatically sorts every test row into one of these buckets based on its RT
     df_test['RT_Bin'] = pd.cut(df_test['RT'], bins=bin_edges, labels=bin_labels)
     
-    # --- 5. SCORE EACH BIN INDIVIDUALLY ---
+    # Scoring, individual for each bin
     accuracies = []
     test_counts = []
     
@@ -1382,3 +1383,226 @@ def rt_bin_analysis(df):
         print("-" * 50)
 
     return bin_labels, accuracies, test_counts
+
+
+def mw_bin_analysis(df, phys_feature_list):
+    print("Running Molecular Weight (MW) Bin Analysis with Confusion Matrix\n")
+    
+    # Data splittage, keeping same ratio in training and testing
+    gss = GroupShuffleSplit(n_splits=1, test_size=0.3, random_state=56)
+    train_idx, test_idx = next(gss.split(df, groups=df['SMILES']))
+    
+    df_train = df.iloc[train_idx].copy()
+    df_test = df.iloc[test_idx].copy()
+    
+    # Extraction
+    y_train = df_train['Soluble'].values
+    X_rt_train = df_train[['RT']].values 
+    X_phys_train = df_train[phys_feature_list].values
+    X_mat_train = np.vstack(df_train['Matrix_Packed_Array'].values)
+    X_train_final = np.hstack((X_rt_train, X_phys_train, X_mat_train))
+    
+    # Training Montage (hell yeah man, with some awesome music and all)
+    print(f"Training on {len(df_train)} rows (All MW values)...")
+    scale_weight = (len(y_train) - sum(y_train)) / sum(y_train)
+    model = xgb.XGBClassifier(n_estimators=50, learning_rate=0.05, max_depth=4, subsample=0.8,
+                              colsample_bytree=1.0, gamma=1, min_child_weight=5, reg_lambda=10, 
+                              scale_pos_weight=scale_weight, random_state=71, n_jobs=-1)
+    model.fit(X_train_final, y_train)
+    
+    # The hard part: bin creation
+    # Using perfectly even 50 Da intervals based on min (151.0470) and max (482.5770)
+    bin_edges = [150, 200, 250, 300, 350, 400, 450, 500]
+    bin_labels = ['150-200', '200-250', '250-300', '300-350', '350-400', '400-450', '450-500']
+    # Sorting the test set into the MW buckets
+    df_test['MW_Bin'] = pd.cut(df_test['MolWt'], bins=bin_edges, labels=bin_labels)
+    
+
+
+    accuracies = []
+    test_counts = []
+    
+    # Scoring individual for each bin
+    for label in bin_labels:
+        # Isolate just the test rows that fall into the current MW bin
+        df_bin = df_test[df_test['MW_Bin'] == label].copy()
+        test_counts.append(len(df_bin))
+        
+        # Failsafe: If a bin is completely empty, score it as 0
+        if len(df_bin) == 0:
+            accuracies.append(0.0)
+            continue
+            
+        # Extract features for just this bin
+        y_bin = df_bin['Soluble'].values
+        X_rt_bin = df_bin[['RT']].values 
+        
+        # DYNAMIC INJECTION: Test set uses your list
+        X_phys_bin = df_bin[phys_feature_list].values 
+        
+        X_mat_bin = np.vstack(df_bin['Matrix_Packed_Array'].values)
+        X_bin_final = np.hstack((X_rt_bin, X_phys_bin, X_mat_bin))
+        
+        # Predict and score
+        y_pred = model.predict(X_bin_final)
+        acc = accuracy_score(y_bin, y_pred)
+        accuracies.append(acc)
+        
+        print(f"Bin [{label:^8}] -> Test Rows: {len(df_bin):^4} | Accuracy: {acc:.4f}")
+
+        # Generates the Confusion Matrix (labels=[0,1] to prevent crashes)
+        cm = confusion_matrix(y_bin, y_pred, labels=[0, 1])
+
+        # Extract the four specific values
+        # .ravel() flattens the 2x2 grid perfectly into TN, FP, FN, TP
+        tn, fp, fn, tp = cm.ravel()
+
+        print("\n CONFUSION MATRIX BREAKDOWN:")
+        print(f"True Positives (TP) - Correctly guessed Soluble:   {tp}")
+        print(f"True Negatives (TN) - Correctly guessed Insoluble: {tn}")
+        print("-" * 50)
+        print(f"False Positives (FP) - Wrongly guessed Soluble:    {fp}  <-- (Type I Error)")
+        print(f"False Negatives (FN) - Wrongly guessed Insoluble:  {fn}  <-- (Type II Error)")
+        print("-" * 50)
+
+    return bin_labels, accuracies, test_counts
+
+
+def solvent_bin_analysis(df, phys_feature_list, solvent_col='Solvent'):
+    print(f"Running Categorical Solvent Analysis")
+    # Shuffling
+    gss = GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+    train_idx, test_idx = next(gss.split(df, groups=df['SMILES']))
+    
+    df_train = df.iloc[train_idx].copy()
+    df_test = df.iloc[test_idx].copy()
+    
+    # Extraction
+    y_train = df_train['Soluble'].values
+    X_rt_train = df_train[['RT']].values 
+    X_phys_train = df_train[phys_feature_list].values 
+    X_mat_train = np.vstack(df_train['Matrix_Packed_Array'].values)
+    X_train_final = np.hstack((X_rt_train, X_phys_train, X_mat_train))
+    
+    # Training
+    scale_weight = (len(y_train) - sum(y_train)) / sum(y_train)
+    model = xgb.XGBClassifier(n_estimators=50, learning_rate=0.05, max_depth=4, subsample=0.8,
+                              colsample_bytree=1.0, gamma=1, min_child_weight=5, reg_lambda=10, 
+                              scale_pos_weight=scale_weight, random_state=93, n_jobs=-1)
+    model.fit(X_train_final, y_train)
+    
+    # Instead of pd.cut, we just grab the unique names
+    unique_solvents = df_test[solvent_col].dropna().unique()
+    # Sort them alphabetically for a cleaner chart
+    unique_solvents = np.sort(unique_solvents) 
+    
+    # Scoring
+    accuracies = []
+    test_counts = []
+    
+    print(f"{'Solvent':<15} | {'Rows':<5} | {'Acc':<6} || {'TP':<4} | {'TN':<4} | {'FP (Danger)':<11} | {'FN':<4}")
+    print("-" * 75)
+    
+    for solvent in unique_solvents:
+        # Isolate test rows for this specific solvent
+        df_bin = df_test[df_test[solvent_col] == solvent].copy()
+        test_counts.append(len(df_bin))
+        
+        if len(df_bin) == 0:
+            accuracies.append(0.0)
+            continue
+            
+        y_bin = df_bin['Soluble'].values
+        X_rt_bin = df_bin[['RT']].values 
+        X_phys_bin = df_bin[phys_feature_list].values 
+        X_mat_bin = np.vstack(df_bin['Matrix_Packed_Array'].values)
+        X_bin_final = np.hstack((X_rt_bin, X_phys_bin, X_mat_bin))
+        
+        # Predict and score
+        y_pred = model.predict(X_bin_final)
+        acc = accuracy_score(y_bin, y_pred)
+        accuracies.append(acc)
+        
+        cm = confusion_matrix(y_bin, y_pred, labels=[0, 1])
+        tn, fp, fn, tp = cm.ravel()
+
+        print(f"{str(solvent):<15} | {len(df_bin):<5} | {acc:.4f} || {tp:<4} | {tn:<4} | {fp:<11} | {fn:<4}")
+
+    print("-" * 75)
+    return unique_solvents, accuracies, test_counts
+
+
+
+
+def analyze_rt_mw_correlation(df):
+    # ==============================================================================
+    # PART 1: THE MATHEMATICAL CORRELATION
+    # ==============================================================================
+    
+    # Extract the two columns of data as raw arrays and drop any missing (NaN) values
+    # If we feed missing data into the math functions, they will crash.
+    clean_data = df[['RT', 'MolWt']].dropna()
+    rt_data = clean_data['RT']
+    mw_data = clean_data['MolWt']
+    
+    print("CALCULATING STATISTICAL CORRELATION\n")
+
+    # --- PEARSON CORRELATION (Linear) ---
+    # Pearson checks for a strict, straight-line relationship. 
+    # If MW goes up by 10, does RT ALWAYS go up by exactly X?
+    # It returns two numbers: 'r' (the correlation from -1 to 1) and 'p' (statistical significance).
+    pearson_r, pearson_p = stats.pearsonr(mw_data, rt_data)
+    
+    print(f"1. Pearson (Linear) Correlation:")
+    print(f"   r-value: {pearson_r:.4f} (0 means no correlation, 1 means perfect correlation)")
+    # A p-value under 0.05 means the result is real and not just random chance.
+    print(f"   p-value: {pearson_p:.4e}\n") 
+
+    # --- SPEARMAN CORRELATION (Monotonic / Rank-based) ---
+    # Spearman is more flexible. It just asks: "If MW gets bigger, does RT generally get bigger?"
+    # It doesn't care if it's a straight line, just that they move in the same general direction.
+    spearman_r, spearman_p = stats.spearmanr(mw_data, rt_data)
+    
+    print(f"2. Spearman (Rank) Correlation:")
+    print(f"   r-value: {spearman_r:.4f}")
+    print(f"   p-value: {spearman_p:.4e}\n")
+    print("-" * 50)
+
+
+    # ==============================================================================
+    # PART 2: THE VISUAL PROOF (Regression Plot)
+    # ==============================================================================
+    
+    print("📊 Generating Regression Plot...")
+    
+    # Set up a clean white background for the chart
+    sns.set_theme(style="whitegrid")
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    # sns.regplot draws the scatter dots AND automatically calculates and draws
+    # the "Line of Best Fit" (Linear Regression) through the middle of the data.
+    # The translucent band around the line is the 95% Confidence Interval.
+    sns.regplot(
+        data=clean_data, 
+        x='MolWt', 
+        y='RT', 
+        scatter_kws={'alpha': 0.3, 'color': '#1f77b4', 's': 30}, # 'alpha' makes dots transparent
+        line_kws={'color': '#d62728', 'linewidth': 2},           # Makes the trendline bright red
+        ax=ax
+    )
+    
+    # Label the plot professionally for the TA's report
+    ax.set_title('Correlation Analysis: Molecular Weight vs. Retention Time', fontsize=14, fontweight='bold')
+    ax.set_xlabel('Molecular Weight (Daltons)', fontsize=12, fontweight='bold')
+    ax.set_ylabel('Retention Time (Minutes)', fontsize=12, fontweight='bold')
+    
+    # Add a text box directly onto the chart showing the Pearson r-value
+    # 'transform=ax.transAxes' lets us place the text relative to the corners (0.05 is bottom left)
+    textstr = f"Pearson r = {pearson_r:.3f}\nSpearman r = {spearman_r:.3f}"
+    props = dict(boxstyle='round', facecolor='white', alpha=0.8, edgecolor='gray')
+    ax.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=12,
+            verticalalignment='top', bbox=props)
+    
+    # Keep the chart tight and display it
+    plt.tight_layout()
+    plt.show()
