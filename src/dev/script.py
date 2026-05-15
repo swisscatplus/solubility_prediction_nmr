@@ -1,118 +1,110 @@
 import sys
 import os
+
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
 sys.path.append(parent_dir)
+import torch
+
+# 3. THE MONKEY PATCH: We hijack PyTorch's internal loading mechanism
+_original_load = torch.load
+def _mac_safe_load(*args, **kwargs):
+    # Force every single model to load on the CPU, no matter what the file says
+    kwargs['map_location'] = torch.device('cpu')
+    return _original_load(*args, **kwargs)
+
+# Overwrite the original function with our hijacked version
+torch.load = _mac_safe_load
+import fastsolv
 import numpy as np
 import pandas as pd
 import joblib
-from rdkit import Chem
-from rdkit.Chem import Descriptors, AllChem
-from data_converter.hplc_data_handler import solvent_physics_db, smiles_to_fingerprint
-
-
-
-
-
-
-
-
+import catboost
+from data_converter.hplc_data_handler import solvent_physics_db
 
 # Loading the trained material
-model_path = os.path.join(current_dir, 'champion_xgb_model.joblib')
-kbest_path = os.path.join(current_dir, 'k_best_selector.joblib')
-scaler_path = os.path.join(current_dir, 'continuous_scaler.joblib')
+model_path = os.path.join(current_dir, 'final_model.joblib')
 
 model = joblib.load(model_path)
-k_best = joblib.load(kbest_path)
-scaler = joblib.load(scaler_path)
 
-# Define default matrix size
-num_mat_features = 7
-default_matrix = np.zeros(num_mat_features)
+
 
 
 
 # Prediction engine
-def predict_nmr_solubility(smiles):
+def rank_nmr_solubility(model, live_sensor_data, available_solvents, solvent_col='Solvent_Name'):
+    universes = []
 
-    mol = Chem.MolFromSmiles(smiles)
-    if mol is None:
-        return "Error: Invalid SMILES string. Cannot calculate TPSA/MolWt."
+    for solvent in available_solvents:
+        # Copy the base sensor data
+        universe = live_sensor_data.copy()
+        # Inject the parallel solvent
+        universe[solvent_col] = solvent
 
-    tpsa = Descriptors.TPSA(mol)
-    molwt = Descriptors.MolWt(mol)
-    
-    raw_fp_array = smiles_to_fingerprint(smiles).reshape(1, -1)
-
-    # Filter down to the 200 Best Bits using your saved selector
-    fp_best = k_best.transform(raw_fp_array)
-
-    results = []
-
-    # Run thermodynamics loop with imported model and others
-    for solvent, props in solvent_physics_db.items():
-        continuous_raw = np.array([[
-            tpsa, 
-            molwt, 
-            props['Dielectric'], 
-            props['Hansen_D'], 
-            props['Hansen_P'], 
-            props['Hansen_H'],
-            0.0, 
-            0.0
-        ]])
-    
-        # Scale continuous features with the saved math
-        continuous_scaled = scaler.transform(continuous_raw)
+        if solvent in solvent_physics_db:
+            physics = solvent_physics_db[solvent]
+            # (Make sure these keys exactly match how they are spelled in your hplc_data_handler!)
+            universe['Sol_Dielectric'] = physics['Dielectric']
+            universe['Sol_Hansen_D'] = physics['Hansen_D']
+            universe['Sol_Hansen_P'] = physics['Hansen_P']
+            universe['Sol_Hansen_H'] = physics['Hansen_H']
+        else:
+            print(f"WARNING: {solvent} missing from physics database!")
         
-        # Assemble & Predict
-        X_final = np.hstack((fp_best, default_matrix.reshape(1, -1), continuous_scaled))
-        prob_soluble = model.predict_proba(X_final)[0][1] 
+        universes.append(universe)
+
+    df_simulation = pd.DataFrame(universes)
+    expected_cols = model.feature_names_
+    df_simulation = df_simulation[expected_cols]
+
+    probabilities = model.predict_proba(df_simulation)[:, 1]
+
+    df_simulation['Confidence'] = probabilities * 100
+    ranked_results = df_simulation[[solvent_col, 'Confidence']].sort_values(by='Confidence', ascending=False)
+
+    for rank, (index, row) in enumerate(ranked_results.iterrows(), 1):
+        sol = row[solvent_col]
+        conf = row['Confidence']
         
-        results.append({
-            'Solvent': solvent,
-            'Probability_Soluble (%)': round(prob_soluble * 100, 2)
-        })
+        if rank == 1:
+            print(f"   {rank}. {sol.ljust(15)} : {conf:.2f}%")
+        else:
+            print(f"     {rank}. {sol.ljust(15)} : {conf:.2f}%")
+    print("="*50)
 
-    return pd.DataFrame(results).sort_values(by='Probability_Soluble (%)', ascending=False).reset_index(drop=True)
-
-
+    best_solvent = ranked_results.iloc[0][solvent_col]
+    return best_solvent
 
 
 
 # Execution block
 if __name__ == "__main__":
-    print("\n" + "="*50)
-    print("AI Solubility Predictor ")
-    print("="*50)
-    
-    while True:
-        # Prompt the user for input
-        user_smiles = input("\nEnter a SMILES string (or type 'q' to quit): ").strip()
+    my_lab_solvents = ['MeOH','ACN','DMSO','DCM','CHCl3']
 
-        # X-RAY 1: See exactly what Python captured from your keyboard
-        print(f"--> [DEBUG] Python received: '{user_smiles}'")
-        
-        # Check if they want to exit the program
-        if user_smiles.lower() in ['q', 'quit', 'exit']:
-            print("Shutting down...")
-            break
-            
-        # Ignore accidental blank enters
-        if not user_smiles:
-            # X-RAY 2: See if it thinks you hit Enter on a blank line
-            print("--> [DEBUG] Python thought the input was empty, looping back...")
-            continue
+    live_peak_detected = {
+        'MolWt': 854.9,
+        'RT': 7.1,
+        'Matrix ID Name': 'UNKNOWN_GHOST_HARDWARE',
+        'Matrix_Vector_1': 3.54,
+        'Matrix_Vector_2': -5.48,
+        'Matrix_Vector_3': 5.2,
+        'Matrix_Vector_4': 5.22,
+        'Matrix_Vector_5': 5.68,
+        'Matrix_Vector_6': 6.54,
+        'Matrix_Vector_7': 0,
+        'Matrix_Vector_8': 4.49,
+        'Matrix_Vector_9': 6,
+        'Matrix_Vector_10': 4.4
+    }
 
-        report = predict_nmr_solubility(user_smiles)
-
-        if isinstance(report, str):
-            print(report) # Prints the error message
-        else:
-            print("\n--- Final Solubility Report ---")
-            print(report.to_string(index=False))
-
-
-
-
+    try:
+        command = rank_nmr_solubility(
+            model=model, 
+            live_sensor_data=live_peak_detected, 
+            available_solvents=my_lab_solvents
+        )
+        print(f"\n Command sent: {command}")
+    except NameError:
+        print("\n WARNING: 'model' is not defined. Make sure you train and load the CatBoost model before running this script.")
