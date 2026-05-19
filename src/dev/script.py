@@ -1,23 +1,13 @@
 import sys
 import os
 
+
 current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
-sys.path.append(parent_dir)
-import torch
+src_dir = os.path.abspath(os.path.join(current_dir, '..'))
+sys.path.append(src_dir)
 
-# 3. THE MONKEY PATCH: We hijack PyTorch's internal loading mechanism
-_original_load = torch.load
-def _mac_safe_load(*args, **kwargs):
-    # Force every single model to load on the CPU, no matter what the file says
-    kwargs['map_location'] = torch.device('cpu')
-    return _original_load(*args, **kwargs)
+os.environ["CATBOOST_DISABLE_JIT"] = "1"
 
-# Overwrite the original function with our hijacked version
-torch.load = _mac_safe_load
-import fastsolv
 import numpy as np
 import pandas as pd
 import joblib
@@ -28,8 +18,6 @@ from data_converter.hplc_data_handler import solvent_physics_db
 model_path = os.path.join(current_dir, 'final_model.joblib')
 
 model = joblib.load(model_path)
-
-
 
 
 
@@ -51,7 +39,8 @@ def rank_nmr_solubility(model, live_sensor_data, available_solvents, solvent_col
             universe['Sol_Hansen_P'] = physics['Hansen_P']
             universe['Sol_Hansen_H'] = physics['Hansen_H']
         else:
-            print(f"WARNING: {solvent} missing from physics database!")
+            print(f"WARNING: {solvent} skipped, missing from physics database!")
+            continue
         
         universes.append(universe)
 
@@ -59,7 +48,9 @@ def rank_nmr_solubility(model, live_sensor_data, available_solvents, solvent_col
     expected_cols = model.feature_names_
     df_simulation = df_simulation[expected_cols]
 
-    probabilities = model.predict_proba(df_simulation)[:, 1]
+    cat_cols = [model.feature_names_[i] for i in model.get_cat_feature_indices()] # that way if the model's categorical features ever change there won't be a problem
+    pool = catboost.Pool(data=df_simulation, cat_features=cat_cols)
+    probabilities = model.predict_proba(pool)[:, 1]
 
     df_simulation['Confidence'] = probabilities * 100
     ranked_results = df_simulation[[solvent_col, 'Confidence']].sort_values(by='Confidence', ascending=False)
@@ -84,11 +75,11 @@ if __name__ == "__main__":
     my_lab_solvents = ['MeOH','ACN','DMSO','DCM','CHCl3']
 
     live_peak_detected = {
-        'MolWt': 854.9,
-        'RT': 7.1,
-        'Matrix ID Name': 'UNKNOWN_GHOST_HARDWARE',
+        'MolWt': 281.26,
+        'RT': 1.146,
+        'Matrix ID Name': 'BlueBird 1',
         'Matrix_Vector_1': 3.54,
-        'Matrix_Vector_2': -5.48,
+        'Matrix_Vector_2': 5.48,
         'Matrix_Vector_3': 5.2,
         'Matrix_Vector_4': 5.22,
         'Matrix_Vector_5': 5.68,
@@ -105,6 +96,8 @@ if __name__ == "__main__":
             live_sensor_data=live_peak_detected, 
             available_solvents=my_lab_solvents
         )
-        print(f"\n Command sent: {command}")
-    except NameError:
-        print("\n WARNING: 'model' is not defined. Make sure you train and load the CatBoost model before running this script.")
+        print(f"\n Best solvent: {command}")
+    except KeyError as e:
+        print(f"ERROR: Missing feature in sensor data — {e}")
+    except Exception as e:
+        print(f"ERROR: Prediction failed — {e}")
