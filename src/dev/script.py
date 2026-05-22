@@ -75,8 +75,8 @@ if __name__ == "__main__":
     my_lab_solvents = ['MeOH','ACN','DMSO','DCM','CHCl3']
 
     live_peak_detected = {
-        'MolWt': 281.26,
-        'RT': 1.146,
+        'MolWt': 581.26,
+        'RT': 4.146,
         'Matrix ID Name': 'BlueBird 1',
         'Matrix_Vector_1': 3.54,
         'Matrix_Vector_2': 5.48,
