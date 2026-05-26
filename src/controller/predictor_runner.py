@@ -13,9 +13,8 @@ from sklearn.metrics import accuracy_score, precision_score
 import xgboost as xgb
 
 
-# this is to obtain smiles code from given file
+# This is to obtain smiles code from given file
 def process_sample_file(input_path):
-    # 1. Detect file type and load
     file_extension = os.path.splitext(input_path)[1].lower()
     
     print(f"Reading file: {input_path}")
@@ -28,22 +27,22 @@ def process_sample_file(input_path):
     else:
         raise ValueError("Unsupported file format. Please use .csv or .xlsx")
     
-    # 2. Check for the necessary columns 'Sample Name' and 'CAS' (specific to what i'm working with)
+    # Check for the necessary columns 'Sample Name' and 'CAS' (specific to what i'm working with)
    
     if 'CAS ' not in df.columns:
         raise KeyError("Could not find a column named 'CAS' in the file.")
     
-    # 3. Apply the SMILES function
+    # Apply the SMILES function
     print("Fetching SMILES codes... (this may take a moment)")
     df['solute_smiles'] = df['CAS '].apply(smiles_by_pubchem_cas)
 
-    # 4. Clean up: remove rows where SMILES weren't found ("Did not work" text)
+    # Clean up: remove rows where SMILES weren't found ("Did not work" text)
     failed_count = (df['solute_smiles'] == "Did not work").sum()
 
     if failed_count > 0:
         print(f"Warning: Could not find SMILES for {failed_count} samples.")
 
-    # 5. Save as CSV
+    # Save as CSV
     output_path = input_path.replace(file_extension, "_with_smiles.csv")
     df.to_csv(output_path, index=False)
     
@@ -55,17 +54,17 @@ def process_sample_file(input_path):
 
 def solubility_calculator(df_clean, solvent_name, solvent_smiles, temp=298.15):
     
-    # 1. Create the exact format FastSolv expects
+    # Create the exact format FastSolv expects
     fastsolv_ready_df = pd.DataFrame({
         "solute_smiles": df_clean['solute_smiles'].tolist(),
         "solvent_smiles": [solvent_smiles] * len(df_clean),
         "temperature": [temp] * len(df_clean)
     }, index=df_clean.index)
 
-    # 2. Run the engine (fastsolv)
+    # Run the engine (fastsolv)
     raw_results = fastsolv(fastsolv_ready_df)
 
-    # 3. Rename columns with the solvent suffix (e.g., logS_methanol)
+    # Rename columns with the solvent suffix (e.g., logS_methanol)
     results_to_add = pd.DataFrame({
         f'solvent_{solvent_name}': [solvent_name] * len(df_clean),
         f'predicted_logS_{solvent_name}': raw_results['predicted_logS'].values,
@@ -81,7 +80,7 @@ def solubility_file_matrix(clean_results, solvent_dict, temperature=298.15):
     # Start with the basic info: Names, SMILES, and CAS
     final_df = clean_results[['Sample Name', 'solute_smiles', 'CAS ']].copy()
 
-    # 2. Loop through the solvents
+    # Loop through the solvents
     for solvent_name, solvent_smiles in solvent_dict.items():
         print(f"Predicting solubility in {solvent_name}...")
         
@@ -91,7 +90,6 @@ def solubility_file_matrix(clean_results, solvent_dict, temperature=298.15):
         # Merge horizontally
         final_df = pd.concat([final_df, solvent_cols], axis=1)
 
-    # 3. Final Save
     output_name = "/Users/arthurbenard/Project 1B/data/Master_Solubility_Matrix.xlsx"
     final_df.to_excel(output_name, index=False)
     print(f"Mission Complete! File saved: {output_name}")
@@ -112,7 +110,7 @@ def compare_predictions(solubility_matrix, original_data, solvent_dict):
     df_results.columns = df_results.columns.str.strip()
     df_original.columns = df_original.columns.str.strip()
 
-    # 2. THE BRIDGE: Merge them together temporarily
+    # Merge them together temporarily
     # We only need the 'Sample Name' and the binary columns from the original
     binary_cols = list(solvent_dict.keys())
     cols_to_keep = ['Sample Name', 'RT'] + binary_cols
@@ -150,23 +148,23 @@ def compare_predictions(solubility_matrix, original_data, solvent_dict):
             ((df[f'S_{solvent_name}'] <= threshold) & (df[binary_col] == 0))
         )
 
-        # 4. Create 'Incoherence' column
+        # Create 'Incoherence' column
         # We use .astype(str) so it explicitly says 'True' or 'False'
         coh_col_name = f'Coherence_{solvent_name}'
         df[coh_col_name] = is_coherent.map({True: 'True', False: 'False'})
         
-        # 5. Magnitude of difference from the 0.1 threshold
+        # Magnitude of difference from the 0.1 threshold
         df[f'Magnitude_{solvent_name}'] = np.where(
             df[coh_col_name] == 'False',
             df[f'S_{solvent_name}'] - threshold,
             np.nan  # Leaves the cell empty if they match
         )
 
-        # 6. Remove StDev to keep it pretty
+        # Remove StDev to keep it pretty
         if stdev_col in df.columns:
             df.drop(columns=[stdev_col], inplace=True)
 
-    # 7. Final Polish: Save to a new file
+    # Final Polish: Save to a new file
     output_file = "data/Compared_Results.xlsx"
     df.to_excel(output_file, index=False)
     
@@ -190,7 +188,7 @@ def calculate_molecular_descriptors(smiles):
         return None, None
     
 
-# function that prepares the excel file given at the beginning of the notebook code to prepare it for sklearn
+# Function that prepares the excel file given at the beginning of the notebook code to prepare it for sklearn
 def generate_ml_ready_file_fingerprint_solvent(cleaned_df, solvent_name, solvent_dict, fingerprint_function):
 
     if solvent_name not in cleaned_df.columns:
@@ -199,10 +197,10 @@ def generate_ml_ready_file_fingerprint_solvent(cleaned_df, solvent_name, solvent
     if solvent_name not in solvent_dict:
         raise ValueError(f"Error: '{solvent_name}' is not in your solvent dictionary.")
     
-    # this is a measure to make sure nothing will crash, but normally the file has already been cleaned
+    # This is a measure to make sure nothing will crash, but normally the file has already been cleaned
     df_filtered = cleaned_df.dropna(subset=['solute_smiles', 'RT', solvent_name]).copy()
 
-    # this is the fingerprinting part
+    # This is the fingerprinting part
     solvent_smiles = solvent_dict[solvent_name]
     solvent_fp_array = fingerprint_function(solvent_smiles)
 
@@ -223,7 +221,7 @@ def generate_ml_ready_file_fingerprint_solvent(cleaned_df, solvent_name, solvent
         'SMILES': df_filtered['solute_smiles']
     })
     
-    # reset indexing step important, in case rows were removed
+    # Reset indexing step important, in case rows were removed
     ml_df = ml_df.reset_index(drop=True)
 
     return ml_df
@@ -237,7 +235,7 @@ def generate_ml_ready_file_onehot_solvent(cleaned_df, solvent_name, solvent_dict
     if solvent_name not in solvent_dict:
         raise ValueError(f"Error: '{solvent_name}' is not in your solvent dictionary.")
     
-    # this is a measure to make sure nothing will crash, but normally the file has already been cleaned
+    # This is a measure to make sure nothing will crash, but normally the file has already been cleaned
     df_filtered = cleaned_df.dropna(subset=['solute_smiles', 'RT', solvent_name]).copy()
 
     all_solvents = list(solvent_dict.keys())
@@ -248,7 +246,7 @@ def generate_ml_ready_file_onehot_solvent(cleaned_df, solvent_name, solvent_dict
     one_hot_array[solvent_index] = 1
     
 
-    # engineering of the exact df we want, ready for 
+    # Engineering of the exact df we want, ready for 
     ml_df = pd.DataFrame({
         # Apply the fingerprint function to every solute SMILES, storing the result as an array in the cell
         'Sample Fingerprint': df_filtered['solute_smiles'].apply(fingerprint_function),
@@ -265,34 +263,29 @@ def generate_ml_ready_file_onehot_solvent(cleaned_df, solvent_name, solvent_dict
         'SMILES': df_filtered['solute_smiles']
     })
     
-    # reset indexing step important, in case rows were removed
+    # Reset indexing step important, in case rows were removed
     ml_df = ml_df.reset_index(drop=True)
 
     return ml_df
 
 
-
-
-
-
-# this next function works just like the one above but it adds the "logS" values for ONE SOLVENT, one more parameter to train on
-
+# This next function works just like the one above but it adds the "logS" values for ONE SOLVENT, one more parameter to train on
 def generate_ml_file_with_logs(cleaned_df, solvent_name, solvent_dict, fingerprint_function):
 
     logs_col = f"predicted_logS_{solvent_name}"
     
-    # general checks
+    # General checks
     if solvent_name not in cleaned_df.columns:
         raise ValueError(f"Missing binary column: '{solvent_name}'")
     if logs_col not in cleaned_df.columns:
         raise ValueError(f"Missing logS column: '{logs_col}'")
 
 
-    # this is the same measure taken before to make sure nothing will crash but this time we're making sure there's values in the logS column
+    # This is the same measure taken before to make sure nothing will crash but this time we're making sure there's values in the logS column
     # but normally the file has already been cleaned beforehand
     df_filtered = cleaned_df.dropna(subset=['solute_smiles', 'RT', solvent_name, logs_col]).copy()
 
-    # one-hot coding
+    # One-hot coding
     all_solvents = list(solvent_dict.keys())
     one_hot_array = np.zeros(len(all_solvents), dtype=int)
     solvent_index = all_solvents.index(solvent_name)
@@ -303,8 +296,7 @@ def generate_ml_file_with_logs(cleaned_df, solvent_name, solvent_dict, fingerpri
     ml_df = pd.DataFrame({
         'Sample Fingerprint': df_filtered['solute_smiles'].apply(fingerprint_function),
         'RT': df_filtered['RT'].astype(float),
-        
-        # NEW
+  
         'logS': df_filtered[logs_col].astype(float),
         
         'Solvent': [one_hot_array for _ in range(len(df_filtered))],
@@ -315,12 +307,6 @@ def generate_ml_file_with_logs(cleaned_df, solvent_name, solvent_dict, fingerpri
     ml_df = ml_df.reset_index(drop=True)
 
     return ml_df
-
-
-
-
-
-
 
 
 
@@ -345,32 +331,30 @@ def add_matrix_id_to_df(mega_df, raw_df, matrix_col_name, smiles_col='solute_smi
 
     print(f"One-Hot Encoding the '{matrix_col_name}' column...")
     
-    # 1. Grab just the SMILES and your matrix column
+    # Grab just the SMILES and your matrix column
     temp_data = raw_df[[smiles_col, matrix_col_name]]
     
-    # 2. Merge it into the master dataframe
+    # Merge it into the master dataframe
     new_df = mega_df.merge(temp_data, on=smiles_col, how='left')
     
-    # 3. Fill any missing rows with 'Unknown' so the math doesn't break
+    # Fill any missing rows with 'Unknown' so the math doesn't break
     new_df[matrix_col_name] = new_df[matrix_col_name].fillna('Unknown')
     
-    # 4. The One-Hot Encoder
+    # The One-Hot Encoder
     encoder = OneHotEncoder(sparse_output=False, dtype=int)
     encoded_grid = encoder.fit_transform(new_df[[matrix_col_name]])
     
-    # 5. Pack the grid into lists inside a single new column
+    # Pack the grid into lists inside a single new column
     new_df['Matrix_Packed_Array'] = list(encoded_grid)
     
-    # 6. Clean up: Drop the original text column
+    # Drop the original text column
     new_df = new_df.drop(columns=[matrix_col_name])
-    
-    # Print out exactly what the AI found so you can verify!
+
     categories = encoder.categories_[0]
     print(f"   Successfully packed {len(categories)} matrices: {categories}")
     print(f"   -> Example array looks like: {new_df['Matrix_Packed_Array'].iloc[0]}")
     
     return new_df
-
 
 
 
@@ -591,7 +575,6 @@ def run_hyperparameter_competition(df_desc):
     print(f"Final Precision: {final_prec:.4f}")
     print("==================================================")
     
-    # Return both the trained model and the parameters so you can use them later
     return best_model, random_search.best_params_
 
 
@@ -612,9 +595,6 @@ def unknown_column_machine_test(df, target_machine):
     
     print(f"Training Rows (6 Machines, No Leaks): {len(df_train)}")
     print(f"Testing Rows  (1 Machine):  {len(df_test)}")
-
-    
-
 
     # Same thing as we usually do for defining model variables
     y_train = df_train['Soluble'].values
@@ -640,7 +620,7 @@ def unknown_column_machine_test(df, target_machine):
     model = xgb.XGBClassifier(n_estimators=50, learning_rate=0.05, max_depth=4, subsample=0.8,
                                   colsample_bytree=1.0, gamma=1, min_child_weight=5, reg_lambda=10, 
                                   scale_pos_weight=scale_weight, random_state=72, n_jobs=-1)
-    
+
 
     # The AI learns the rules of chemistry using ONLY the 6 known machines
     model.fit(X_train_final, y_train)
@@ -727,8 +707,6 @@ def strict_unknown_column_machine_test(df, target_machine, test_size=0.3):
     
     model.fit(X_train_final, y_train)
     
-    
-
 
     # Scoring
     y_pred = model.predict(X_test_final)
@@ -748,6 +726,3 @@ def strict_unknown_column_machine_test(df, target_machine, test_size=0.3):
     print("-" * 50)
     
     return acc, acc_2
-
-
-

@@ -10,7 +10,7 @@ from rdkit.Chem import rdMolDescriptors, Descriptors, Lipinski
 import numpy as np
 from sklearn.decomposition import PCA
 
-# Dictionary for NMR solvents (i don't know how big this has to be)
+# Dictionary for main NMR solvents
 NMR_SOLVENTS = {
     "MeOH": "CO",
     "ACN": "CC#N",
@@ -19,8 +19,8 @@ NMR_SOLVENTS = {
     "CHCl3": "ClC(Cl)Cl"
 }
 
-# this function will fetch the SMILES code of a molecule using the CAS number present in the file
-# it uses the url written under to efficiently find the code, puts it in a dictionary and extracts the SMILES code 
+# This function will fetch the SMILES code of a molecule using the CAS number present in the file
+# It uses the url written under to efficiently find the code, puts it in a dictionary and extracts the SMILES code 
 def smiles_by_pubchem_cas(cas_number):
     cas = str(cas_number).strip() if pd.notna(cas_number) else ""
 
@@ -42,7 +42,7 @@ def smiles_by_pubchem_cas(cas_number):
     return 'Did not work'
 
 
-# after reading the excel sheet with all the solvents, csv file generated and we need to read 
+# After reading the excel sheet with all the solvents, csv file generated and we need to read 
 # it in order to feed the correct data to the solubility calculator
 def prepare_fastsolv_input(df_with_smiles):
 
@@ -60,7 +60,7 @@ def prepare_fastsolv_input(df_with_smiles):
 # Using the cas number to do this, i'm also adding a line of code that removes rows where no signal was obtained
 def cleaning_array_by_cas(input_file, cas_column_name='CAS '):
    
-    # 1. Load the "dirty" data
+    # Loads the "dirty" data
     df = pd.read_excel(input_file)
     initial_count = len(df)
     
@@ -70,10 +70,10 @@ def cleaning_array_by_cas(input_file, cas_column_name='CAS '):
         print(f"Available columns are: {df.columns.tolist()}")
         return None
 
-    # 2. Remove rows where CAS is missing
+    # Removes rows where CAS is missing
     df = df.dropna(subset=[cas_column_name])
     
-    # 3. Drop Duplicates based ONLY on the CAS number
+    # Drops Duplicates based ONLY on the CAS number
     # 'keep=first' ensures we don't lose the molecule entirely
     df = df.drop_duplicates(subset=[cas_column_name], keep='first')
     temp_count = len(df)
@@ -109,7 +109,6 @@ def smiles_to_fingerprint(smiles):
         return np.array(fp)
     except:
         return np.zeros(2048)
-
 
 
 
@@ -201,7 +200,7 @@ def calculate_mlwt(smiles):
 
 
 
-# A dictionary holding the physical properties for specific solvents.
+# Dictionary holding the physical properties for specific solvents.
 # Hansen invented these parameters to map out solvents in a 3D grid based on three specific types of energy: Dispersion, Polarity, H-bonding
 solvent_physics_db = {
     'MeOH': {'Dielectric': 32.7, 'Hansen_D': 15.1, 'Hansen_P': 12.3, 'Hansen_H': 22.3},

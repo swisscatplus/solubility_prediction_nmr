@@ -95,9 +95,9 @@ def count_incoherence_molecule(compared_results_file, solvent_dict):
     return df
 
 
- # this actually intakes the counting over/under estimation results given previously, so run it through the file first
+ # This actually intakes the counting over/under estimation results given previously, so run it through the file first
 def bar_plot_over_under_estimation(counted_results_file):
-    # 1. Prepare data for Seaborn (Long format)
+    # Prepares data for Seaborn (Long format)
     data = []
     for solvent, stats in counted_results_file.items():
         data.append({'Solvent': solvent, 'Type': 'Overestimated', 'Count': stats['Overestimated']})
@@ -110,7 +110,7 @@ def bar_plot_over_under_estimation(counted_results_file):
     # We assign the figure to a variable 'fig'
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    # 3. Create Plot
+    # Creating Plot
     # Hue handles the grouping of Over/Under automatically
     sns.barplot(
         data=df_plot, 
@@ -133,7 +133,7 @@ def bar_plot_over_under_estimation(counted_results_file):
     
 
 def butterfly_plot_over_under_estimation(counted_results_file):
-    # Prepare data
+    # Prepares data
     data = []
     for solvent, stats in counted_results_file.items():
         data.append({
@@ -152,7 +152,7 @@ def butterfly_plot_over_under_estimation(counted_results_file):
     
     ax.axvline(0, color='black', lw=1.5)
     
-   # 4. Fix x-axis labels - REMOVED the [0] index
+   # Fix x-axis labels - REMOVED the [0] index
     ticks = ax.get_xticks() # Get the full list/array of ticks
     ax.set_xticks(ticks)    # This prevents a warning in newer Matplotlib versions
     ax.set_xticklabels([int(abs(t)) for t in ticks])
@@ -171,7 +171,7 @@ def plot_ordered_solubility_array(compared_results_file, solvent_name):
     Creates an ordered array (Waterfall Plot) of unique molecules 
     sorted by predicted logS to visualize the model's dynamic range.
     """
-    # 1. Load the compared data
+    # Load the compared data
     df = pd.read_excel(compared_results_file)
     
     logS_col = f'predicted_logS_{solvent_name}'
@@ -181,16 +181,16 @@ def plot_ordered_solubility_array(compared_results_file, solvent_name):
         print(f"Error: {logS_col} not found in the file.")
         return
 
-    # 2. Sort by logS (Highest -> Lowest)
+    # Sort by logS (Highest -> Lowest)
     # This creates the 'Ordered Array' ranking
     df_sorted = df.sort_values(by=logS_col, ascending=False).reset_index(drop=True)
     df_sorted['Rank'] = df_sorted.index + 1 
 
-    # 3. Setup the visual style
+    # Setup the visual style
     sns.set_theme(style="ticks")
     fig, ax = plt.subplots(figsize=(12, 6))
     
-    # 4. Plotting the Rank vs logS
+    # Plotting the Rank vs logS
     # We use 'hue' to color points by their experimental outcome
     sns.scatterplot(
         data=df_sorted, 
@@ -205,12 +205,12 @@ def plot_ordered_solubility_array(compared_results_file, solvent_name):
         ax=ax
     )
 
-    # 5. Add the 0.05 mol/L Threshold Line
+    # Add the 0.05 mol/L Threshold Line
     # log10(0.05) is roughly -1.3
     threshold_log = np.log10(0.05)
     ax.axhline(threshold_log, color='black', linestyle='--', linewidth=1.5, label='0.05 mol/L Threshold')
 
-    # 6. Final Polish
+    # Final Polish
     plt.title(f'Ordered Solubility Array: {solvent_name}', fontsize=15, pad=15)
     plt.xlabel('Molecule Rank (Most Soluble → Least Soluble)', fontsize=12)
     plt.ylabel('Predicted logS', fontsize=12)
@@ -234,7 +234,7 @@ def plot_rt_ordered_solubility(compared_results_file, solvent_name):
     Orders molecules by Retention Time (RT) to see if prediction 
     errors correlate with molecular hydrophobicity.
     """
-    # 1. Load data
+    # Load data
     df = pd.read_excel(compared_results_file)
     
     logS_col = f'predicted_logS_{solvent_name}'
@@ -247,15 +247,15 @@ def plot_rt_ordered_solubility(compared_results_file, solvent_name):
         print(f"Available: {df.columns.tolist()}")
         return
     
-    # 2. Sort by Retention Time (Low RT -> High RT)
+    # Sort by Retention Time (Low RT -> High RT)
     # This aligns molecules from least hydrophobic to most hydrophobic
     df_sorted = df.sort_values(by=rt_col).reset_index(drop=True)
     
-    # 3. Setup Plot
+    # Setup Plot
     sns.set_theme(style="ticks")
     fig, ax = plt.subplots(figsize=(12, 6))
     
-    # 4. Scatter Plot: RT on X, logS on Y
+    # Scatter Plot: RT on X, logS on Y
     # Color by Experimental Result to catch the mismatches
     sns.scatterplot(
         data=df_sorted, 
@@ -269,16 +269,14 @@ def plot_rt_ordered_solubility(compared_results_file, solvent_name):
         ax=ax
     )
 
-    # 5. Add the 0.05 Threshold Line
+    # Add the 0.05 Threshold Line
     threshold_log = np.log10(0.05)
     ax.axhline(threshold_log, color='black', linestyle='--', alpha=0.8, label='0.05 Threshold')
 
-    # 6. Formatting
     plt.title(f'Solubility Predictions vs. Retention Time: {solvent_name}', fontsize=15)
     plt.xlabel('Retention Time (min) → Increasing Hydrophobicity', fontsize=12)
     plt.ylabel('Predicted logS', fontsize=12)
-    
-    # Legend cleanup
+
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles, [ 'Insoluble (0)', 'Soluble (1)', 'Threshold'], title='Lab Result')
     
@@ -303,12 +301,12 @@ def plot_master_overlaid_multi_trends(compared_results_file, solvent_dict, refer
         print(f"Error: Reference solvent '{reference_solvent}' not found.")
         return
 
-    # 1. Establish the "Master Order"
+    # Establish the "Master Order"
     # Sort by the reference solvent (Highest -> Lowest logS)
     df_sorted = df.sort_values(by=ref_col, ascending=False).reset_index(drop=True)
     df_sorted['Master_Rank'] = df_sorted.index + 1
 
-    # 2. Reshape for Multi-Plotting (Long Format)
+    # Reshape for Multi-Plotting (Long Format)
     plot_data = []
     for solvent in solvent_dict.keys():
         logS_col = f'predicted_logS_{solvent}'
@@ -322,7 +320,7 @@ def plot_master_overlaid_multi_trends(compared_results_file, solvent_dict, refer
 
     full_df = pd.concat(plot_data)
 
-    # 3. Create the Plot
+    # Create the Plot
     plt.figure(figsize=(14, 8))
     sns.set_theme(style="ticks")
 
@@ -339,11 +337,10 @@ def plot_master_overlaid_multi_trends(compared_results_file, solvent_dict, refer
         edgecolor=None
     )
 
-    # 4. Add the 0.05 mol/L Threshold Line
+    # Add the 0.05 mol/L Threshold Line
     threshold_log = np.log10(0.05)
     plt.axhline(threshold_log, color='black', linestyle='--', linewidth=2, label='0.05 Threshold')
 
-    # 5. Formatting
     plt.title(f'Global Solubility Landscape (Ranked by {reference_solvent})', fontsize=16, pad=20)
     plt.xlabel(f'Molecules Ranked by {reference_solvent} Predicted Solubility', fontsize=12)
     plt.ylabel('Predicted logS', fontsize=12)
@@ -370,20 +367,19 @@ def analyze_plot_chemical_bias(compared_results_file, solvent_name):
         print("Error: 'solute_smiles' column missing. Cannot calculate descriptors.")
         return
 
-    # 1. APPLY THE DESCRIPTOR FUNCTION
     # This creates the two new columns using the separate function
     print(f"--- Annotating {len(df)} molecules with LogP and MW ---")
     df[['LogP', 'MW']] = df['solute_smiles'].apply(
         lambda x: pd.Series(calculate_molecular_descriptors(x))
     )
     
-    # 2. Setup the Plot
+    # Setup the Plot
     plt.figure(figsize=(10, 7))
     sns.set_theme(style="white")
     
     incoh_col = f'Coherence_{solvent_name}'
     
-    # 3. Create a Scatter Plot of the Chemical Space
+    # Create a Scatter Plot of the Chemical Space
     # We use 'hue' to see where the Mismatches live
     sns.scatterplot(
         data=df, 
@@ -395,7 +391,7 @@ def analyze_plot_chemical_bias(compared_results_file, solvent_name):
         s=60
     )
     
-    # 4. Add "Trend" marginals (Density plots on the sides)
+    # Add Density plots on the sides
     # This shows if errors are skewed toward high LogP or high MW
     plt.title(f'Where does FastSolv fail in {solvent_name}?', fontsize=15)
     plt.xlabel('Hydrophobicity (LogP)', fontsize=12)
@@ -404,23 +400,23 @@ def analyze_plot_chemical_bias(compared_results_file, solvent_name):
     sns.despine()
     plt.show()
 
-    # 5. Print a quick summary for your TA
+    # Print a quick summary
     mismatches = df[df[incoh_col] == 'False']
     print(f"\n--- Bias Analysis for {solvent_name} ---")
 
     plt.savefig(f'data/chemical_biases/chemical_bias_{solvent_name}.png', dpi=300, bbox_inches='tight')
 
 
-# this function was recommended to be made to interpret the results of the overlaid graphs
+# This function was recommended to be made to interpret the results of the overlaid graphs
 def plot_solvent_correlation_heatmap(compared_results_file, solvent_dict):
     """
     Computes and plots the correlation between predicted logS values 
     across all solvents to check for model redundancy.
     """
-    # 1. Load the data
+
     df = pd.read_excel(compared_results_file)
     
-    # 2. Extract only the predicted logS columns
+    # Extract only the predicted logS columns
     # We use a dictionary comprehension to map the exact column names to just the solvent names for a cleaner plot
     logS_cols = {f'predicted_logS_{s}': s for s in solvent_dict.keys()}
     
@@ -430,14 +426,14 @@ def plot_solvent_correlation_heatmap(compared_results_file, solvent_dict):
     # Rename the columns so the plot labels are just "MeOH", "ACN", etc.
     subset_df = subset_df.rename(columns=logS_cols)
     
-    # 3. Calculate the Pearson Correlation Matrix
+    # Calculate the Pearson Correlation Matrix
     corr_matrix = subset_df.corr()
 
-    # 4. Setup the Plot
+    # Setup the Plot
     plt.figure(figsize=(10, 8))
     sns.set_theme(style="white")
     
-    # 5. Plot the Heatmap
+    # Plot the Heatmap
     # We use vmin=0.5 and vmax=1.0 because logS correlations are rarely negative 
     # and we want to highlight the differences at the high end.
     sns.heatmap(
@@ -476,7 +472,7 @@ def plot_mw_error_distribution(compared_results_file, solvent_name):
         print(f" Error: {incoh_col} not found in the file.")
         return
 
-    # 1. Calculate MW if it's not already in the file
+    # Calculate MW if it's not already in the file
     if 'MW' not in df.columns:
         if 'solute_smiles' in df.columns:
             print("--- Calculating Molecular Weights from SMILES ---")
@@ -491,7 +487,7 @@ def plot_mw_error_distribution(compared_results_file, solvent_name):
     df = df.dropna(subset=['MW', incoh_col])
     df['Match'] = df[incoh_col].astype(str).str.upper()
 
-    # 2. Setup the Plot
+    # Setup the Plot
     plt.figure(figsize=(8, 6))
     sns.set_theme(style="ticks")
     
@@ -515,17 +511,14 @@ def plot_mw_error_distribution(compared_results_file, solvent_name):
         size=4
     )
     
-    # 3. Formatting
     plt.title(f'Size Bias in FastSolv: Molecular Weight Errors ({solvent_name})', fontsize=15)
     plt.xlabel('Did the model predict correctly?', fontsize=12)
     plt.ylabel('Molecular Weight (g/mol)', fontsize=12)
     sns.despine()
     
-    # 4. Save and Show
     plt.savefig(f'data/MW_Error_Dist/MW_Error_Dist_{solvent_name}.png', dpi=300, bbox_inches='tight')
     plt.show()
     
-    # 5. Print the hard numbers for your report
     mean_true = df[df['Match'] == 'TRUE']['MW'].mean()
     mean_false = df[df['Match'] == 'FALSE']['MW'].mean()
     
@@ -537,9 +530,6 @@ def plot_mw_error_distribution(compared_results_file, solvent_name):
     return df
 
 
-
-
-
 def get_h_bonds(smiles):
         mol = Chem.MolFromSmiles(smiles)
         if mol:
@@ -547,7 +537,6 @@ def get_h_bonds(smiles):
             hba = rdMolDescriptors.CalcNumHBA(mol)
             return hbd, hba
         return None, None
-
 
 
 def plot_hydrogen_bonding_bias(compared_results_file, solvent_name):
@@ -562,7 +551,7 @@ def plot_hydrogen_bonding_bias(compared_results_file, solvent_name):
         print(f" Error: Missing {incoh_col} or SMILES column.")
         return
 
-    # 1. Calculate HBD and HBA using RDKit (H-bond donors, Hbond-acceptors)
+    #  Calculate HBD and HBA using RDKit (H-bond donors, Hbond-acceptors)
     print(f"--- Calculating HBD & HBA for {solvent_name} ---")
     
 
@@ -572,7 +561,7 @@ def plot_hydrogen_bonding_bias(compared_results_file, solvent_name):
     df = df.dropna(subset=['HBD', 'HBA', incoh_col])
     df['Match'] = df[incoh_col].astype(str).str.upper()
 
-    # 2. Setup the Plot
+    # Setup the Plot
     plt.figure(figsize=(9, 7))
     sns.set_theme(style="whitegrid")
     
@@ -589,21 +578,18 @@ def plot_hydrogen_bonding_bias(compared_results_file, solvent_name):
         size=6
     )
     
-    # 3. Formatting
     plt.title(f'Stickiness Bias: Hydrogen Bonding Errors ({solvent_name})', fontsize=16, pad=15)
     plt.xlabel('Number of Hydrogen Bond Donors (HBD)', fontsize=12)
     plt.ylabel('Number of Hydrogen Bond Acceptors (HBA)', fontsize=12)
     
-    # Legend cleanup
     plt.legend(title='Model Prediction Correct?', bbox_to_anchor=(0.90, 1), loc='upper left')
     sns.despine()
     
-    # 4. Save and Show
     save_path = f'data/HBond_bias/HBond_Bias_{solvent_name}.png'
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.show()
 
-    # 5. Quick Stats
+    # Quick Stats
     mismatches = df[df['Match'] == 'FALSE']
     print(f"Average HBD of Errors: {mismatches['HBD'].mean():.1f}")
     print(f"Average HBA of Errors: {mismatches['HBA'].mean():.1f}")
@@ -855,17 +841,17 @@ def run_data_fraction(mega_df, train_percent_of_total):
             
             # The following is a measure taken to tell the model to be at a certain minimum sure of his answer, instead of having cases were at
             # 51% he thinks it's fine.
-            # 1. Define how confident the AI must be to flag a molecule as Soluble (1)
+            # Define how confident the AI must be to flag a molecule as Soluble (1)
             # 0.70 means it must be 70% confident. 
             CUSTOM_THRESHOLD = 0.70 
 
-            # 2. Ask the model for its raw confidence percentages instead of its final guess
+            # Ask the model for its raw confidence percentages instead of its final guess
             # [:, 1] grabs the probability specifically for the "Soluble" class
             y_train_probs = rf.predict_proba(X_train)[:, 1]
             y_val_probs = rf.predict_proba(X_val)[:, 1]
             y_test_probs = rf.predict_proba(X_test)[:, 1]
 
-            # 3. Apply the strict threshold to generate the new 1s and 0s
+            # Apply the strict threshold to generate the new 1s and 0s
             y_train_pred = (y_train_probs >= CUSTOM_THRESHOLD).astype(int)
             y_val_pred = (y_val_probs >= CUSTOM_THRESHOLD).astype(int)
             y_test_pred = (y_test_probs >= CUSTOM_THRESHOLD).astype(int)
@@ -888,7 +874,7 @@ def run_data_fraction(mega_df, train_percent_of_total):
                 'F1_Score': f1[1]
             })
 
-    # 3. Save to Text File
+    # Save to Text File
     results_df = pd.DataFrame(results)
     txt_filename = f"dynamic_learning_curve_{int(train_percent_of_total * 100)}pct.txt"
     
@@ -914,7 +900,7 @@ def plot_learning_curve(master_lc_df):
     print("Generating Learning Curve Plot...")
     
     # Filter the metrics. 
-    # For a classic learning curve, comparing Train vs. Test is the gold standard to spot overfitting!
+    # For a classic learning curve, comparing Train vs. Test is the gold standard to spot overfitting
     metrics_to_plot = ['Train_Accuracy', 'Val_Accuracy', 'Test_Accuracy']
     
     # The 'Melt' Trick
@@ -925,10 +911,10 @@ def plot_learning_curve(master_lc_df):
         value_name='Score'
     )
         
-    # Build the Plot Canvas
+    # Build Plot Canvas
     plt.figure(figsize=(10, 6))
     
-    # Draw the Curve, lineplot
+    # Draw Curve, lineplot
     sns.lineplot(
         data=melted_df,
         x='Train_Size_Pct',
@@ -955,7 +941,7 @@ def plot_learning_curve(master_lc_df):
     plt.grid(axis='both', linestyle='--', alpha=0.7) 
     plt.tight_layout()
     
-    # Save it to your results folder!
+    # Save it to results folder
     output_folder = "/Users/arthurbenard/Project 1B/src/analysis/learning_curve_results"
     save_path = os.path.join(output_folder, 'Learning_Curve_Plot.png')
     
@@ -1033,7 +1019,6 @@ def run_ablation_xgboost(mega_df, features_to_remove=None):
         val_idx, _ = next(gss2.split(X_temp, y_temp, groups_temp))
         X_val, y_val = X_temp[val_idx], y_temp[val_idx]
         
-        # --- XGBOOST REPLACEMENT LOGIC ---
         # Calculate dynamic class weight to mimic RF's 'balanced'
         neg_count = np.sum(y_train == 0)
         pos_count = np.sum(y_train == 1)
@@ -1051,7 +1036,6 @@ def run_ablation_xgboost(mega_df, features_to_remove=None):
         xgb_model.fit(X_train, y_train)
         y_val_pred = xgb_model.predict(X_val)
         y_train_pred = xgb_model.predict(X_train)
-        # ---------------------------------
 
         # Metrics
         acc = accuracy_score(y_val, y_val_pred)
@@ -1308,21 +1292,21 @@ def accuracy_per_matrix(model, X_test, y_test, test_matrices):
 def rt_bin_analysis(df):
     print("Running Retention Time Bin Analysis\n")
     
-    # --- 1. SPLIT DATA BY MOLECULE (No Leakage) ---
+    # SPLIT DATA BY MOLECULE
     gss = GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
     train_idx, test_idx = next(gss.split(df, groups=df['SMILES']))
     
     df_train = df.iloc[train_idx].copy()
     df_test = df.iloc[test_idx].copy()
     
-    # --- 2. EXTRACT TRAINING FEATURES ---
+    # EXTRACT TRAINING FEATURES
     y_train = df_train['Soluble'].values
     X_rt_train = df_train[['RT']].values 
     X_phys_train = df_train[['MolWt','MolLogP', 'TPSA', 'Sol_Dielectric', 'Sol_Hansen_D', 'Sol_Hansen_P', 'Sol_Hansen_H']].values
     X_mat_train = np.vstack(df_train['Matrix_Packed_Array'].values)
     X_train_final = np.hstack((X_rt_train, X_phys_train, X_mat_train))
     
-    # --- 3. TRAIN THE MODEL ON EVERYTHING ---
+    # TRAIN THE MODEL ON EVERYTHING
     print(f"Training on {len(df_train)} rows (All RT values)...")
     scale_weight = (len(y_train) - sum(y_train)) / sum(y_train)
     model = xgb.XGBClassifier(n_estimators=50, learning_rate=0.05, max_depth=4, subsample=0.8,
@@ -1330,7 +1314,7 @@ def rt_bin_analysis(df):
                               scale_pos_weight=scale_weight, random_state=69, n_jobs=-1)
     model.fit(X_train_final, y_train)
     
-    # --- 4. CREATE THE 7 RT BINS FOR TESTING ---
+    # CREATE THE 7 RT BINS FOR TESTING 
     # We define the edges of our bins: 0 to 2, 2 to 3... and anything above 7 goes into the last bin.
     # (Starting at 0 catches any super-fast eluters before 1 min)
     bin_edges = [0, 1, 2, 3, 4, 5, 6, np.inf]
@@ -1535,9 +1519,6 @@ def solvent_bin_analysis(df, phys_feature_list, solvent_col='Solvent'):
 
 
 def analyze_rt_mw_correlation(df):
-    # ==============================================================================
-    # PART 1: THE MATHEMATICAL CORRELATION
-    # ==============================================================================
     
     # Extract the two columns of data as raw arrays and drop any missing (NaN) values
     # If we feed missing data into the math functions, they will crash.
@@ -1547,7 +1528,6 @@ def analyze_rt_mw_correlation(df):
     
     print("CALCULATING STATISTICAL CORRELATION\n")
 
-    # --- PEARSON CORRELATION (Linear) ---
     # Pearson checks for a strict, straight-line relationship. 
     # If MW goes up by 10, does RT ALWAYS go up by exactly X?
     # It returns two numbers: 'r' (the correlation from -1 to 1) and 'p' (statistical significance).
@@ -1591,18 +1571,14 @@ def analyze_rt_mw_correlation(df):
         ax=ax
     )
     
-    # Label the plot professionally for the TA's report
     ax.set_title('Correlation Analysis: Molecular Weight vs. Retention Time', fontsize=14, fontweight='bold')
     ax.set_xlabel('Molecular Weight (Daltons)', fontsize=12, fontweight='bold')
     ax.set_ylabel('Retention Time (Minutes)', fontsize=12, fontweight='bold')
     
-    # Add a text box directly onto the chart showing the Pearson r-value
-    # 'transform=ax.transAxes' lets us place the text relative to the corners (0.05 is bottom left)
     textstr = f"Pearson r = {pearson_r:.3f}\nSpearman r = {spearman_r:.3f}"
     props = dict(boxstyle='round', facecolor='white', alpha=0.8, edgecolor='gray')
     ax.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=12,
-            verticalalignment='top', bbox=props)
+        verticalalignment='top', bbox=props)
     
-    # Keep the chart tight and display it
-    plt.tight_layout()
+    plt.tight_layout()  
     plt.show()
