@@ -45,12 +45,22 @@ def rank_nmr_solubility(model, live_sensor_data, available_solvents, solvent_col
         universes.append(universe)
 
     df_simulation = pd.DataFrame(universes)
-    expected_cols = model.feature_names_
-    df_simulation = df_simulation[expected_cols]
 
-    cat_cols = [model.feature_names_[i] for i in model.get_cat_feature_indices()] # that way if the model's categorical features ever change there won't be a problem
-    pool = catboost.Pool(data=df_simulation, cat_features=cat_cols)
-    probabilities = model.predict_proba(pool)[:, 1]
+    feature_order = [
+        'RT', 
+        'MolWt', 'Sol_Dielectric', 'Sol_Hansen_D', 'Sol_Hansen_P', 'Sol_Hansen_H', # The X_phys block
+        'Matrix_Vector_1', 'Matrix_Vector_2', 'Matrix_Vector_3', 'Matrix_Vector_4', 
+        'Matrix_Vector_5', 'Matrix_Vector_6', 'Matrix_Vector_7', 'Matrix_Vector_8', 
+        'Matrix_Vector_9', 'Matrix_Vector_10'
+    ]
+    
+    # Slice the dataframe into the correct order and convert to a nameless NumPy array
+    X_inference = df_simulation[feature_order].values.astype(float)
+    
+
+
+ 
+    probabilities = model.predict_proba(X_inference)[:, 1]
 
     df_simulation['Confidence'] = probabilities * 100
     ranked_results = df_simulation[[solvent_col, 'Confidence']].sort_values(by='Confidence', ascending=False)
