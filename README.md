@@ -1,4 +1,4 @@
-# Solubility Prediction NMR
+# Project 1B - Solubility Prediction NMR
 Predicting deuterated NMR solvent solubility rankings for organic molecules using only HPLC retention data, no structural information (SMILES, fingerprints) required.
 
 Developed as part of Project 1B within the [SwissCat+](https://swisscat.org/) research platform at EPFL.
