@@ -34,7 +34,7 @@ Splits are done with `GroupShuffleSplit` grouped by molecule (SMILES) to prevent
 
 ### Feature importance
 
-Top feature by Gini importance: **Molecular Weight (~17.8%)** alone, but all Matrix features combined give a **~30%**. SHAP analysis confirms the model recovers real, interpretable chemistry:
+Top feature by Gini importance: **Molecular Weight (~17.8%)** alone, but all Matrix features combined give a **~30%** importance. SHAP analysis confirms the model recovers real, interpretable chemistry:
 - A hydrophobicity–retention time relationship
 - A molecular weight "cliff" around ~300 Da
 
