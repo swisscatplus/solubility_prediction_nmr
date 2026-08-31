@@ -75,6 +75,8 @@ The script:
 - [ ] Engineer peak-shape features (asymmetry, width) as the next lever past the accuracy ceiling.
 - [ ] Check whether per-solvent accuracy differences reflect genuine model performance or just base-rate solubility differences across solvents.
 
+Work in progress
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
