@@ -1,0 +1,1058 @@
+Column,Method,Sample Name,CAS ,RT,Signal,Matrix ID Name,MeOH,ACN,DMSO,DCM,CHCl3,solute_smiles
+BlueBird,method_1,(1-BROMOETHYL)BENZENE,585-71-7,5.607,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C1=CC=CC=C1)Br
+BlueBird,method_1,"(2,6-Dioxo-piperidin-4-yl)-acetic_acid",6258-28-2,1.146,1,matrix ID BlueBird 1,0,0,1,0,0,C1C(CC(=O)NC1=O)CC(=O)O
+BlueBird,method_1,(2-BENZYLOXYCARBONYLAMINO-ACETYLAMINO)-ACETIC_ACID,2566-19-0,4.021,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC=C(C=C1)COC(=O)NCC(=O)NCC(=O)O
+BlueBird,method_1,(2S)-2-{[(9H-fluoren-9-ylmethoxy)carbonyl]amino}-4-hydroxybutanoic acid,172525-85-8,3.327,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC=C2C(=C1)C(C3=CC=CC=C32)COC(=O)N[C@@H](CCO)C(=O)O
+BlueBird,method_1,"(2S,5S)-1-Hydroxy-2,5-diphenylphospholane 1-oxide",474049-73-5,5.678,1,matrix ID BlueBird 1,0,0,0,0,1,C1C[C@H](P(=O)([C@@H]1C2=CC=CC=C2)O)C3=CC=CC=C3
+BlueBird,method_1,"(?S)-4-(1,1-Dimethylethoxy)-?-[[(9H-fluoren-9-ylmethoxy)carbonyl]amino]benzenebutanoic_acid",204384-69-0,6.019,1,matrix ID BlueBird 1,0,0,1,1,1,CC(C)(C)OC1=CC=C(C=C1)CC[C@@H](C(=O)O)NC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+BlueBird,method_1,(R)-(-)-2-Methoxy-2-phenylethanol,17628-72-7,3.983,1,matrix ID BlueBird 1,1,1,1,1,1,CO[C@@H](CO)C1=CC=CC=C1
+BlueBird,method_1,"(S)-(-)-2-Amino-3-methyl-1,1-diphenyl-1-butanol",78603-95-9,3.412,1,matrix ID BlueBird 1,0,1,1,1,1,CC(C)[C@@H](C(C1=CC=CC=C1)(C2=CC=CC=C2)O)N
+BlueBird,method_1,(S)-Benzyl 2-(((S)-1-methoxy-4-methyl-1-oxopentan-2-yl)carbamoyl)pyrrolidine-1-carboxylate,2873-37-2,5.141,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C)C[C@@H](C(=O)OC)NC(=O)[C@@H]1CCCN1C(=O)OCC2=CC=CC=C2
+BlueBird,method_1,"1,1,1-Tris(4-hydroxyphenyl)ethane",27955-94-8,4.627,1,matrix ID BlueBird 1,1,1,1,0,0,CC(C1=CC=C(C=C1)O)(C2=CC=C(C=C2)O)C3=CC=C(C=C3)O
+BlueBird,method_1,"1,1,3-Triphenylpropargyl alcohol",1522-13-0,5.897,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)C#CC(C2=CC=CC=C2)(C3=CC=CC=C3)O
+BlueBird,method_1,"1,2-Bis(4-hydroxyphenyl)ethane-1,2-dione",33288-79-8,4.482,1,matrix ID BlueBird 1,1,0,1,0,0,C1=CC(=CC=C1C(=O)C(=O)C2=CC=C(C=C2)O)O
+BlueBird,method_1,"1,3-Bis(trifluoromethyl)-5-bromobenzene",328-70-1,6.098,1,matrix ID BlueBird 1,1,1,1,1,1,C1=C(C=C(C=C1C(F)(F)F)Br)C(F)(F)F
+BlueBird,method_1,"1,3-Butanediol-diacrylate",19485-03-1,5.0,1,matrix ID BlueBird 1,1,1,1,1,1,CC(CCOC(=O)C=C)OC(=O)C=C
+BlueBird,method_1,"1,3-Dimethyl 2-[(4-methoxyphenyl)methylene]propanedioate",7443-25-6,5.161,1,matrix ID BlueBird 1,1,1,1,1,1,COC1=CC=C(C=C1)C=C(C(=O)OC)C(=O)OC
+BlueBird,method_1,"1,3-Diphenylacetone_p-tosylhydrazone",19816-88-7,5.892,1,matrix ID BlueBird 1,0,0,0,1,1,CC1=CC=C(C=C1)S(=O)(=O)NN=C(CC2=CC=CC=C2)CC3=CC=CC=C3
+BlueBird,method_1,"1,4-Bis(bromomethyl)-2,3,5,6-tetrafluorobenzene_",776-40-9,5.895,1,matrix ID BlueBird 1,0,0,0,1,1,C(C1=C(C(=C(C(=C1F)F)CBr)F)F)Br
+BlueBird,method_1,"1,4-Cyclohexanedicarboxylic-acid",1076-97-7,3.53,1,matrix ID BlueBird 1,1,0,0,0,1,C1CC(CCC1C(=O)O)C(=O)O
+BlueBird,method_1,"1,4-Dibromo-2,3-butanedione",6305-43-7,3.506,1,matrix ID BlueBird 1,1,1,1,1,0,C(C(=O)C(=O)CBr)Br
+BlueBird,method_1,1-(4-Biphenyl)-1-ethanol,3562-73-0,5.167,1,matrix ID BlueBird 1,1,1,0,1,0,CC(C1=CC=C(C=C1)C2=CC=CC=C2)O
+BlueBird,method_1,"1-(9H-Fluoren-9-ylmethyl) (2S,4S)-4-[[(1,1-dimethylethoxy)carbonyl]amino]-1,2-pyrrolidinedicarboxylate_",221352-74-5,5.559,1,matrix ID BlueBird 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@H]1C[C@H](N(C1)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+BlueBird,method_1,1-(tert-Butoxycarbonyl)-4-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-piperazinecarboxylic_acid,218278-58-1,5.7,1,matrix ID BlueBird 1,0,0,1,1,1,CC(C)(C)OC(=O)N1CCN(CC1C(=O)O)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+BlueBird,method_1,1-BROMO-3-METHYLBUTANE,107-82-4,0.0,0,matrix ID BlueBird 1,1,1,1,1,1,CC(C)CCBr
+BlueBird,method_1,1-Benzofuran-5-carboxylic_acid,90721-27-0,4.429,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC2=C(C=CO2)C=C1C(=O)O
+BlueBird,method_1,1-Benzylpiperidine,2905-56-8,0.0,0,matrix ID BlueBird 1,1,1,1,1,1,C1CCN(CC1)CC2=CC=CC=C2
+BlueBird,method_1,1-Bromo-4-(trifluoromethoxy)benzene,407-14-7,5.937,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=CC=C1OC(F)(F)F)Br
+BlueBird,method_1,1-Bromopentanemethylbenzene,5153-40-2,6.696,1,matrix ID BlueBird 1,0,0,0,1,1,CC1=C(C(=C(C(=C1C)C)Br)C)C
+BlueBird,method_1,1-Phenyl-5-(trifluoromethyl)-1H-pyrazole-4-carboxylic_acid,98534-81-7,4.911,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)N2C(=C(C=N2)C(=O)O)C(F)(F)F
+BlueBird,method_1,1-Pyrenemethanol,24463-15-8,5.4,1,matrix ID BlueBird 1,0,0,1,1,1,C1=CC2=C3C(=C1)C=CC4=C(C=CC(=C43)C=C2)CO
+BlueBird,method_1,"1-Tosyl-2,5-dihydro-1H-pyrrole",16851-72-2,5.089,1,matrix ID BlueBird 1,0,1,1,1,1,CC1=CC=C(C=C1)S(=O)(=O)N2CC=CC2
+BlueBird,method_1,"2,2"",4,4""-Tetramethylbenzophenone",3478-88-4,6.309,1,matrix ID BlueBird 1,1,1,1,1,1,CC1=CC(=C(C=C1)C(=O)C2=C(C=C(C=C2)C)C)C
+BlueBird,method_1,"2,2,2-TRIFLUOROACETOPHENONE",434-45-7,4.383,1,matrix ID BlueBird 1,1,1,1,0,1,C1=CC=C(C=C1)C(=O)C(F)(F)F
+BlueBird,method_1,"2,3,4-Trifluorobenzoic acid",61079-72-9,4.672,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=C(C(=C1C(=O)O)F)F)F
+BlueBird,method_1,"2,3,6,7,10,11-Hexamethoxytriphenylene",808-57-1,5.531,1,matrix ID BlueBird 1,0,0,0,1,0,COC1=C(C=C2C(=C1)C3=CC(=C(C=C3C4=CC(=C(C=C24)OC)OC)OC)OC)OC
+BlueBird,method_1,"2,4,6-Tris(bromomethyl)mesitylene",21988-87-4,6.232,1,matrix ID BlueBird 1,0,0,0,1,0,CC1=C(C(=C(C(=C1CBr)C)CBr)C)CBr
+BlueBird,method_1,"2,4-Dichlorophenol",120-83-2,4.997,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=C(C=C1Cl)Cl)O
+BlueBird,method_1,"2,6-Bis[(4S)-4-phenyl-2-oxazolinyl]pyridine",174500-20-0,5.362,1,matrix ID BlueBird 1,0,0,0,1,1,C1[C@@H](N=C(O1)C2=NC(=CC=C2)C3=N[C@H](CO3)C4=CC=CC=C4)C5=CC=CC=C5
+BlueBird,method_1,"2,6-Dichloroiodobenzene",19230-28-5,6.045,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=C(C(=C1)Cl)I)Cl
+BlueBird,method_1,"2,6-Diisopropylphenol",2078-54-8,5.797,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C)C1=C(C(=CC=C1)C(C)C)O
+BlueBird,method_1,"2,6-Dimethoxy-1,4-benzoquinone",530-55-2,3.493,1,matrix ID BlueBird 1,0,0,0,1,1,COC1=CC(=O)C=C(C1=O)OC
+BlueBird,method_1,"2,6-Dimethoxybenzoyl_chloride",1989-53-3,3.843,1,matrix ID BlueBird 1,0,0,0,1,1,COC1=C(C(=CC=C1)OC)C(=O)Cl
+BlueBird,method_1,2-(3-Chlorophenoxy)propionic-acid,101-10-0,4.927,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C(=O)O)OC1=CC(=CC=C1)Cl
+BlueBird,method_1,2-(4-Chlorobenzoyl)benzoic_acid,85-56-3,5.135,1,matrix ID BlueBird 1,1,0,1,1,1,C1=CC=C(C(=C1)C(=O)C2=CC=C(C=C2)Cl)C(=O)O
+BlueBird,method_1,2-(Diphenylphosphino)benzoic-acid,17261-28-8,5.731,1,matrix ID BlueBird 1,0,0,1,1,1,C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=CC=CC=C3C(=O)O
+BlueBird,method_1,2-(Trifluoromethyl)pyridine-4-carboxylic_acid,131747-41-6,4.521,1,matrix ID BlueBird 1,1,1,1,0,0,C1=CN=C(C=C1C(=O)O)C(F)(F)F
+BlueBird,method_1,2-Amino-4-phenylphenol,1134-36-7,4.231,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC=C(C=C1)C2=CC(=C(C=C2)O)N
+BlueBird,method_1,2-Amino-6-bromopyridine,19798-81-3,4.028,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=NC(=C1)Br)N
+BlueBird,method_1,2-Benzyloxybenzoic_acid ,14389-86-7,5.023,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)COC2=CC=CC=C2C(=O)O
+BlueBird,method_1,"2-Bromo-2',6'-diisopropoxy-1,1'-biphenyl",870703-70-1,6.433,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C)OC1=C(C(=CC=C1)OC(C)C)C2=CC=CC=C2Br
+BlueBird,method_1,2-Bromo-5-(trifluoromethyl)benzaldehyde,102684-91-3,5.538,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=C(C=C1C(F)(F)F)C=O)Br
+BlueBird,method_1,2-Bromo-5-chlorotoluene,14495-51-3,6.108,1,matrix ID BlueBird 1,1,1,1,1,1,CC1=C(C=CC(=C1)Cl)Br
+BlueBird,method_1,2-Bromoanthraquinone,572-83-8,6.069,1,matrix ID BlueBird 1,0,0,1,1,1,C1=CC=C2C(=C1)C(=O)C3=C(C2=O)C=C(C=C3)Br
+BlueBird,method_1,2-Bromonaphthalen-1-ol,771-15-3,5.391,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C2C(=C1)C=CC(=C2O)Br
+BlueBird,method_1,2-Bromophenethylamine,65185-58-2,1.793,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C(=C1)CCN)Br
+BlueBird,method_1,2-Bromotoluene,95-46-5,5.8,1,matrix ID BlueBird 1,1,1,1,1,1,CC1=CC=CC=C1Br
+BlueBird,method_1,2-Hydroxy-4-(trifluoromethyl)aniline,454-82-0,5.242,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC(=C(C=C1C(F)(F)F)O)N
+BlueBird,method_1,2-Iodobenzaldehyde,26260-02-6,5.212,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C(=C1)C=O)I
+BlueBird,method_1,2-Iodobenzyl_bromide,40400-13-3,5.787,1,matrix ID BlueBird 1,0,0,1,1,1,C1=CC=C(C(=C1)CBr)I
+BlueBird,method_1,2-Iodopyridine,5029-67-4,4.373,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=NC(=C1)I
+BlueBird,method_1,2-Isopropylthioxanthone,5495-84-1,6.361,1,matrix ID BlueBird 1,0,0,0,1,1,CC(C)C1=CC2=C(C=C1)SC3=CC=CC=C3C2=O
+BlueBird,method_1,"2-Methyl-5-(trifluoromethyl)-1,3-benzoxazole",175785-41-8,5.205,1,matrix ID BlueBird 1,1,1,1,1,1,CC1=NC2=C(O1)C=CC(=C2)C(F)(F)F
+BlueBird,method_1,"3,3-Dimethyl-1-indanone",26465-81-6,5.04,1,matrix ID BlueBird 1,1,1,1,1,1,CC1(CC(=O)C2=CC=CC=C21)C
+BlueBird,method_1,"3,4,5-TRIBROMO-1H-PYRAZOLE",17635-44-8,4.899,1,matrix ID BlueBird 1,1,1,1,0,0,C1(=C(NN=C1Br)Br)Br
+BlueBird,method_1,"3,4,7,8-Tetramethyl-1,10-phenanthroline",1660-93-1,3.473,1,matrix ID BlueBird 1,0,0,0,1,1,CC1=CN=C2C(=C1C)C=CC3=C(C(=CN=C32)C)C
+BlueBird,method_1,"3,5-Di-tert-butylbenzoic acid",16225-26-6,5.809,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C)(C)C1=CC(=CC(=C1)C(=O)O)C(C)(C)C
+BlueBird,method_1,"3,5-Dibromotoluene",1611-92-3,6.23,1,matrix ID BlueBird 1,1,1,1,0,0,CC1=CC(=CC(=C1)Br)Br
+BlueBird,method_1,"3,5-Dimethylbenzoyl_chloride",6613-44-1,4.754,1,matrix ID BlueBird 1,1,1,1,1,1,CC1=CC(=CC(=C1)C(=O)Cl)C
+BlueBird,method_1,"3,6-Dimethoxy-9H-carbazole",57103-01-2,5.255,1,matrix ID BlueBird 1,0,1,1,1,1,COC1=CC2=C(C=C1)NC3=C2C=C(C=C3)OC
+BlueBird,method_1,3-(2-Naphthyl)acrylic_acid,51557-26-7,5.054,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC=C2C=C(C=CC2=C1)/C=C/C(=O)O
+BlueBird,method_1,3-(Phenylthio)propanoic-acid,5219-65-8,4.682,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)SCCC(=O)O
+BlueBird,method_1,3-(tert-Butoxycarbonyl)benzoic_acid,33704-19-7,5.126,1,matrix ID BlueBird 1,1,0,1,1,1,CC(C)(C)OC(=O)C1=CC=CC(=C1)C(=O)O
+BlueBird,method_1,3-Bromobenzoyl_chloride,1711-09-7,4.835,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=CC(=C1)Br)C(=O)Cl
+BlueBird,method_1,3-Bromopropionyl_chloride,15486-96-1,2.918,1,matrix ID BlueBird 1,1,1,1,1,1,C(CBr)C(=O)Cl
+BlueBird,method_1,3-Chloro-4-methoxyaniline,5345-54-0,3.019,1,matrix ID BlueBird 1,1,1,1,1,1,COC1=C(C=C(C=C1)N)Cl
+BlueBird,method_1,3-[[(9H-Fluoren-9-ylmethoxy)carbonyl]amino]-2-naphthalenecarboxylic acid,372159-75-6,6.491,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC=C2C=C(C(=CC2=C1)C(=O)O)NC(=O)OCC3C4=CC=CC=C4C5=CC=CC=C35
+BlueBird,method_1,"4,4',4''-Trimethoxytrityl chloride",49757-42-8,5.641,1,matrix ID BlueBird 1,1,0,0,1,1,COC1=CC=C(C=C1)C(C2=CC=C(C=C2)OC)(C3=CC=C(C=C3)OC)Cl
+BlueBird,method_1,"4,4'-Dihydroxybiphenyl",92-88-6,4.374,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC(=CC=C1C2=CC=C(C=C2)O)O
+BlueBird,method_1,"4,4'-Dimethoxybenzophenone",90-96-0,5.396,1,matrix ID BlueBird 1,0,0,0,1,1,COC1=CC=C(C=C1)C(=O)C2=CC=C(C=C2)OC
+BlueBird,method_1,"4,4?,4??-(1,3,5-TRIAZINE-2,4,6-TRIYL)TRIBENZALDEHYDE",443922-06-3,5.238,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC(=CC=C1C=O)C2=NC(=NC(=N2)C3=CC=C(C=C3)C=O)C4=CC=C(C=C4)C=O
+BlueBird,method_1,4-(Bromomethyl)benzoic_acid,6232-88-8,4.688,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC(=CC=C1CBr)C(=O)O
+BlueBird,method_1,4-(Hydroxymethyl)phenylacetic-acid,73401-74-8,3.398,1,matrix ID BlueBird 1,1,1,1,0,0,C1=CC(=CC=C1CC(=O)O)CO
+BlueBird,method_1,4-(Trifluoroacetyl)phenacyl-bromide,1980063-91-9,4.708,1,matrix ID BlueBird 1,1,1,1,0,0,C1=CC(=CC=C1C(=O)CBr)C(=O)C(F)(F)F
+BlueBird,method_1,4-(Trifluoromethyl)benzylamine,3300-51-4,0.0,0,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=CC=C1CN)C(F)(F)F
+BlueBird,method_1,"4-Bromo-3,5-dimethoxybenzoic acid",56518-42-4,4.778,1,matrix ID BlueBird 1,0,0,1,0,0,COC1=CC(=CC(=C1Br)OC)C(=O)O
+BlueBird,method_1,4-Bromo-L-phenylalanine,24250-84-8,3.24,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC(=CC=C1C[C@@H](C(=O)O)N)Br
+BlueBird,method_1,4-Chlorobenzenesulfonic_acid,98-66-8,4.811,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=CC=C1S(=O)(=O)O)Cl
+BlueBird,method_1,4-Chloropyridine-3-carboxylic_acid,10177-29-4,1.327,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CN=CC(=C1Cl)C(=O)O
+BlueBird,method_1,"4-Hydroxy-3,5-diiodobenzoic acid",618-76-8,4.728,1,matrix ID BlueBird 1,0,0,1,0,0,C1=C(C=C(C(=C1I)O)I)C(=O)O
+BlueBird,method_1,4-Hydroxyphthalic_acid,610-35-5,3.49,1,matrix ID BlueBird 1,1,0,1,0,0,C1=CC(=C(C=C1O)C(=O)O)C(=O)O
+BlueBird,method_1,4-Methoxybiphenyl,613-37-6,5.826,1,matrix ID BlueBird 1,0,1,1,1,1,COC1=CC=C(C=C1)C2=CC=CC=C2
+BlueBird,method_1,4-Methoxytriphenylamine,4316-51-2,6.436,1,matrix ID BlueBird 1,0,0,0,1,1,COC1=CC=C(C=C1)N(C2=CC=CC=C2)C3=CC=CC=C3
+BlueBird,method_1,4-tert-Butylbenzoyl_chloride,1710-98-1,5.176,1,matrix ID BlueBird 1,1,1,1,0,1,CC(C)(C)C1=CC=C(C=C1)C(=O)Cl
+BlueBird,method_1,"5,7-Dimethyl-[1,2,4]triazolo[1,5-a]pyrimidine-2-carboxylic acid",87253-62-1,3.115,1,matrix ID BlueBird 1,0,0,0,0,0,CC1=CC(=NC2=NC(=NN12)C(=O)O)C
+BlueBird,method_1,5-(Trifluoromethyl)indole,100846-24-0,5.375,1,matrix ID BlueBird 1,1,1,0,1,1,C1=CC2=C(C=CN2)C=C1C(F)(F)F
+BlueBird,method_1,5-(Trifluoromethyl)pyridine-2-carboxaldehyde,31224-82-5,3.629,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=NC=C1C(F)(F)F)C=O
+BlueBird,method_1,5-Bromo-2-furoic_acid,585-70-6,4.122,1,matrix ID BlueBird 1,1,1,1,0,0,C1=C(OC(=C1)Br)C(=O)O
+BlueBird,method_1,5-Bromo-2-phenylpyridine,27012-25-5,5.763,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)C2=NC=C(C=C2)Br
+BlueBird,method_1,"6,6'-Dibromo-1,1'-bi-2-naphthol",13185-00-7,6.045,1,matrix ID BlueBird 1,0,1,1,0,0,C1=CC2=C(C=CC(=C2C3=C(C=CC4=C3C=CC(=C4)Br)O)O)C=C1Br
+BlueBird,method_1,8-Isoquinolinecarboxaldehyde,787615-01-4,3.063,1,matrix ID BlueBird 1,1,0,1,1,1,C1=CC2=C(C=NC=C2)C(=C1)C=O
+BlueBird,method_1,Allyl-alpha-D-glucopyranoside,7464-56-4,0.0,0,matrix ID BlueBird 1,1,0,1,0,0,C=CCO[C@@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)O
+BlueBird,method_1,Aniline-2-sulfonic_acid,88-21-1,3.11,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC=C(C(=C1)N)S(=O)(=O)O
+BlueBird,method_1,Bis(diphenylphosphino)methane,2071-20-7,6.727,1,matrix ID BlueBird 1,0,0,0,1,1,C1=CC=C(C=C1)P(CP(C2=CC=CC=C2)C3=CC=CC=C3)C4=CC=CC=C4
+BlueBird,method_1,DL-beta-Phenylalanine,614-19-7,1.093,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC=C(C=C1)C(CC(=O)O)N
+BlueBird,method_1,Di-tert-butylcyclopentadiene,120937-44-2,0.0,0,matrix ID BlueBird 1,1,1,1,1,1,CC(C)(C)C1C=CC(=C1)C(C)(C)C
+BlueBird,method_1,Dibenzyl-malonate,15014-25-2,5.638,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)COC(=O)CC(=O)OCC2=CC=CC=C2
+BlueBird,method_1,Dibromomaleic-acid,608-37-7,4.937,1,matrix ID BlueBird 1,1,1,1,0,0,C(=C(\C(=O)O)/Br)(\C(=O)O)/Br
+BlueBird,method_1,Diethyl 4-Methoxyphenylphosphonate,3762-33-2,4.596,1,matrix ID BlueBird 1,1,1,1,1,1,CCOP(=O)(C1=CC=C(C=C1)OC)OCC
+BlueBird,method_1,Diethyl_dibutylmalonate,596-75-8,0.0,0,matrix ID BlueBird 1,1,1,1,1,1,CCCCC(CCCC)(C(=O)OCC)C(=O)OCC
+BlueBird,method_1,Diethyl_phenylmalonate,83-13-6,5.385,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)C(C1=CC=CC=C1)C(=O)OCC
+BlueBird,method_1,"Dimethyl 1,3-cyclohexadiene-1,4-dicarboxylate",1659-95-6,5.028,1,matrix ID BlueBird 1,0,0,0,1,1,COC(=O)C1=CC=C(CC1)C(=O)OC
+BlueBird,method_1,"Dimethyl 2,2'-bipyridine-4,4'-dicarboxylate",71071-46-0,5.269,1,matrix ID BlueBird 1,0,0,0,0,1,COC(=O)C1=CC(=NC=C1)C2=NC=CC(=C2)C(=O)OC
+BlueBird,method_1,Dimethyl-propargylmalonate,95124-07-5,0.0,0,matrix ID BlueBird 1,1,1,1,1,1,COC(=O)C(CC#C)C(=O)OC
+BlueBird,method_1,Ethyl 2-cyclohexanoneacetate,24731-17-7,4.697,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)CC1CCCCC1=O
+BlueBird,method_1,Ethyl 3-thiopheneacetate,37784-63-7,5.044,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)CC1=CSC=C1
+BlueBird,method_1,"Ethyl 4,4,4-trifluoroacetoacetate",372-31-6,3.849,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)CC(=O)C(F)(F)F
+BlueBird,method_1,Ethyl mesitylglyoxylate,5524-57-2,5.691,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)C(=O)C1=C(C=C(C=C1C)C)C
+BlueBird,method_1,Ethyl-3-oxohexanoate,3249-68-1,4.619,1,matrix ID BlueBird 1,1,1,1,1,1,CCCC(=O)CC(=O)OCC
+BlueBird,method_1,Ethyl-4-bromocrotonate,37746-78-4,4.986,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)/C=C/CBr
+BlueBird,method_1,Ethyl-4-iodobenzoate,51934-41-9,5.872,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)C1=CC=C(C=C1)I
+BlueBird,method_1,FMOC-D-ORN(ALOC)-OH,214750-74-0,5.271,1,matrix ID BlueBird 1,1,0,1,0,1,C=CCOC(=O)NCCC[C@H](C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+BlueBird,method_1,Flavanone,487-26-3,5.511,1,matrix ID BlueBird 1,0,1,1,1,1,C1C(OC2=CC=CC=C2C1=O)C3=CC=CC=C3
+BlueBird,method_1,Flufenamic-acid,530-78-9,5.775,1,matrix ID BlueBird 1,1,1,1,0,1,C1=CC=C(C(=C1)C(=O)O)NC2=CC=CC(=C2)C(F)(F)F
+BlueBird,method_1,Hematein,475-25-2,4.766,1,matrix ID BlueBird 1,0,0,0,0,0,C1C2=CC(=C(C=C2C3=C4C=CC(=O)C(=C4OCC31O)O)O)O
+BlueBird,method_1,METHYL 2-PHTHALIMIDOACETATE,23244-58-8,4.552,1,matrix ID BlueBird 1,0,1,1,1,1,COC(=O)CN1C(=O)C2=CC=CC=C2C1=O
+BlueBird,method_1,"Methyl 6-oxo-1,6-dihydropyridine-2-carboxylate",30062-34-1,2.95,1,matrix ID BlueBird 1,1,1,1,1,1,COC(=O)C1=CC=CC(=O)N1
+BlueBird,method_1,"Methyl-2,6-dimethoxybenzoate",2065-27-2,4.678,1,matrix ID BlueBird 1,1,1,1,1,1,COC1=C(C(=CC=C1)OC)C(=O)OC
+BlueBird,method_1,Methyl-3-bromo-4-iodobenzoate,249647-24-3,5.904,1,matrix ID BlueBird 1,0,1,0,1,1,COC(=O)C1=CC(=C(C=C1)I)Br
+BlueBird,method_1,"Methyl-6-Oxo-1,6-dihydropyridazine-3-carboxylate",63001-30-9,2.406,1,matrix ID BlueBird 1,0,0,1,0,0,COC(=O)C1=NNC(=O)C=C1
+BlueBird,method_1,Methyl-diethylphosphonoacetate,1067-74-9,3.718,1,matrix ID BlueBird 1,1,1,1,1,1,CCOP(=O)(CC(=O)OC)OCC
+BlueBird,method_1,N(im)-Trityl-L-histidine,35146-32-8,3.928,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC=C(C=C1)C(C2=CC=CC=C2)(C3=CC=CC=C3)N4C=C(N=C4)C[C@@H](C(=O)O)N
+BlueBird,method_1,"N,N-Dimethyl-L-phenylalanine",17469-89-5,2.119,1,matrix ID BlueBird 1,0,0,0,0,0,CN(C)[C@@H](CC1=CC=CC=C1)C(=O)O
+BlueBird,method_1,N-Acetyl-L-tryptophan,1218-34-4,3.949,1,matrix ID BlueBird 1,1,0,1,0,0,CC(=O)N[C@@H](CC1=CNC2=CC=CC=C21)C(=O)O
+BlueBird,method_1,N-Benzylidenebenzylamine,780-25-6,4.377,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)CN=CC2=CC=CC=C2
+BlueBird,method_1,N-Phthaloylglycine,4702-13-0,4.073,1,matrix ID BlueBird 1,1,1,1,0,1,C1=CC=C2C(=C1)C(=O)N(C2=O)CC(=O)O
+BlueBird,method_1,"N-[(1,1-Dimethylethoxy)carbonyl]-L-histidine methyl_ester",2488-14-4,1.875,1,matrix ID BlueBird 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@@H](CC1=CN=CN1)C(=O)OC
+BlueBird,method_1,N-[(Phenylmethoxy)carbonyl]-O-(phenylmethyl)-L-serine_,20806-43-3,5.197,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)COC[C@@H](C(=O)O)NC(=O)OCC2=CC=CC=C2
+BlueBird,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-methyl-D-lysine",1315449-94-5,5.699,1,matrix ID BlueBird 1,0,1,1,1,1,C[C@@](CCCCNC(=O)OC(C)(C)C)(C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+BlueBird,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(phenylmethoxy)carbonyl]-L-lysine",2389-60-8,5.033,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C)(C)OC(=O)NCCCC[C@@H](C(=O)O)NC(=O)OCC1=CC=CC=C1
+BlueBird,method_1,Nalpha-[(9H-Fluoren-9-ylmethoxy)carbonyl]-L-threonine tert-Butyl-Ester,120791-76-6,5.649,1,matrix ID BlueBird 1,1,1,1,1,1,C[C@H]([C@@H](C(=O)OC(C)(C)C)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13)O
+BlueBird,method_1,Phenyl-benzoate,93-99-2,5.68,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)C(=O)OC2=CC=CC=C2
+BlueBird,method_1,Pindolol,13523-86-9,2.175,1,matrix ID BlueBird 1,0,0,0,1,1,CC(C)NCC(COC1=CC=CC2=C1C=CN2)O
+BlueBird,method_1,Protocatechuic_acid,99-50-3,2.834,1,matrix ID BlueBird 1,1,1,1,0,0,C1=CC(=C(C=C1C(=O)O)O)O
+BlueBird,method_1,Suberic_acid_monomethyl_ester,3946-32-5,4.292,1,matrix ID BlueBird 1,1,0,1,0,1,COC(=O)CCCCCCC(=O)O
+BlueBird,method_1,Z-D-Glu-OBzl,65706-99-2,5.091,1,matrix ID BlueBird 1,0,0,0,1,1,C1=CC=C(C=C1)COC(=O)[C@@H](CCC(=O)O)NC(=O)OCC2=CC=CC=C2
+BlueBird,method_1,Z-D-Phg-OH,17609-52-8,5.081,1,matrix ID BlueBird 1,1,0,1,1,1,C1=CC=C(C=C1)COC(=O)N[C@H](C2=CC=CC=C2)C(=O)O
+BlueBird,method_1,"meso-1,2-Dibromo-1,2-diphenylethane",13440-24-9,5.994,1,matrix ID BlueBird 1,0,0,0,1,0,C1=CC=C(C=C1)C(C(C2=CC=CC=C2)Br)Br
+BlueBird,method_1,mono-tert-Butyl_succinate,15026-17-2,4.186,1,matrix ID BlueBird 1,1,1,1,0,0,CC(C)(C)OC(=O)CCC(=O)O
+BlueBird,method_1,pentafluorobenzyl-bromide,1765-40-8,5.716,1,matrix ID BlueBird 1,1,1,1,1,1,C(C1=C(C(=C(C(=C1F)F)F)F)F)Br
+BlueBird,method_1,"trans-1,2-Bis(phenylsulfonyl)ethylene",963-16-6,5.192,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC=C(C=C1)S(=O)(=O)/C=C/S(=O)(=O)C2=CC=CC=C2
+BlueBird,method_1,trans-4-(9-Fluorenylmethyloxycarbonylaminomethyl)-cyclohexanoic_acid,188715-40-4,5.311,1,matrix ID BlueBird 1,0,0,0,0,0,C1CC(CCC1CNC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+BlueBird,method_1,trans-Aconitic-acid,4023-65-8,1.606,1,matrix ID BlueBird 1,1,1,1,0,0,C(/C(=C\C(=O)O)/C(=O)O)C(=O)O
+PFP,method_1,(1-BROMOETHYL)BENZENE,585-71-7,3.927,1,matrix ID PFP 1,1,1,1,1,1,CC(C1=CC=CC=C1)Br
+PFP,method_1,"(2,6-Dioxo-piperidin-4-yl)-acetic_acid",6258-28-2,0.0,0,matrix ID PFP 1,0,0,1,0,0,C1C(CC(=O)NC1=O)CC(=O)O
+PFP,method_1,(2-BENZYLOXYCARBONYLAMINO-ACETYLAMINO)-ACETIC_ACID,2566-19-0,3.676,1,matrix ID PFP 1,0,0,1,0,0,C1=CC=C(C=C1)COC(=O)NCC(=O)NCC(=O)O
+PFP,method_1,(2S)-2-{[(9H-fluoren-9-ylmethoxy)carbonyl]amino}-4-hydroxybutanoic acid,172525-85-8,3.301,1,matrix ID PFP 1,0,0,1,0,0,C1=CC=C2C(=C1)C(C3=CC=CC=C32)COC(=O)N[C@@H](CCO)C(=O)O
+PFP,method_1,"(2S,5S)-1-Hydroxy-2,5-diphenylphospholane 1-oxide",474049-73-5,0.0,0,matrix ID PFP 1,0,0,0,0,1,C1C[C@H](P(=O)([C@@H]1C2=CC=CC=C2)O)C3=CC=CC=C3
+PFP,method_1,"(?S)-4-(1,1-Dimethylethoxy)-?-[[(9H-fluoren-9-ylmethoxy)carbonyl]amino]benzenebutanoic_acid",204384-69-0,5.566,1,matrix ID PFP 1,0,0,1,1,1,CC(C)(C)OC1=CC=C(C=C1)CC[C@@H](C(=O)O)NC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+PFP,method_1,(R)-(-)-2-Methoxy-2-phenylethanol,17628-72-7,5.464,1,matrix ID PFP 1,1,1,1,1,1,CO[C@@H](CO)C1=CC=CC=C1
+PFP,method_1,"(S)-(-)-2-Amino-3-methyl-1,1-diphenyl-1-butanol",78603-95-9,3.94,1,matrix ID PFP 1,0,1,1,1,1,CC(C)[C@@H](C(C1=CC=CC=C1)(C2=CC=CC=C2)O)N
+PFP,method_1,(S)-Benzyl 2-(((S)-1-methoxy-4-methyl-1-oxopentan-2-yl)carbamoyl)pyrrolidine-1-carboxylate,2873-37-2,4.985,1,matrix ID PFP 1,1,1,1,1,1,CC(C)C[C@@H](C(=O)OC)NC(=O)[C@@H]1CCCN1C(=O)OCC2=CC=CC=C2
+PFP,method_1,"1,1,1-Tris(4-hydroxyphenyl)ethane",27955-94-8,4.585,1,matrix ID PFP 1,1,1,1,0,0,CC(C1=CC=C(C=C1)O)(C2=CC=C(C=C2)O)C3=CC=C(C=C3)O
+PFP,method_1,"1,1,3-Triphenylpropargyl alcohol",1522-13-0,4.48,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C(C=C1)C#CC(C2=CC=CC=C2)(C3=CC=CC=C3)O
+PFP,method_1,"1,2-Bis(4-hydroxyphenyl)ethane-1,2-dione",33288-79-8,5.79,1,matrix ID PFP 1,1,0,1,0,0,C1=CC(=CC=C1C(=O)C(=O)C2=CC=C(C=C2)O)O
+PFP,method_1,"1,3-Bis(trifluoromethyl)-5-bromobenzene",328-70-1,5.872,1,matrix ID PFP 1,1,1,1,1,1,C1=C(C=C(C=C1C(F)(F)F)Br)C(F)(F)F
+PFP,method_1,"1,3-Butanediol-diacrylate",19485-03-1,5.198,1,matrix ID PFP 1,1,1,1,1,1,CC(CCOC(=O)C=C)OC(=O)C=C
+PFP,method_1,"1,3-Dimethyl 2-[(4-methoxyphenyl)methylene]propanedioate",7443-25-6,3.099,1,matrix ID PFP 1,1,1,1,1,1,COC1=CC=C(C=C1)C=C(C(=O)OC)C(=O)OC
+PFP,method_1,"1,3-Diphenylacetone_p-tosylhydrazone",19816-88-7,5.264,1,matrix ID PFP 1,0,0,0,1,1,CC1=CC=C(C=C1)S(=O)(=O)NN=C(CC2=CC=CC=C2)CC3=CC=CC=C3
+PFP,method_1,"1,4-Bis(bromomethyl)-2,3,5,6-tetrafluorobenzene_",776-40-9,5.595,1,matrix ID PFP 1,0,0,0,1,1,C(C1=C(C(=C(C(=C1F)F)CBr)F)F)Br
+PFP,method_1,"1,4-Cyclohexanedicarboxylic-acid",1076-97-7,4.829,1,matrix ID PFP 1,1,0,0,0,1,C1CC(CCC1C(=O)O)C(=O)O
+PFP,method_1,"1,4-Dibromo-2,3-butanedione",6305-43-7,3.027,1,matrix ID PFP 1,1,1,1,1,0,C(C(=O)C(=O)CBr)Br
+PFP,method_1,1-(4-Biphenyl)-1-ethanol,3562-73-0,4.951,1,matrix ID PFP 1,1,1,0,1,0,CC(C1=CC=C(C=C1)C2=CC=CC=C2)O
+PFP,method_1,"1-(9H-Fluoren-9-ylmethyl) (2S,4S)-4-[[(1,1-dimethylethoxy)carbonyl]amino]-1,2-pyrrolidinedicarboxylate_",221352-74-5,5.201,1,matrix ID PFP 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@H]1C[C@H](N(C1)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+PFP,method_1,1-(tert-Butoxycarbonyl)-4-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-piperazinecarboxylic_acid,218278-58-1,5.347,1,matrix ID PFP 1,0,0,1,1,1,CC(C)(C)OC(=O)N1CCN(CC1C(=O)O)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+PFP,method_1,1-BROMO-3-METHYLBUTANE,107-82-4,0.0,0,matrix ID PFP 1,1,1,1,1,1,CC(C)CCBr
+PFP,method_1,1-Benzofuran-5-carboxylic_acid,90721-27-0,4.373,1,matrix ID PFP 1,0,0,0,0,0,C1=CC2=C(C=CO2)C=C1C(=O)O
+PFP,method_1,1-Benzylpiperidine,2905-56-8,2.972,1,matrix ID PFP 1,1,1,1,1,1,C1CCN(CC1)CC2=CC=CC=C2
+PFP,method_1,1-Bromo-4-(trifluoromethoxy)benzene,407-14-7,5.208,1,matrix ID PFP 1,1,1,1,1,1,C1=CC(=CC=C1OC(F)(F)F)Br
+PFP,method_1,1-Bromopentanemethylbenzene,5153-40-2,6.202,1,matrix ID PFP 1,0,0,0,1,1,CC1=C(C(=C(C(=C1C)C)Br)C)C
+PFP,method_1,1-Phenyl-5-(trifluoromethyl)-1H-pyrazole-4-carboxylic_acid,98534-81-7,4.674,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C(C=C1)N2C(=C(C=N2)C(=O)O)C(F)(F)F
+PFP,method_1,1-Pyrenemethanol,24463-15-8,5.041,1,matrix ID PFP 1,0,0,1,1,1,C1=CC2=C3C(=C1)C=CC4=C(C=CC(=C43)C=C2)CO
+PFP,method_1,"1-Tosyl-2,5-dihydro-1H-pyrrole",16851-72-2,4.944,1,matrix ID PFP 1,0,1,1,1,1,CC1=CC=C(C=C1)S(=O)(=O)N2CC=CC2
+PFP,method_1,"2,2"",4,4""-Tetramethylbenzophenone",3478-88-4,5.821,1,matrix ID PFP 1,1,1,1,1,1,CC1=CC(=C(C=C1)C(=O)C2=C(C=C(C=C2)C)C)C
+PFP,method_1,"2,2,2-TRIFLUOROACETOPHENONE",434-45-7,4.355,1,matrix ID PFP 1,1,1,1,0,1,C1=CC=C(C=C1)C(=O)C(F)(F)F
+PFP,method_1,"2,3,4-Trifluorobenzoic acid",61079-72-9,4.155,1,matrix ID PFP 1,1,1,1,1,1,C1=CC(=C(C(=C1C(=O)O)F)F)F
+PFP,method_1,"2,3,6,7,10,11-Hexamethoxytriphenylene",808-57-1,5.448,1,matrix ID PFP 1,0,0,0,1,0,COC1=C(C=C2C(=C1)C3=CC(=C(C=C3C4=CC(=C(C=C24)OC)OC)OC)OC)OC
+PFP,method_1,"2,4,6-Tris(bromomethyl)mesitylene",21988-87-4,5.683,1,matrix ID PFP 1,0,0,0,1,0,CC1=C(C(=C(C(=C1CBr)C)CBr)C)CBr
+PFP,method_1,"2,4-Dichlorophenol",120-83-2,4.854,1,matrix ID PFP 1,1,1,1,1,1,C1=CC(=C(C=C1Cl)Cl)O
+PFP,method_1,"2,6-Bis[(4S)-4-phenyl-2-oxazolinyl]pyridine",174500-20-0,5.172,1,matrix ID PFP 1,0,0,0,1,1,C1[C@@H](N=C(O1)C2=NC(=CC=C2)C3=N[C@H](CO3)C4=CC=CC=C4)C5=CC=CC=C5
+PFP,method_1,"2,6-Dichloroiodobenzene",19230-28-5,5.586,1,matrix ID PFP 1,1,1,1,1,1,C1=CC(=C(C(=C1)Cl)I)Cl
+PFP,method_1,"2,6-Diisopropylphenol",2078-54-8,5.459,1,matrix ID PFP 1,1,1,1,1,1,CC(C)C1=C(C(=CC=C1)C(C)C)O
+PFP,method_1,"2,6-Dimethoxy-1,4-benzoquinone",530-55-2,3.447,1,matrix ID PFP 1,0,0,0,1,1,COC1=CC(=O)C=C(C1=O)OC
+PFP,method_1,"2,6-Dimethoxybenzoyl_chloride",1989-53-3,3.663,1,matrix ID PFP 1,0,0,0,1,1,COC1=C(C(=CC=C1)OC)C(=O)Cl
+PFP,method_1,2-(3-Chlorophenoxy)propionic-acid,101-10-0,4.514,1,matrix ID PFP 1,1,1,1,1,1,CC(C(=O)O)OC1=CC(=CC=C1)Cl
+PFP,method_1,2-(4-Chlorobenzoyl)benzoic_acid,85-56-3,4.882,1,matrix ID PFP 1,1,0,1,1,1,C1=CC=C(C(=C1)C(=O)C2=CC=C(C=C2)Cl)C(=O)O
+PFP,method_1,2-(Diphenylphosphino)benzoic-acid,17261-28-8,5.34,1,matrix ID PFP 1,0,0,1,1,1,C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=CC=CC=C3C(=O)O
+PFP,method_1,2-(Trifluoromethyl)pyridine-4-carboxylic_acid,131747-41-6,3.656,1,matrix ID PFP 1,1,1,1,0,0,C1=CN=C(C=C1C(=O)O)C(F)(F)F
+PFP,method_1,2-Amino-4-phenylphenol,1134-36-7,5.338,1,matrix ID PFP 1,0,0,1,0,0,C1=CC=C(C=C1)C2=CC(=C(C=C2)O)N
+PFP,method_1,2-Amino-6-bromopyridine,19798-81-3,3.885,1,matrix ID PFP 1,1,1,1,1,1,C1=CC(=NC(=C1)Br)N
+PFP,method_1,2-Benzyloxybenzoic_acid,14389-86-7,4.889,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C(C=C1)COC2=CC=CC=C2C(=O)O
+PFP,method_1,"2-Bromo-2',6'-diisopropoxy-1,1'-biphenyl",870703-70-1,6.072,1,matrix ID PFP 1,1,1,1,1,1,CC(C)OC1=C(C(=CC=C1)OC(C)C)C2=CC=CC=C2Br
+PFP,method_1,2-Bromo-5-(trifluoromethyl)benzaldehyde,102684-91-3,5.384,1,matrix ID PFP 1,1,1,1,1,1,C1=CC(=C(C=C1C(F)(F)F)C=O)Br
+PFP,method_1,2-Bromo-5-chlorotoluene,14495-51-3,3.237,1,matrix ID PFP 1,1,1,1,1,1,CC1=C(C=CC(=C1)Cl)Br
+PFP,method_1,2-Bromoanthraquinone,572-83-8,5.589,1,matrix ID PFP 1,0,0,1,1,1,C1=CC=C2C(=C1)C(=O)C3=C(C2=O)C=C(C=C3)Br
+PFP,method_1,2-Bromonaphthalen-1-ol,771-15-3,5.236,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C2C(=C1)C=CC(=C2O)Br
+PFP,method_1,2-Bromophenethylamine,65185-58-2,3.177,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C(C(=C1)CCN)Br
+PFP,method_1,2-Bromotoluene,95-46-5,5.409,1,matrix ID PFP 1,1,1,1,1,1,CC1=CC=CC=C1Br
+PFP,method_1,2-Hydroxy-4-(trifluoromethyl)aniline,454-82-0,4.598,1,matrix ID PFP 1,0,0,1,0,0,C1=CC(=C(C=C1C(F)(F)F)O)N
+PFP,method_1,2-Iodobenzaldehyde,26260-02-6,4.958,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C(C(=C1)C=O)I
+PFP,method_1,2-Iodobenzyl_bromide,40400-13-3,3.862,1,matrix ID PFP 1,0,0,1,1,1,C1=CC=C(C(=C1)CBr)I
+PFP,method_1,2-Iodopyridine,5029-67-4,4.131,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=NC(=C1)I
+PFP,method_1,2-Isopropylthioxanthone,5495-84-1,5.888,1,matrix ID PFP 1,0,0,0,1,1,CC(C)C1=CC2=C(C=C1)SC3=CC=CC=C3C2=O
+PFP,method_1,"2-Methyl-5-(trifluoromethyl)-1,3-benzoxazole",175785-41-8,5.112,1,matrix ID PFP 1,1,1,1,1,1,CC1=NC2=C(O1)C=CC(=C2)C(F)(F)F
+PFP,method_1,"3,3-Dimethyl-1-indanone",26465-81-6,4.854,1,matrix ID PFP 1,1,1,1,1,1,CC1(CC(=O)C2=CC=CC=C21)C
+PFP,method_1,"3,4,5-TRIBROMO-1H-PYRAZOLE",17635-44-8,4.747,1,matrix ID PFP 1,1,1,1,0,0,C1(=C(NN=C1Br)Br)Br
+PFP,method_1,"3,4,7,8-Tetramethyl-1,10-phenanthroline",1660-93-1,3.915,1,matrix ID PFP 1,0,0,0,1,1,CC1=CN=C2C(=C1C)C=CC3=C(C(=CN=C32)C)C
+PFP,method_1,"3,5-Di-tert-butylbenzoic acid",16225-26-6,5.448,1,matrix ID PFP 1,1,1,1,1,1,CC(C)(C)C1=CC(=CC(=C1)C(=O)O)C(C)(C)C
+PFP,method_1,"3,5-Dibromotoluene",1611-92-3,3.23,1,matrix ID PFP 1,1,1,1,0,0,CC1=CC(=CC(=C1)Br)Br
+PFP,method_1,"3,5-Dimethylbenzoyl_chloride",6613-44-1,4.64,1,matrix ID PFP 1,1,1,1,1,1,CC1=CC(=CC(=C1)C(=O)Cl)C
+PFP,method_1,"3,6-Dimethoxy-9H-carbazole",57103-01-2,5.178,1,matrix ID PFP 1,0,1,1,1,1,COC1=CC2=C(C=C1)NC3=C2C=C(C=C3)OC
+PFP,method_1,3-(2-Naphthyl)acrylic_acid,51557-26-7,4.88,1,matrix ID PFP 1,0,0,1,0,0,C1=CC=C2C=C(C=CC2=C1)/C=C/C(=O)O
+PFP,method_1,3-(Phenylthio)propanoic-acid,5219-65-8,4.525,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C(C=C1)SCCC(=O)O
+PFP,method_1,3-(tert-Butoxycarbonyl)benzoic_acid,33704-19-7,4.895,1,matrix ID PFP 1,1,0,1,1,1,CC(C)(C)OC(=O)C1=CC=CC(=C1)C(=O)O
+PFP,method_1,3-Bromobenzoyl_chloride,1711-09-7,4.514,1,matrix ID PFP 1,1,1,1,1,1,C1=CC(=CC(=C1)Br)C(=O)Cl
+PFP,method_1,3-Bromopropionyl_chloride,15486-96-1,5.916,1,matrix ID PFP 1,1,1,1,1,1,C(CBr)C(=O)Cl
+PFP,method_1,3-Chloro-4-methoxyaniline,5345-54-0,3.047,1,matrix ID PFP 1,1,1,1,1,1,COC1=C(C=C(C=C1)N)Cl
+PFP,method_1,3-[[(9H-Fluoren-9-ylmethoxy)carbonyl]amino]-2-naphthalenecarboxylic acid,372159-75-6,5.821,1,matrix ID PFP 1,0,0,0,0,0,C1=CC=C2C=C(C(=CC2=C1)C(=O)O)NC(=O)OCC3C4=CC=CC=C4C5=CC=CC=C35
+PFP,method_1,"4,4',4''-Trimethoxytrityl chloride",49757-42-8,5.637,1,matrix ID PFP 1,1,0,0,1,1,COC1=CC=C(C=C1)C(C2=CC=C(C=C2)OC)(C3=CC=C(C=C3)OC)Cl
+PFP,method_1,"4,4'-Dihydroxybiphenyl",92-88-6,4.349,1,matrix ID PFP 1,0,0,1,0,0,C1=CC(=CC=C1C2=CC=C(C=C2)O)O
+PFP,method_1,"4,4'-Dimethoxybenzophenone",90-96-0,5.198,1,matrix ID PFP 1,0,0,0,1,1,COC1=CC=C(C=C1)C(=O)C2=CC=C(C=C2)OC
+PFP,method_1,"4,4?,4??-(1,3,5-TRIAZINE-2,4,6-TRIYL)TRIBENZALDEHYDE",443922-06-3,5.079,1,matrix ID PFP 1,0,0,0,0,0,C1=CC(=CC=C1C=O)C2=NC(=NC(=N2)C3=CC=C(C=C3)C=O)C4=CC=C(C=C4)C=O
+PFP,method_1,4-(Bromomethyl)benzoic_acid,6232-88-8,4.519,1,matrix ID PFP 1,0,0,1,0,0,C1=CC(=CC=C1CBr)C(=O)O
+PFP,method_1,4-(Hydroxymethyl)phenylacetic-acid,73401-74-8,5.497,1,matrix ID PFP 1,1,1,1,0,0,C1=CC(=CC=C1CC(=O)O)CO
+PFP,method_1,4-(Trifluoroacetyl)phenacyl-bromide,1980063-91-9,4.658,1,matrix ID PFP 1,1,1,1,0,0,C1=CC(=CC=C1C(=O)CBr)C(=O)C(F)(F)F
+PFP,method_1,4-(Trifluoromethyl)benzylamine,3300-51-4,3.315,1,matrix ID PFP 1,1,1,1,1,1,C1=CC(=CC=C1CN)C(F)(F)F
+PFP,method_1,"4-Bromo-3,5-dimethoxybenzoic acid",56518-42-4,4.615,1,matrix ID PFP 1,0,0,1,0,0,COC1=CC(=CC(=C1Br)OC)C(=O)O
+PFP,method_1,4-Bromo-L-phenylalanine,24250-84-8,0.0,0,matrix ID PFP 1,0,0,0,0,0,C1=CC(=CC=C1C[C@@H](C(=O)O)N)Br
+PFP,method_1,4-Chlorobenzenesulfonic_acid,98-66-8,2.148,1,matrix ID PFP 1,1,1,1,1,1,C1=CC(=CC=C1S(=O)(=O)O)Cl
+PFP,method_1,4-Chloropyridine-3-carboxylic_acid,10177-29-4,1.342,1,matrix ID PFP 1,0,0,1,0,0,C1=CN=CC(=C1Cl)C(=O)O
+PFP,method_1,"4-Hydroxy-3,5-diiodobenzoic acid",618-76-8,4.482,1,matrix ID PFP 1,0,0,1,0,0,C1=C(C=C(C(=C1I)O)I)C(=O)O
+PFP,method_1,4-Hydroxyphthalic_acid,610-35-5,1.768,1,matrix ID PFP 1,1,0,1,0,0,C1=CC(=C(C=C1O)C(=O)O)C(=O)O
+PFP,method_1,4-Methoxybiphenyl,613-37-6,5.52,1,matrix ID PFP 1,0,1,1,1,1,COC1=CC=C(C=C1)C2=CC=CC=C2
+PFP,method_1,4-Methoxytriphenylamine,4316-51-2,5.874,1,matrix ID PFP 1,0,0,0,1,1,COC1=CC=C(C=C1)N(C2=CC=CC=C2)C3=CC=CC=C3
+PFP,method_1,4-tert-Butylbenzoyl_chloride,1710-98-1,4.945,1,matrix ID PFP 1,1,1,1,0,1,CC(C)(C)C1=CC=C(C=C1)C(=O)Cl
+PFP,method_1,"5,7-Dimethyl-[1,2,4]triazolo[1,5-a]pyrimidine-2-carboxylic acid",87253-62-1,0.0,0,matrix ID PFP 1,0,0,0,0,0,CC1=CC(=NC2=NC(=NN12)C(=O)O)C
+PFP,method_1,5-(Trifluoromethyl)indole,100846-24-0,5.318,1,matrix ID PFP 1,1,1,0,1,1,C1=CC2=C(C=CN2)C=C1C(F)(F)F
+PFP,method_1,5-(Trifluoromethyl)pyridine-2-carboxaldehyde,31224-82-5,3.624,1,matrix ID PFP 1,1,1,1,1,1,C1=CC(=NC=C1C(F)(F)F)C=O
+PFP,method_1,5-Bromo-2-furoic_acid,585-70-6,3.206,1,matrix ID PFP 1,1,1,1,0,0,C1=C(OC(=C1)Br)C(=O)O
+PFP,method_1,5-Bromo-2-phenylpyridine,27012-25-5,5.416,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C(C=C1)C2=NC=C(C=C2)Br
+PFP,method_1,"6,6'-Dibromo-1,1'-bi-2-naphthol",13185-00-7,5.583,1,matrix ID PFP 1,0,1,1,0,0,C1=CC2=C(C=CC(=C2C3=C(C=CC4=C3C=CC(=C4)Br)O)O)C=C1Br
+PFP,method_1,8-Isoquinolinecarboxaldehyde,787615-01-4,4.702,1,matrix ID PFP 1,1,0,1,1,1,C1=CC2=C(C=NC=C2)C(=C1)C=O
+PFP,method_1,Allyl-alpha-D-glucopyranoside,7464-56-4,0.0,0,matrix ID PFP 1,1,0,1,0,0,C=CCO[C@@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)O
+PFP,method_1,Aniline-2-sulfonic_acid,88-21-1,0.0,0,matrix ID PFP 1,0,0,1,0,0,C1=CC=C(C(=C1)N)S(=O)(=O)O
+PFP,method_1,Bis(diphenylphosphino)methane,2071-20-7,6.087,1,matrix ID PFP 1,0,0,0,1,1,C1=CC=C(C=C1)P(CP(C2=CC=CC=C2)C3=CC=CC=C3)C4=CC=CC=C4
+PFP,method_1,DL-beta-Phenylalanine,614-19-7,0.0,0,matrix ID PFP 1,0,0,0,0,0,C1=CC=C(C=C1)C(CC(=O)O)N
+PFP,method_1,Di-tert-butylcyclopentadiene,120937-44-2,4.495,1,matrix ID PFP 1,1,1,1,1,1,CC(C)(C)C1C=CC(=C1)C(C)(C)C
+PFP,method_1,Dibenzyl-malonate,15014-25-2,5.438,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C(C=C1)COC(=O)CC(=O)OCC2=CC=CC=C2
+PFP,method_1,Dibromomaleic-acid,608-37-7,2.41,1,matrix ID PFP 1,1,1,1,0,0,C(=C(\C(=O)O)/Br)(\C(=O)O)/Br
+PFP,method_1,Diethyl 4-Methoxyphenylphosphonate,3762-33-2,5.367,1,matrix ID PFP 1,1,1,1,1,1,CCOP(=O)(C1=CC=C(C=C1)OC)OCC
+PFP,method_1,Diethyl_dibutylmalonate,596-75-8,5.916,1,matrix ID PFP 1,1,1,1,1,1,CCCCC(CCCC)(C(=O)OCC)C(=O)OCC
+PFP,method_1,Diethyl_phenylmalonate,83-13-6,5.198,1,matrix ID PFP 1,1,1,1,1,1,CCOC(=O)C(C1=CC=CC=C1)C(=O)OCC
+PFP,method_1,"Dimethyl 1,3-cyclohexadiene-1,4-dicarboxylate",1659-95-6,5.562,1,matrix ID PFP 1,0,0,0,1,1,COC(=O)C1=CC=C(CC1)C(=O)OC
+PFP,method_1,"Dimethyl 2,2'-bipyridine-4,4'-dicarboxylate",71071-46-0,4.999,1,matrix ID PFP 1,0,0,0,0,1,COC(=O)C1=CC(=NC=C1)C2=NC=CC(=C2)C(=O)OC
+PFP,method_1,Dimethyl-propargylmalonate,95124-07-5,4.303,1,matrix ID PFP 1,1,1,1,1,1,COC(=O)C(CC#C)C(=O)OC
+PFP,method_1,Ethyl 2-cyclohexanoneacetate,24731-17-7,4.504,1,matrix ID PFP 1,1,1,1,1,1,CCOC(=O)CC1CCCCC1=O
+PFP,method_1,Ethyl 3-thiopheneacetate,37784-63-7,4.873,1,matrix ID PFP 1,1,1,1,1,1,CCOC(=O)CC1=CSC=C1
+PFP,method_1,"Ethyl 4,4,4-trifluoroacetoacetate",372-31-6,3.766,1,matrix ID PFP 1,1,1,1,1,1,CCOC(=O)CC(=O)C(F)(F)F
+PFP,method_1,Ethyl mesitylglyoxylate,5524-57-2,4.246,1,matrix ID PFP 1,1,1,1,1,1,CCOC(=O)C(=O)C1=C(C=C(C=C1C)C)C
+PFP,method_1,Ethyl-3-oxohexanoate,3249-68-1,4.475,1,matrix ID PFP 1,1,1,1,1,1,CCCC(=O)CC(=O)OCC
+PFP,method_1,Ethyl-4-bromocrotonate,37746-78-4,4.813,1,matrix ID PFP 1,1,1,1,1,1,CCOC(=O)/C=C/CBr
+PFP,method_1,Ethyl-4-iodobenzoate,51934-41-9,5.45,1,matrix ID PFP 1,1,1,1,1,1,CCOC(=O)C1=CC=C(C=C1)I
+PFP,method_1,FMOC-D-ORN(ALOC)-OH,214750-74-0,5.026,1,matrix ID PFP 1,1,0,1,0,1,C=CCOC(=O)NCCC[C@H](C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+PFP,method_1,Flavanone,487-26-3,5.282,1,matrix ID PFP 1,0,1,1,1,1,C1C(OC2=CC=CC=C2C1=O)C3=CC=CC=C3
+PFP,method_1,Flufenamic-acid,530-78-9,5.47,1,matrix ID PFP 1,1,1,1,0,1,C1=CC=C(C(=C1)C(=O)O)NC2=CC=CC(=C2)C(F)(F)F
+PFP,method_1,Hematein,475-25-2,4.551,1,matrix ID PFP 1,0,0,0,0,0,C1C2=CC(=C(C=C2C3=C4C=CC(=O)C(=C4OCC31O)O)O)O
+PFP,method_1,METHYL 2-PHTHALIMIDOACETATE,23244-58-8,4.468,1,matrix ID PFP 1,0,1,1,1,1,COC(=O)CN1C(=O)C2=CC=CC=C2C1=O
+PFP,method_1,"Methyl 6-oxo-1,6-dihydropyridine-2-carboxylate",30062-34-1,2.625,1,matrix ID PFP 1,1,1,1,1,1,COC(=O)C1=CC=CC(=O)N1
+PFP,method_1,"Methyl-2,6-dimethoxybenzoate",2065-27-2,4.622,1,matrix ID PFP 1,1,1,1,1,1,COC1=C(C(=CC=C1)OC)C(=O)OC
+PFP,method_1,Methyl-3-bromo-4-iodobenzoate,249647-24-3,5.478,1,matrix ID PFP 1,0,1,0,1,1,COC(=O)C1=CC(=C(C=C1)I)Br
+PFP,method_1,"Methyl-6-Oxo-1,6-dihydropyridazine-3-carboxylate",63001-30-9,2.019,1,matrix ID PFP 1,0,0,1,0,0,COC(=O)C1=NNC(=O)C=C1
+PFP,method_1,Methyl-diethylphosphonoacetate,1067-74-9,3.649,1,matrix ID PFP 1,1,1,1,1,1,CCOP(=O)(CC(=O)OC)OCC
+PFP,method_1,N(im)-Trityl-L-histidine,35146-32-8,4.144,1,matrix ID PFP 1,0,0,0,0,0,C1=CC=C(C=C1)C(C2=CC=CC=C2)(C3=CC=CC=C3)N4C=C(N=C4)C[C@@H](C(=O)O)N
+PFP,method_1,"N,N-Dimethyl-L-phenylalanine",17469-89-5,1.754,1,matrix ID PFP 1,0,0,0,0,0,CN(C)[C@@H](CC1=CC=CC=C1)C(=O)O
+PFP,method_1,N-Acetyl-L-tryptophan,1218-34-4,3.804,1,matrix ID PFP 1,1,0,1,0,0,CC(=O)N[C@@H](CC1=CNC2=CC=CC=C21)C(=O)O
+PFP,method_1,N-Benzylidenebenzylamine,780-25-6,4.253,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C(C=C1)CN=CC2=CC=CC=C2
+PFP,method_1,N-Phthaloylglycine,4702-13-0,3.537,1,matrix ID PFP 1,1,1,1,0,1,C1=CC=C2C(=C1)C(=O)N(C2=O)CC(=O)O
+PFP,method_1,"N-[(1,1-Dimethylethoxy)carbonyl]-L-histidine methyl_ester",2488-14-4,3.194,1,matrix ID PFP 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@@H](CC1=CN=CN1)C(=O)OC
+PFP,method_1,N-[(Phenylmethoxy)carbonyl]-O-(phenylmethyl)-L-serine_,20806-43-3,4.91,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C(C=C1)COC[C@@H](C(=O)O)NC(=O)OCC2=CC=CC=C2
+PFP,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-methyl-D-lysine",1315449-94-5,5.359,1,matrix ID PFP 1,0,1,1,1,1,C[C@@](CCCCNC(=O)OC(C)(C)C)(C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+PFP,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(phenylmethoxy)carbonyl]-L-lysine",2389-60-8,4.837,1,matrix ID PFP 1,1,1,1,1,1,CC(C)(C)OC(=O)NCCCC[C@@H](C(=O)O)NC(=O)OCC1=CC=CC=C1
+PFP,method_1,Nalpha-[(9H-Fluoren-9-ylmethoxy)carbonyl]-L-threonine tert-Butyl-Ester,120791-76-6,5.403,1,matrix ID PFP 1,1,1,1,1,1,C[C@H]([C@@H](C(=O)OC(C)(C)C)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13)O
+PFP,method_1,Phenyl-benzoate,93-99-2,5.429,1,matrix ID PFP 1,1,1,1,1,1,C1=CC=C(C=C1)C(=O)OC2=CC=CC=C2
+PFP,method_1,Pindolol,13523-86-9,3.378,1,matrix ID PFP 1,0,0,0,1,1,CC(C)NCC(COC1=CC=CC2=C1C=CN2)O
+PFP,method_1,Protocatechuic_acid,99-50-3,2.706,1,matrix ID PFP 1,1,1,1,0,0,C1=CC(=C(C=C1C(=O)O)O)O
+PFP,method_1,Suberic_acid_monomethyl_ester,3946-32-5,4.178,1,matrix ID PFP 1,1,0,1,0,1,COC(=O)CCCCCCC(=O)O
+PFP,method_1,Z-D-Glu-OBzl,65706-99-2,4.963,1,matrix ID PFP 1,0,0,0,1,1,C1=CC=C(C=C1)COC(=O)[C@@H](CCC(=O)O)NC(=O)OCC2=CC=CC=C2
+PFP,method_1,Z-D-Phg-OH,17609-52-8,4.698,1,matrix ID PFP 1,1,0,1,1,1,C1=CC=C(C=C1)COC(=O)N[C@H](C2=CC=CC=C2)C(=O)O
+PFP,method_1,"meso-1,2-Dibromo-1,2-diphenylethane",13440-24-9,5.646,1,matrix ID PFP 1,0,0,0,1,0,C1=CC=C(C=C1)C(C(C2=CC=CC=C2)Br)Br
+PFP,method_1,mono-tert-Butyl_succinate,15026-17-2,4.07,1,matrix ID PFP 1,1,1,1,0,0,CC(C)(C)OC(=O)CCC(=O)O
+PFP,method_1,pentafluorobenzyl-bromide,1765-40-8,3.384,1,matrix ID PFP 1,1,1,1,1,1,C(C1=C(C(=C(C(=C1F)F)F)F)F)Br
+PFP,method_1,"trans-1,2-Bis(phenylsulfonyl)ethylene",963-16-6,5.132,1,matrix ID PFP 1,0,0,0,0,0,C1=CC=C(C=C1)S(=O)(=O)/C=C/S(=O)(=O)C2=CC=CC=C2
+PFP,method_1,trans-4-(9-Fluorenylmethyloxycarbonylaminomethyl)-cyclohexanoic_acid,188715-40-4,5.095,1,matrix ID PFP 1,0,0,0,0,0,C1CC(CCC1CNC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+PFP,method_1,trans-Aconitic-acid,4023-65-8,0.0,0,matrix ID PFP 1,1,1,1,0,0,C(/C(=C\C(=O)O)/C(=O)O)C(=O)O
+PolarTec,method_1,(1-BROMOETHYL)BENZENE,585-71-7,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,CC(C1=CC=CC=C1)Br
+PolarTec,method_1,"(2,6-Dioxo-piperidin-4-yl)-acetic_acid",6258-28-2,3.569,1,matrix ID PolarTec 1,0,0,1,0,0,C1C(CC(=O)NC1=O)CC(=O)O
+PolarTec,method_1,(2-BENZYLOXYCARBONYLAMINO-ACETYLAMINO)-ACETIC_ACID,2566-19-0,0.0,0,matrix ID PolarTec 1,0,0,1,0,0,C1=CC=C(C=C1)COC(=O)NCC(=O)NCC(=O)O
+PolarTec,method_1,(2S)-2-{[(9H-fluoren-9-ylmethoxy)carbonyl]amino}-4-hydroxybutanoic acid,172525-85-8,3.732,1,matrix ID PolarTec 1,0,0,1,0,0,C1=CC=C2C(=C1)C(C3=CC=CC=C32)COC(=O)N[C@@H](CCO)C(=O)O
+PolarTec,method_1,"(2S,5S)-1-Hydroxy-2,5-diphenylphospholane 1-oxide",474049-73-5,0.0,0,matrix ID PolarTec 1,0,0,0,0,1,C1C[C@H](P(=O)([C@@H]1C2=CC=CC=C2)O)C3=CC=CC=C3
+PolarTec,method_1,"(?S)-4-(1,1-Dimethylethoxy)-?-[[(9H-fluoren-9-ylmethoxy)carbonyl]amino]benzenebutanoic_acid",204384-69-0,6.277,1,matrix ID PolarTec 1,0,0,1,1,1,CC(C)(C)OC1=CC=C(C=C1)CC[C@@H](C(=O)O)NC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+PolarTec,method_1,(R)-(-)-2-Methoxy-2-phenylethanol,17628-72-7,4.365,1,matrix ID PolarTec 1,1,1,1,1,1,CO[C@@H](CO)C1=CC=CC=C1
+PolarTec,method_1,"(S)-(-)-2-Amino-3-methyl-1,1-diphenyl-1-butanol",78603-95-9,3.014,1,matrix ID PolarTec 1,0,1,1,1,1,CC(C)[C@@H](C(C1=CC=CC=C1)(C2=CC=CC=C2)O)N
+PolarTec,method_1,(S)-Benzyl 2-(((S)-1-methoxy-4-methyl-1-oxopentan-2-yl)carbamoyl)pyrrolidine-1-carboxylate,2873-37-2,5.47,1,matrix ID PolarTec 1,1,1,1,1,1,CC(C)C[C@@H](C(=O)OC)NC(=O)[C@@H]1CCCN1C(=O)OCC2=CC=CC=C2
+PolarTec,method_1,"1,1,1-Tris(4-hydroxyphenyl)ethane",27955-94-8,5.602,1,matrix ID PolarTec 1,1,1,1,0,0,CC(C1=CC=C(C=C1)O)(C2=CC=C(C=C2)O)C3=CC=C(C=C3)O
+PolarTec,method_1,"1,1,3-Triphenylpropargyl alcohol",1522-13-0,6.401,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C(C=C1)C#CC(C2=CC=CC=C2)(C3=CC=CC=C3)O
+PolarTec,method_1,"1,2-Bis(4-hydroxyphenyl)ethane-1,2-dione",33288-79-8,5.685,1,matrix ID PolarTec 1,1,0,1,0,0,C1=CC(=CC=C1C(=O)C(=O)C2=CC=C(C=C2)O)O
+PolarTec,method_1,"1,3-Bis(trifluoromethyl)-5-bromobenzene",328-70-1,6.506,1,matrix ID PolarTec 1,1,1,1,1,1,C1=C(C=C(C=C1C(F)(F)F)Br)C(F)(F)F
+PolarTec,method_1,"1,3-Butanediol-diacrylate",19485-03-1,5.31,1,matrix ID PolarTec 1,1,1,1,1,1,CC(CCOC(=O)C=C)OC(=O)C=C
+PolarTec,method_1,"1,3-Dimethyl 2-[(4-methoxyphenyl)methylene]propanedioate",7443-25-6,5.496,1,matrix ID PolarTec 1,1,1,1,1,1,COC1=CC=C(C=C1)C=C(C(=O)OC)C(=O)OC
+PolarTec,method_1,"1,3-Diphenylacetone_p-tosylhydrazone",19816-88-7,6.301,1,matrix ID PolarTec 1,0,0,0,1,1,CC1=CC=C(C=C1)S(=O)(=O)NN=C(CC2=CC=CC=C2)CC3=CC=CC=C3
+PolarTec,method_1,"1,4-Bis(bromomethyl)-2,3,5,6-tetrafluorobenzene_",776-40-9,6.311,1,matrix ID PolarTec 1,0,0,0,1,1,C(C1=C(C(=C(C(=C1F)F)CBr)F)F)Br
+PolarTec,method_1,"1,4-Cyclohexanedicarboxylic-acid",1076-97-7,5.063,1,matrix ID PolarTec 1,1,0,0,0,1,C1CC(CCC1C(=O)O)C(=O)O
+PolarTec,method_1,"1,4-Dibromo-2,3-butanedione",6305-43-7,4.258,1,matrix ID PolarTec 1,1,1,1,1,0,C(C(=O)C(=O)CBr)Br
+PolarTec,method_1,1-(4-Biphenyl)-1-ethanol,3562-73-0,5.763,1,matrix ID PolarTec 1,1,1,0,1,0,CC(C1=CC=C(C=C1)C2=CC=CC=C2)O
+PolarTec,method_1,"1-(9H-Fluoren-9-ylmethyl) (2S,4S)-4-[[(1,1-dimethylethoxy)carbonyl]amino]-1,2-pyrrolidinedicarboxylate_",221352-74-5,0.0,0,matrix ID PolarTec 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@H]1C[C@H](N(C1)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+PolarTec,method_1,1-(tert-Butoxycarbonyl)-4-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-piperazinecarboxylic_acid,218278-58-1,0.0,0,matrix ID PolarTec 1,0,0,1,1,1,CC(C)(C)OC(=O)N1CCN(CC1C(=O)O)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+PolarTec,method_1,1-BROMO-3-METHYLBUTANE,107-82-4,6.308,1,matrix ID PolarTec 1,1,1,1,1,1,CC(C)CCBr
+PolarTec,method_1,1-Benzofuran-5-carboxylic_acid,90721-27-0,0.0,0,matrix ID PolarTec 1,0,0,0,0,0,C1=CC2=C(C=CO2)C=C1C(=O)O
+PolarTec,method_1,1-Benzylpiperidine,2905-56-8,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,C1CCN(CC1)CC2=CC=CC=C2
+PolarTec,method_1,1-Bromo-4-(trifluoromethoxy)benzene,407-14-7,6.395,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC(=CC=C1OC(F)(F)F)Br
+PolarTec,method_1,1-Bromopentanemethylbenzene,5153-40-2,0.0,0,matrix ID PolarTec 1,0,0,0,1,1,CC1=C(C(=C(C(=C1C)C)Br)C)C
+PolarTec,method_1,1-Phenyl-5-(trifluoromethyl)-1H-pyrazole-4-carboxylic_acid,98534-81-7,6.759,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C(C=C1)N2C(=C(C=N2)C(=O)O)C(F)(F)F
+PolarTec,method_1,1-Pyrenemethanol,24463-15-8,6.426,1,matrix ID PolarTec 1,0,0,1,1,1,C1=CC2=C3C(=C1)C=CC4=C(C=CC(=C43)C=C2)CO
+PolarTec,method_1,"1-Tosyl-2,5-dihydro-1H-pyrrole",16851-72-2,5.458,1,matrix ID PolarTec 1,0,1,1,1,1,CC1=CC=C(C=C1)S(=O)(=O)N2CC=CC2
+PolarTec,method_1,"2,2"",4,4""-Tetramethylbenzophenone",3478-88-4,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,CC1=CC(=C(C=C1)C(=O)C2=C(C=C(C=C2)C)C)C
+PolarTec,method_1,"2,2,2-TRIFLUOROACETOPHENONE",434-45-7,4.892,1,matrix ID PolarTec 1,1,1,1,0,1,C1=CC=C(C=C1)C(=O)C(F)(F)F
+PolarTec,method_1,"2,3,4-Trifluorobenzoic acid",61079-72-9,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,C1=CC(=C(C(=C1C(=O)O)F)F)F
+PolarTec,method_1,"2,3,6,7,10,11-Hexamethoxytriphenylene",808-57-1,6.081,1,matrix ID PolarTec 1,0,0,0,1,0,COC1=C(C=C2C(=C1)C3=CC(=C(C=C3C4=CC(=C(C=C24)OC)OC)OC)OC)OC
+PolarTec,method_1,"2,4,6-Tris(bromomethyl)mesitylene",21988-87-4,6.749,1,matrix ID PolarTec 1,0,0,0,1,0,CC1=C(C(=C(C(=C1CBr)C)CBr)C)CBr
+PolarTec,method_1,"2,4-Dichlorophenol",120-83-2,6.191,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC(=C(C=C1Cl)Cl)O
+PolarTec,method_1,"2,6-Bis[(4S)-4-phenyl-2-oxazolinyl]pyridine",174500-20-0,5.752,1,matrix ID PolarTec 1,0,0,0,1,1,C1[C@@H](N=C(O1)C2=NC(=CC=C2)C3=N[C@H](CO3)C4=CC=CC=C4)C5=CC=CC=C5
+PolarTec,method_1,"2,6-Dichloroiodobenzene",19230-28-5,6.749,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC(=C(C(=C1)Cl)I)Cl
+PolarTec,method_1,"2,6-Diisopropylphenol",2078-54-8,6.456,1,matrix ID PolarTec 1,1,1,1,1,1,CC(C)C1=C(C(=CC=C1)C(C)C)O
+PolarTec,method_1,"2,6-Dimethoxy-1,4-benzoquinone",530-55-2,3.784,1,matrix ID PolarTec 1,0,0,0,1,1,COC1=CC(=O)C=C(C1=O)OC
+PolarTec,method_1,"2,6-Dimethoxybenzoyl_chloride",1989-53-3,0.0,0,matrix ID PolarTec 1,0,0,0,1,1,COC1=C(C(=CC=C1)OC)C(=O)Cl
+PolarTec,method_1,2-(3-Chlorophenoxy)propionic-acid,101-10-0,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,CC(C(=O)O)OC1=CC(=CC=C1)Cl
+PolarTec,method_1,2-(4-Chlorobenzoyl)benzoic_acid,85-56-3,0.0,0,matrix ID PolarTec 1,1,0,1,1,1,C1=CC=C(C(=C1)C(=O)C2=CC=C(C=C2)Cl)C(=O)O
+PolarTec,method_1,2-(Diphenylphosphino)benzoic-acid,17261-28-8,0.0,0,matrix ID PolarTec 1,0,0,1,1,1,C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=CC=CC=C3C(=O)O
+PolarTec,method_1,2-(Trifluoromethyl)pyridine-4-carboxylic_acid,131747-41-6,0.0,0,matrix ID PolarTec 1,1,1,1,0,0,C1=CN=C(C=C1C(=O)O)C(F)(F)F
+PolarTec,method_1,2-Amino-4-phenylphenol,1134-36-7,4.969,1,matrix ID PolarTec 1,0,0,1,0,0,C1=CC=C(C=C1)C2=CC(=C(C=C2)O)N
+PolarTec,method_1,2-Amino-6-bromopyridine,19798-81-3,4.595,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC(=NC(=C1)Br)N
+PolarTec,method_1,2-Benzyloxybenzoic_acid ,14389-86-7,6.665,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C(C=C1)COC2=CC=CC=C2C(=O)O
+PolarTec,method_1,"2-Bromo-2',6'-diisopropoxy-1,1'-biphenyl",870703-70-1,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,CC(C)OC1=C(C(=CC=C1)OC(C)C)C2=CC=CC=C2Br
+PolarTec,method_1,2-Bromo-5-(trifluoromethyl)benzaldehyde,102684-91-3,6.015,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC(=C(C=C1C(F)(F)F)C=O)Br
+PolarTec,method_1,2-Bromo-5-chlorotoluene,14495-51-3,6.784,1,matrix ID PolarTec 1,1,1,1,1,1,CC1=C(C=CC(=C1)Cl)Br
+PolarTec,method_1,2-Bromoanthraquinone,572-83-8,0.0,0,matrix ID PolarTec 1,0,0,1,1,1,C1=CC=C2C(=C1)C(=O)C3=C(C2=O)C=C(C=C3)Br
+PolarTec,method_1,2-Bromonaphthalen-1-ol,771-15-3,6.324,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C2C(=C1)C=CC(=C2O)Br
+PolarTec,method_1,2-Bromophenethylamine,65185-58-2,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C(C(=C1)CCN)Br
+PolarTec,method_1,2-Bromotoluene,95-46-5,6.386,1,matrix ID PolarTec 1,1,1,1,1,1,CC1=CC=CC=C1Br
+PolarTec,method_1,2-Hydroxy-4-(trifluoromethyl)aniline,454-82-0,5.296,1,matrix ID PolarTec 1,0,0,1,0,0,C1=CC(=C(C=C1C(F)(F)F)O)N
+PolarTec,method_1,2-Iodobenzaldehyde,26260-02-6,5.768,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C(C(=C1)C=O)I
+PolarTec,method_1,2-Iodobenzyl_bromide,40400-13-3,6.329,1,matrix ID PolarTec 1,0,0,1,1,1,C1=CC=C(C(=C1)CBr)I
+PolarTec,method_1,2-Iodopyridine,5029-67-4,4.887,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=NC(=C1)I
+PolarTec,method_1,2-Isopropylthioxanthone,5495-84-1,0.0,0,matrix ID PolarTec 1,0,0,0,1,1,CC(C)C1=CC2=C(C=C1)SC3=CC=CC=C3C2=O
+PolarTec,method_1,"2-Methyl-5-(trifluoromethyl)-1,3-benzoxazole",175785-41-8,5.575,1,matrix ID PolarTec 1,1,1,1,1,1,CC1=NC2=C(O1)C=CC(=C2)C(F)(F)F
+PolarTec,method_1,"3,3-Dimethyl-1-indanone",26465-81-6,5.447,1,matrix ID PolarTec 1,1,1,1,1,1,CC1(CC(=O)C2=CC=CC=C21)C
+PolarTec,method_1,"3,4,5-TRIBROMO-1H-PYRAZOLE",17635-44-8,6.39,1,matrix ID PolarTec 1,1,1,1,0,0,C1(=C(NN=C1Br)Br)Br
+PolarTec,method_1,"3,4,7,8-Tetramethyl-1,10-phenanthroline",1660-93-1,3.501,1,matrix ID PolarTec 1,0,0,0,1,1,CC1=CN=C2C(=C1C)C=CC3=C(C(=CN=C32)C)C
+PolarTec,method_1,"3,5-Di-tert-butylbenzoic acid",16225-26-6,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,CC(C)(C)C1=CC(=CC(=C1)C(=O)O)C(C)(C)C
+PolarTec,method_1,"3,5-Dibromotoluene",1611-92-3,0.0,0,matrix ID PolarTec 1,1,1,1,0,0,CC1=CC(=CC(=C1)Br)Br
+PolarTec,method_1,"3,5-Dimethylbenzoyl_chloride",6613-44-1,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,CC1=CC(=CC(=C1)C(=O)Cl)C
+PolarTec,method_1,"3,6-Dimethoxy-9H-carbazole",57103-01-2,5.86,1,matrix ID PolarTec 1,0,1,1,1,1,COC1=CC2=C(C=C1)NC3=C2C=C(C=C3)OC
+PolarTec,method_1,3-(2-Naphthyl)acrylic_acid,51557-26-7,0.0,0,matrix ID PolarTec 1,0,0,1,0,0,C1=CC=C2C=C(C=CC2=C1)/C=C/C(=O)O
+PolarTec,method_1,3-(Phenylthio)propanoic-acid,5219-65-8,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C(C=C1)SCCC(=O)O
+PolarTec,method_1,3-(tert-Butoxycarbonyl)benzoic_acid,33704-19-7,0.0,0,matrix ID PolarTec 1,1,0,1,1,1,CC(C)(C)OC(=O)C1=CC=CC(=C1)C(=O)O
+PolarTec,method_1,3-Bromobenzoyl_chloride,1711-09-7,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,C1=CC(=CC(=C1)Br)C(=O)Cl
+PolarTec,method_1,3-Bromopropionyl_chloride,15486-96-1,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,C(CBr)C(=O)Cl
+PolarTec,method_1,3-Chloro-4-methoxyaniline,5345-54-0,3.349,1,matrix ID PolarTec 1,1,1,1,1,1,COC1=C(C=C(C=C1)N)Cl
+PolarTec,method_1,3-[[(9H-Fluoren-9-ylmethoxy)carbonyl]amino]-2-naphthalenecarboxylic acid,372159-75-6,5.672,1,matrix ID PolarTec 1,0,0,0,0,0,C1=CC=C2C=C(C(=CC2=C1)C(=O)O)NC(=O)OCC3C4=CC=CC=C4C5=CC=CC=C35
+PolarTec,method_1,"4,4',4''-Trimethoxytrityl chloride",49757-42-8,6.038,1,matrix ID PolarTec 1,1,0,0,1,1,COC1=CC=C(C=C1)C(C2=CC=C(C=C2)OC)(C3=CC=C(C=C3)OC)Cl
+PolarTec,method_1,"4,4'-Dihydroxybiphenyl",92-88-6,5.345,1,matrix ID PolarTec 1,0,0,1,0,0,C1=CC(=CC=C1C2=CC=C(C=C2)O)O
+PolarTec,method_1,"4,4'-Dimethoxybenzophenone",90-96-0,5.848,1,matrix ID PolarTec 1,0,0,0,1,1,COC1=CC=C(C=C1)C(=O)C2=CC=C(C=C2)OC
+PolarTec,method_1,"4,4?,4??-(1,3,5-TRIAZINE-2,4,6-TRIYL)TRIBENZALDEHYDE",443922-06-3,5.916,1,matrix ID PolarTec 1,0,0,0,0,0,C1=CC(=CC=C1C=O)C2=NC(=NC(=N2)C3=CC=C(C=C3)C=O)C4=CC=C(C=C4)C=O
+PolarTec,method_1,4-(Bromomethyl)benzoic_acid,6232-88-8,0.0,0,matrix ID PolarTec 1,0,0,1,0,0,C1=CC(=CC=C1CBr)C(=O)O
+PolarTec,method_1,4-(Hydroxymethyl)phenylacetic-acid,73401-74-8,4.948,1,matrix ID PolarTec 1,1,1,1,0,0,C1=CC(=CC=C1CC(=O)O)CO
+PolarTec,method_1,4-(Trifluoroacetyl)phenacyl-bromide,1980063-91-9,5.209,1,matrix ID PolarTec 1,1,1,1,0,0,C1=CC(=CC=C1C(=O)CBr)C(=O)C(F)(F)F
+PolarTec,method_1,4-(Trifluoromethyl)benzylamine,3300-51-4,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,C1=CC(=CC=C1CN)C(F)(F)F
+PolarTec,method_1,"4-Bromo-3,5-dimethoxybenzoic acid",56518-42-4,0.0,0,matrix ID PolarTec 1,0,0,1,0,0,COC1=CC(=CC(=C1Br)OC)C(=O)O
+PolarTec,method_1,4-Bromo-L-phenylalanine,24250-84-8,3.583,1,matrix ID PolarTec 1,0,0,0,0,0,C1=CC(=CC=C1C[C@@H](C(=O)O)N)Br
+PolarTec,method_1,4-Chlorobenzenesulfonic_acid,98-66-8,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,C1=CC(=CC=C1S(=O)(=O)O)Cl
+PolarTec,method_1,4-Chloropyridine-3-carboxylic_acid,10177-29-4,2.319,1,matrix ID PolarTec 1,0,0,1,0,0,C1=CN=CC(=C1Cl)C(=O)O
+PolarTec,method_1,"4-Hydroxy-3,5-diiodobenzoic acid",618-76-8,0.0,0,matrix ID PolarTec 1,0,0,1,0,0,C1=C(C=C(C(=C1I)O)I)C(=O)O
+PolarTec,method_1,4-Hydroxyphthalic_acid,610-35-5,0.0,0,matrix ID PolarTec 1,1,0,1,0,0,C1=CC(=C(C=C1O)C(=O)O)C(=O)O
+PolarTec,method_1,4-Methoxybiphenyl,613-37-6,6.312,1,matrix ID PolarTec 1,0,1,1,1,1,COC1=CC=C(C=C1)C2=CC=CC=C2
+PolarTec,method_1,4-Methoxytriphenylamine,4316-51-2,0.0,0,matrix ID PolarTec 1,0,0,0,1,1,COC1=CC=C(C=C1)N(C2=CC=CC=C2)C3=CC=CC=C3
+PolarTec,method_1,4-tert-Butylbenzoyl_chloride,1710-98-1,0.0,0,matrix ID PolarTec 1,1,1,1,0,1,CC(C)(C)C1=CC=C(C=C1)C(=O)Cl
+PolarTec,method_1,"5,7-Dimethyl-[1,2,4]triazolo[1,5-a]pyrimidine-2-carboxylic acid",87253-62-1,0.0,0,matrix ID PolarTec 1,0,0,0,0,0,CC1=CC(=NC2=NC(=NN12)C(=O)O)C
+PolarTec,method_1,5-(Trifluoromethyl)indole,100846-24-0,6.048,1,matrix ID PolarTec 1,1,1,0,1,1,C1=CC2=C(C=CN2)C=C1C(F)(F)F
+PolarTec,method_1,5-(Trifluoromethyl)pyridine-2-carboxaldehyde,31224-82-5,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,C1=CC(=NC=C1C(F)(F)F)C=O
+PolarTec,method_1,5-Bromo-2-furoic_acid,585-70-6,0.0,0,matrix ID PolarTec 1,1,1,1,0,0,C1=C(OC(=C1)Br)C(=O)O
+PolarTec,method_1,5-Bromo-2-phenylpyridine,27012-25-5,6.401,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C(C=C1)C2=NC=C(C=C2)Br
+PolarTec,method_1,"6,6'-Dibromo-1,1'-bi-2-naphthol",13185-00-7,6.717,1,matrix ID PolarTec 1,0,1,1,0,0,C1=CC2=C(C=CC(=C2C3=C(C=CC4=C3C=CC(=C4)Br)O)O)C=C1Br
+PolarTec,method_1,8-Isoquinolinecarboxaldehyde,787615-01-4,3.313,1,matrix ID PolarTec 1,1,0,1,1,1,C1=CC2=C(C=NC=C2)C(=C1)C=O
+PolarTec,method_1,Allyl-alpha-D-glucopyranoside,7464-56-4,1.204,1,matrix ID PolarTec 1,1,0,1,0,0,C=CCO[C@@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)O
+PolarTec,method_1,Aniline-2-sulfonic_acid,88-21-1,6.718,1,matrix ID PolarTec 1,0,0,1,0,0,C1=CC=C(C(=C1)N)S(=O)(=O)O
+PolarTec,method_1,Bis(diphenylphosphino)methane,2071-20-7,0.0,0,matrix ID PolarTec 1,0,0,0,1,1,C1=CC=C(C=C1)P(CP(C2=CC=CC=C2)C3=CC=CC=C3)C4=CC=CC=C4
+PolarTec,method_1,DL-beta-Phenylalanine,614-19-7,1.658,1,matrix ID PolarTec 1,0,0,0,0,0,C1=CC=C(C=C1)C(CC(=O)O)N
+PolarTec,method_1,Di-tert-butylcyclopentadiene,120937-44-2,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,CC(C)(C)C1C=CC(=C1)C(C)(C)C
+PolarTec,method_1,Dibenzyl-malonate,15014-25-2,5.942,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C(C=C1)COC(=O)CC(=O)OCC2=CC=CC=C2
+PolarTec,method_1,Dibromomaleic-acid,608-37-7,0.0,0,matrix ID PolarTec 1,1,1,1,0,0,C(=C(\C(=O)O)/Br)(\C(=O)O)/Br
+PolarTec,method_1,Diethyl 4-Methoxyphenylphosphonate,3762-33-2,4.853,1,matrix ID PolarTec 1,1,1,1,1,1,CCOP(=O)(C1=CC=C(C=C1)OC)OCC
+PolarTec,method_1,Diethyl_dibutylmalonate,596-75-8,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,CCCCC(CCCC)(C(=O)OCC)C(=O)OCC
+PolarTec,method_1,Diethyl_phenylmalonate,83-13-6,5.921,1,matrix ID PolarTec 1,1,1,1,1,1,CCOC(=O)C(C1=CC=CC=C1)C(=O)OCC
+PolarTec,method_1,"Dimethyl 1,3-cyclohexadiene-1,4-dicarboxylate",1659-95-6,5.288,1,matrix ID PolarTec 1,0,0,0,1,1,COC(=O)C1=CC=C(CC1)C(=O)OC
+PolarTec,method_1,"Dimethyl 2,2'-bipyridine-4,4'-dicarboxylate",71071-46-0,5.764,1,matrix ID PolarTec 1,0,0,0,0,1,COC(=O)C1=CC(=NC=C1)C2=NC=CC(=C2)C(=O)OC
+PolarTec,method_1,Dimethyl-propargylmalonate,95124-07-5,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,COC(=O)C(CC#C)C(=O)OC
+PolarTec,method_1,Ethyl 2-cyclohexanoneacetate,24731-17-7,5.042,1,matrix ID PolarTec 1,1,1,1,1,1,CCOC(=O)CC1CCCCC1=O
+PolarTec,method_1,Ethyl 3-thiopheneacetate,37784-63-7,5.455,1,matrix ID PolarTec 1,1,1,1,1,1,CCOC(=O)CC1=CSC=C1
+PolarTec,method_1,"Ethyl 4,4,4-trifluoroacetoacetate",372-31-6,4.325,1,matrix ID PolarTec 1,1,1,1,1,1,CCOC(=O)CC(=O)C(F)(F)F
+PolarTec,method_1,Ethyl mesitylglyoxylate,5524-57-2,6.07,1,matrix ID PolarTec 1,1,1,1,1,1,CCOC(=O)C(=O)C1=C(C=C(C=C1C)C)C
+PolarTec,method_1,Ethyl-3-oxohexanoate,3249-68-1,4.983,1,matrix ID PolarTec 1,1,1,1,1,1,CCCC(=O)CC(=O)OCC
+PolarTec,method_1,Ethyl-4-bromocrotonate,37746-78-4,5.389,1,matrix ID PolarTec 1,1,1,1,1,1,CCOC(=O)/C=C/CBr
+PolarTec,method_1,Ethyl-4-iodobenzoate,51934-41-9,6.432,1,matrix ID PolarTec 1,1,1,1,1,1,CCOC(=O)C1=CC=C(C=C1)I
+PolarTec,method_1,FMOC-D-ORN(ALOC)-OH,214750-74-0,0.0,0,matrix ID PolarTec 1,1,0,1,0,1,C=CCOC(=O)NCCC[C@H](C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+PolarTec,method_1,Flavanone,487-26-3,5.947,1,matrix ID PolarTec 1,0,1,1,1,1,C1C(OC2=CC=CC=C2C1=O)C3=CC=CC=C3
+PolarTec,method_1,Flufenamic-acid,530-78-9,0.0,0,matrix ID PolarTec 1,1,1,1,0,1,C1=CC=C(C(=C1)C(=O)O)NC2=CC=CC(=C2)C(F)(F)F
+PolarTec,method_1,Hematein,475-25-2,5.585,1,matrix ID PolarTec 1,0,0,0,0,0,C1C2=CC(=C(C=C2C3=C4C=CC(=O)C(=C4OCC31O)O)O)O
+PolarTec,method_1,METHYL 2-PHTHALIMIDOACETATE,23244-58-8,5.872,1,matrix ID PolarTec 1,0,1,1,1,1,COC(=O)CN1C(=O)C2=CC=CC=C2C1=O
+PolarTec,method_1,"Methyl 6-oxo-1,6-dihydropyridine-2-carboxylate",30062-34-1,3.265,1,matrix ID PolarTec 1,1,1,1,1,1,COC(=O)C1=CC=CC(=O)N1
+PolarTec,method_1,"Methyl-2,6-dimethoxybenzoate",2065-27-2,4.99,1,matrix ID PolarTec 1,1,1,1,1,1,COC1=C(C(=CC=C1)OC)C(=O)OC
+PolarTec,method_1,Methyl-3-bromo-4-iodobenzoate,249647-24-3,6.546,1,matrix ID PolarTec 1,0,1,0,1,1,COC(=O)C1=CC(=C(C=C1)I)Br
+PolarTec,method_1,"Methyl-6-Oxo-1,6-dihydropyridazine-3-carboxylate",63001-30-9,3.114,1,matrix ID PolarTec 1,0,0,1,0,0,COC(=O)C1=NNC(=O)C=C1
+PolarTec,method_1,Methyl-diethylphosphonoacetate,1067-74-9,3.921,1,matrix ID PolarTec 1,1,1,1,1,1,CCOP(=O)(CC(=O)OC)OCC
+PolarTec,method_1,N(im)-Trityl-L-histidine,35146-32-8,4.065,1,matrix ID PolarTec 1,0,0,0,0,0,C1=CC=C(C=C1)C(C2=CC=CC=C2)(C3=CC=CC=C3)N4C=C(N=C4)C[C@@H](C(=O)O)N
+PolarTec,method_1,"N,N-Dimethyl-L-phenylalanine",17469-89-5,2.647,1,matrix ID PolarTec 1,0,0,0,0,0,CN(C)[C@@H](CC1=CC=CC=C1)C(=O)O
+PolarTec,method_1,N-Acetyl-L-tryptophan,1218-34-4,0.0,0,matrix ID PolarTec 1,1,0,1,0,0,CC(=O)N[C@@H](CC1=CNC2=CC=CC=C21)C(=O)O
+PolarTec,method_1,N-Benzylidenebenzylamine,780-25-6,4.87,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C(C=C1)CN=CC2=CC=CC=C2
+PolarTec,method_1,N-Phthaloylglycine,4702-13-0,0.0,0,matrix ID PolarTec 1,1,1,1,0,1,C1=CC=C2C(=C1)C(=O)N(C2=O)CC(=O)O
+PolarTec,method_1,"N-[(1,1-Dimethylethoxy)carbonyl]-L-histidine methyl_ester",2488-14-4,0.0,0,matrix ID PolarTec 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@@H](CC1=CN=CN1)C(=O)OC
+PolarTec,method_1,N-[(Phenylmethoxy)carbonyl]-O-(phenylmethyl)-L-serine_,20806-43-3,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C(C=C1)COC[C@@H](C(=O)O)NC(=O)OCC2=CC=CC=C2
+PolarTec,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-methyl-D-lysine",1315449-94-5,6.201,1,matrix ID PolarTec 1,0,1,1,1,1,C[C@@](CCCCNC(=O)OC(C)(C)C)(C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+PolarTec,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(phenylmethoxy)carbonyl]-L-lysine",2389-60-8,0.0,0,matrix ID PolarTec 1,1,1,1,1,1,CC(C)(C)OC(=O)NCCCC[C@@H](C(=O)O)NC(=O)OCC1=CC=CC=C1
+PolarTec,method_1,Nalpha-[(9H-Fluoren-9-ylmethoxy)carbonyl]-L-threonine tert-Butyl-Ester,120791-76-6,6.179,1,matrix ID PolarTec 1,1,1,1,1,1,C[C@H]([C@@H](C(=O)OC(C)(C)C)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13)O
+PolarTec,method_1,Phenyl-benzoate,93-99-2,6.129,1,matrix ID PolarTec 1,1,1,1,1,1,C1=CC=C(C=C1)C(=O)OC2=CC=CC=C2
+PolarTec,method_1,Pindolol,13523-86-9,0.0,0,matrix ID PolarTec 1,0,0,0,1,1,CC(C)NCC(COC1=CC=CC2=C1C=CN2)O
+PolarTec,method_1,Protocatechuic_acid,99-50-3,4.331,1,matrix ID PolarTec 1,1,1,1,0,0,C1=CC(=C(C=C1C(=O)O)O)O
+PolarTec,method_1,Suberic_acid_monomethyl_ester,3946-32-5,5.205,1,matrix ID PolarTec 1,1,0,1,0,1,COC(=O)CCCCCCC(=O)O
+PolarTec,method_1,Z-D-Glu-OBzl,65706-99-2,6.478,1,matrix ID PolarTec 1,0,0,0,1,1,C1=CC=C(C=C1)COC(=O)[C@@H](CCC(=O)O)NC(=O)OCC2=CC=CC=C2
+PolarTec,method_1,Z-D-Phg-OH,17609-52-8,0.0,0,matrix ID PolarTec 1,1,0,1,1,1,C1=CC=C(C=C1)COC(=O)N[C@H](C2=CC=CC=C2)C(=O)O
+PolarTec,method_1,"meso-1,2-Dibromo-1,2-diphenylethane",13440-24-9,6.378,1,matrix ID PolarTec 1,0,0,0,1,0,C1=CC=C(C=C1)C(C(C2=CC=CC=C2)Br)Br
+PolarTec,method_1,mono-tert-Butyl_succinate,15026-17-2,5.562,1,matrix ID PolarTec 1,1,1,1,0,0,CC(C)(C)OC(=O)CCC(=O)O
+PolarTec,method_1,pentafluorobenzyl-bromide,1765-40-8,6.149,1,matrix ID PolarTec 1,1,1,1,1,1,C(C1=C(C(=C(C(=C1F)F)F)F)F)Br
+PolarTec,method_1,"trans-1,2-Bis(phenylsulfonyl)ethylene",963-16-6,5.493,1,matrix ID PolarTec 1,0,0,0,0,0,C1=CC=C(C=C1)S(=O)(=O)/C=C/S(=O)(=O)C2=CC=CC=C2
+PolarTec,method_1,trans-4-(9-Fluorenylmethyloxycarbonylaminomethyl)-cyclohexanoic_acid,188715-40-4,6.639,1,matrix ID PolarTec 1,0,0,0,0,0,C1CC(CCC1CNC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+PolarTec,method_1,trans-Aconitic-acid,4023-65-8,0.0,0,matrix ID PolarTec 1,1,1,1,0,0,C(/C(=C\C(=O)O)/C(=O)O)C(=O)O
+RP18,method_1,(1-BROMOETHYL)BENZENE,585-71-7,5.717,1,matrix ID RP18 1,1,1,1,1,1,CC(C1=CC=CC=C1)Br
+RP18,method_1,"(2,6-Dioxo-piperidin-4-yl)-acetic_acid",6258-28-2,0.0,0,matrix ID RP18 1,0,0,1,0,0,C1C(CC(=O)NC1=O)CC(=O)O
+RP18,method_1,(2-BENZYLOXYCARBONYLAMINO-ACETYLAMINO)-ACETIC_ACID,2566-19-0,3.685,1,matrix ID RP18 1,0,0,1,0,0,C1=CC=C(C=C1)COC(=O)NCC(=O)NCC(=O)O
+RP18,method_1,(2S)-2-{[(9H-fluoren-9-ylmethoxy)carbonyl]amino}-4-hydroxybutanoic acid,172525-85-8,3.196,1,matrix ID RP18 1,0,0,1,0,0,C1=CC=C2C(=C1)C(C3=CC=CC=C32)COC(=O)N[C@@H](CCO)C(=O)O
+RP18,method_1,"(2S,5S)-1-Hydroxy-2,5-diphenylphospholane 1-oxide",474049-73-5,4.103,1,matrix ID RP18 1,0,0,0,0,1,C1C[C@H](P(=O)([C@@H]1C2=CC=CC=C2)O)C3=CC=CC=C3
+RP18,method_1,"(?S)-4-(1,1-Dimethylethoxy)-?-[[(9H-fluoren-9-ylmethoxy)carbonyl]amino]benzenebutanoic_acid",204384-69-0,6.069,1,matrix ID RP18 1,0,0,1,1,1,CC(C)(C)OC1=CC=C(C=C1)CC[C@@H](C(=O)O)NC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+RP18,method_1,(R)-(-)-2-Methoxy-2-phenylethanol,17628-72-7,3.954,1,matrix ID RP18 1,1,1,1,1,1,CO[C@@H](CO)C1=CC=CC=C1
+RP18,method_1,"(S)-(-)-2-Amino-3-methyl-1,1-diphenyl-1-butanol",78603-95-9,3.579,1,matrix ID RP18 1,0,1,1,1,1,CC(C)[C@@H](C(C1=CC=CC=C1)(C2=CC=CC=C2)O)N
+RP18,method_1,(S)-Benzyl 2-(((S)-1-methoxy-4-methyl-1-oxopentan-2-yl)carbamoyl)pyrrolidine-1-carboxylate,2873-37-2,5.166,1,matrix ID RP18 1,1,1,1,1,1,CC(C)C[C@@H](C(=O)OC)NC(=O)[C@@H]1CCCN1C(=O)OCC2=CC=CC=C2
+RP18,method_1,"1,1,1-Tris(4-hydroxyphenyl)ethane",27955-94-8,4.516,1,matrix ID RP18 1,1,1,1,0,0,CC(C1=CC=C(C=C1)O)(C2=CC=C(C=C2)O)C3=CC=C(C=C3)O
+RP18,method_1,"1,1,3-Triphenylpropargyl alcohol",1522-13-0,6.022,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C(C=C1)C#CC(C2=CC=CC=C2)(C3=CC=CC=C3)O
+RP18,method_1,"1,2-Bis(4-hydroxyphenyl)ethane-1,2-dione",33288-79-8,4.356,1,matrix ID RP18 1,1,0,1,0,0,C1=CC(=CC=C1C(=O)C(=O)C2=CC=C(C=C2)O)O
+RP18,method_1,"1,3-Bis(trifluoromethyl)-5-bromobenzene",328-70-1,6.316,1,matrix ID RP18 1,1,1,1,1,1,C1=C(C=C(C=C1C(F)(F)F)Br)C(F)(F)F
+RP18,method_1,"1,3-Butanediol-diacrylate",19485-03-1,4.994,1,matrix ID RP18 1,1,1,1,1,1,CC(CCOC(=O)C=C)OC(=O)C=C
+RP18,method_1,"1,3-Dimethyl 2-[(4-methoxyphenyl)methylene]propanedioate",7443-25-6,5.146,1,matrix ID RP18 1,1,1,1,1,1,COC1=CC=C(C=C1)C=C(C(=O)OC)C(=O)OC
+RP18,method_1,"1,3-Diphenylacetone_p-tosylhydrazone",19816-88-7,5.997,1,matrix ID RP18 1,0,0,0,1,1,CC1=CC=C(C=C1)S(=O)(=O)NN=C(CC2=CC=CC=C2)CC3=CC=CC=C3
+RP18,method_1,"1,4-Bis(bromomethyl)-2,3,5,6-tetrafluorobenzene_",776-40-9,5.996,1,matrix ID RP18 1,0,0,0,1,1,C(C1=C(C(=C(C(=C1F)F)CBr)F)F)Br
+RP18,method_1,"1,4-Cyclohexanedicarboxylic-acid",1076-97-7,3.453,1,matrix ID RP18 1,1,0,0,0,1,C1CC(CCC1C(=O)O)C(=O)O
+RP18,method_1,"1,4-Dibromo-2,3-butanedione",6305-43-7,3.548,1,matrix ID RP18 1,1,1,1,1,0,C(C(=O)C(=O)CBr)Br
+RP18,method_1,1-(4-Biphenyl)-1-ethanol,3562-73-0,5.219,1,matrix ID RP18 1,1,1,0,1,0,CC(C1=CC=C(C=C1)C2=CC=CC=C2)O
+RP18,method_1,"1-(9H-Fluoren-9-ylmethyl) (2S,4S)-4-[[(1,1-dimethylethoxy)carbonyl]amino]-1,2-pyrrolidinedicarboxylate_",221352-74-5,5.46,1,matrix ID RP18 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@H]1C[C@H](N(C1)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+RP18,method_1,1-(tert-Butoxycarbonyl)-4-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-piperazinecarboxylic_acid,218278-58-1,5.698,1,matrix ID RP18 1,0,0,1,1,1,CC(C)(C)OC(=O)N1CCN(CC1C(=O)O)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+RP18,method_1,1-BROMO-3-METHYLBUTANE,107-82-4,0.0,0,matrix ID RP18 1,1,1,1,1,1,CC(C)CCBr
+RP18,method_1,1-Benzofuran-5-carboxylic_acid,90721-27-0,4.328,1,matrix ID RP18 1,0,0,0,0,0,C1=CC2=C(C=CO2)C=C1C(=O)O
+RP18,method_1,1-Benzylpiperidine,2905-56-8,2.932,1,matrix ID RP18 1,1,1,1,1,1,C1CCN(CC1)CC2=CC=CC=C2
+RP18,method_1,1-Bromo-4-(trifluoromethoxy)benzene,407-14-7,6.126,1,matrix ID RP18 1,1,1,1,1,1,C1=CC(=CC=C1OC(F)(F)F)Br
+RP18,method_1,1-Bromopentanemethylbenzene,5153-40-2,0.0,0,matrix ID RP18 1,0,0,0,1,1,CC1=C(C(=C(C(=C1C)C)Br)C)C
+RP18,method_1,1-Phenyl-5-(trifluoromethyl)-1H-pyrazole-4-carboxylic_acid,98534-81-7,4.692,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C(C=C1)N2C(=C(C=N2)C(=O)O)C(F)(F)F
+RP18,method_1,1-Pyrenemethanol,24463-15-8,5.493,1,matrix ID RP18 1,0,0,1,1,1,C1=CC2=C3C(=C1)C=CC4=C(C=CC(=C43)C=C2)CO
+RP18,method_1,"1-Tosyl-2,5-dihydro-1H-pyrrole",16851-72-2,5.084,1,matrix ID RP18 1,0,1,1,1,1,CC1=CC=C(C=C1)S(=O)(=O)N2CC=CC2
+RP18,method_1,"2,2"",4,4""-Tetramethylbenzophenone",3478-88-4,6.666,1,matrix ID RP18 1,1,1,1,1,1,CC1=CC(=C(C=C1)C(=O)C2=C(C=C(C=C2)C)C)C
+RP18,method_1,"2,2,2-TRIFLUOROACETOPHENONE",434-45-7,4.321,1,matrix ID RP18 1,1,1,1,0,1,C1=CC=C(C=C1)C(=O)C(F)(F)F
+RP18,method_1,"2,3,4-Trifluorobenzoic acid",61079-72-9,4.217,1,matrix ID RP18 1,1,1,1,1,1,C1=CC(=C(C(=C1C(=O)O)F)F)F
+RP18,method_1,"2,3,6,7,10,11-Hexamethoxytriphenylene",808-57-1,5.479,1,matrix ID RP18 1,0,0,0,1,0,COC1=C(C=C2C(=C1)C3=CC(=C(C=C3C4=CC(=C(C=C24)OC)OC)OC)OC)OC
+RP18,method_1,"2,4,6-Tris(bromomethyl)mesitylene",21988-87-4,6.441,1,matrix ID RP18 1,0,0,0,1,0,CC1=C(C(=C(C(=C1CBr)C)CBr)C)CBr
+RP18,method_1,"2,4-Dichlorophenol",120-83-2,5.002,1,matrix ID RP18 1,1,1,1,1,1,C1=CC(=C(C=C1Cl)Cl)O
+RP18,method_1,"2,6-Bis[(4S)-4-phenyl-2-oxazolinyl]pyridine",174500-20-0,5.388,1,matrix ID RP18 1,0,0,0,1,1,C1[C@@H](N=C(O1)C2=NC(=CC=C2)C3=N[C@H](CO3)C4=CC=CC=C4)C5=CC=CC=C5
+RP18,method_1,"2,6-Dichloroiodobenzene",19230-28-5,6.278,1,matrix ID RP18 1,1,1,1,1,1,C1=CC(=C(C(=C1)Cl)I)Cl
+RP18,method_1,"2,6-Diisopropylphenol",2078-54-8,5.934,1,matrix ID RP18 1,1,1,1,1,1,CC(C)C1=C(C(=CC=C1)C(C)C)O
+RP18,method_1,"2,6-Dimethoxy-1,4-benzoquinone",530-55-2,3.382,1,matrix ID RP18 1,0,0,0,1,1,COC1=CC(=O)C=C(C1=O)OC
+RP18,method_1,"2,6-Dimethoxybenzoyl_chloride",1989-53-3,3.697,1,matrix ID RP18 1,0,0,0,1,1,COC1=C(C(=CC=C1)OC)C(=O)Cl
+RP18,method_1,2-(3-Chlorophenoxy)propionic-acid,101-10-0,4.625,1,matrix ID RP18 1,1,1,1,1,1,CC(C(=O)O)OC1=CC(=CC=C1)Cl
+RP18,method_1,2-(4-Chlorobenzoyl)benzoic_acid,85-56-3,4.998,1,matrix ID RP18 1,1,0,1,1,1,C1=CC=C(C(=C1)C(=O)C2=CC=C(C=C2)Cl)C(=O)O
+RP18,method_1,2-(Diphenylphosphino)benzoic-acid,17261-28-8,5.797,1,matrix ID RP18 1,0,0,1,1,1,C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=CC=CC=C3C(=O)O
+RP18,method_1,2-(Trifluoromethyl)pyridine-4-carboxylic_acid,131747-41-6,3.635,1,matrix ID RP18 1,1,1,1,0,0,C1=CN=C(C=C1C(=O)O)C(F)(F)F
+RP18,method_1,2-Amino-4-phenylphenol,1134-36-7,4.249,1,matrix ID RP18 1,0,0,1,0,0,C1=CC=C(C=C1)C2=CC(=C(C=C2)O)N
+RP18,method_1,2-Amino-6-bromopyridine,19798-81-3,3.979,1,matrix ID RP18 1,1,1,1,1,1,C1=CC(=NC(=C1)Br)N
+RP18,method_1,2-Benzyloxybenzoic_acid ,14389-86-7,4.952,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C(C=C1)COC2=CC=CC=C2C(=O)O
+RP18,method_1,"2-Bromo-2',6'-diisopropoxy-1,1'-biphenyl",870703-70-1,6.768,1,matrix ID RP18 1,1,1,1,1,1,CC(C)OC1=C(C(=CC=C1)OC(C)C)C2=CC=CC=C2Br
+RP18,method_1,2-Bromo-5-(trifluoromethyl)benzaldehyde,102684-91-3,5.646,1,matrix ID RP18 1,1,1,1,1,1,C1=CC(=C(C=C1C(F)(F)F)C=O)Br
+RP18,method_1,2-Bromo-5-chlorotoluene,14495-51-3,6.471,1,matrix ID RP18 1,1,1,1,1,1,CC1=C(C=CC(=C1)Cl)Br
+RP18,method_1,2-Bromoanthraquinone,572-83-8,6.357,1,matrix ID RP18 1,0,0,1,1,1,C1=CC=C2C(=C1)C(=O)C3=C(C2=O)C=C(C=C3)Br
+RP18,method_1,2-Bromonaphthalen-1-ol,771-15-3,5.492,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C2C(=C1)C=CC(=C2O)Br
+RP18,method_1,2-Bromophenethylamine,65185-58-2,3.228,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C(C(=C1)CCN)Br
+RP18,method_1,2-Bromotoluene,95-46-5,6.087,1,matrix ID RP18 1,1,1,1,1,1,CC1=CC=CC=C1Br
+RP18,method_1,2-Hydroxy-4-(trifluoromethyl)aniline,454-82-0,4.516,1,matrix ID RP18 1,0,0,1,0,0,C1=CC(=C(C=C1C(F)(F)F)O)N
+RP18,method_1,2-Iodobenzaldehyde,26260-02-6,5.318,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C(C(=C1)C=O)I
+RP18,method_1,2-Iodobenzyl_bromide,40400-13-3,5.97,1,matrix ID RP18 1,0,0,1,1,1,C1=CC=C(C(=C1)CBr)I
+RP18,method_1,2-Iodopyridine,5029-67-4,4.355,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=NC(=C1)I
+RP18,method_1,2-Isopropylthioxanthone,5495-84-1,6.747,1,matrix ID RP18 1,0,0,0,1,1,CC(C)C1=CC2=C(C=C1)SC3=CC=CC=C3C2=O
+RP18,method_1,"2-Methyl-5-(trifluoromethyl)-1,3-benzoxazole",175785-41-8,5.228,1,matrix ID RP18 1,1,1,1,1,1,CC1=NC2=C(O1)C=CC(=C2)C(F)(F)F
+RP18,method_1,"3,3-Dimethyl-1-indanone",26465-81-6,5.052,1,matrix ID RP18 1,1,1,1,1,1,CC1(CC(=O)C2=CC=CC=C21)C
+RP18,method_1,"3,4,5-TRIBROMO-1H-PYRAZOLE",17635-44-8,4.913,1,matrix ID RP18 1,1,1,1,0,0,C1(=C(NN=C1Br)Br)Br
+RP18,method_1,"3,4,7,8-Tetramethyl-1,10-phenanthroline",1660-93-1,3.691,1,matrix ID RP18 1,0,0,0,1,1,CC1=CN=C2C(=C1C)C=CC3=C(C(=CN=C32)C)C
+RP18,method_1,"3,5-Di-tert-butylbenzoic acid",16225-26-6,6.004,1,matrix ID RP18 1,1,1,1,1,1,CC(C)(C)C1=CC(=CC(=C1)C(=O)O)C(C)(C)C
+RP18,method_1,"3,5-Dibromotoluene",1611-92-3,6.643,1,matrix ID RP18 1,1,1,1,0,0,CC1=CC(=CC(=C1)Br)Br
+RP18,method_1,"3,5-Dimethylbenzoyl_chloride",6613-44-1,4.74,1,matrix ID RP18 1,1,1,1,1,1,CC1=CC(=CC(=C1)C(=O)Cl)C
+RP18,method_1,"3,6-Dimethoxy-9H-carbazole",57103-01-2,5.201,1,matrix ID RP18 1,0,1,1,1,1,COC1=CC2=C(C=C1)NC3=C2C=C(C=C3)OC
+RP18,method_1,3-(2-Naphthyl)acrylic_acid,51557-26-7,5.0,1,matrix ID RP18 1,0,0,1,0,0,C1=CC=C2C=C(C=CC2=C1)/C=C/C(=O)O
+RP18,method_1,3-(Phenylthio)propanoic-acid,5219-65-8,4.613,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C(C=C1)SCCC(=O)O
+RP18,method_1,3-(tert-Butoxycarbonyl)benzoic_acid,33704-19-7,5.044,1,matrix ID RP18 1,1,0,1,1,1,CC(C)(C)OC(=O)C1=CC=CC(=C1)C(=O)O
+RP18,method_1,3-Bromobenzoyl_chloride,1711-09-7,6.034,1,matrix ID RP18 1,1,1,1,1,1,C1=CC(=CC(=C1)Br)C(=O)Cl
+RP18,method_1,3-Bromopropionyl_chloride,15486-96-1,2.905,1,matrix ID RP18 1,1,1,1,1,1,C(CBr)C(=O)Cl
+RP18,method_1,3-Chloro-4-methoxyaniline,5345-54-0,3.239,1,matrix ID RP18 1,1,1,1,1,1,COC1=C(C=C(C=C1)N)Cl
+RP18,method_1,3-[[(9H-Fluoren-9-ylmethoxy)carbonyl]amino]-2-naphthalenecarboxylic acid,372159-75-6,6.295,1,matrix ID RP18 1,0,0,0,0,0,C1=CC=C2C=C(C(=CC2=C1)C(=O)O)NC(=O)OCC3C4=CC=CC=C4C5=CC=CC=C35
+RP18,method_1,"4,4',4''-Trimethoxytrityl chloride",49757-42-8,5.708,1,matrix ID RP18 1,1,0,0,1,1,COC1=CC=C(C=C1)C(C2=CC=C(C=C2)OC)(C3=CC=C(C=C3)OC)Cl
+RP18,method_1,"4,4'-Dihydroxybiphenyl",92-88-6,4.206,1,matrix ID RP18 1,0,0,1,0,0,C1=CC(=CC=C1C2=CC=C(C=C2)O)O
+RP18,method_1,"4,4'-Dimethoxybenzophenone",90-96-0,5.439,1,matrix ID RP18 1,0,0,0,1,1,COC1=CC=C(C=C1)C(=O)C2=CC=C(C=C2)OC
+RP18,method_1,"4,4?,4??-(1,3,5-TRIAZINE-2,4,6-TRIYL)TRIBENZALDEHYDE",443922-06-3,5.0,1,matrix ID RP18 1,0,0,0,0,0,C1=CC(=CC=C1C=O)C2=NC(=NC(=N2)C3=CC=C(C=C3)C=O)C4=CC=C(C=C4)C=O
+RP18,method_1,4-(Bromomethyl)benzoic_acid,6232-88-8,4.555,1,matrix ID RP18 1,0,0,1,0,0,C1=CC(=CC=C1CBr)C(=O)O
+RP18,method_1,4-(Hydroxymethyl)phenylacetic-acid,73401-74-8,3.294,1,matrix ID RP18 1,1,1,1,0,0,C1=CC(=CC=C1CC(=O)O)CO
+RP18,method_1,4-(Trifluoroacetyl)phenacyl-bromide,1980063-91-9,4.66,1,matrix ID RP18 1,1,1,1,0,0,C1=CC(=CC=C1C(=O)CBr)C(=O)C(F)(F)F
+RP18,method_1,4-(Trifluoromethyl)benzylamine,3300-51-4,3.284,1,matrix ID RP18 1,1,1,1,1,1,C1=CC(=CC=C1CN)C(F)(F)F
+RP18,method_1,"4-Bromo-3,5-dimethoxybenzoic acid",56518-42-4,4.586,1,matrix ID RP18 1,0,0,1,0,0,COC1=CC(=CC(=C1Br)OC)C(=O)O
+RP18,method_1,4-Bromo-L-phenylalanine,24250-84-8,3.259,1,matrix ID RP18 1,0,0,0,0,0,C1=CC(=CC=C1C[C@@H](C(=O)O)N)Br
+RP18,method_1,4-Chlorobenzenesulfonic_acid,98-66-8,2.93,1,matrix ID RP18 1,1,1,1,1,1,C1=CC(=CC=C1S(=O)(=O)O)Cl
+RP18,method_1,4-Chloropyridine-3-carboxylic_acid,10177-29-4,0.0,0,matrix ID RP18 1,0,0,1,0,0,C1=CN=CC(=C1Cl)C(=O)O
+RP18,method_1,"4-Hydroxy-3,5-diiodobenzoic acid",618-76-8,4.476,1,matrix ID RP18 1,0,0,1,0,0,C1=C(C=C(C(=C1I)O)I)C(=O)O
+RP18,method_1,4-Hydroxyphthalic_acid,610-35-5,1.493,1,matrix ID RP18 1,1,0,1,0,0,C1=CC(=C(C=C1O)C(=O)O)C(=O)O
+RP18,method_1,4-Methoxybiphenyl,613-37-6,5.974,1,matrix ID RP18 1,0,1,1,1,1,COC1=CC=C(C=C1)C2=CC=CC=C2
+RP18,method_1,4-Methoxytriphenylamine,4316-51-2,6.687,1,matrix ID RP18 1,0,0,0,1,1,COC1=CC=C(C=C1)N(C2=CC=CC=C2)C3=CC=CC=C3
+RP18,method_1,4-tert-Butylbenzoyl_chloride,1710-98-1,5.189,1,matrix ID RP18 1,1,1,1,0,1,CC(C)(C)C1=CC=C(C=C1)C(=O)Cl
+RP18,method_1,"5,7-Dimethyl-[1,2,4]triazolo[1,5-a]pyrimidine-2-carboxylic acid",87253-62-1,1.395,1,matrix ID RP18 1,0,0,0,0,0,CC1=CC(=NC2=NC(=NN12)C(=O)O)C
+RP18,method_1,5-(Trifluoromethyl)indole,100846-24-0,5.41,1,matrix ID RP18 1,1,1,0,1,1,C1=CC2=C(C=CN2)C=C1C(F)(F)F
+RP18,method_1,5-(Trifluoromethyl)pyridine-2-carboxaldehyde,31224-82-5,3.586,1,matrix ID RP18 1,1,1,1,1,1,C1=CC(=NC=C1C(F)(F)F)C=O
+RP18,method_1,5-Bromo-2-furoic_acid,585-70-6,3.478,1,matrix ID RP18 1,1,1,1,0,0,C1=C(OC(=C1)Br)C(=O)O
+RP18,method_1,5-Bromo-2-phenylpyridine,27012-25-5,5.999,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C(C=C1)C2=NC=C(C=C2)Br
+RP18,method_1,"6,6'-Dibromo-1,1'-bi-2-naphthol",13185-00-7,6.251,1,matrix ID RP18 1,0,1,1,0,0,C1=CC2=C(C=CC(=C2C3=C(C=CC4=C3C=CC(=C4)Br)O)O)C=C1Br
+RP18,method_1,8-Isoquinolinecarboxaldehyde,787615-01-4,3.029,1,matrix ID RP18 1,1,0,1,1,1,C1=CC2=C(C=NC=C2)C(=C1)C=O
+RP18,method_1,Allyl-alpha-D-glucopyranoside,7464-56-4,0.0,0,matrix ID RP18 1,1,0,1,0,0,C=CCO[C@@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)O
+RP18,method_1,Aniline-2-sulfonic_acid,88-21-1,0.0,0,matrix ID RP18 1,0,0,1,0,0,C1=CC=C(C(=C1)N)S(=O)(=O)O
+RP18,method_1,Bis(diphenylphosphino)methane,2071-20-7,0.0,0,matrix ID RP18 1,0,0,0,1,1,C1=CC=C(C=C1)P(CP(C2=CC=CC=C2)C3=CC=CC=C3)C4=CC=CC=C4
+RP18,method_1,DL-beta-Phenylalanine,614-19-7,1.085,1,matrix ID RP18 1,0,0,0,0,0,C1=CC=C(C=C1)C(CC(=O)O)N
+RP18,method_1,Di-tert-butylcyclopentadiene,120937-44-2,0.0,0,matrix ID RP18 1,1,1,1,1,1,CC(C)(C)C1C=CC(=C1)C(C)(C)C
+RP18,method_1,Dibenzyl-malonate,15014-25-2,5.676,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C(C=C1)COC(=O)CC(=O)OCC2=CC=CC=C2
+RP18,method_1,Dibromomaleic-acid,608-37-7,3.282,1,matrix ID RP18 1,1,1,1,0,0,C(=C(\C(=O)O)/Br)(\C(=O)O)/Br
+RP18,method_1,Diethyl 4-Methoxyphenylphosphonate,3762-33-2,4.523,1,matrix ID RP18 1,1,1,1,1,1,CCOP(=O)(C1=CC=C(C=C1)OC)OCC
+RP18,method_1,Diethyl_dibutylmalonate,596-75-8,6.757,1,matrix ID RP18 1,1,1,1,1,1,CCCCC(CCCC)(C(=O)OCC)C(=O)OCC
+RP18,method_1,Diethyl_phenylmalonate,83-13-6,5.407,1,matrix ID RP18 1,1,1,1,1,1,CCOC(=O)C(C1=CC=CC=C1)C(=O)OCC
+RP18,method_1,"Dimethyl 1,3-cyclohexadiene-1,4-dicarboxylate",1659-95-6,4.897,1,matrix ID RP18 1,0,0,0,1,1,COC(=O)C1=CC=C(CC1)C(=O)OC
+RP18,method_1,"Dimethyl 2,2'-bipyridine-4,4'-dicarboxylate",71071-46-0,5.278,1,matrix ID RP18 1,0,0,0,0,1,COC(=O)C1=CC(=NC=C1)C2=NC=CC(=C2)C(=O)OC
+RP18,method_1,Dimethyl-propargylmalonate,95124-07-5,0.0,0,matrix ID RP18 1,1,1,1,1,1,COC(=O)C(CC#C)C(=O)OC
+RP18,method_1,Ethyl 2-cyclohexanoneacetate,24731-17-7,4.689,1,matrix ID RP18 1,1,1,1,1,1,CCOC(=O)CC1CCCCC1=O
+RP18,method_1,Ethyl 3-thiopheneacetate,37784-63-7,5.098,1,matrix ID RP18 1,1,1,1,1,1,CCOC(=O)CC1=CSC=C1
+RP18,method_1,"Ethyl 4,4,4-trifluoroacetoacetate",372-31-6,3.859,1,matrix ID RP18 1,1,1,1,1,1,CCOC(=O)CC(=O)C(F)(F)F
+RP18,method_1,Ethyl mesitylglyoxylate,5524-57-2,5.827,1,matrix ID RP18 1,1,1,1,1,1,CCOC(=O)C(=O)C1=C(C=C(C=C1C)C)C
+RP18,method_1,Ethyl-3-oxohexanoate,3249-68-1,4.603,1,matrix ID RP18 1,1,1,1,1,1,CCCC(=O)CC(=O)OCC
+RP18,method_1,Ethyl-4-bromocrotonate,37746-78-4,5.037,1,matrix ID RP18 1,1,1,1,1,1,CCOC(=O)/C=C/CBr
+RP18,method_1,Ethyl-4-iodobenzoate,51934-41-9,6.075,1,matrix ID RP18 1,1,1,1,1,1,CCOC(=O)C1=CC=C(C=C1)I
+RP18,method_1,FMOC-D-ORN(ALOC)-OH,214750-74-0,5.147,1,matrix ID RP18 1,1,0,1,0,1,C=CCOC(=O)NCCC[C@H](C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+RP18,method_1,Flavanone,487-26-3,5.607,1,matrix ID RP18 1,0,1,1,1,1,C1C(OC2=CC=CC=C2C1=O)C3=CC=CC=C3
+RP18,method_1,Flufenamic-acid,530-78-9,5.77,1,matrix ID RP18 1,1,1,1,0,1,C1=CC=C(C(=C1)C(=O)O)NC2=CC=CC(=C2)C(F)(F)F
+RP18,method_1,Hematein,475-25-2,4.566,1,matrix ID RP18 1,0,0,0,0,0,C1C2=CC(=C(C=C2C3=C4C=CC(=O)C(=C4OCC31O)O)O)O
+RP18,method_1,METHYL 2-PHTHALIMIDOACETATE,23244-58-8,4.476,1,matrix ID RP18 1,0,1,1,1,1,COC(=O)CN1C(=O)C2=CC=CC=C2C1=O
+RP18,method_1,"Methyl 6-oxo-1,6-dihydropyridine-2-carboxylate",30062-34-1,2.879,1,matrix ID RP18 1,1,1,1,1,1,COC(=O)C1=CC=CC(=O)N1
+RP18,method_1,"Methyl-2,6-dimethoxybenzoate",2065-27-2,4.625,1,matrix ID RP18 1,1,1,1,1,1,COC1=C(C(=CC=C1)OC)C(=O)OC
+RP18,method_1,Methyl-3-bromo-4-iodobenzoate,249647-24-3,6.145,1,matrix ID RP18 1,0,1,0,1,1,COC(=O)C1=CC(=C(C=C1)I)Br
+RP18,method_1,"Methyl-6-Oxo-1,6-dihydropyridazine-3-carboxylate",63001-30-9,2.341,1,matrix ID RP18 1,0,0,1,0,0,COC(=O)C1=NNC(=O)C=C1
+RP18,method_1,Methyl-diethylphosphonoacetate,1067-74-9,3.635,1,matrix ID RP18 1,1,1,1,1,1,CCOP(=O)(CC(=O)OC)OCC
+RP18,method_1,N(im)-Trityl-L-histidine,35146-32-8,4.033,1,matrix ID RP18 1,0,0,0,0,0,C1=CC=C(C=C1)C(C2=CC=CC=C2)(C3=CC=CC=C3)N4C=C(N=C4)C[C@@H](C(=O)O)N
+RP18,method_1,"N,N-Dimethyl-L-phenylalanine",17469-89-5,2.393,1,matrix ID RP18 1,0,0,0,0,0,CN(C)[C@@H](CC1=CC=CC=C1)C(=O)O
+RP18,method_1,N-Acetyl-L-tryptophan,1218-34-4,3.707,1,matrix ID RP18 1,1,0,1,0,0,CC(=O)N[C@@H](CC1=CNC2=CC=CC=C21)C(=O)O
+RP18,method_1,N-Benzylidenebenzylamine,780-25-6,4.383,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C(C=C1)CN=CC2=CC=CC=C2
+RP18,method_1,N-Phthaloylglycine,4702-13-0,3.573,1,matrix ID RP18 1,1,1,1,0,1,C1=CC=C2C(=C1)C(=O)N(C2=O)CC(=O)O
+RP18,method_1,"N-[(1,1-Dimethylethoxy)carbonyl]-L-histidine methyl_ester",2488-14-4,3.209,1,matrix ID RP18 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@@H](CC1=CN=CN1)C(=O)OC
+RP18,method_1,N-[(Phenylmethoxy)carbonyl]-O-(phenylmethyl)-L-serine_,20806-43-3,5.044,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C(C=C1)COC[C@@H](C(=O)O)NC(=O)OCC2=CC=CC=C2
+RP18,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-methyl-D-lysine",1315449-94-5,5.667,1,matrix ID RP18 1,0,1,1,1,1,C[C@@](CCCCNC(=O)OC(C)(C)C)(C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+RP18,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(phenylmethoxy)carbonyl]-L-lysine",2389-60-8,4.943,1,matrix ID RP18 1,1,1,1,1,1,CC(C)(C)OC(=O)NCCCC[C@@H](C(=O)O)NC(=O)OCC1=CC=CC=C1
+RP18,method_1,Nalpha-[(9H-Fluoren-9-ylmethoxy)carbonyl]-L-threonine tert-Butyl-Ester,120791-76-6,5.789,1,matrix ID RP18 1,1,1,1,1,1,C[C@H]([C@@H](C(=O)OC(C)(C)C)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13)O
+RP18,method_1,Phenyl-benzoate,93-99-2,5.81,1,matrix ID RP18 1,1,1,1,1,1,C1=CC=C(C=C1)C(=O)OC2=CC=CC=C2
+RP18,method_1,Pindolol,13523-86-9,3.149,1,matrix ID RP18 1,0,0,0,1,1,CC(C)NCC(COC1=CC=CC2=C1C=CN2)O
+RP18,method_1,Protocatechuic_acid,99-50-3,2.458,1,matrix ID RP18 1,1,1,1,0,0,C1=CC(=C(C=C1C(=O)O)O)O
+RP18,method_1,Suberic_acid_monomethyl_ester,3946-32-5,4.207,1,matrix ID RP18 1,1,0,1,0,1,COC(=O)CCCCCCC(=O)O
+RP18,method_1,Z-D-Glu-OBzl,65706-99-2,5.043,1,matrix ID RP18 1,0,0,0,1,1,C1=CC=C(C=C1)COC(=O)[C@@H](CCC(=O)O)NC(=O)OCC2=CC=CC=C2
+RP18,method_1,Z-D-Phg-OH,17609-52-8,4.772,1,matrix ID RP18 1,1,0,1,1,1,C1=CC=C(C=C1)COC(=O)N[C@H](C2=CC=CC=C2)C(=O)O
+RP18,method_1,"meso-1,2-Dibromo-1,2-diphenylethane",13440-24-9,6.089,1,matrix ID RP18 1,0,0,0,1,0,C1=CC=C(C=C1)C(C(C2=CC=CC=C2)Br)Br
+RP18,method_1,mono-tert-Butyl_succinate,15026-17-2,4.127,1,matrix ID RP18 1,1,1,1,0,0,CC(C)(C)OC(=O)CCC(=O)O
+RP18,method_1,pentafluorobenzyl-bromide,1765-40-8,5.876,1,matrix ID RP18 1,1,1,1,1,1,C(C1=C(C(=C(C(=C1F)F)F)F)F)Br
+RP18,method_1,"trans-1,2-Bis(phenylsulfonyl)ethylene",963-16-6,5.113,1,matrix ID RP18 1,0,0,0,0,0,C1=CC=C(C=C1)S(=O)(=O)/C=C/S(=O)(=O)C2=CC=CC=C2
+RP18,method_1,trans-4-(9-Fluorenylmethyloxycarbonylaminomethyl)-cyclohexanoic_acid,188715-40-4,5.288,1,matrix ID RP18 1,0,0,0,0,0,C1CC(CCC1CNC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+RP18,method_1,trans-Aconitic-acid,4023-65-8,0.0,0,matrix ID RP18 1,1,1,1,0,0,C(/C(=C\C(=O)O)/C(=O)O)C(=O)O
+RP18,method_2,(1-BROMOETHYL)BENZENE,585-71-7,0.0,0,matrix ID RP18 2,1,1,1,1,1,CC(C1=CC=CC=C1)Br
+RP18,method_2,"(2,6-Dioxo-piperidin-4-yl)-acetic_acid",6258-28-2,0.0,0,matrix ID RP18 2,0,0,1,0,0,C1C(CC(=O)NC1=O)CC(=O)O
+RP18,method_2,(2-BENZYLOXYCARBONYLAMINO-ACETYLAMINO)-ACETIC_ACID,2566-19-0,1.036,1,matrix ID RP18 2,0,0,1,0,0,C1=CC=C(C=C1)COC(=O)NCC(=O)NCC(=O)O
+RP18,method_2,(2S)-2-{[(9H-fluoren-9-ylmethoxy)carbonyl]amino}-4-hydroxybutanoic acid,172525-85-8,3.166,1,matrix ID RP18 2,0,0,1,0,0,C1=CC=C2C(=C1)C(C3=CC=CC=C32)COC(=O)N[C@@H](CCO)C(=O)O
+RP18,method_2,"(2S,5S)-1-Hydroxy-2,5-diphenylphospholane 1-oxide",474049-73-5,2.987,1,matrix ID RP18 2,0,0,0,0,1,C1C[C@H](P(=O)([C@@H]1C2=CC=CC=C2)O)C3=CC=CC=C3
+RP18,method_2,"(?S)-4-(1,1-Dimethylethoxy)-?-[[(9H-fluoren-9-ylmethoxy)carbonyl]amino]benzenebutanoic_acid",204384-69-0,6.089,1,matrix ID RP18 2,0,0,1,1,1,CC(C)(C)OC1=CC=C(C=C1)CC[C@@H](C(=O)O)NC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+RP18,method_2,(R)-(-)-2-Methoxy-2-phenylethanol,17628-72-7,3.918,1,matrix ID RP18 2,1,1,1,1,1,CO[C@@H](CO)C1=CC=CC=C1
+RP18,method_2,"(S)-(-)-2-Amino-3-methyl-1,1-diphenyl-1-butanol",78603-95-9,5.745,1,matrix ID RP18 2,0,1,1,1,1,CC(C)[C@@H](C(C1=CC=CC=C1)(C2=CC=CC=C2)O)N
+RP18,method_2,(S)-Benzyl 2-(((S)-1-methoxy-4-methyl-1-oxopentan-2-yl)carbamoyl)pyrrolidine-1-carboxylate,2873-37-2,5.188,1,matrix ID RP18 2,1,1,1,1,1,CC(C)C[C@@H](C(=O)OC)NC(=O)[C@@H]1CCCN1C(=O)OCC2=CC=CC=C2
+RP18,method_2,"1,1,1-Tris(4-hydroxyphenyl)ethane",27955-94-8,4.517,1,matrix ID RP18 2,1,1,1,0,0,CC(C1=CC=C(C=C1)O)(C2=CC=C(C=C2)O)C3=CC=C(C=C3)O
+RP18,method_2,"1,1,3-Triphenylpropargyl alcohol",1522-13-0,5.918,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=C(C=C1)C#CC(C2=CC=CC=C2)(C3=CC=CC=C3)O
+RP18,method_2,"1,2-Bis(4-hydroxyphenyl)ethane-1,2-dione",33288-79-8,0.0,0,matrix ID RP18 2,1,0,1,0,0,C1=CC(=CC=C1C(=O)C(=O)C2=CC=C(C=C2)O)O
+RP18,method_2,"1,3-Bis(trifluoromethyl)-5-bromobenzene",328-70-1,6.328,1,matrix ID RP18 2,1,1,1,1,1,C1=C(C=C(C=C1C(F)(F)F)Br)C(F)(F)F
+RP18,method_2,"1,3-Butanediol-diacrylate",19485-03-1,4.985,1,matrix ID RP18 2,1,1,1,1,1,CC(CCOC(=O)C=C)OC(=O)C=C
+RP18,method_2,"1,3-Dimethyl 2-[(4-methoxyphenyl)methylene]propanedioate",7443-25-6,5.076,1,matrix ID RP18 2,1,1,1,1,1,COC1=CC=C(C=C1)C=C(C(=O)OC)C(=O)OC
+RP18,method_2,"1,3-Diphenylacetone_p-tosylhydrazone",19816-88-7,5.841,1,matrix ID RP18 2,0,0,0,1,1,CC1=CC=C(C=C1)S(=O)(=O)NN=C(CC2=CC=CC=C2)CC3=CC=CC=C3
+RP18,method_2,"1,4-Bis(bromomethyl)-2,3,5,6-tetrafluorobenzene_",776-40-9,6.007,1,matrix ID RP18 2,0,0,0,1,1,C(C1=C(C(=C(C(=C1F)F)CBr)F)F)Br
+RP18,method_2,"1,4-Cyclohexanedicarboxylic-acid",1076-97-7,0.0,0,matrix ID RP18 2,1,0,0,0,1,C1CC(CCC1C(=O)O)C(=O)O
+RP18,method_2,"1,4-Dibromo-2,3-butanedione",6305-43-7,3.147,1,matrix ID RP18 2,1,1,1,1,0,C(C(=O)C(=O)CBr)Br
+RP18,method_2,1-(4-Biphenyl)-1-ethanol,3562-73-0,5.138,1,matrix ID RP18 2,1,1,0,1,0,CC(C1=CC=C(C=C1)C2=CC=CC=C2)O
+RP18,method_2,"1-(9H-Fluoren-9-ylmethyl) (2S,4S)-4-[[(1,1-dimethylethoxy)carbonyl]amino]-1,2-pyrrolidinedicarboxylate_",221352-74-5,5.506,1,matrix ID RP18 2,1,0,1,1,1,CC(C)(C)OC(=O)N[C@H]1C[C@H](N(C1)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+RP18,method_2,1-(tert-Butoxycarbonyl)-4-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-piperazinecarboxylic_acid,218278-58-1,5.725,1,matrix ID RP18 2,0,0,1,1,1,CC(C)(C)OC(=O)N1CCN(CC1C(=O)O)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+RP18,method_2,1-BROMO-3-METHYLBUTANE,107-82-4,0.0,0,matrix ID RP18 2,1,1,1,1,1,CC(C)CCBr
+RP18,method_2,1-Benzofuran-5-carboxylic_acid,90721-27-0,0.0,0,matrix ID RP18 2,0,0,0,0,0,C1=CC2=C(C=CO2)C=C1C(=O)O
+RP18,method_2,1-Benzylpiperidine,2905-56-8,0.0,0,matrix ID RP18 2,1,1,1,1,1,C1CCN(CC1)CC2=CC=CC=C2
+RP18,method_2,1-Bromo-4-(trifluoromethoxy)benzene,407-14-7,6.13,1,matrix ID RP18 2,1,1,1,1,1,C1=CC(=CC=C1OC(F)(F)F)Br
+RP18,method_2,1-Bromopentanemethylbenzene,5153-40-2,0.0,0,matrix ID RP18 2,0,0,0,1,1,CC1=C(C(=C(C(=C1C)C)Br)C)C
+RP18,method_2,1-Phenyl-5-(trifluoromethyl)-1H-pyrazole-4-carboxylic_acid,98534-81-7,1.535,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=C(C=C1)N2C(=C(C=N2)C(=O)O)C(F)(F)F
+RP18,method_2,1-Pyrenemethanol,24463-15-8,5.412,1,matrix ID RP18 2,0,0,1,1,1,C1=CC2=C3C(=C1)C=CC4=C(C=CC(=C43)C=C2)CO
+RP18,method_2,"1-Tosyl-2,5-dihydro-1H-pyrrole",16851-72-2,5.012,1,matrix ID RP18 2,0,1,1,1,1,CC1=CC=C(C=C1)S(=O)(=O)N2CC=CC2
+RP18,method_2,"2,2"",4,4""-Tetramethylbenzophenone",3478-88-4,6.702,1,matrix ID RP18 2,1,1,1,1,1,CC1=CC(=C(C=C1)C(=O)C2=C(C=C(C=C2)C)C)C
+RP18,method_2,"2,2,2-TRIFLUOROACETOPHENONE",434-45-7,4.336,1,matrix ID RP18 2,1,1,1,0,1,C1=CC=C(C=C1)C(=O)C(F)(F)F
+RP18,method_2,"2,3,4-Trifluorobenzoic acid",61079-72-9,0.0,0,matrix ID RP18 2,1,1,1,1,1,C1=CC(=C(C(=C1C(=O)O)F)F)F
+RP18,method_2,"2,3,6,7,10,11-Hexamethoxytriphenylene",808-57-1,5.502,1,matrix ID RP18 2,0,0,0,1,0,COC1=C(C=C2C(=C1)C3=CC(=C(C=C3C4=CC(=C(C=C24)OC)OC)OC)OC)OC
+RP18,method_2,"2,4,6-Tris(bromomethyl)mesitylene",21988-87-4,6.321,1,matrix ID RP18 2,0,0,0,1,0,CC1=C(C(=C(C(=C1CBr)C)CBr)C)CBr
+RP18,method_2,"2,4-Dichlorophenol",120-83-2,4.973,1,matrix ID RP18 2,1,1,1,1,1,C1=CC(=C(C=C1Cl)Cl)O
+RP18,method_2,"2,6-Bis[(4S)-4-phenyl-2-oxazolinyl]pyridine",174500-20-0,5.315,1,matrix ID RP18 2,0,0,0,1,1,C1[C@@H](N=C(O1)C2=NC(=CC=C2)C3=N[C@H](CO3)C4=CC=CC=C4)C5=CC=CC=C5
+RP18,method_2,"2,6-Dichloroiodobenzene",19230-28-5,6.307,1,matrix ID RP18 2,1,1,1,1,1,C1=CC(=C(C(=C1)Cl)I)Cl
+RP18,method_2,"2,6-Diisopropylphenol",2078-54-8,5.957,1,matrix ID RP18 2,1,1,1,1,1,CC(C)C1=C(C(=CC=C1)C(C)C)O
+RP18,method_2,"2,6-Dimethoxy-1,4-benzoquinone",530-55-2,3.37,1,matrix ID RP18 2,0,0,0,1,1,COC1=CC(=O)C=C(C1=O)OC
+RP18,method_2,"2,6-Dimethoxybenzoyl_chloride",1989-53-3,0.0,0,matrix ID RP18 2,0,0,0,1,1,COC1=C(C(=CC=C1)OC)C(=O)Cl
+RP18,method_2,2-(3-Chlorophenoxy)propionic-acid,101-10-0,1.262,1,matrix ID RP18 2,1,1,1,1,1,CC(C(=O)O)OC1=CC(=CC=C1)Cl
+RP18,method_2,2-(4-Chlorobenzoyl)benzoic_acid,85-56-3,3.206,1,matrix ID RP18 2,1,0,1,1,1,C1=CC=C(C(=C1)C(=O)C2=CC=C(C=C2)Cl)C(=O)O
+RP18,method_2,2-(Diphenylphosphino)benzoic-acid,17261-28-8,3.53,1,matrix ID RP18 2,0,0,1,1,1,C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=CC=CC=C3C(=O)O
+RP18,method_2,2-(Trifluoromethyl)pyridine-4-carboxylic_acid,131747-41-6,0.0,0,matrix ID RP18 2,1,1,1,0,0,C1=CN=C(C=C1C(=O)O)C(F)(F)F
+RP18,method_2,2-Amino-4-phenylphenol,1134-36-7,4.572,1,matrix ID RP18 2,0,0,1,0,0,C1=CC=C(C=C1)C2=CC(=C(C=C2)O)N
+RP18,method_2,2-Amino-6-bromopyridine,19798-81-3,3.972,1,matrix ID RP18 2,1,1,1,1,1,C1=CC(=NC(=C1)Br)N
+RP18,method_2,2-Benzyloxybenzoic_acid ,14389-86-7,2.663,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=C(C=C1)COC2=CC=CC=C2C(=O)O
+RP18,method_2,"2-Bromo-2',6'-diisopropoxy-1,1'-biphenyl",870703-70-1,6.612,1,matrix ID RP18 2,1,1,1,1,1,CC(C)OC1=C(C(=CC=C1)OC(C)C)C2=CC=CC=C2Br
+RP18,method_2,2-Bromo-5-(trifluoromethyl)benzaldehyde,102684-91-3,5.656,1,matrix ID RP18 2,1,1,1,1,1,C1=CC(=C(C=C1C(F)(F)F)C=O)Br
+RP18,method_2,2-Bromo-5-chlorotoluene,14495-51-3,6.353,1,matrix ID RP18 2,1,1,1,1,1,CC1=C(C=CC(=C1)Cl)Br
+RP18,method_2,2-Bromoanthraquinone,572-83-8,6.246,1,matrix ID RP18 2,0,0,1,1,1,C1=CC=C2C(=C1)C(=O)C3=C(C2=O)C=C(C=C3)Br
+RP18,method_2,2-Bromonaphthalen-1-ol,771-15-3,5.31,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=C2C(=C1)C=CC(=C2O)Br
+RP18,method_2,2-Bromophenethylamine,65185-58-2,4.393,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=C(C(=C1)CCN)Br
+RP18,method_2,2-Bromotoluene,95-46-5,5.988,1,matrix ID RP18 2,1,1,1,1,1,CC1=CC=CC=C1Br
+RP18,method_2,2-Hydroxy-4-(trifluoromethyl)aniline,454-82-0,4.393,1,matrix ID RP18 2,0,0,1,0,0,C1=CC(=C(C=C1C(F)(F)F)O)N
+RP18,method_2,2-Iodobenzaldehyde,26260-02-6,5.335,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=C(C(=C1)C=O)I
+RP18,method_2,2-Iodobenzyl_bromide,40400-13-3,5.878,1,matrix ID RP18 2,0,0,1,1,1,C1=CC=C(C(=C1)CBr)I
+RP18,method_2,2-Iodopyridine,5029-67-4,4.366,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=NC(=C1)I
+RP18,method_2,2-Isopropylthioxanthone,5495-84-1,6.761,1,matrix ID RP18 2,0,0,0,1,1,CC(C)C1=CC2=C(C=C1)SC3=CC=CC=C3C2=O
+RP18,method_2,"2-Methyl-5-(trifluoromethyl)-1,3-benzoxazole",175785-41-8,5.238,1,matrix ID RP18 2,1,1,1,1,1,CC1=NC2=C(O1)C=CC(=C2)C(F)(F)F
+RP18,method_2,"3,3-Dimethyl-1-indanone",26465-81-6,5.065,1,matrix ID RP18 2,1,1,1,1,1,CC1(CC(=O)C2=CC=CC=C21)C
+RP18,method_2,"3,4,5-TRIBROMO-1H-PYRAZOLE",17635-44-8,3.923,1,matrix ID RP18 2,1,1,1,0,0,C1(=C(NN=C1Br)Br)Br
+RP18,method_2,"3,4,7,8-Tetramethyl-1,10-phenanthroline",1660-93-1,5.008,1,matrix ID RP18 2,0,0,0,1,1,CC1=CN=C2C(=C1C)C=CC3=C(C(=CN=C32)C)C
+RP18,method_2,"3,5-Di-tert-butylbenzoic acid",16225-26-6,3.669,1,matrix ID RP18 2,1,1,1,1,1,CC(C)(C)C1=CC(=CC(=C1)C(=O)O)C(C)(C)C
+RP18,method_2,"3,5-Dibromotoluene",1611-92-3,6.506,1,matrix ID RP18 2,1,1,1,0,0,CC1=CC(=CC(=C1)Br)Br
+RP18,method_2,"3,5-Dimethylbenzoyl_chloride",6613-44-1,6.252,1,matrix ID RP18 2,1,1,1,1,1,CC1=CC(=CC(=C1)C(=O)Cl)C
+RP18,method_2,"3,6-Dimethoxy-9H-carbazole",57103-01-2,5.212,1,matrix ID RP18 2,0,1,1,1,1,COC1=CC2=C(C=C1)NC3=C2C=C(C=C3)OC
+RP18,method_2,3-(2-Naphthyl)acrylic_acid,51557-26-7,5.009,1,matrix ID RP18 2,0,0,1,0,0,C1=CC=C2C=C(C=CC2=C1)/C=C/C(=O)O
+RP18,method_2,3-(Phenylthio)propanoic-acid,5219-65-8,0.0,0,matrix ID RP18 2,1,1,1,1,1,C1=CC=C(C=C1)SCCC(=O)O
+RP18,method_2,3-(tert-Butoxycarbonyl)benzoic_acid,33704-19-7,3.134,1,matrix ID RP18 2,1,0,1,1,1,CC(C)(C)OC(=O)C1=CC=CC(=C1)C(=O)O
+RP18,method_2,3-Bromobenzoyl_chloride,1711-09-7,6.056,1,matrix ID RP18 2,1,1,1,1,1,C1=CC(=CC(=C1)Br)C(=O)Cl
+RP18,method_2,3-Bromopropionyl_chloride,15486-96-1,0.0,0,matrix ID RP18 2,1,1,1,1,1,C(CBr)C(=O)Cl
+RP18,method_2,3-Chloro-4-methoxyaniline,5345-54-0,4.215,1,matrix ID RP18 2,1,1,1,1,1,COC1=C(C=C(C=C1)N)Cl
+RP18,method_2,3-[[(9H-Fluoren-9-ylmethoxy)carbonyl]amino]-2-naphthalenecarboxylic acid,372159-75-6,4.126,1,matrix ID RP18 2,0,0,0,0,0,C1=CC=C2C=C(C(=CC2=C1)C(=O)O)NC(=O)OCC3C4=CC=CC=C4C5=CC=CC=C35
+RP18,method_2,"4,4',4''-Trimethoxytrityl chloride",49757-42-8,5.629,1,matrix ID RP18 2,1,0,0,1,1,COC1=CC=C(C=C1)C(C2=CC=C(C=C2)OC)(C3=CC=C(C=C3)OC)Cl
+RP18,method_2,"4,4'-Dihydroxybiphenyl",92-88-6,4.214,1,matrix ID RP18 2,0,0,1,0,0,C1=CC(=CC=C1C2=CC=C(C=C2)O)O
+RP18,method_2,"4,4'-Dimethoxybenzophenone",90-96-0,5.466,1,matrix ID RP18 2,0,0,0,1,1,COC1=CC=C(C=C1)C(=O)C2=CC=C(C=C2)OC
+RP18,method_2,"4,4?,4??-(1,3,5-TRIAZINE-2,4,6-TRIYL)TRIBENZALDEHYDE",443922-06-3,5.013,1,matrix ID RP18 2,0,0,0,0,0,C1=CC(=CC=C1C=O)C2=NC(=NC(=N2)C3=CC=C(C=C3)C=O)C4=CC=C(C=C4)C=O
+RP18,method_2,4-(Bromomethyl)benzoic_acid,6232-88-8,4.563,1,matrix ID RP18 2,0,0,1,0,0,C1=CC(=CC=C1CBr)C(=O)O
+RP18,method_2,4-(Hydroxymethyl)phenylacetic-acid,73401-74-8,0.0,0,matrix ID RP18 2,1,1,1,0,0,C1=CC(=CC=C1CC(=O)O)CO
+RP18,method_2,4-(Trifluoroacetyl)phenacyl-bromide,1980063-91-9,4.599,1,matrix ID RP18 2,1,1,1,0,0,C1=CC(=CC=C1C(=O)CBr)C(=O)C(F)(F)F
+RP18,method_2,4-(Trifluoromethyl)benzylamine,3300-51-4,5.479,1,matrix ID RP18 2,1,1,1,1,1,C1=CC(=CC=C1CN)C(F)(F)F
+RP18,method_2,"4-Bromo-3,5-dimethoxybenzoic acid",56518-42-4,1.681,1,matrix ID RP18 2,0,0,1,0,0,COC1=CC(=CC(=C1Br)OC)C(=O)O
+RP18,method_2,4-Bromo-L-phenylalanine,24250-84-8,3.078,1,matrix ID RP18 2,0,0,0,0,0,C1=CC(=CC=C1C[C@@H](C(=O)O)N)Br
+RP18,method_2,4-Chlorobenzenesulfonic_acid,98-66-8,0.0,0,matrix ID RP18 2,1,1,1,1,1,C1=CC(=CC=C1S(=O)(=O)O)Cl
+RP18,method_2,4-Chloropyridine-3-carboxylic_acid,10177-29-4,0.0,0,matrix ID RP18 2,0,0,1,0,0,C1=CN=CC(=C1Cl)C(=O)O
+RP18,method_2,"4-Hydroxy-3,5-diiodobenzoic acid",618-76-8,0.0,0,matrix ID RP18 2,0,0,1,0,0,C1=C(C=C(C(=C1I)O)I)C(=O)O
+RP18,method_2,4-Hydroxyphthalic_acid,610-35-5,0.0,0,matrix ID RP18 2,1,0,1,0,0,C1=CC(=C(C=C1O)C(=O)O)C(=O)O
+RP18,method_2,4-Methoxybiphenyl,613-37-6,5.992,1,matrix ID RP18 2,0,1,1,1,1,COC1=CC=C(C=C1)C2=CC=CC=C2
+RP18,method_2,4-Methoxytriphenylamine,4316-51-2,6.676,1,matrix ID RP18 2,0,0,0,1,1,COC1=CC=C(C=C1)N(C2=CC=CC=C2)C3=CC=CC=C3
+RP18,method_2,4-tert-Butylbenzoyl_chloride,1710-98-1,3.054,1,matrix ID RP18 2,1,1,1,0,1,CC(C)(C)C1=CC=C(C=C1)C(=O)Cl
+RP18,method_2,"5,7-Dimethyl-[1,2,4]triazolo[1,5-a]pyrimidine-2-carboxylic acid",87253-62-1,0.0,0,matrix ID RP18 2,0,0,0,0,0,CC1=CC(=NC2=NC(=NN12)C(=O)O)C
+RP18,method_2,5-(Trifluoromethyl)indole,100846-24-0,5.434,1,matrix ID RP18 2,1,1,0,1,1,C1=CC2=C(C=CN2)C=C1C(F)(F)F
+RP18,method_2,5-(Trifluoromethyl)pyridine-2-carboxaldehyde,31224-82-5,0.0,0,matrix ID RP18 2,1,1,1,1,1,C1=CC(=NC=C1C(F)(F)F)C=O
+RP18,method_2,5-Bromo-2-furoic_acid,585-70-6,0.0,0,matrix ID RP18 2,1,1,1,0,0,C1=C(OC(=C1)Br)C(=O)O
+RP18,method_2,5-Bromo-2-phenylpyridine,27012-25-5,5.916,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=C(C=C1)C2=NC=C(C=C2)Br
+RP18,method_2,"6,6'-Dibromo-1,1'-bi-2-naphthol",13185-00-7,6.116,1,matrix ID RP18 2,0,1,1,0,0,C1=CC2=C(C=CC(=C2C3=C(C=CC4=C3C=CC(=C4)Br)O)O)C=C1Br
+RP18,method_2,8-Isoquinolinecarboxaldehyde,787615-01-4,3.966,1,matrix ID RP18 2,1,0,1,1,1,C1=CC2=C(C=NC=C2)C(=C1)C=O
+RP18,method_2,Allyl-alpha-D-glucopyranoside,7464-56-4,0.0,0,matrix ID RP18 2,1,0,1,0,0,C=CCO[C@@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)O
+RP18,method_2,Aniline-2-sulfonic_acid,88-21-1,0.0,0,matrix ID RP18 2,0,0,1,0,0,C1=CC=C(C(=C1)N)S(=O)(=O)O
+RP18,method_2,Bis(diphenylphosphino)methane,2071-20-7,0.0,0,matrix ID RP18 2,0,0,0,1,1,C1=CC=C(C=C1)P(CP(C2=CC=CC=C2)C3=CC=CC=C3)C4=CC=CC=C4
+RP18,method_2,DL-beta-Phenylalanine,614-19-7,0.0,0,matrix ID RP18 2,0,0,0,0,0,C1=CC=C(C=C1)C(CC(=O)O)N
+RP18,method_2,Di-tert-butylcyclopentadiene,120937-44-2,0.0,0,matrix ID RP18 2,1,1,1,1,1,CC(C)(C)C1C=CC(=C1)C(C)(C)C
+RP18,method_2,Dibenzyl-malonate,15014-25-2,5.69,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=C(C=C1)COC(=O)CC(=O)OCC2=CC=CC=C2
+RP18,method_2,Dibromomaleic-acid,608-37-7,0.0,0,matrix ID RP18 2,1,1,1,0,0,C(=C(\C(=O)O)/Br)(\C(=O)O)/Br
+RP18,method_2,Diethyl 4-Methoxyphenylphosphonate,3762-33-2,4.482,1,matrix ID RP18 2,1,1,1,1,1,CCOP(=O)(C1=CC=C(C=C1)OC)OCC
+RP18,method_2,Diethyl_dibutylmalonate,596-75-8,0.0,0,matrix ID RP18 2,1,1,1,1,1,CCCCC(CCCC)(C(=O)OCC)C(=O)OCC
+RP18,method_2,Diethyl_phenylmalonate,83-13-6,5.417,1,matrix ID RP18 2,1,1,1,1,1,CCOC(=O)C(C1=CC=CC=C1)C(=O)OCC
+RP18,method_2,"Dimethyl 1,3-cyclohexadiene-1,4-dicarboxylate",1659-95-6,4.833,1,matrix ID RP18 2,0,0,0,1,1,COC(=O)C1=CC=C(CC1)C(=O)OC
+RP18,method_2,"Dimethyl 2,2'-bipyridine-4,4'-dicarboxylate",71071-46-0,5.298,1,matrix ID RP18 2,0,0,0,0,1,COC(=O)C1=CC(=NC=C1)C2=NC=CC(=C2)C(=O)OC
+RP18,method_2,Dimethyl-propargylmalonate,95124-07-5,0.0,0,matrix ID RP18 2,1,1,1,1,1,COC(=O)C(CC#C)C(=O)OC
+RP18,method_2,Ethyl 2-cyclohexanoneacetate,24731-17-7,4.698,1,matrix ID RP18 2,1,1,1,1,1,CCOC(=O)CC1CCCCC1=O
+RP18,method_2,Ethyl 3-thiopheneacetate,37784-63-7,5.116,1,matrix ID RP18 2,1,1,1,1,1,CCOC(=O)CC1=CSC=C1
+RP18,method_2,"Ethyl 4,4,4-trifluoroacetoacetate",372-31-6,3.865,1,matrix ID RP18 2,1,1,1,1,1,CCOC(=O)CC(=O)C(F)(F)F
+RP18,method_2,Ethyl mesitylglyoxylate,5524-57-2,5.739,1,matrix ID RP18 2,1,1,1,1,1,CCOC(=O)C(=O)C1=C(C=C(C=C1C)C)C
+RP18,method_2,Ethyl-3-oxohexanoate,3249-68-1,4.617,1,matrix ID RP18 2,1,1,1,1,1,CCCC(=O)CC(=O)OCC
+RP18,method_2,Ethyl-4-bromocrotonate,37746-78-4,5.051,1,matrix ID RP18 2,1,1,1,1,1,CCOC(=O)/C=C/CBr
+RP18,method_2,Ethyl-4-iodobenzoate,51934-41-9,6.08,1,matrix ID RP18 2,1,1,1,1,1,CCOC(=O)C1=CC=C(C=C1)I
+RP18,method_2,FMOC-D-ORN(ALOC)-OH,214750-74-0,5.181,1,matrix ID RP18 2,1,0,1,0,1,C=CCOC(=O)NCCC[C@H](C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+RP18,method_2,Flavanone,487-26-3,5.629,1,matrix ID RP18 2,0,1,1,1,1,C1C(OC2=CC=CC=C2C1=O)C3=CC=CC=C3
+RP18,method_2,Flufenamic-acid,530-78-9,3.574,1,matrix ID RP18 2,1,1,1,0,1,C1=CC=C(C(=C1)C(=O)O)NC2=CC=CC(=C2)C(F)(F)F
+RP18,method_2,Hematein,475-25-2,3.426,1,matrix ID RP18 2,0,0,0,0,0,C1C2=CC(=C(C=C2C3=C4C=CC(=O)C(=C4OCC31O)O)O)O
+RP18,method_2,METHYL 2-PHTHALIMIDOACETATE,23244-58-8,4.424,1,matrix ID RP18 2,0,1,1,1,1,COC(=O)CN1C(=O)C2=CC=CC=C2C1=O
+RP18,method_2,"Methyl 6-oxo-1,6-dihydropyridine-2-carboxylate",30062-34-1,2.824,1,matrix ID RP18 2,1,1,1,1,1,COC(=O)C1=CC=CC(=O)N1
+RP18,method_2,"Methyl-2,6-dimethoxybenzoate",2065-27-2,4.637,1,matrix ID RP18 2,1,1,1,1,1,COC1=C(C(=CC=C1)OC)C(=O)OC
+RP18,method_2,Methyl-3-bromo-4-iodobenzoate,249647-24-3,6.161,1,matrix ID RP18 2,0,1,0,1,1,COC(=O)C1=CC(=C(C=C1)I)Br
+RP18,method_2,"Methyl-6-Oxo-1,6-dihydropyridazine-3-carboxylate",63001-30-9,1.314,1,matrix ID RP18 2,0,0,1,0,0,COC(=O)C1=NNC(=O)C=C1
+RP18,method_2,Methyl-diethylphosphonoacetate,1067-74-9,3.654,1,matrix ID RP18 2,1,1,1,1,1,CCOP(=O)(CC(=O)OC)OCC
+RP18,method_2,N(im)-Trityl-L-histidine,35146-32-8,0.0,0,matrix ID RP18 2,0,0,0,0,0,C1=CC=C(C=C1)C(C2=CC=CC=C2)(C3=CC=CC=C3)N4C=C(N=C4)C[C@@H](C(=O)O)N
+RP18,method_2,"N,N-Dimethyl-L-phenylalanine",17469-89-5,1.55,1,matrix ID RP18 2,0,0,0,0,0,CN(C)[C@@H](CC1=CC=CC=C1)C(=O)O
+RP18,method_2,N-Acetyl-L-tryptophan,1218-34-4,0.0,0,matrix ID RP18 2,1,0,1,0,0,CC(=O)N[C@@H](CC1=CNC2=CC=CC=C21)C(=O)O
+RP18,method_2,N-Benzylidenebenzylamine,780-25-6,5.775,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=C(C=C1)CN=CC2=CC=CC=C2
+RP18,method_2,N-Phthaloylglycine,4702-13-0,0.0,0,matrix ID RP18 2,1,1,1,0,1,C1=CC=C2C(=C1)C(=O)N(C2=O)CC(=O)O
+RP18,method_2,"N-[(1,1-Dimethylethoxy)carbonyl]-L-histidine methyl_ester",2488-14-4,3.927,1,matrix ID RP18 2,1,0,1,1,1,CC(C)(C)OC(=O)N[C@@H](CC1=CN=CN1)C(=O)OC
+RP18,method_2,N-[(Phenylmethoxy)carbonyl]-O-(phenylmethyl)-L-serine_,20806-43-3,3.41,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=C(C=C1)COC[C@@H](C(=O)O)NC(=O)OCC2=CC=CC=C2
+RP18,method_2,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-methyl-D-lysine",1315449-94-5,5.694,1,matrix ID RP18 2,0,1,1,1,1,C[C@@](CCCCNC(=O)OC(C)(C)C)(C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+RP18,method_2,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(phenylmethoxy)carbonyl]-L-lysine",2389-60-8,3.484,1,matrix ID RP18 2,1,1,1,1,1,CC(C)(C)OC(=O)NCCCC[C@@H](C(=O)O)NC(=O)OCC1=CC=CC=C1
+RP18,method_2,Nalpha-[(9H-Fluoren-9-ylmethoxy)carbonyl]-L-threonine tert-Butyl-Ester,120791-76-6,5.805,1,matrix ID RP18 2,1,1,1,1,1,C[C@H]([C@@H](C(=O)OC(C)(C)C)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13)O
+RP18,method_2,Phenyl-benzoate,93-99-2,5.715,1,matrix ID RP18 2,1,1,1,1,1,C1=CC=C(C=C1)C(=O)OC2=CC=CC=C2
+RP18,method_2,Pindolol,13523-86-9,0.0,0,matrix ID RP18 2,0,0,0,1,1,CC(C)NCC(COC1=CC=CC2=C1C=CN2)O
+RP18,method_2,Protocatechuic_acid,99-50-3,0.0,0,matrix ID RP18 2,1,1,1,0,0,C1=CC(=C(C=C1C(=O)O)O)O
+RP18,method_2,Suberic_acid_monomethyl_ester,3946-32-5,0.0,0,matrix ID RP18 2,1,0,1,0,1,COC(=O)CCCCCCC(=O)O
+RP18,method_2,Z-D-Glu-OBzl,65706-99-2,3.573,1,matrix ID RP18 2,0,0,0,1,1,C1=CC=C(C=C1)COC(=O)[C@@H](CCC(=O)O)NC(=O)OCC2=CC=CC=C2
+RP18,method_2,Z-D-Phg-OH,17609-52-8,3.199,1,matrix ID RP18 2,1,0,1,1,1,C1=CC=C(C=C1)COC(=O)N[C@H](C2=CC=CC=C2)C(=O)O
+RP18,method_2,"meso-1,2-Dibromo-1,2-diphenylethane",13440-24-9,6.104,1,matrix ID RP18 2,0,0,0,1,0,C1=CC=C(C=C1)C(C(C2=CC=CC=C2)Br)Br
+RP18,method_2,mono-tert-Butyl_succinate,15026-17-2,4.12,1,matrix ID RP18 2,1,1,1,0,0,CC(C)(C)OC(=O)CCC(=O)O
+RP18,method_2,pentafluorobenzyl-bromide,1765-40-8,5.778,1,matrix ID RP18 2,1,1,1,1,1,C(C1=C(C(=C(C(=C1F)F)F)F)F)Br
+RP18,method_2,"trans-1,2-Bis(phenylsulfonyl)ethylene",963-16-6,5.16,1,matrix ID RP18 2,0,0,0,0,0,C1=CC=C(C=C1)S(=O)(=O)/C=C/S(=O)(=O)C2=CC=CC=C2
+RP18,method_2,trans-4-(9-Fluorenylmethyloxycarbonylaminomethyl)-cyclohexanoic_acid,188715-40-4,3.703,1,matrix ID RP18 2,0,0,0,0,0,C1CC(CCC1CNC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+RP18,method_2,trans-Aconitic-acid,4023-65-8,0.0,0,matrix ID RP18 2,1,1,1,0,0,C(/C(=C\C(=O)O)/C(=O)O)C(=O)O
+Sphinx,method_1,(1-BROMOETHYL)BENZENE,585-71-7,5.96,1,matrix ID Sphinx 1,1,1,1,1,1,CC(C1=CC=CC=C1)Br
+Sphinx,method_1,"(2,6-Dioxo-piperidin-4-yl)-acetic_acid",6258-28-2,1.603,1,matrix ID Sphinx 1,0,0,1,0,0,C1C(CC(=O)NC1=O)CC(=O)O
+Sphinx,method_1,(2-BENZYLOXYCARBONYLAMINO-ACETYLAMINO)-ACETIC_ACID,2566-19-0,4.138,1,matrix ID Sphinx 1,0,0,1,0,0,C1=CC=C(C=C1)COC(=O)NCC(=O)NCC(=O)O
+Sphinx,method_1,(2S)-2-{[(9H-fluoren-9-ylmethoxy)carbonyl]amino}-4-hydroxybutanoic acid,172525-85-8,3.575,1,matrix ID Sphinx 1,0,0,1,0,0,C1=CC=C2C(=C1)C(C3=CC=CC=C32)COC(=O)N[C@@H](CCO)C(=O)O
+Sphinx,method_1,"(2S,5S)-1-Hydroxy-2,5-diphenylphospholane 1-oxide",474049-73-5,4.587,1,matrix ID Sphinx 1,0,0,0,0,1,C1C[C@H](P(=O)([C@@H]1C2=CC=CC=C2)O)C3=CC=CC=C3
+Sphinx,method_1,"(?S)-4-(1,1-Dimethylethoxy)-?-[[(9H-fluoren-9-ylmethoxy)carbonyl]amino]benzenebutanoic_acid",204384-69-0,6.202,1,matrix ID Sphinx 1,0,0,1,1,1,CC(C)(C)OC1=CC=C(C=C1)CC[C@@H](C(=O)O)NC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+Sphinx,method_1,(R)-(-)-2-Methoxy-2-phenylethanol,17628-72-7,4.385,1,matrix ID Sphinx 1,1,1,1,1,1,CO[C@@H](CO)C1=CC=CC=C1
+Sphinx,method_1,"(S)-(-)-2-Amino-3-methyl-1,1-diphenyl-1-butanol",78603-95-9,4.044,1,matrix ID Sphinx 1,0,1,1,1,1,CC(C)[C@@H](C(C1=CC=CC=C1)(C2=CC=CC=C2)O)N
+Sphinx,method_1,(S)-Benzyl 2-(((S)-1-methoxy-4-methyl-1-oxopentan-2-yl)carbamoyl)pyrrolidine-1-carboxylate,2873-37-2,5.522,1,matrix ID Sphinx 1,1,1,1,1,1,CC(C)C[C@@H](C(=O)OC)NC(=O)[C@@H]1CCCN1C(=O)OCC2=CC=CC=C2
+Sphinx,method_1,"1,1,1-Tris(4-hydroxyphenyl)ethane",27955-94-8,4.962,1,matrix ID Sphinx 1,1,1,1,0,0,CC(C1=CC=C(C=C1)O)(C2=CC=C(C=C2)O)C3=CC=C(C=C3)O
+Sphinx,method_1,"1,1,3-Triphenylpropargyl alcohol",1522-13-0,6.308,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C(C=C1)C#CC(C2=CC=CC=C2)(C3=CC=CC=C3)O
+Sphinx,method_1,"1,2-Bis(4-hydroxyphenyl)ethane-1,2-dione",33288-79-8,4.821,1,matrix ID Sphinx 1,1,0,1,0,0,C1=CC(=CC=C1C(=O)C(=O)C2=CC=C(C=C2)O)O
+Sphinx,method_1,"1,3-Bis(trifluoromethyl)-5-bromobenzene",328-70-1,6.324,1,matrix ID Sphinx 1,1,1,1,1,1,C1=C(C=C(C=C1C(F)(F)F)Br)C(F)(F)F
+Sphinx,method_1,"1,3-Butanediol-diacrylate",19485-03-1,5.359,1,matrix ID Sphinx 1,1,1,1,1,1,CC(CCOC(=O)C=C)OC(=O)C=C
+Sphinx,method_1,"1,3-Dimethyl 2-[(4-methoxyphenyl)methylene]propanedioate",7443-25-6,5.569,1,matrix ID Sphinx 1,1,1,1,1,1,COC1=CC=C(C=C1)C=C(C(=O)OC)C(=O)OC
+Sphinx,method_1,"1,3-Diphenylacetone_p-tosylhydrazone",19816-88-7,6.303,1,matrix ID Sphinx 1,0,0,0,1,1,CC1=CC=C(C=C1)S(=O)(=O)NN=C(CC2=CC=CC=C2)CC3=CC=CC=C3
+Sphinx,method_1,"1,4-Bis(bromomethyl)-2,3,5,6-tetrafluorobenzene_",776-40-9,6.262,1,matrix ID Sphinx 1,0,0,0,1,1,C(C1=C(C(=C(C(=C1F)F)CBr)F)F)Br
+Sphinx,method_1,"1,4-Cyclohexanedicarboxylic-acid",1076-97-7,3.862,1,matrix ID Sphinx 1,1,0,0,0,1,C1CC(CCC1C(=O)O)C(=O)O
+Sphinx,method_1,"1,4-Dibromo-2,3-butanedione",6305-43-7,4.114,1,matrix ID Sphinx 1,1,1,1,1,0,C(C(=O)C(=O)CBr)Br
+Sphinx,method_1,1-(4-Biphenyl)-1-ethanol,3562-73-0,5.562,1,matrix ID Sphinx 1,1,1,0,1,0,CC(C1=CC=C(C=C1)C2=CC=CC=C2)O
+Sphinx,method_1,"1-(9H-Fluoren-9-ylmethyl) (2S,4S)-4-[[(1,1-dimethylethoxy)carbonyl]amino]-1,2-pyrrolidinedicarboxylate_",221352-74-5,5.724,1,matrix ID Sphinx 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@H]1C[C@H](N(C1)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+Sphinx,method_1,1-(tert-Butoxycarbonyl)-4-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-piperazinecarboxylic_acid,218278-58-1,5.934,1,matrix ID Sphinx 1,0,0,1,1,1,CC(C)(C)OC(=O)N1CCN(CC1C(=O)O)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+Sphinx,method_1,1-BROMO-3-METHYLBUTANE,107-82-4,0.0,0,matrix ID Sphinx 1,1,1,1,1,1,CC(C)CCBr
+Sphinx,method_1,1-Benzofuran-5-carboxylic_acid,90721-27-0,4.758,1,matrix ID Sphinx 1,0,0,0,0,0,C1=CC2=C(C=CO2)C=C1C(=O)O
+Sphinx,method_1,1-Benzylpiperidine,2905-56-8,3.3,1,matrix ID Sphinx 1,1,1,1,1,1,C1CCN(CC1)CC2=CC=CC=C2
+Sphinx,method_1,1-Bromo-4-(trifluoromethoxy)benzene,407-14-7,6.188,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC(=CC=C1OC(F)(F)F)Br
+Sphinx,method_1,1-Bromopentanemethylbenzene,5153-40-2,0.0,0,matrix ID Sphinx 1,0,0,0,1,1,CC1=C(C(=C(C(=C1C)C)Br)C)C
+Sphinx,method_1,1-Phenyl-5-(trifluoromethyl)-1H-pyrazole-4-carboxylic_acid,98534-81-7,5.106,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C(C=C1)N2C(=C(C=N2)C(=O)O)C(F)(F)F
+Sphinx,method_1,1-Pyrenemethanol,24463-15-8,5.734,1,matrix ID Sphinx 1,0,0,1,1,1,C1=CC2=C3C(=C1)C=CC4=C(C=CC(=C43)C=C2)CO
+Sphinx,method_1,"1-Tosyl-2,5-dihydro-1H-pyrrole",16851-72-2,5.542,1,matrix ID Sphinx 1,0,1,1,1,1,CC1=CC=C(C=C1)S(=O)(=O)N2CC=CC2
+Sphinx,method_1,"2,2"",4,4""-Tetramethylbenzophenone",3478-88-4,6.671,1,matrix ID Sphinx 1,1,1,1,1,1,CC1=CC(=C(C=C1)C(=O)C2=C(C=C(C=C2)C)C)C
+Sphinx,method_1,"2,2,2-TRIFLUOROACETOPHENONE",434-45-7,4.769,1,matrix ID Sphinx 1,1,1,1,0,1,C1=CC=C(C=C1)C(=O)C(F)(F)F
+Sphinx,method_1,"2,3,4-Trifluorobenzoic acid",61079-72-9,4.677,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC(=C(C(=C1C(=O)O)F)F)F
+Sphinx,method_1,"2,3,6,7,10,11-Hexamethoxytriphenylene",808-57-1,5.87,1,matrix ID Sphinx 1,0,0,0,1,0,COC1=C(C=C2C(=C1)C3=CC(=C(C=C3C4=CC(=C(C=C24)OC)OC)OC)OC)OC
+Sphinx,method_1,"2,4,6-Tris(bromomethyl)mesitylene",21988-87-4,6.722,1,matrix ID Sphinx 1,0,0,0,1,0,CC1=C(C(=C(C(=C1CBr)C)CBr)C)CBr
+Sphinx,method_1,"2,4-Dichlorophenol",120-83-2,5.337,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC(=C(C=C1Cl)Cl)O
+Sphinx,method_1,"2,6-Bis[(4S)-4-phenyl-2-oxazolinyl]pyridine",174500-20-0,5.816,1,matrix ID Sphinx 1,0,0,0,1,1,C1[C@@H](N=C(O1)C2=NC(=CC=C2)C3=N[C@H](CO3)C4=CC=CC=C4)C5=CC=CC=C5
+Sphinx,method_1,"2,6-Dichloroiodobenzene",19230-28-5,6.312,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC(=C(C(=C1)Cl)I)Cl
+Sphinx,method_1,"2,6-Diisopropylphenol",2078-54-8,6.114,1,matrix ID Sphinx 1,1,1,1,1,1,CC(C)C1=C(C(=CC=C1)C(C)C)O
+Sphinx,method_1,"2,6-Dimethoxy-1,4-benzoquinone",530-55-2,3.943,1,matrix ID Sphinx 1,0,0,0,1,1,COC1=CC(=O)C=C(C1=O)OC
+Sphinx,method_1,"2,6-Dimethoxybenzoyl_chloride",1989-53-3,4.229,1,matrix ID Sphinx 1,0,0,0,1,1,COC1=C(C(=CC=C1)OC)C(=O)Cl
+Sphinx,method_1,2-(3-Chlorophenoxy)propionic-acid,101-10-0,5.044,1,matrix ID Sphinx 1,1,1,1,1,1,CC(C(=O)O)OC1=CC(=CC=C1)Cl
+Sphinx,method_1,2-(4-Chlorobenzoyl)benzoic_acid,85-56-3,5.374,1,matrix ID Sphinx 1,1,0,1,1,1,C1=CC=C(C(=C1)C(=O)C2=CC=C(C=C2)Cl)C(=O)O
+Sphinx,method_1,2-(Diphenylphosphino)benzoic-acid,17261-28-8,6.127,1,matrix ID Sphinx 1,0,0,1,1,1,C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=CC=CC=C3C(=O)O
+Sphinx,method_1,2-(Trifluoromethyl)pyridine-4-carboxylic_acid,131747-41-6,4.163,1,matrix ID Sphinx 1,1,1,1,0,0,C1=CN=C(C=C1C(=O)O)C(F)(F)F
+Sphinx,method_1,2-Amino-4-phenylphenol,1134-36-7,4.711,1,matrix ID Sphinx 1,0,0,1,0,0,C1=CC=C(C=C1)C2=CC(=C(C=C2)O)N
+Sphinx,method_1,2-Amino-6-bromopyridine,19798-81-3,4.496,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC(=NC(=C1)Br)N
+Sphinx,method_1,2-Benzyloxybenzoic_acid ,14389-86-7,5.359,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C(C=C1)COC2=CC=CC=C2C(=O)O
+Sphinx,method_1,"2-Bromo-2',6'-diisopropoxy-1,1'-biphenyl",870703-70-1,0.0,0,matrix ID Sphinx 1,1,1,1,1,1,CC(C)OC1=C(C(=CC=C1)OC(C)C)C2=CC=CC=C2Br
+Sphinx,method_1,2-Bromo-5-(trifluoromethyl)benzaldehyde,102684-91-3,5.885,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC(=C(C=C1C(F)(F)F)C=O)Br
+Sphinx,method_1,2-Bromo-5-chlorotoluene,14495-51-3,6.454,1,matrix ID Sphinx 1,1,1,1,1,1,CC1=C(C=CC(=C1)Cl)Br
+Sphinx,method_1,2-Bromoanthraquinone,572-83-8,6.445,1,matrix ID Sphinx 1,0,0,1,1,1,C1=CC=C2C(=C1)C(=O)C3=C(C2=O)C=C(C=C3)Br
+Sphinx,method_1,2-Bromonaphthalen-1-ol,771-15-3,5.757,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C2C(=C1)C=CC(=C2O)Br
+Sphinx,method_1,2-Bromophenethylamine,65185-58-2,3.473,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C(C(=C1)CCN)Br
+Sphinx,method_1,2-Bromotoluene,95-46-5,6.157,1,matrix ID Sphinx 1,1,1,1,1,1,CC1=CC=CC=C1Br
+Sphinx,method_1,2-Hydroxy-4-(trifluoromethyl)aniline,454-82-0,4.993,1,matrix ID Sphinx 1,0,0,1,0,0,C1=CC(=C(C=C1C(F)(F)F)O)N
+Sphinx,method_1,2-Iodobenzaldehyde,26260-02-6,5.631,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C(C(=C1)C=O)I
+Sphinx,method_1,2-Iodobenzyl_bromide,40400-13-3,6.206,1,matrix ID Sphinx 1,0,0,1,1,1,C1=CC=C(C(=C1)CBr)I
+Sphinx,method_1,2-Iodopyridine,5029-67-4,4.783,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=NC(=C1)I
+Sphinx,method_1,2-Isopropylthioxanthone,5495-84-1,6.677,1,matrix ID Sphinx 1,0,0,0,1,1,CC(C)C1=CC2=C(C=C1)SC3=CC=CC=C3C2=O
+Sphinx,method_1,"2-Methyl-5-(trifluoromethyl)-1,3-benzoxazole",175785-41-8,5.479,1,matrix ID Sphinx 1,1,1,1,1,1,CC1=NC2=C(O1)C=CC(=C2)C(F)(F)F
+Sphinx,method_1,"3,3-Dimethyl-1-indanone",26465-81-6,5.38,1,matrix ID Sphinx 1,1,1,1,1,1,CC1(CC(=O)C2=CC=CC=C21)C
+Sphinx,method_1,"3,4,5-TRIBROMO-1H-PYRAZOLE",17635-44-8,5.283,1,matrix ID Sphinx 1,1,1,1,0,0,C1(=C(NN=C1Br)Br)Br
+Sphinx,method_1,"3,4,7,8-Tetramethyl-1,10-phenanthroline",1660-93-1,4.057,1,matrix ID Sphinx 1,0,0,0,1,1,CC1=CN=C2C(=C1C)C=CC3=C(C(=CN=C32)C)C
+Sphinx,method_1,"3,5-Di-tert-butylbenzoic acid",16225-26-6,6.11,1,matrix ID Sphinx 1,1,1,1,1,1,CC(C)(C)C1=CC(=CC(=C1)C(=O)O)C(C)(C)C
+Sphinx,method_1,"3,5-Dibromotoluene",1611-92-3,6.552,1,matrix ID Sphinx 1,1,1,1,0,0,CC1=CC(=CC(=C1)Br)Br
+Sphinx,method_1,"3,5-Dimethylbenzoyl_chloride",6613-44-1,5.091,1,matrix ID Sphinx 1,1,1,1,1,1,CC1=CC(=CC(=C1)C(=O)Cl)C
+Sphinx,method_1,"3,6-Dimethoxy-9H-carbazole",57103-01-2,5.577,1,matrix ID Sphinx 1,0,1,1,1,1,COC1=CC2=C(C=C1)NC3=C2C=C(C=C3)OC
+Sphinx,method_1,3-(2-Naphthyl)acrylic_acid,51557-26-7,5.297,1,matrix ID Sphinx 1,0,0,1,0,0,C1=CC=C2C=C(C=CC2=C1)/C=C/C(=O)O
+Sphinx,method_1,3-(Phenylthio)propanoic-acid,5219-65-8,5.054,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C(C=C1)SCCC(=O)O
+Sphinx,method_1,3-(tert-Butoxycarbonyl)benzoic_acid,33704-19-7,5.33,1,matrix ID Sphinx 1,1,0,1,1,1,CC(C)(C)OC(=O)C1=CC=CC(=C1)C(=O)O
+Sphinx,method_1,3-Bromobenzoyl_chloride,1711-09-7,6.177,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC(=CC(=C1)Br)C(=O)Cl
+Sphinx,method_1,3-Bromopropionyl_chloride,15486-96-1,3.625,1,matrix ID Sphinx 1,1,1,1,1,1,C(CBr)C(=O)Cl
+Sphinx,method_1,3-Chloro-4-methoxyaniline,5345-54-0,3.884,1,matrix ID Sphinx 1,1,1,1,1,1,COC1=C(C=C(C=C1)N)Cl
+Sphinx,method_1,3-[[(9H-Fluoren-9-ylmethoxy)carbonyl]amino]-2-naphthalenecarboxylic acid,372159-75-6,6.389,1,matrix ID Sphinx 1,0,0,0,0,0,C1=CC=C2C=C(C(=CC2=C1)C(=O)O)NC(=O)OCC3C4=CC=CC=C4C5=CC=CC=C35
+Sphinx,method_1,"4,4',4''-Trimethoxytrityl chloride",49757-42-8,6.063,1,matrix ID Sphinx 1,1,0,0,1,1,COC1=CC=C(C=C1)C(C2=CC=C(C=C2)OC)(C3=CC=C(C=C3)OC)Cl
+Sphinx,method_1,"4,4'-Dihydroxybiphenyl",92-88-6,4.669,1,matrix ID Sphinx 1,0,0,1,0,0,C1=CC(=CC=C1C2=CC=C(C=C2)O)O
+Sphinx,method_1,"4,4'-Dimethoxybenzophenone",90-96-0,5.783,1,matrix ID Sphinx 1,0,0,0,1,1,COC1=CC=C(C=C1)C(=O)C2=CC=C(C=C2)OC
+Sphinx,method_1,"4,4?,4??-(1,3,5-TRIAZINE-2,4,6-TRIYL)TRIBENZALDEHYDE",443922-06-3,5.449,1,matrix ID Sphinx 1,0,0,0,0,0,C1=CC(=CC=C1C=O)C2=NC(=NC(=N2)C3=CC=C(C=C3)C=O)C4=CC=C(C=C4)C=O
+Sphinx,method_1,4-(Bromomethyl)benzoic_acid,6232-88-8,4.98,1,matrix ID Sphinx 1,0,0,1,0,0,C1=CC(=CC=C1CBr)C(=O)O
+Sphinx,method_1,4-(Hydroxymethyl)phenylacetic-acid,73401-74-8,3.718,1,matrix ID Sphinx 1,1,1,1,0,0,C1=CC(=CC=C1CC(=O)O)CO
+Sphinx,method_1,4-(Trifluoroacetyl)phenacyl-bromide,1980063-91-9,5.142,1,matrix ID Sphinx 1,1,1,1,0,0,C1=CC(=CC=C1C(=O)CBr)C(=O)C(F)(F)F
+Sphinx,method_1,4-(Trifluoromethyl)benzylamine,3300-51-4,3.509,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC(=CC=C1CN)C(F)(F)F
+Sphinx,method_1,"4-Bromo-3,5-dimethoxybenzoic acid",56518-42-4,5.027,1,matrix ID Sphinx 1,0,0,1,0,0,COC1=CC(=CC(=C1Br)OC)C(=O)O
+Sphinx,method_1,4-Bromo-L-phenylalanine,24250-84-8,3.622,1,matrix ID Sphinx 1,0,0,0,0,0,C1=CC(=CC=C1C[C@@H](C(=O)O)N)Br
+Sphinx,method_1,4-Chlorobenzenesulfonic_acid,98-66-8,3.882,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC(=CC=C1S(=O)(=O)O)Cl
+Sphinx,method_1,4-Chloropyridine-3-carboxylic_acid,10177-29-4,1.818,1,matrix ID Sphinx 1,0,0,1,0,0,C1=CN=CC(=C1Cl)C(=O)O
+Sphinx,method_1,"4-Hydroxy-3,5-diiodobenzoic acid",618-76-8,4.922,1,matrix ID Sphinx 1,0,0,1,0,0,C1=C(C=C(C(=C1I)O)I)C(=O)O
+Sphinx,method_1,4-Hydroxyphthalic_acid,610-35-5,3.237,1,matrix ID Sphinx 1,1,0,1,0,0,C1=CC(=C(C=C1O)C(=O)O)C(=O)O
+Sphinx,method_1,4-Methoxybiphenyl,613-37-6,6.123,1,matrix ID Sphinx 1,0,1,1,1,1,COC1=CC=C(C=C1)C2=CC=CC=C2
+Sphinx,method_1,4-Methoxytriphenylamine,4316-51-2,6.766,1,matrix ID Sphinx 1,0,0,0,1,1,COC1=CC=C(C=C1)N(C2=CC=CC=C2)C3=CC=CC=C3
+Sphinx,method_1,4-tert-Butylbenzoyl_chloride,1710-98-1,5.431,1,matrix ID Sphinx 1,1,1,1,0,1,CC(C)(C)C1=CC=C(C=C1)C(=O)Cl
+Sphinx,method_1,"5,7-Dimethyl-[1,2,4]triazolo[1,5-a]pyrimidine-2-carboxylic acid",87253-62-1,3.073,1,matrix ID Sphinx 1,0,0,0,0,0,CC1=CC(=NC2=NC(=NN12)C(=O)O)C
+Sphinx,method_1,5-(Trifluoromethyl)indole,100846-24-0,5.722,1,matrix ID Sphinx 1,1,1,0,1,1,C1=CC2=C(C=CN2)C=C1C(F)(F)F
+Sphinx,method_1,5-(Trifluoromethyl)pyridine-2-carboxaldehyde,31224-82-5,3.976,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC(=NC=C1C(F)(F)F)C=O
+Sphinx,method_1,5-Bromo-2-furoic_acid,585-70-6,4.056,1,matrix ID Sphinx 1,1,1,1,0,0,C1=C(OC(=C1)Br)C(=O)O
+Sphinx,method_1,5-Bromo-2-phenylpyridine,27012-25-5,6.116,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C(C=C1)C2=NC=C(C=C2)Br
+Sphinx,method_1,"6,6'-Dibromo-1,1'-bi-2-naphthol",13185-00-7,6.489,1,matrix ID Sphinx 1,0,1,1,0,0,C1=CC2=C(C=CC(=C2C3=C(C=CC4=C3C=CC(=C4)Br)O)O)C=C1Br
+Sphinx,method_1,8-Isoquinolinecarboxaldehyde,787615-01-4,3.547,1,matrix ID Sphinx 1,1,0,1,1,1,C1=CC2=C(C=NC=C2)C(=C1)C=O
+Sphinx,method_1,Allyl-alpha-D-glucopyranoside,7464-56-4,1.36,1,matrix ID Sphinx 1,1,0,1,0,0,C=CCO[C@@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)O
+Sphinx,method_1,Aniline-2-sulfonic_acid,88-21-1,2.292,1,matrix ID Sphinx 1,0,0,1,0,0,C1=CC=C(C(=C1)N)S(=O)(=O)O
+Sphinx,method_1,Bis(diphenylphosphino)methane,2071-20-7,0.0,0,matrix ID Sphinx 1,0,0,0,1,1,C1=CC=C(C=C1)P(CP(C2=CC=CC=C2)C3=CC=CC=C3)C4=CC=CC=C4
+Sphinx,method_1,DL-beta-Phenylalanine,614-19-7,1.918,1,matrix ID Sphinx 1,0,0,0,0,0,C1=CC=C(C=C1)C(CC(=O)O)N
+Sphinx,method_1,Di-tert-butylcyclopentadiene,120937-44-2,0.0,0,matrix ID Sphinx 1,1,1,1,1,1,CC(C)(C)C1C=CC(=C1)C(C)(C)C
+Sphinx,method_1,Dibenzyl-malonate,15014-25-2,5.989,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C(C=C1)COC(=O)CC(=O)OCC2=CC=CC=C2
+Sphinx,method_1,Dibromomaleic-acid,608-37-7,3.974,1,matrix ID Sphinx 1,1,1,1,0,0,C(=C(\C(=O)O)/Br)(\C(=O)O)/Br
+Sphinx,method_1,Diethyl 4-Methoxyphenylphosphonate,3762-33-2,4.937,1,matrix ID Sphinx 1,1,1,1,1,1,CCOP(=O)(C1=CC=C(C=C1)OC)OCC
+Sphinx,method_1,Diethyl_dibutylmalonate,596-75-8,0.0,0,matrix ID Sphinx 1,1,1,1,1,1,CCCCC(CCCC)(C(=O)OCC)C(=O)OCC
+Sphinx,method_1,Diethyl_phenylmalonate,83-13-6,5.761,1,matrix ID Sphinx 1,1,1,1,1,1,CCOC(=O)C(C1=CC=CC=C1)C(=O)OCC
+Sphinx,method_1,"Dimethyl 1,3-cyclohexadiene-1,4-dicarboxylate",1659-95-6,5.27,1,matrix ID Sphinx 1,0,0,0,1,1,COC(=O)C1=CC=C(CC1)C(=O)OC
+Sphinx,method_1,"Dimethyl 2,2'-bipyridine-4,4'-dicarboxylate",71071-46-0,5.562,1,matrix ID Sphinx 1,0,0,0,0,1,COC(=O)C1=CC(=NC=C1)C2=NC=CC(=C2)C(=O)OC
+Sphinx,method_1,Dimethyl-propargylmalonate,95124-07-5,0.0,0,matrix ID Sphinx 1,1,1,1,1,1,COC(=O)C(CC#C)C(=O)OC
+Sphinx,method_1,Ethyl 2-cyclohexanoneacetate,24731-17-7,5.103,1,matrix ID Sphinx 1,1,1,1,1,1,CCOC(=O)CC1CCCCC1=O
+Sphinx,method_1,Ethyl 3-thiopheneacetate,37784-63-7,5.496,1,matrix ID Sphinx 1,1,1,1,1,1,CCOC(=O)CC1=CSC=C1
+Sphinx,method_1,"Ethyl 4,4,4-trifluoroacetoacetate",372-31-6,4.313,1,matrix ID Sphinx 1,1,1,1,1,1,CCOC(=O)CC(=O)C(F)(F)F
+Sphinx,method_1,Ethyl mesitylglyoxylate,5524-57-2,6.088,1,matrix ID Sphinx 1,1,1,1,1,1,CCOC(=O)C(=O)C1=C(C=C(C=C1C)C)C
+Sphinx,method_1,Ethyl-3-oxohexanoate,3249-68-1,5.04,1,matrix ID Sphinx 1,1,1,1,1,1,CCCC(=O)CC(=O)OCC
+Sphinx,method_1,Ethyl-4-bromocrotonate,37746-78-4,5.433,1,matrix ID Sphinx 1,1,1,1,1,1,CCOC(=O)/C=C/CBr
+Sphinx,method_1,Ethyl-4-iodobenzoate,51934-41-9,6.153,1,matrix ID Sphinx 1,1,1,1,1,1,CCOC(=O)C1=CC=C(C=C1)I
+Sphinx,method_1,FMOC-D-ORN(ALOC)-OH,214750-74-0,5.469,1,matrix ID Sphinx 1,1,0,1,0,1,C=CCOC(=O)NCCC[C@H](C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+Sphinx,method_1,Flavanone,487-26-3,5.939,1,matrix ID Sphinx 1,0,1,1,1,1,C1C(OC2=CC=CC=C2C1=O)C3=CC=CC=C3
+Sphinx,method_1,Flufenamic-acid,530-78-9,6.025,1,matrix ID Sphinx 1,1,1,1,0,1,C1=CC=C(C(=C1)C(=O)O)NC2=CC=CC(=C2)C(F)(F)F
+Sphinx,method_1,Hematein,475-25-2,4.919,1,matrix ID Sphinx 1,0,0,0,0,0,C1C2=CC(=C(C=C2C3=C4C=CC(=O)C(=C4OCC31O)O)O)O
+Sphinx,method_1,METHYL 2-PHTHALIMIDOACETATE,23244-58-8,5.022,1,matrix ID Sphinx 1,0,1,1,1,1,COC(=O)CN1C(=O)C2=CC=CC=C2C1=O
+Sphinx,method_1,"Methyl 6-oxo-1,6-dihydropyridine-2-carboxylate",30062-34-1,3.413,1,matrix ID Sphinx 1,1,1,1,1,1,COC(=O)C1=CC=CC(=O)N1
+Sphinx,method_1,"Methyl-2,6-dimethoxybenzoate",2065-27-2,5.138,1,matrix ID Sphinx 1,1,1,1,1,1,COC1=C(C(=CC=C1)OC)C(=O)OC
+Sphinx,method_1,Methyl-3-bromo-4-iodobenzoate,249647-24-3,6.256,1,matrix ID Sphinx 1,0,1,0,1,1,COC(=O)C1=CC(=C(C=C1)I)Br
+Sphinx,method_1,"Methyl-6-Oxo-1,6-dihydropyridazine-3-carboxylate",63001-30-9,3.235,1,matrix ID Sphinx 1,0,0,1,0,0,COC(=O)C1=NNC(=O)C=C1
+Sphinx,method_1,Methyl-diethylphosphonoacetate,1067-74-9,4.05,1,matrix ID Sphinx 1,1,1,1,1,1,CCOP(=O)(CC(=O)OC)OCC
+Sphinx,method_1,N(im)-Trityl-L-histidine,35146-32-8,4.361,1,matrix ID Sphinx 1,0,0,0,0,0,C1=CC=C(C=C1)C(C2=CC=CC=C2)(C3=CC=CC=C3)N4C=C(N=C4)C[C@@H](C(=O)O)N
+Sphinx,method_1,"N,N-Dimethyl-L-phenylalanine",17469-89-5,3.197,1,matrix ID Sphinx 1,0,0,0,0,0,CN(C)[C@@H](CC1=CC=CC=C1)C(=O)O
+Sphinx,method_1,N-Acetyl-L-tryptophan,1218-34-4,4.141,1,matrix ID Sphinx 1,1,0,1,0,0,CC(=O)N[C@@H](CC1=CNC2=CC=CC=C21)C(=O)O
+Sphinx,method_1,N-Benzylidenebenzylamine,780-25-6,4.85,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C(C=C1)CN=CC2=CC=CC=C2
+Sphinx,method_1,N-Phthaloylglycine,4702-13-0,4.125,1,matrix ID Sphinx 1,1,1,1,0,1,C1=CC=C2C(=C1)C(=O)N(C2=O)CC(=O)O
+Sphinx,method_1,"N-[(1,1-Dimethylethoxy)carbonyl]-L-histidine methyl_ester",2488-14-4,3.445,1,matrix ID Sphinx 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@@H](CC1=CN=CN1)C(=O)OC
+Sphinx,method_1,N-[(Phenylmethoxy)carbonyl]-O-(phenylmethyl)-L-serine_,20806-43-3,5.432,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C(C=C1)COC[C@@H](C(=O)O)NC(=O)OCC2=CC=CC=C2
+Sphinx,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-methyl-D-lysine",1315449-94-5,5.893,1,matrix ID Sphinx 1,0,1,1,1,1,C[C@@](CCCCNC(=O)OC(C)(C)C)(C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+Sphinx,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(phenylmethoxy)carbonyl]-L-lysine",2389-60-8,5.311,1,matrix ID Sphinx 1,1,1,1,1,1,CC(C)(C)OC(=O)NCCCC[C@@H](C(=O)O)NC(=O)OCC1=CC=CC=C1
+Sphinx,method_1,Nalpha-[(9H-Fluoren-9-ylmethoxy)carbonyl]-L-threonine tert-Butyl-Ester,120791-76-6,6.036,1,matrix ID Sphinx 1,1,1,1,1,1,C[C@H]([C@@H](C(=O)OC(C)(C)C)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13)O
+Sphinx,method_1,Phenyl-benzoate,93-99-2,6.089,1,matrix ID Sphinx 1,1,1,1,1,1,C1=CC=C(C=C1)C(=O)OC2=CC=CC=C2
+Sphinx,method_1,Pindolol,13523-86-9,3.486,1,matrix ID Sphinx 1,0,0,0,1,1,CC(C)NCC(COC1=CC=CC2=C1C=CN2)O
+Sphinx,method_1,Protocatechuic_acid,99-50-3,3.331,1,matrix ID Sphinx 1,1,1,1,0,0,C1=CC(=C(C=C1C(=O)O)O)O
+Sphinx,method_1,Suberic_acid_monomethyl_ester,3946-32-5,4.605,1,matrix ID Sphinx 1,1,0,1,0,1,COC(=O)CCCCCCC(=O)O
+Sphinx,method_1,Z-D-Glu-OBzl,65706-99-2,5.408,1,matrix ID Sphinx 1,0,0,0,1,1,C1=CC=C(C=C1)COC(=O)[C@@H](CCC(=O)O)NC(=O)OCC2=CC=CC=C2
+Sphinx,method_1,Z-D-Phg-OH,17609-52-8,5.194,1,matrix ID Sphinx 1,1,0,1,1,1,C1=CC=C(C=C1)COC(=O)N[C@H](C2=CC=CC=C2)C(=O)O
+Sphinx,method_1,"meso-1,2-Dibromo-1,2-diphenylethane",13440-24-9,6.367,1,matrix ID Sphinx 1,0,0,0,1,0,C1=CC=C(C=C1)C(C(C2=CC=CC=C2)Br)Br
+Sphinx,method_1,mono-tert-Butyl_succinate,15026-17-2,4.527,1,matrix ID Sphinx 1,1,1,1,0,0,CC(C)(C)OC(=O)CCC(=O)O
+Sphinx,method_1,pentafluorobenzyl-bromide,1765-40-8,6.171,1,matrix ID Sphinx 1,1,1,1,1,1,C(C1=C(C(=C(C(=C1F)F)F)F)F)Br
+Sphinx,method_1,"trans-1,2-Bis(phenylsulfonyl)ethylene",963-16-6,5.559,1,matrix ID Sphinx 1,0,0,0,0,0,C1=CC=C(C=C1)S(=O)(=O)/C=C/S(=O)(=O)C2=CC=CC=C2
+Sphinx,method_1,trans-4-(9-Fluorenylmethyloxycarbonylaminomethyl)-cyclohexanoic_acid,188715-40-4,5.583,1,matrix ID Sphinx 1,0,0,0,0,0,C1CC(CCC1CNC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+Sphinx,method_1,trans-Aconitic-acid,4023-65-8,1.35,1,matrix ID Sphinx 1,1,1,1,0,0,C(/C(=C\C(=O)O)/C(=O)O)C(=O)O
+Sphinx,method_2,(1-BROMOETHYL)BENZENE,585-71-7,5.967,1,matrix ID Sphinx 2,1,1,1,1,1,CC(C1=CC=CC=C1)Br
+Sphinx,method_2,"(2,6-Dioxo-piperidin-4-yl)-acetic_acid",6258-28-2,0.0,0,matrix ID Sphinx 2,0,0,1,0,0,C1C(CC(=O)NC1=O)CC(=O)O
+Sphinx,method_2,(2-BENZYLOXYCARBONYLAMINO-ACETYLAMINO)-ACETIC_ACID,2566-19-0,4.144,1,matrix ID Sphinx 2,0,0,1,0,0,C1=CC=C(C=C1)COC(=O)NCC(=O)NCC(=O)O
+Sphinx,method_2,(2S)-2-{[(9H-fluoren-9-ylmethoxy)carbonyl]amino}-4-hydroxybutanoic acid,172525-85-8,3.558,1,matrix ID Sphinx 2,0,0,1,0,0,C1=CC=C2C(=C1)C(C3=CC=CC=C32)COC(=O)N[C@@H](CCO)C(=O)O
+Sphinx,method_2,"(2S,5S)-1-Hydroxy-2,5-diphenylphospholane 1-oxide",474049-73-5,2.549,1,matrix ID Sphinx 2,0,0,0,0,1,C1C[C@H](P(=O)([C@@H]1C2=CC=CC=C2)O)C3=CC=CC=C3
+Sphinx,method_2,"(?S)-4-(1,1-Dimethylethoxy)-?-[[(9H-fluoren-9-ylmethoxy)carbonyl]amino]benzenebutanoic_acid",204384-69-0,3.933,1,matrix ID Sphinx 2,0,0,1,1,1,CC(C)(C)OC1=CC=C(C=C1)CC[C@@H](C(=O)O)NC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+Sphinx,method_2,(R)-(-)-2-Methoxy-2-phenylethanol,17628-72-7,4.342,1,matrix ID Sphinx 2,1,1,1,1,1,CO[C@@H](CO)C1=CC=CC=C1
+Sphinx,method_2,"(S)-(-)-2-Amino-3-methyl-1,1-diphenyl-1-butanol",78603-95-9,6.79,1,matrix ID Sphinx 2,0,1,1,1,1,CC(C)[C@@H](C(C1=CC=CC=C1)(C2=CC=CC=C2)O)N
+Sphinx,method_2,(S)-Benzyl 2-(((S)-1-methoxy-4-methyl-1-oxopentan-2-yl)carbamoyl)pyrrolidine-1-carboxylate,2873-37-2,5.557,1,matrix ID Sphinx 2,1,1,1,1,1,CC(C)C[C@@H](C(=O)OC)NC(=O)[C@@H]1CCCN1C(=O)OCC2=CC=CC=C2
+Sphinx,method_2,"1,1,1-Tris(4-hydroxyphenyl)ethane",27955-94-8,4.966,1,matrix ID Sphinx 2,1,1,1,0,0,CC(C1=CC=C(C=C1)O)(C2=CC=C(C=C2)O)C3=CC=C(C=C3)O
+Sphinx,method_2,"1,1,3-Triphenylpropargyl alcohol",1522-13-0,6.219,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C(C=C1)C#CC(C2=CC=CC=C2)(C3=CC=CC=C3)O
+Sphinx,method_2,"1,2-Bis(4-hydroxyphenyl)ethane-1,2-dione",33288-79-8,0.0,0,matrix ID Sphinx 2,1,0,1,0,0,C1=CC(=CC=C1C(=O)C(=O)C2=CC=C(C=C2)O)O
+Sphinx,method_2,"1,3-Bis(trifluoromethyl)-5-bromobenzene",328-70-1,6.352,1,matrix ID Sphinx 2,1,1,1,1,1,C1=C(C=C(C=C1C(F)(F)F)Br)C(F)(F)F
+Sphinx,method_2,"1,3-Butanediol-diacrylate",19485-03-1,5.342,1,matrix ID Sphinx 2,1,1,1,1,1,CC(CCOC(=O)C=C)OC(=O)C=C
+Sphinx,method_2,"1,3-Dimethyl 2-[(4-methoxyphenyl)methylene]propanedioate",7443-25-6,5.492,1,matrix ID Sphinx 2,1,1,1,1,1,COC1=CC=C(C=C1)C=C(C(=O)OC)C(=O)OC
+Sphinx,method_2,"1,3-Diphenylacetone_p-tosylhydrazone",19816-88-7,6.124,1,matrix ID Sphinx 2,0,0,0,1,1,CC1=CC=C(C=C1)S(=O)(=O)NN=C(CC2=CC=CC=C2)CC3=CC=CC=C3
+Sphinx,method_2,"1,4-Bis(bromomethyl)-2,3,5,6-tetrafluorobenzene_",776-40-9,6.298,1,matrix ID Sphinx 2,0,0,0,1,1,C(C1=C(C(=C(C(=C1F)F)CBr)F)F)Br
+Sphinx,method_2,"1,4-Cyclohexanedicarboxylic-acid",1076-97-7,0.0,0,matrix ID Sphinx 2,1,0,0,0,1,C1CC(CCC1C(=O)O)C(=O)O
+Sphinx,method_2,"1,4-Dibromo-2,3-butanedione",6305-43-7,3.62,1,matrix ID Sphinx 2,1,1,1,1,0,C(C(=O)C(=O)CBr)Br
+Sphinx,method_2,1-(4-Biphenyl)-1-ethanol,3562-73-0,5.558,1,matrix ID Sphinx 2,1,1,0,1,0,CC(C1=CC=C(C=C1)C2=CC=CC=C2)O
+Sphinx,method_2,"1-(9H-Fluoren-9-ylmethyl) (2S,4S)-4-[[(1,1-dimethylethoxy)carbonyl]amino]-1,2-pyrrolidinedicarboxylate_",221352-74-5,3.658,1,matrix ID Sphinx 2,1,0,1,1,1,CC(C)(C)OC(=O)N[C@H]1C[C@H](N(C1)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+Sphinx,method_2,1-(tert-Butoxycarbonyl)-4-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-piperazinecarboxylic_acid,218278-58-1,3.705,1,matrix ID Sphinx 2,0,0,1,1,1,CC(C)(C)OC(=O)N1CCN(CC1C(=O)O)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+Sphinx,method_2,1-BROMO-3-METHYLBUTANE,107-82-4,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,CC(C)CCBr
+Sphinx,method_2,1-Benzofuran-5-carboxylic_acid,90721-27-0,0.0,0,matrix ID Sphinx 2,0,0,0,0,0,C1=CC2=C(C=CO2)C=C1C(=O)O
+Sphinx,method_2,1-Benzylpiperidine,2905-56-8,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,C1CCN(CC1)CC2=CC=CC=C2
+Sphinx,method_2,1-Bromo-4-(trifluoromethoxy)benzene,407-14-7,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,C1=CC(=CC=C1OC(F)(F)F)Br
+Sphinx,method_2,1-Bromopentanemethylbenzene,5153-40-2,0.0,0,matrix ID Sphinx 2,0,0,0,1,1,CC1=C(C(=C(C(=C1C)C)Br)C)C
+Sphinx,method_2,1-Phenyl-5-(trifluoromethyl)-1H-pyrazole-4-carboxylic_acid,98534-81-7,1.555,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C(C=C1)N2C(=C(C=N2)C(=O)O)C(F)(F)F
+Sphinx,method_2,1-Pyrenemethanol,24463-15-8,5.63,1,matrix ID Sphinx 2,0,0,1,1,1,C1=CC2=C3C(=C1)C=CC4=C(C=CC(=C43)C=C2)CO
+Sphinx,method_2,"1-Tosyl-2,5-dihydro-1H-pyrrole",16851-72-2,5.568,1,matrix ID Sphinx 2,0,1,1,1,1,CC1=CC=C(C=C1)S(=O)(=O)N2CC=CC2
+Sphinx,method_2,"2,2"",4,4""-Tetramethylbenzophenone",3478-88-4,6.718,1,matrix ID Sphinx 2,1,1,1,1,1,CC1=CC(=C(C=C1)C(=O)C2=C(C=C(C=C2)C)C)C
+Sphinx,method_2,"2,2,2-TRIFLUOROACETOPHENONE",434-45-7,4.757,1,matrix ID Sphinx 2,1,1,1,0,1,C1=CC=C(C=C1)C(=O)C(F)(F)F
+Sphinx,method_2,"2,3,4-Trifluorobenzoic acid",61079-72-9,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,C1=CC(=C(C(=C1C(=O)O)F)F)F
+Sphinx,method_2,"2,3,6,7,10,11-Hexamethoxytriphenylene",808-57-1,5.892,1,matrix ID Sphinx 2,0,0,0,1,0,COC1=C(C=C2C(=C1)C3=CC(=C(C=C3C4=CC(=C(C=C24)OC)OC)OC)OC)OC
+Sphinx,method_2,"2,4,6-Tris(bromomethyl)mesitylene",21988-87-4,6.604,1,matrix ID Sphinx 2,0,0,0,1,0,CC1=C(C(=C(C(=C1CBr)C)CBr)C)CBr
+Sphinx,method_2,"2,4-Dichlorophenol",120-83-2,5.219,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC(=C(C=C1Cl)Cl)O
+Sphinx,method_2,"2,6-Bis[(4S)-4-phenyl-2-oxazolinyl]pyridine",174500-20-0,5.83,1,matrix ID Sphinx 2,0,0,0,1,1,C1[C@@H](N=C(O1)C2=NC(=CC=C2)C3=N[C@H](CO3)C4=CC=CC=C4)C5=CC=CC=C5
+Sphinx,method_2,"2,6-Dichloroiodobenzene",19230-28-5,5.546,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC(=C(C(=C1)Cl)I)Cl
+Sphinx,method_2,"2,6-Diisopropylphenol",2078-54-8,6.125,1,matrix ID Sphinx 2,1,1,1,1,1,CC(C)C1=C(C(=CC=C1)C(C)C)O
+Sphinx,method_2,"2,6-Dimethoxy-1,4-benzoquinone",530-55-2,3.926,1,matrix ID Sphinx 2,0,0,0,1,1,COC1=CC(=O)C=C(C1=O)OC
+Sphinx,method_2,"2,6-Dimethoxybenzoyl_chloride",1989-53-3,0.0,0,matrix ID Sphinx 2,0,0,0,1,1,COC1=C(C(=CC=C1)OC)C(=O)Cl
+Sphinx,method_2,2-(3-Chlorophenoxy)propionic-acid,101-10-0,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,CC(C(=O)O)OC1=CC(=CC=C1)Cl
+Sphinx,method_2,2-(4-Chlorobenzoyl)benzoic_acid,85-56-3,3.145,1,matrix ID Sphinx 2,1,0,1,1,1,C1=CC=C(C(=C1)C(=O)C2=CC=C(C=C2)Cl)C(=O)O
+Sphinx,method_2,2-(Diphenylphosphino)benzoic-acid,17261-28-8,4.301,1,matrix ID Sphinx 2,0,0,1,1,1,C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=CC=CC=C3C(=O)O
+Sphinx,method_2,2-(Trifluoromethyl)pyridine-4-carboxylic_acid,131747-41-6,0.0,0,matrix ID Sphinx 2,1,1,1,0,0,C1=CN=C(C=C1C(=O)O)C(F)(F)F
+Sphinx,method_2,2-Amino-4-phenylphenol,1134-36-7,4.993,1,matrix ID Sphinx 2,0,0,1,0,0,C1=CC=C(C=C1)C2=CC(=C(C=C2)O)N
+Sphinx,method_2,2-Amino-6-bromopyridine,19798-81-3,4.539,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC(=NC(=C1)Br)N
+Sphinx,method_2,2-Benzyloxybenzoic_acid ,14389-86-7,1.02,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C(C=C1)COC2=CC=CC=C2C(=O)O
+Sphinx,method_2,"2-Bromo-2',6'-diisopropoxy-1,1'-biphenyl",870703-70-1,6.718,1,matrix ID Sphinx 2,1,1,1,1,1,CC(C)OC1=C(C(=CC=C1)OC(C)C)C2=CC=CC=C2Br
+Sphinx,method_2,2-Bromo-5-(trifluoromethyl)benzaldehyde,102684-91-3,5.909,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC(=C(C=C1C(F)(F)F)C=O)Br
+Sphinx,method_2,2-Bromo-5-chlorotoluene,14495-51-3,6.34,1,matrix ID Sphinx 2,1,1,1,1,1,CC1=C(C=CC(=C1)Cl)Br
+Sphinx,method_2,2-Bromoanthraquinone,572-83-8,6.448,1,matrix ID Sphinx 2,0,0,1,1,1,C1=CC=C2C(=C1)C(=O)C3=C(C2=O)C=C(C=C3)Br
+Sphinx,method_2,2-Bromonaphthalen-1-ol,771-15-3,5.471,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C2C(=C1)C=CC(=C2O)Br
+Sphinx,method_2,2-Bromophenethylamine,65185-58-2,4.843,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C(C(=C1)CCN)Br
+Sphinx,method_2,2-Bromotoluene,95-46-5,6.192,1,matrix ID Sphinx 2,1,1,1,1,1,CC1=CC=CC=C1Br
+Sphinx,method_2,2-Hydroxy-4-(trifluoromethyl)aniline,454-82-0,5.006,1,matrix ID Sphinx 2,0,0,1,0,0,C1=CC(=C(C=C1C(F)(F)F)O)N
+Sphinx,method_2,2-Iodobenzaldehyde,26260-02-6,5.649,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C(C(=C1)C=O)I
+Sphinx,method_2,2-Iodobenzyl_bromide,40400-13-3,6.106,1,matrix ID Sphinx 2,0,0,1,1,1,C1=CC=C(C(=C1)CBr)I
+Sphinx,method_2,2-Iodopyridine,5029-67-4,4.791,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=NC(=C1)I
+Sphinx,method_2,2-Isopropylthioxanthone,5495-84-1,6.709,1,matrix ID Sphinx 2,0,0,0,1,1,CC(C)C1=CC2=C(C=C1)SC3=CC=CC=C3C2=O
+Sphinx,method_2,"2-Methyl-5-(trifluoromethyl)-1,3-benzoxazole",175785-41-8,5.487,1,matrix ID Sphinx 2,1,1,1,1,1,CC1=NC2=C(O1)C=CC(=C2)C(F)(F)F
+Sphinx,method_2,"3,3-Dimethyl-1-indanone",26465-81-6,5.403,1,matrix ID Sphinx 2,1,1,1,1,1,CC1(CC(=O)C2=CC=CC=C21)C
+Sphinx,method_2,"3,4,5-TRIBROMO-1H-PYRAZOLE",17635-44-8,4.016,1,matrix ID Sphinx 2,1,1,1,0,0,C1(=C(NN=C1Br)Br)Br
+Sphinx,method_2,"3,4,7,8-Tetramethyl-1,10-phenanthroline",1660-93-1,0.0,0,matrix ID Sphinx 2,0,0,0,1,1,CC1=CN=C2C(=C1C)C=CC3=C(C(=CN=C32)C)C
+Sphinx,method_2,"3,5-Di-tert-butylbenzoic acid",16225-26-6,3.58,1,matrix ID Sphinx 2,1,1,1,1,1,CC(C)(C)C1=CC(=CC(=C1)C(=O)O)C(C)(C)C
+Sphinx,method_2,"3,5-Dibromotoluene",1611-92-3,6.456,1,matrix ID Sphinx 2,1,1,1,0,0,CC1=CC(=CC(=C1)Br)Br
+Sphinx,method_2,"3,5-Dimethylbenzoyl_chloride",6613-44-1,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,CC1=CC(=CC(=C1)C(=O)Cl)C
+Sphinx,method_2,"3,6-Dimethoxy-9H-carbazole",57103-01-2,5.577,1,matrix ID Sphinx 2,0,1,1,1,1,COC1=CC2=C(C=C1)NC3=C2C=C(C=C3)OC
+Sphinx,method_2,3-(2-Naphthyl)acrylic_acid,51557-26-7,1.842,1,matrix ID Sphinx 2,0,0,1,0,0,C1=CC=C2C=C(C=CC2=C1)/C=C/C(=O)O
+Sphinx,method_2,3-(Phenylthio)propanoic-acid,5219-65-8,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C(C=C1)SCCC(=O)O
+Sphinx,method_2,3-(tert-Butoxycarbonyl)benzoic_acid,33704-19-7,2.692,1,matrix ID Sphinx 2,1,0,1,1,1,CC(C)(C)OC(=O)C1=CC=CC(=C1)C(=O)O
+Sphinx,method_2,3-Bromobenzoyl_chloride,1711-09-7,6.192,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC(=CC(=C1)Br)C(=O)Cl
+Sphinx,method_2,3-Bromopropionyl_chloride,15486-96-1,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,C(CBr)C(=O)Cl
+Sphinx,method_2,3-Chloro-4-methoxyaniline,5345-54-0,4.796,1,matrix ID Sphinx 2,1,1,1,1,1,COC1=C(C=C(C=C1)N)Cl
+Sphinx,method_2,3-[[(9H-Fluoren-9-ylmethoxy)carbonyl]amino]-2-naphthalenecarboxylic acid,372159-75-6,4.224,1,matrix ID Sphinx 2,0,0,0,0,0,C1=CC=C2C=C(C(=CC2=C1)C(=O)O)NC(=O)OCC3C4=CC=CC=C4C5=CC=CC=C35
+Sphinx,method_2,"4,4',4''-Trimethoxytrityl chloride",49757-42-8,5.956,1,matrix ID Sphinx 2,1,0,0,1,1,COC1=CC=C(C=C1)C(C2=CC=C(C=C2)OC)(C3=CC=C(C=C3)OC)Cl
+Sphinx,method_2,"4,4'-Dihydroxybiphenyl",92-88-6,4.662,1,matrix ID Sphinx 2,0,0,1,0,0,C1=CC(=CC=C1C2=CC=C(C=C2)O)O
+Sphinx,method_2,"4,4'-Dimethoxybenzophenone",90-96-0,5.813,1,matrix ID Sphinx 2,0,0,0,1,1,COC1=CC=C(C=C1)C(=O)C2=CC=C(C=C2)OC
+Sphinx,method_2,"4,4?,4??-(1,3,5-TRIAZINE-2,4,6-TRIYL)TRIBENZALDEHYDE",443922-06-3,5.452,1,matrix ID Sphinx 2,0,0,0,0,0,C1=CC(=CC=C1C=O)C2=NC(=NC(=N2)C3=CC=C(C=C3)C=O)C4=CC=C(C=C4)C=O
+Sphinx,method_2,4-(Bromomethyl)benzoic_acid,6232-88-8,0.0,0,matrix ID Sphinx 2,0,0,1,0,0,C1=CC(=CC=C1CBr)C(=O)O
+Sphinx,method_2,4-(Hydroxymethyl)phenylacetic-acid,73401-74-8,0.0,0,matrix ID Sphinx 2,1,1,1,0,0,C1=CC(=CC=C1CC(=O)O)CO
+Sphinx,method_2,4-(Trifluoroacetyl)phenacyl-bromide,1980063-91-9,5.13,1,matrix ID Sphinx 2,1,1,1,0,0,C1=CC(=CC=C1C(=O)CBr)C(=O)C(F)(F)F
+Sphinx,method_2,4-(Trifluoromethyl)benzylamine,3300-51-4,6.592,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC(=CC=C1CN)C(F)(F)F
+Sphinx,method_2,"4-Bromo-3,5-dimethoxybenzoic acid",56518-42-4,1.023,1,matrix ID Sphinx 2,0,0,1,0,0,COC1=CC(=CC(=C1Br)OC)C(=O)O
+Sphinx,method_2,4-Bromo-L-phenylalanine,24250-84-8,3.402,1,matrix ID Sphinx 2,0,0,0,0,0,C1=CC(=CC=C1C[C@@H](C(=O)O)N)Br
+Sphinx,method_2,4-Chlorobenzenesulfonic_acid,98-66-8,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,C1=CC(=CC=C1S(=O)(=O)O)Cl
+Sphinx,method_2,4-Chloropyridine-3-carboxylic_acid,10177-29-4,0.0,0,matrix ID Sphinx 2,0,0,1,0,0,C1=CN=CC(=C1Cl)C(=O)O
+Sphinx,method_2,"4-Hydroxy-3,5-diiodobenzoic acid",618-76-8,0.0,0,matrix ID Sphinx 2,0,0,1,0,0,C1=C(C=C(C(=C1I)O)I)C(=O)O
+Sphinx,method_2,4-Hydroxyphthalic_acid,610-35-5,0.0,0,matrix ID Sphinx 2,1,0,1,0,0,C1=CC(=C(C=C1O)C(=O)O)C(=O)O
+Sphinx,method_2,4-Methoxybiphenyl,613-37-6,6.133,1,matrix ID Sphinx 2,0,1,1,1,1,COC1=CC=C(C=C1)C2=CC=CC=C2
+Sphinx,method_2,4-Methoxytriphenylamine,4316-51-2,0.0,0,matrix ID Sphinx 2,0,0,0,1,1,COC1=CC=C(C=C1)N(C2=CC=CC=C2)C3=CC=CC=C3
+Sphinx,method_2,4-tert-Butylbenzoyl_chloride,1710-98-1,1.757,1,matrix ID Sphinx 2,1,1,1,0,1,CC(C)(C)C1=CC=C(C=C1)C(=O)Cl
+Sphinx,method_2,"5,7-Dimethyl-[1,2,4]triazolo[1,5-a]pyrimidine-2-carboxylic acid",87253-62-1,0.0,0,matrix ID Sphinx 2,0,0,0,0,0,CC1=CC(=NC2=NC(=NN12)C(=O)O)C
+Sphinx,method_2,5-(Trifluoromethyl)indole,100846-24-0,5.736,1,matrix ID Sphinx 2,1,1,0,1,1,C1=CC2=C(C=CN2)C=C1C(F)(F)F
+Sphinx,method_2,5-(Trifluoromethyl)pyridine-2-carboxaldehyde,31224-82-5,4.096,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC(=NC=C1C(F)(F)F)C=O
+Sphinx,method_2,5-Bromo-2-furoic_acid,585-70-6,0.0,0,matrix ID Sphinx 2,1,1,1,0,0,C1=C(OC(=C1)Br)C(=O)O
+Sphinx,method_2,5-Bromo-2-phenylpyridine,27012-25-5,6.024,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C(C=C1)C2=NC=C(C=C2)Br
+Sphinx,method_2,"6,6'-Dibromo-1,1'-bi-2-naphthol",13185-00-7,6.48,1,matrix ID Sphinx 2,0,1,1,0,0,C1=CC2=C(C=CC(=C2C3=C(C=CC4=C3C=CC(=C4)Br)O)O)C=C1Br
+Sphinx,method_2,8-Isoquinolinecarboxaldehyde,787615-01-4,4.445,1,matrix ID Sphinx 2,1,0,1,1,1,C1=CC2=C(C=NC=C2)C(=C1)C=O
+Sphinx,method_2,Allyl-alpha-D-glucopyranoside,7464-56-4,1.351,1,matrix ID Sphinx 2,1,0,1,0,0,C=CCO[C@@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)O
+Sphinx,method_2,Aniline-2-sulfonic_acid,88-21-1,0.0,0,matrix ID Sphinx 2,0,0,1,0,0,C1=CC=C(C(=C1)N)S(=O)(=O)O
+Sphinx,method_2,Bis(diphenylphosphino)methane,2071-20-7,0.0,0,matrix ID Sphinx 2,0,0,0,1,1,C1=CC=C(C=C1)P(CP(C2=CC=CC=C2)C3=CC=CC=C3)C4=CC=CC=C4
+Sphinx,method_2,DL-beta-Phenylalanine,614-19-7,1.803,1,matrix ID Sphinx 2,0,0,0,0,0,C1=CC=C(C=C1)C(CC(=O)O)N
+Sphinx,method_2,Di-tert-butylcyclopentadiene,120937-44-2,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,CC(C)(C)C1C=CC(=C1)C(C)(C)C
+Sphinx,method_2,Dibenzyl-malonate,15014-25-2,6.014,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C(C=C1)COC(=O)CC(=O)OCC2=CC=CC=C2
+Sphinx,method_2,Dibromomaleic-acid,608-37-7,0.0,0,matrix ID Sphinx 2,1,1,1,0,0,C(=C(\C(=O)O)/Br)(\C(=O)O)/Br
+Sphinx,method_2,Diethyl 4-Methoxyphenylphosphonate,3762-33-2,4.883,1,matrix ID Sphinx 2,1,1,1,1,1,CCOP(=O)(C1=CC=C(C=C1)OC)OCC
+Sphinx,method_2,Diethyl_dibutylmalonate,596-75-8,6.745,1,matrix ID Sphinx 2,1,1,1,1,1,CCCCC(CCCC)(C(=O)OCC)C(=O)OCC
+Sphinx,method_2,Diethyl_phenylmalonate,83-13-6,5.776,1,matrix ID Sphinx 2,1,1,1,1,1,CCOC(=O)C(C1=CC=CC=C1)C(=O)OCC
+Sphinx,method_2,"Dimethyl 1,3-cyclohexadiene-1,4-dicarboxylate",1659-95-6,5.209,1,matrix ID Sphinx 2,0,0,0,1,1,COC(=O)C1=CC=C(CC1)C(=O)OC
+Sphinx,method_2,"Dimethyl 2,2'-bipyridine-4,4'-dicarboxylate",71071-46-0,5.588,1,matrix ID Sphinx 2,0,0,0,0,1,COC(=O)C1=CC(=NC=C1)C2=NC=CC(=C2)C(=O)OC
+Sphinx,method_2,Dimethyl-propargylmalonate,95124-07-5,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,COC(=O)C(CC#C)C(=O)OC
+Sphinx,method_2,Ethyl 2-cyclohexanoneacetate,24731-17-7,0.0,0,matrix ID Sphinx 2,1,1,1,1,1,CCOC(=O)CC1CCCCC1=O
+Sphinx,method_2,Ethyl 3-thiopheneacetate,37784-63-7,5.513,1,matrix ID Sphinx 2,1,1,1,1,1,CCOC(=O)CC1=CSC=C1
+Sphinx,method_2,"Ethyl 4,4,4-trifluoroacetoacetate",372-31-6,4.264,1,matrix ID Sphinx 2,1,1,1,1,1,CCOC(=O)CC(=O)C(F)(F)F
+Sphinx,method_2,Ethyl mesitylglyoxylate,5524-57-2,5.994,1,matrix ID Sphinx 2,1,1,1,1,1,CCOC(=O)C(=O)C1=C(C=C(C=C1C)C)C
+Sphinx,method_2,Ethyl-3-oxohexanoate,3249-68-1,5.922,1,matrix ID Sphinx 2,1,1,1,1,1,CCCC(=O)CC(=O)OCC
+Sphinx,method_2,Ethyl-4-bromocrotonate,37746-78-4,5.447,1,matrix ID Sphinx 2,1,1,1,1,1,CCOC(=O)/C=C/CBr
+Sphinx,method_2,Ethyl-4-iodobenzoate,51934-41-9,6.168,1,matrix ID Sphinx 2,1,1,1,1,1,CCOC(=O)C1=CC=C(C=C1)I
+Sphinx,method_2,FMOC-D-ORN(ALOC)-OH,214750-74-0,3.596,1,matrix ID Sphinx 2,1,0,1,0,1,C=CCOC(=O)NCCC[C@H](C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+Sphinx,method_2,Flavanone,487-26-3,5.964,1,matrix ID Sphinx 2,0,1,1,1,1,C1C(OC2=CC=CC=C2C1=O)C3=CC=CC=C3
+Sphinx,method_2,Flufenamic-acid,530-78-9,3.789,1,matrix ID Sphinx 2,1,1,1,0,1,C1=CC=C(C(=C1)C(=O)O)NC2=CC=CC(=C2)C(F)(F)F
+Sphinx,method_2,Hematein,475-25-2,3.47,1,matrix ID Sphinx 2,0,0,0,0,0,C1C2=CC(=C(C=C2C3=C4C=CC(=O)C(=C4OCC31O)O)O)O
+Sphinx,method_2,METHYL 2-PHTHALIMIDOACETATE,23244-58-8,5.027,1,matrix ID Sphinx 2,0,1,1,1,1,COC(=O)CN1C(=O)C2=CC=CC=C2C1=O
+Sphinx,method_2,"Methyl 6-oxo-1,6-dihydropyridine-2-carboxylate",30062-34-1,3.345,1,matrix ID Sphinx 2,1,1,1,1,1,COC(=O)C1=CC=CC(=O)N1
+Sphinx,method_2,"Methyl-2,6-dimethoxybenzoate",2065-27-2,5.156,1,matrix ID Sphinx 2,1,1,1,1,1,COC1=C(C(=CC=C1)OC)C(=O)OC
+Sphinx,method_2,Methyl-3-bromo-4-iodobenzoate,249647-24-3,6.276,1,matrix ID Sphinx 2,0,1,0,1,1,COC(=O)C1=CC(=C(C=C1)I)Br
+Sphinx,method_2,"Methyl-6-Oxo-1,6-dihydropyridazine-3-carboxylate",63001-30-9,1.933,1,matrix ID Sphinx 2,0,0,1,0,0,COC(=O)C1=NNC(=O)C=C1
+Sphinx,method_2,Methyl-diethylphosphonoacetate,1067-74-9,4.075,1,matrix ID Sphinx 2,1,1,1,1,1,CCOP(=O)(CC(=O)OC)OCC
+Sphinx,method_2,N(im)-Trityl-L-histidine,35146-32-8,0.0,0,matrix ID Sphinx 2,0,0,0,0,0,C1=CC=C(C=C1)C(C2=CC=CC=C2)(C3=CC=CC=C3)N4C=C(N=C4)C[C@@H](C(=O)O)N
+Sphinx,method_2,"N,N-Dimethyl-L-phenylalanine",17469-89-5,2.23,1,matrix ID Sphinx 2,0,0,0,0,0,CN(C)[C@@H](CC1=CC=CC=C1)C(=O)O
+Sphinx,method_2,N-Acetyl-L-tryptophan,1218-34-4,0.0,0,matrix ID Sphinx 2,1,0,1,0,0,CC(=O)N[C@@H](CC1=CNC2=CC=CC=C21)C(=O)O
+Sphinx,method_2,N-Benzylidenebenzylamine,780-25-6,6.028,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C(C=C1)CN=CC2=CC=CC=C2
+Sphinx,method_2,N-Phthaloylglycine,4702-13-0,0.0,0,matrix ID Sphinx 2,1,1,1,0,1,C1=CC=C2C(=C1)C(=O)N(C2=O)CC(=O)O
+Sphinx,method_2,"N-[(1,1-Dimethylethoxy)carbonyl]-L-histidine methyl_ester",2488-14-4,4.47,1,matrix ID Sphinx 2,1,0,1,1,1,CC(C)(C)OC(=O)N[C@@H](CC1=CN=CN1)C(=O)OC
+Sphinx,method_2,N-[(Phenylmethoxy)carbonyl]-O-(phenylmethyl)-L-serine_,20806-43-3,3.575,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C(C=C1)COC[C@@H](C(=O)O)NC(=O)OCC2=CC=CC=C2
+Sphinx,method_2,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-methyl-D-lysine",1315449-94-5,3.778,1,matrix ID Sphinx 2,0,1,1,1,1,C[C@@](CCCCNC(=O)OC(C)(C)C)(C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+Sphinx,method_2,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(phenylmethoxy)carbonyl]-L-lysine",2389-60-8,3.45,1,matrix ID Sphinx 2,1,1,1,1,1,CC(C)(C)OC(=O)NCCCC[C@@H](C(=O)O)NC(=O)OCC1=CC=CC=C1
+Sphinx,method_2,Nalpha-[(9H-Fluoren-9-ylmethoxy)carbonyl]-L-threonine tert-Butyl-Ester,120791-76-6,6.055,1,matrix ID Sphinx 2,1,1,1,1,1,C[C@H]([C@@H](C(=O)OC(C)(C)C)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13)O
+Sphinx,method_2,Phenyl-benzoate,93-99-2,6.025,1,matrix ID Sphinx 2,1,1,1,1,1,C1=CC=C(C=C1)C(=O)OC2=CC=CC=C2
+Sphinx,method_2,Pindolol,13523-86-9,0.0,0,matrix ID Sphinx 2,0,0,0,1,1,CC(C)NCC(COC1=CC=CC2=C1C=CN2)O
+Sphinx,method_2,Protocatechuic_acid,99-50-3,0.0,0,matrix ID Sphinx 2,1,1,1,0,0,C1=CC(=C(C=C1C(=O)O)O)O
+Sphinx,method_2,Suberic_acid_monomethyl_ester,3946-32-5,0.0,0,matrix ID Sphinx 2,1,0,1,0,1,COC(=O)CCCCCCC(=O)O
+Sphinx,method_2,Z-D-Glu-OBzl,65706-99-2,3.553,1,matrix ID Sphinx 2,0,0,0,1,1,C1=CC=C(C=C1)COC(=O)[C@@H](CCC(=O)O)NC(=O)OCC2=CC=CC=C2
+Sphinx,method_2,Z-D-Phg-OH,17609-52-8,3.297,1,matrix ID Sphinx 2,1,0,1,1,1,C1=CC=C(C=C1)COC(=O)N[C@H](C2=CC=CC=C2)C(=O)O
+Sphinx,method_2,"meso-1,2-Dibromo-1,2-diphenylethane",13440-24-9,6.381,1,matrix ID Sphinx 2,0,0,0,1,0,Did not work
+Sphinx,method_2,mono-tert-Butyl_succinate,15026-17-2,0.0,0,matrix ID Sphinx 2,1,1,1,0,0,CC(C)(C)OC(=O)CCC(=O)O
+Sphinx,method_2,pentafluorobenzyl-bromide,1765-40-8,6.066,1,matrix ID Sphinx 2,1,1,1,1,1,C(C1=C(C(=C(C(=C1F)F)F)F)F)Br
+Sphinx,method_2,"trans-1,2-Bis(phenylsulfonyl)ethylene",963-16-6,5.567,1,matrix ID Sphinx 2,0,0,0,0,0,C1=CC=C(C=C1)S(=O)(=O)/C=C/S(=O)(=O)C2=CC=CC=C2
+Sphinx,method_2,trans-4-(9-Fluorenylmethyloxycarbonylaminomethyl)-cyclohexanoic_acid,188715-40-4,3.542,1,matrix ID Sphinx 2,0,0,0,0,0,C1CC(CCC1CNC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+Sphinx,method_2,trans-Aconitic-acid,4023-65-8,0.0,0,matrix ID Sphinx 2,1,1,1,0,0,C(/C(=C\C(=O)O)/C(=O)O)C(=O)O

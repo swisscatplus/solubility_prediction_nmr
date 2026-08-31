@@ -1,0 +1,16 @@
+=== XGBOOST RESULTS WITH [RT] REMOVED ===
+
+Removed_Feature  Seed  Train_Accuracy  Accuracy  Precision   Recall  F1_Score
+             RT    42        0.998090  0.786667   0.887755 0.805556  0.844660
+             RT    93        1.000000  0.720000   0.808989 0.742268  0.774194
+             RT   123        0.998090  0.753333   0.803571 0.857143  0.829493
+             RT  2024        0.994286  0.833333   0.916667 0.838095  0.875622
+             RT   777        0.998090  0.793333   0.918367 0.796460  0.853081
+
+--- Summary Statistics ---
+                    mean       std
+Train_Accuracy  0.997711  0.002086
+Accuracy        0.777333  0.042843
+Precision       0.867070  0.056843
+Recall          0.807904  0.044104
+F1_Score        0.835410  0.038070

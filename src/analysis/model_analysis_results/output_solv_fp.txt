@@ -1,0 +1,27 @@
+Original Row Count: 1057
+Unique Molecules (by CAS): 144
+Redundant Rows Deleted: 906
+No Signal Rows Deleted: 913
+----------------------------------
+Gathering data ...
+Added MeOH: 144 rows
+Added ACN: 144 rows
+Added DMSO: 144 rows
+Added DCM: 144 rows
+Added CHCl3: 144 rows
+Matrix shape (with solvent fingerprint): (720, 4097)
+
+--- RESULTS Solvent FP ---
+ Seed  Accuracy  Precision (Class 1)  Recall (Class 1)  F1 Score (Class 1)
+   42  0.682759             0.718447          0.813187            0.762887
+   93  0.682759             0.696721          0.904255            0.787037
+  123  0.779310             0.818182          0.908257            0.860870
+ 2024  0.662069             0.666667          0.934783            0.778281
+  777  0.655172             0.661290          0.911111            0.766355
+
+Summary Statistics:
+                         mean       std
+Accuracy             0.692414  0.050113
+Precision (Class 1)  0.712261  0.063592
+Recall (Class 1)     0.894319  0.046890
+F1 Score (Class 1)   0.791086  0.040178

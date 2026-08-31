@@ -1,0 +1,16 @@
+=== XGBOOST RESULTS WITH [Sample Fingerprint] REMOVED ===
+
+   Removed_Feature  Seed  Train_Accuracy  Accuracy  Precision   Recall  F1_Score
+Sample Fingerprint    42        0.959119  0.724762   0.817687 0.794974  0.806170
+Sample Fingerprint    93        0.954716  0.696190   0.834572 0.661267  0.737880
+Sample Fingerprint   123        0.959080  0.723810   0.812062 0.787755  0.799724
+Sample Fingerprint  2024        0.956735  0.783810   0.907051 0.770068  0.832965
+Sample Fingerprint   777        0.975721  0.699048   0.883683 0.691530  0.775887
+
+--- Summary Statistics ---
+                    mean       std
+Train_Accuracy  0.961074  0.008390
+Accuracy        0.725524  0.035221
+Precision       0.851011  0.042148
+Recall          0.741119  0.060722
+F1_Score        0.790525  0.035764
