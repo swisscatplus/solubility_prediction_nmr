@@ -1,0 +1,123 @@
+Column,Method,Sample Name,CAS,RT,Signal,Matrix ID Name,MeOH,ACN,DMSO,DCM,CHCl3,solute_smiles
+BlueBird,method_1,(1-BROMOETHYL)BENZENE,585-71-7,5.607,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C1=CC=CC=C1)Br
+BlueBird,method_1,(2-BENZYLOXYCARBONYLAMINO-ACETYLAMINO)-ACETIC_ACID,2566-19-0,4.021,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC=C(C=C1)COC(=O)NCC(=O)NCC(=O)O
+BlueBird,method_1,(2S)-2-{[(9H-fluoren-9-ylmethoxy)carbonyl]amino}-4-hydroxybutanoic acid,172525-85-8,3.327,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC=C2C(=C1)C(C3=CC=CC=C32)COC(=O)N[C@@H](CCO)C(=O)O
+BlueBird,method_1,"(2S,5S)-1-Hydroxy-2,5-diphenylphospholane 1-oxide",474049-73-5,5.678,1,matrix ID BlueBird 1,0,0,0,0,1,C1C[C@H](P(=O)([C@@H]1C2=CC=CC=C2)O)C3=CC=CC=C3
+BlueBird,method_1,"(?S)-4-(1,1-Dimethylethoxy)-?-[[(9H-fluoren-9-ylmethoxy)carbonyl]amino]benzenebutanoic_acid",204384-69-0,6.019,1,matrix ID BlueBird 1,0,0,1,1,1,CC(C)(C)OC1=CC=C(C=C1)CC[C@@H](C(=O)O)NC(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+BlueBird,method_1,(R)-(-)-2-Methoxy-2-phenylethanol,17628-72-7,3.983,1,matrix ID BlueBird 1,1,1,1,1,1,CO[C@@H](CO)C1=CC=CC=C1
+BlueBird,method_1,"(S)-(-)-2-Amino-3-methyl-1,1-diphenyl-1-butanol",78603-95-9,3.412,1,matrix ID BlueBird 1,0,1,1,1,1,CC(C)[C@@H](C(C1=CC=CC=C1)(C2=CC=CC=C2)O)N
+BlueBird,method_1,(S)-Benzyl 2-(((S)-1-methoxy-4-methyl-1-oxopentan-2-yl)carbamoyl)pyrrolidine-1-carboxylate,2873-37-2,5.141,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C)C[C@@H](C(=O)OC)NC(=O)[C@@H]1CCCN1C(=O)OCC2=CC=CC=C2
+BlueBird,method_1,"1,1,1-Tris(4-hydroxyphenyl)ethane",27955-94-8,4.627,1,matrix ID BlueBird 1,1,1,1,0,0,CC(C1=CC=C(C=C1)O)(C2=CC=C(C=C2)O)C3=CC=C(C=C3)O
+BlueBird,method_1,"1,1,3-Triphenylpropargyl alcohol",1522-13-0,5.897,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)C#CC(C2=CC=CC=C2)(C3=CC=CC=C3)O
+BlueBird,method_1,"1,3-Bis(trifluoromethyl)-5-bromobenzene",328-70-1,6.098,1,matrix ID BlueBird 1,1,1,1,1,1,C1=C(C=C(C=C1C(F)(F)F)Br)C(F)(F)F
+BlueBird,method_1,"1,3-Dimethyl 2-[(4-methoxyphenyl)methylene]propanedioate",7443-25-6,5.161,1,matrix ID BlueBird 1,1,1,1,1,1,COC1=CC=C(C=C1)C=C(C(=O)OC)C(=O)OC
+BlueBird,method_1,"1,3-Diphenylacetone_p-tosylhydrazone",19816-88-7,5.892,1,matrix ID BlueBird 1,0,0,0,1,1,CC1=CC=C(C=C1)S(=O)(=O)NN=C(CC2=CC=CC=C2)CC3=CC=CC=C3
+BlueBird,method_1,"1,4-Bis(bromomethyl)-2,3,5,6-tetrafluorobenzene_",776-40-9,5.895,1,matrix ID BlueBird 1,0,0,0,1,1,C(C1=C(C(=C(C(=C1F)F)CBr)F)F)Br
+BlueBird,method_1,"1,4-Cyclohexanedicarboxylic-acid",1076-97-7,3.53,1,matrix ID BlueBird 1,1,0,0,0,1,C1CC(CCC1C(=O)O)C(=O)O
+BlueBird,method_1,"1,4-Dibromo-2,3-butanedione",6305-43-7,3.506,1,matrix ID BlueBird 1,1,1,1,1,0,C(C(=O)C(=O)CBr)Br
+BlueBird,method_1,"1-(9H-Fluoren-9-ylmethyl) (2S,4S)-4-[[(1,1-dimethylethoxy)carbonyl]amino]-1,2-pyrrolidinedicarboxylate_",221352-74-5,5.559,1,matrix ID BlueBird 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@H]1C[C@H](N(C1)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24)C(=O)O
+BlueBird,method_1,1-(tert-Butoxycarbonyl)-4-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-piperazinecarboxylic_acid,218278-58-1,5.7,1,matrix ID BlueBird 1,0,0,1,1,1,CC(C)(C)OC(=O)N1CCN(CC1C(=O)O)C(=O)OCC2C3=CC=CC=C3C4=CC=CC=C24
+BlueBird,method_1,1-Benzofuran-5-carboxylic_acid,90721-27-0,4.429,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC2=C(C=CO2)C=C1C(=O)O
+BlueBird,method_1,1-Bromo-4-(trifluoromethoxy)benzene,407-14-7,5.937,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=CC=C1OC(F)(F)F)Br
+BlueBird,method_1,1-Bromopentanemethylbenzene,5153-40-2,6.696,1,matrix ID BlueBird 1,0,0,0,1,1,CC1=C(C(=C(C(=C1C)C)Br)C)C
+BlueBird,method_1,1-Phenyl-5-(trifluoromethyl)-1H-pyrazole-4-carboxylic_acid,98534-81-7,4.911,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)N2C(=C(C=N2)C(=O)O)C(F)(F)F
+BlueBird,method_1,1-Pyrenemethanol,24463-15-8,5.4,1,matrix ID BlueBird 1,0,0,1,1,1,C1=CC2=C3C(=C1)C=CC4=C(C=CC(=C43)C=C2)CO
+BlueBird,method_1,"1-Tosyl-2,5-dihydro-1H-pyrrole",16851-72-2,5.089,1,matrix ID BlueBird 1,0,1,1,1,1,CC1=CC=C(C=C1)S(=O)(=O)N2CC=CC2
+BlueBird,method_1,"2,2"",4,4""-Tetramethylbenzophenone",3478-88-4,6.309,1,matrix ID BlueBird 1,1,1,1,1,1,CC1=CC(=C(C=C1)C(=O)C2=C(C=C(C=C2)C)C)C
+BlueBird,method_1,"2,2,2-TRIFLUOROACETOPHENONE",434-45-7,4.383,1,matrix ID BlueBird 1,1,1,1,0,1,C1=CC=C(C=C1)C(=O)C(F)(F)F
+BlueBird,method_1,"2,4-Dichlorophenol",120-83-2,4.997,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=C(C=C1Cl)Cl)O
+BlueBird,method_1,"2,6-Bis[(4S)-4-phenyl-2-oxazolinyl]pyridine",174500-20-0,5.362,1,matrix ID BlueBird 1,0,0,0,1,1,C1[C@@H](N=C(O1)C2=NC(=CC=C2)C3=N[C@H](CO3)C4=CC=CC=C4)C5=CC=CC=C5
+BlueBird,method_1,"2,6-Dichloroiodobenzene",19230-28-5,6.045,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=C(C(=C1)Cl)I)Cl
+BlueBird,method_1,"2,6-Diisopropylphenol",2078-54-8,5.797,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C)C1=C(C(=CC=C1)C(C)C)O
+BlueBird,method_1,"2,6-Dimethoxy-1,4-benzoquinone",530-55-2,3.493,1,matrix ID BlueBird 1,0,0,0,1,1,COC1=CC(=O)C=C(C1=O)OC
+BlueBird,method_1,"2,6-Dimethoxybenzoyl_chloride",1989-53-3,3.843,1,matrix ID BlueBird 1,0,0,0,1,1,COC1=C(C(=CC=C1)OC)C(=O)Cl
+BlueBird,method_1,2-(4-Chlorobenzoyl)benzoic_acid,85-56-3,5.135,1,matrix ID BlueBird 1,1,0,1,1,1,C1=CC=C(C(=C1)C(=O)C2=CC=C(C=C2)Cl)C(=O)O
+BlueBird,method_1,2-(Trifluoromethyl)pyridine-4-carboxylic_acid,131747-41-6,4.521,1,matrix ID BlueBird 1,1,1,1,0,0,C1=CN=C(C=C1C(=O)O)C(F)(F)F
+BlueBird,method_1,2-Amino-4-phenylphenol,1134-36-7,4.231,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC=C(C=C1)C2=CC(=C(C=C2)O)N
+BlueBird,method_1,2-Benzyloxybenzoic_acid ,14389-86-7,5.023,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)COC2=CC=CC=C2C(=O)O
+BlueBird,method_1,"2-Bromo-2',6'-diisopropoxy-1,1'-biphenyl",870703-70-1,6.433,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C)OC1=C(C(=CC=C1)OC(C)C)C2=CC=CC=C2Br
+BlueBird,method_1,2-Bromo-5-(trifluoromethyl)benzaldehyde,102684-91-3,5.538,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=C(C=C1C(F)(F)F)C=O)Br
+BlueBird,method_1,2-Bromo-5-chlorotoluene,14495-51-3,6.108,1,matrix ID BlueBird 1,1,1,1,1,1,CC1=C(C=CC(=C1)Cl)Br
+BlueBird,method_1,2-Bromoanthraquinone,572-83-8,6.069,1,matrix ID BlueBird 1,0,0,1,1,1,C1=CC=C2C(=C1)C(=O)C3=C(C2=O)C=C(C=C3)Br
+BlueBird,method_1,2-Bromonaphthalen-1-ol,771-15-3,5.391,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C2C(=C1)C=CC(=C2O)Br
+BlueBird,method_1,2-Bromophenethylamine,65185-58-2,1.793,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C(=C1)CCN)Br
+BlueBird,method_1,2-Bromotoluene,95-46-5,5.8,1,matrix ID BlueBird 1,1,1,1,1,1,CC1=CC=CC=C1Br
+BlueBird,method_1,2-Hydroxy-4-(trifluoromethyl)aniline,454-82-0,5.242,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC(=C(C=C1C(F)(F)F)O)N
+BlueBird,method_1,2-Iodobenzaldehyde,26260-02-6,5.212,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C(=C1)C=O)I
+BlueBird,method_1,2-Iodobenzyl_bromide,40400-13-3,5.787,1,matrix ID BlueBird 1,0,0,1,1,1,C1=CC=C(C(=C1)CBr)I
+BlueBird,method_1,2-Isopropylthioxanthone,5495-84-1,6.361,1,matrix ID BlueBird 1,0,0,0,1,1,CC(C)C1=CC2=C(C=C1)SC3=CC=CC=C3C2=O
+BlueBird,method_1,"2-Methyl-5-(trifluoromethyl)-1,3-benzoxazole",175785-41-8,5.205,1,matrix ID BlueBird 1,1,1,1,1,1,CC1=NC2=C(O1)C=CC(=C2)C(F)(F)F
+BlueBird,method_1,"3,3-Dimethyl-1-indanone",26465-81-6,5.04,1,matrix ID BlueBird 1,1,1,1,1,1,CC1(CC(=O)C2=CC=CC=C21)C
+BlueBird,method_1,"3,4,5-TRIBROMO-1H-PYRAZOLE",17635-44-8,4.899,1,matrix ID BlueBird 1,1,1,1,0,0,C1(=C(NN=C1Br)Br)Br
+BlueBird,method_1,"3,4,7,8-Tetramethyl-1,10-phenanthroline",1660-93-1,3.473,1,matrix ID BlueBird 1,0,0,0,1,1,CC1=CN=C2C(=C1C)C=CC3=C(C(=CN=C32)C)C
+BlueBird,method_1,"3,5-Di-tert-butylbenzoic acid",16225-26-6,5.809,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C)(C)C1=CC(=CC(=C1)C(=O)O)C(C)(C)C
+BlueBird,method_1,"3,5-Dibromotoluene",1611-92-3,6.23,1,matrix ID BlueBird 1,1,1,1,0,0,CC1=CC(=CC(=C1)Br)Br
+BlueBird,method_1,"3,5-Dimethylbenzoyl_chloride",6613-44-1,4.754,1,matrix ID BlueBird 1,1,1,1,1,1,CC1=CC(=CC(=C1)C(=O)Cl)C
+BlueBird,method_1,"3,6-Dimethoxy-9H-carbazole",57103-01-2,5.255,1,matrix ID BlueBird 1,0,1,1,1,1,COC1=CC2=C(C=C1)NC3=C2C=C(C=C3)OC
+BlueBird,method_1,3-(Phenylthio)propanoic-acid,5219-65-8,4.682,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)SCCC(=O)O
+BlueBird,method_1,3-(tert-Butoxycarbonyl)benzoic_acid,33704-19-7,5.126,1,matrix ID BlueBird 1,1,0,1,1,1,CC(C)(C)OC(=O)C1=CC=CC(=C1)C(=O)O
+BlueBird,method_1,3-Bromobenzoyl_chloride,1711-09-7,4.835,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=CC(=C1)Br)C(=O)Cl
+BlueBird,method_1,3-Bromopropionyl_chloride,15486-96-1,2.918,1,matrix ID BlueBird 1,1,1,1,1,1,C(CBr)C(=O)Cl
+BlueBird,method_1,3-Chloro-4-methoxyaniline,5345-54-0,3.019,1,matrix ID BlueBird 1,1,1,1,1,1,COC1=C(C=C(C=C1)N)Cl
+BlueBird,method_1,"4,4',4''-Trimethoxytrityl chloride",49757-42-8,5.641,1,matrix ID BlueBird 1,1,0,0,1,1,COC1=CC=C(C=C1)C(C2=CC=C(C=C2)OC)(C3=CC=C(C=C3)OC)Cl
+BlueBird,method_1,"4,4'-Dihydroxybiphenyl",92-88-6,4.374,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC(=CC=C1C2=CC=C(C=C2)O)O
+BlueBird,method_1,"4,4'-Dimethoxybenzophenone",90-96-0,5.396,1,matrix ID BlueBird 1,0,0,0,1,1,COC1=CC=C(C=C1)C(=O)C2=CC=C(C=C2)OC
+BlueBird,method_1,"4,4?,4??-(1,3,5-TRIAZINE-2,4,6-TRIYL)TRIBENZALDEHYDE",443922-06-3,5.238,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC(=CC=C1C=O)C2=NC(=NC(=N2)C3=CC=C(C=C3)C=O)C4=CC=C(C=C4)C=O
+BlueBird,method_1,4-(Bromomethyl)benzoic_acid,6232-88-8,4.688,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC(=CC=C1CBr)C(=O)O
+BlueBird,method_1,4-(Hydroxymethyl)phenylacetic-acid,73401-74-8,3.398,1,matrix ID BlueBird 1,1,1,1,0,0,C1=CC(=CC=C1CC(=O)O)CO
+BlueBird,method_1,4-Bromo-L-phenylalanine,24250-84-8,3.24,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC(=CC=C1C[C@@H](C(=O)O)N)Br
+BlueBird,method_1,4-Chlorobenzenesulfonic_acid,98-66-8,4.811,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=CC=C1S(=O)(=O)O)Cl
+BlueBird,method_1,4-Chloropyridine-3-carboxylic_acid,10177-29-4,1.327,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CN=CC(=C1Cl)C(=O)O
+BlueBird,method_1,"4-Hydroxy-3,5-diiodobenzoic acid",618-76-8,4.728,1,matrix ID BlueBird 1,0,0,1,0,0,C1=C(C=C(C(=C1I)O)I)C(=O)O
+BlueBird,method_1,4-Hydroxyphthalic_acid,610-35-5,3.49,1,matrix ID BlueBird 1,1,0,1,0,0,C1=CC(=C(C=C1O)C(=O)O)C(=O)O
+BlueBird,method_1,4-Methoxybiphenyl,613-37-6,5.826,1,matrix ID BlueBird 1,0,1,1,1,1,COC1=CC=C(C=C1)C2=CC=CC=C2
+BlueBird,method_1,4-Methoxytriphenylamine,4316-51-2,6.436,1,matrix ID BlueBird 1,0,0,0,1,1,COC1=CC=C(C=C1)N(C2=CC=CC=C2)C3=CC=CC=C3
+BlueBird,method_1,4-tert-Butylbenzoyl_chloride,1710-98-1,5.176,1,matrix ID BlueBird 1,1,1,1,0,1,CC(C)(C)C1=CC=C(C=C1)C(=O)Cl
+BlueBird,method_1,"5,7-Dimethyl-[1,2,4]triazolo[1,5-a]pyrimidine-2-carboxylic acid",87253-62-1,3.115,1,matrix ID BlueBird 1,0,0,0,0,0,CC1=CC(=NC2=NC(=NN12)C(=O)O)C
+BlueBird,method_1,5-(Trifluoromethyl)indole,100846-24-0,5.375,1,matrix ID BlueBird 1,1,1,0,1,1,C1=CC2=C(C=CN2)C=C1C(F)(F)F
+BlueBird,method_1,5-(Trifluoromethyl)pyridine-2-carboxaldehyde,31224-82-5,3.629,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC(=NC=C1C(F)(F)F)C=O
+BlueBird,method_1,5-Bromo-2-furoic_acid,585-70-6,4.122,1,matrix ID BlueBird 1,1,1,1,0,0,C1=C(OC(=C1)Br)C(=O)O
+BlueBird,method_1,5-Bromo-2-phenylpyridine,27012-25-5,5.763,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)C2=NC=C(C=C2)Br
+BlueBird,method_1,"6,6'-Dibromo-1,1'-bi-2-naphthol",13185-00-7,6.045,1,matrix ID BlueBird 1,0,1,1,0,0,C1=CC2=C(C=CC(=C2C3=C(C=CC4=C3C=CC(=C4)Br)O)O)C=C1Br
+BlueBird,method_1,8-Isoquinolinecarboxaldehyde,787615-01-4,3.063,1,matrix ID BlueBird 1,1,0,1,1,1,C1=CC2=C(C=NC=C2)C(=C1)C=O
+BlueBird,method_1,Aniline-2-sulfonic_acid,88-21-1,3.11,1,matrix ID BlueBird 1,0,0,1,0,0,C1=CC=C(C(=C1)N)S(=O)(=O)O
+BlueBird,method_1,Bis(diphenylphosphino)methane,2071-20-7,6.727,1,matrix ID BlueBird 1,0,0,0,1,1,C1=CC=C(C=C1)P(CP(C2=CC=CC=C2)C3=CC=CC=C3)C4=CC=CC=C4
+BlueBird,method_1,DL-beta-Phenylalanine,614-19-7,1.093,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC=C(C=C1)C(CC(=O)O)N
+BlueBird,method_1,Dibenzyl-malonate,15014-25-2,5.638,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)COC(=O)CC(=O)OCC2=CC=CC=C2
+BlueBird,method_1,Dibromomaleic-acid,608-37-7,4.937,1,matrix ID BlueBird 1,1,1,1,0,0,C(=C(\C(=O)O)/Br)(\C(=O)O)/Br
+BlueBird,method_1,Diethyl_phenylmalonate,83-13-6,5.385,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)C(C1=CC=CC=C1)C(=O)OCC
+BlueBird,method_1,"Dimethyl 1,3-cyclohexadiene-1,4-dicarboxylate",1659-95-6,5.028,1,matrix ID BlueBird 1,0,0,0,1,1,COC(=O)C1=CC=C(CC1)C(=O)OC
+BlueBird,method_1,"Dimethyl 2,2'-bipyridine-4,4'-dicarboxylate",71071-46-0,5.269,1,matrix ID BlueBird 1,0,0,0,0,1,COC(=O)C1=CC(=NC=C1)C2=NC=CC(=C2)C(=O)OC
+BlueBird,method_1,Ethyl 2-cyclohexanoneacetate,24731-17-7,4.697,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)CC1CCCCC1=O
+BlueBird,method_1,"Ethyl 4,4,4-trifluoroacetoacetate",372-31-6,3.849,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)CC(=O)C(F)(F)F
+BlueBird,method_1,Ethyl mesitylglyoxylate,5524-57-2,5.691,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)C(=O)C1=C(C=C(C=C1C)C)C
+BlueBird,method_1,Ethyl-3-oxohexanoate,3249-68-1,4.619,1,matrix ID BlueBird 1,1,1,1,1,1,CCCC(=O)CC(=O)OCC
+BlueBird,method_1,Ethyl-4-bromocrotonate,37746-78-4,4.986,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)/C=C/CBr
+BlueBird,method_1,Ethyl-4-iodobenzoate,51934-41-9,5.872,1,matrix ID BlueBird 1,1,1,1,1,1,CCOC(=O)C1=CC=C(C=C1)I
+BlueBird,method_1,FMOC-D-ORN(ALOC)-OH,214750-74-0,5.271,1,matrix ID BlueBird 1,1,0,1,0,1,C=CCOC(=O)NCCC[C@H](C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+BlueBird,method_1,Flavanone,487-26-3,5.511,1,matrix ID BlueBird 1,0,1,1,1,1,C1C(OC2=CC=CC=C2C1=O)C3=CC=CC=C3
+BlueBird,method_1,Flufenamic-acid,530-78-9,5.775,1,matrix ID BlueBird 1,1,1,1,0,1,C1=CC=C(C(=C1)C(=O)O)NC2=CC=CC(=C2)C(F)(F)F
+BlueBird,method_1,Hematein,475-25-2,4.766,1,matrix ID BlueBird 1,0,0,0,0,0,C1C2=CC(=C(C=C2C3=C4C=CC(=O)C(=C4OCC31O)O)O)O
+BlueBird,method_1,METHYL 2-PHTHALIMIDOACETATE,23244-58-8,4.552,1,matrix ID BlueBird 1,0,1,1,1,1,COC(=O)CN1C(=O)C2=CC=CC=C2C1=O
+BlueBird,method_1,"Methyl-2,6-dimethoxybenzoate",2065-27-2,4.678,1,matrix ID BlueBird 1,1,1,1,1,1,COC1=C(C(=CC=C1)OC)C(=O)OC
+BlueBird,method_1,Methyl-3-bromo-4-iodobenzoate,249647-24-3,5.904,1,matrix ID BlueBird 1,0,1,0,1,1,COC(=O)C1=CC(=C(C=C1)I)Br
+BlueBird,method_1,"Methyl-6-Oxo-1,6-dihydropyridazine-3-carboxylate",63001-30-9,2.406,1,matrix ID BlueBird 1,0,0,1,0,0,COC(=O)C1=NNC(=O)C=C1
+BlueBird,method_1,Methyl-diethylphosphonoacetate,1067-74-9,3.718,1,matrix ID BlueBird 1,1,1,1,1,1,CCOP(=O)(CC(=O)OC)OCC
+BlueBird,method_1,N(im)-Trityl-L-histidine,35146-32-8,3.928,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC=C(C=C1)C(C2=CC=CC=C2)(C3=CC=CC=C3)N4C=C(N=C4)C[C@@H](C(=O)O)N
+BlueBird,method_1,"N,N-Dimethyl-L-phenylalanine",17469-89-5,2.119,1,matrix ID BlueBird 1,0,0,0,0,0,CN(C)[C@@H](CC1=CC=CC=C1)C(=O)O
+BlueBird,method_1,N-Acetyl-L-tryptophan,1218-34-4,3.949,1,matrix ID BlueBird 1,1,0,1,0,0,CC(=O)N[C@@H](CC1=CNC2=CC=CC=C21)C(=O)O
+BlueBird,method_1,N-Benzylidenebenzylamine,780-25-6,4.377,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)CN=CC2=CC=CC=C2
+BlueBird,method_1,N-Phthaloylglycine,4702-13-0,4.073,1,matrix ID BlueBird 1,1,1,1,0,1,C1=CC=C2C(=C1)C(=O)N(C2=O)CC(=O)O
+BlueBird,method_1,"N-[(1,1-Dimethylethoxy)carbonyl]-L-histidine methyl_ester",2488-14-4,1.875,1,matrix ID BlueBird 1,1,0,1,1,1,CC(C)(C)OC(=O)N[C@@H](CC1=CN=CN1)C(=O)OC
+BlueBird,method_1,N-[(Phenylmethoxy)carbonyl]-O-(phenylmethyl)-L-serine_,20806-43-3,5.197,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)COC[C@@H](C(=O)O)NC(=O)OCC2=CC=CC=C2
+BlueBird,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(9H-fluoren-9-ylmethoxy)carbonyl]-2-methyl-D-lysine",1315449-94-5,5.699,1,matrix ID BlueBird 1,0,1,1,1,1,C[C@@](CCCCNC(=O)OC(C)(C)C)(C(=O)O)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13
+BlueBird,method_1,"N6-[(1,1-Dimethylethoxy)carbonyl]-N2-[(phenylmethoxy)carbonyl]-L-lysine",2389-60-8,5.033,1,matrix ID BlueBird 1,1,1,1,1,1,CC(C)(C)OC(=O)NCCCC[C@@H](C(=O)O)NC(=O)OCC1=CC=CC=C1
+BlueBird,method_1,Nalpha-[(9H-Fluoren-9-ylmethoxy)carbonyl]-L-threonine tert-Butyl-Ester,120791-76-6,5.649,1,matrix ID BlueBird 1,1,1,1,1,1,C[C@H]([C@@H](C(=O)OC(C)(C)C)NC(=O)OCC1C2=CC=CC=C2C3=CC=CC=C13)O
+BlueBird,method_1,Phenyl-benzoate,93-99-2,5.68,1,matrix ID BlueBird 1,1,1,1,1,1,C1=CC=C(C=C1)C(=O)OC2=CC=CC=C2
+BlueBird,method_1,Pindolol,13523-86-9,2.175,1,matrix ID BlueBird 1,0,0,0,1,1,CC(C)NCC(COC1=CC=CC2=C1C=CN2)O
+BlueBird,method_1,Suberic_acid_monomethyl_ester,3946-32-5,4.292,1,matrix ID BlueBird 1,1,0,1,0,1,COC(=O)CCCCCCC(=O)O
+BlueBird,method_1,Z-D-Glu-OBzl,65706-99-2,5.091,1,matrix ID BlueBird 1,0,0,0,1,1,C1=CC=C(C=C1)COC(=O)[C@@H](CCC(=O)O)NC(=O)OCC2=CC=CC=C2
+BlueBird,method_1,"meso-1,2-Dibromo-1,2-diphenylethane",13440-24-9,5.994,1,matrix ID BlueBird 1,0,0,0,1,0,C1=CC=C(C=C1)C(C(C2=CC=CC=C2)Br)Br
+BlueBird,method_1,pentafluorobenzyl-bromide,1765-40-8,5.716,1,matrix ID BlueBird 1,1,1,1,1,1,C(C1=C(C(=C(C(=C1F)F)F)F)F)Br
+BlueBird,method_1,"trans-1,2-Bis(phenylsulfonyl)ethylene",963-16-6,5.192,1,matrix ID BlueBird 1,0,0,0,0,0,C1=CC=C(C=C1)S(=O)(=O)/C=C/S(=O)(=O)C2=CC=CC=C2
+BlueBird,method_1,trans-Aconitic-acid,4023-65-8,1.606,1,matrix ID BlueBird 1,1,1,1,0,0,C(/C(=C\C(=O)O)/C(=O)O)C(=O)O

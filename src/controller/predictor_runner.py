@@ -90,7 +90,7 @@ def solubility_file_matrix(clean_results, solvent_dict, temperature=298.15):
         # Merge horizontally
         final_df = pd.concat([final_df, solvent_cols], axis=1)
 
-    output_name = "/Users/arthurbenard/Project 1B/data/Master_Solubility_Matrix.xlsx"
+    output_name = "../../../Master_Solubility_Matrix.xlsx"
     final_df.to_excel(output_name, index=False)
     print(f"Mission Complete! File saved: {output_name}")
 
@@ -726,3 +726,47 @@ def strict_unknown_column_machine_test(df, target_machine, test_size=0.3):
     print("-" * 50)
     
     return acc, acc_2
+    
+
+
+def generate_ml_ready_file_hansen(cleaned_df, solvent_name, solvent_dict, all_matrix_ids):
+
+    if solvent_name not in cleaned_df.columns:
+        raise ValueError(f"Error: '{solvent_name}' is not a column in the provided DataFrame.")
+
+    if solvent_name not in solvent_dict:
+        raise ValueError(f"Error: '{solvent_name}' is not in your solvent dictionary.")
+
+    df_filtered = cleaned_df.dropna(subset=['solute_smiles', 'RT', 'Matrix ID Name', solvent_name]).copy()
+
+    # Masse molaire calculée depuis le SMILES
+    df_filtered['MolWt'] = df_filtered['solute_smiles'].apply(
+        lambda smiles: Descriptors.MolWt(Chem.MolFromSmiles(smiles)) if Chem.MolFromSmiles(smiles) else None
+    )
+    df_filtered = df_filtered.dropna(subset=['MolWt']).copy()
+
+    # One-hot de la Matrix ID (liste fixe passée en paramètre, cohérente entre train/test)
+    def matrix_id_to_onehot(matrix_id):
+        one_hot = np.zeros(len(all_matrix_ids), dtype=int)
+        if matrix_id in all_matrix_ids:
+            one_hot[all_matrix_ids.index(matrix_id)] = 1
+        return one_hot
+
+    # Hansen du solvant (les 3 mêmes valeurs répétées sur toutes les lignes)
+    hansen = solvent_dict[solvent_name]
+    hansen_array = np.array([hansen['Hansen_D'], hansen['Hansen_P'], hansen['Hansen_H']])
+
+    ml_df = pd.DataFrame({
+        'MolWt': df_filtered['MolWt'].astype(float),
+        'RT': df_filtered['RT'].astype(float),
+        'Matrix_Onehot': df_filtered['Matrix ID Name'].apply(matrix_id_to_onehot),
+        'Solvent_Hansen': [hansen_array for _ in range(len(df_filtered))],
+        'Soluble': df_filtered[solvent_name].astype(int),
+        'SMILES': df_filtered['solute_smiles']
+    })
+
+    ml_df = ml_df.reset_index(drop=True)
+
+    return ml_df
+
+print("Fonction generate_ml_ready_file_hansen définie.")    
