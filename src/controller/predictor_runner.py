@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 from fastsolv import fastsolv
 import os
+from pathlib import Path
+from config import INTERIM, FASTSOLV_PREDICTIONS, FASTSOLV_VS_EXPERIMENT, ensure_dir
 from data_converter.hplc_data_handler import smiles_by_pubchem_cas, cleaning_array_by_cas
 from rdkit import Chem
 from rdkit.Chem import Descriptors
@@ -14,7 +16,8 @@ import xgboost as xgb
 
 
 # This is to obtain smiles code from given file
-def process_sample_file(input_path):
+def process_sample_file(input_path, output_path=None):
+    input_path = str(input_path)
     file_extension = os.path.splitext(input_path)[1].lower()
     
     print(f"Reading file: {input_path}")
@@ -43,7 +46,9 @@ def process_sample_file(input_path):
         print(f"Warning: Could not find SMILES for {failed_count} samples.")
 
     # Save as CSV
-    output_path = input_path.replace(file_extension, "_with_smiles.csv")
+    if output_path is None:
+        output_path = INTERIM / f"{Path(input_path).stem}_smiles.csv"
+    ensure_dir(output_path)
     df.to_csv(output_path, index=False)
     
     print(f"Success! File saved to: {output_path}")
@@ -90,7 +95,7 @@ def solubility_file_matrix(clean_results, solvent_dict, temperature=298.15):
         # Merge horizontally
         final_df = pd.concat([final_df, solvent_cols], axis=1)
 
-    output_name = "../../../Master_Solubility_Matrix.xlsx"
+    output_name = ensure_dir(FASTSOLV_PREDICTIONS)
     final_df.to_excel(output_name, index=False)
     print(f"Mission Complete! File saved: {output_name}")
 
@@ -101,8 +106,7 @@ def solubility_file_matrix(clean_results, solvent_dict, temperature=298.15):
 
 def compare_predictions(solubility_matrix, original_data, solvent_dict):
     # Clean the matrix by CAS first to remove redundancy
-    clean_matrix_path = cleaning_array_by_cas(solubility_matrix)
-    df_results = pd.read_excel(clean_matrix_path)
+    df_results = cleaning_array_by_cas(solubility_matrix)
 
     # Load original experimental data
     df_original = pd.read_excel(original_data)
@@ -165,7 +169,7 @@ def compare_predictions(solubility_matrix, original_data, solvent_dict):
             df.drop(columns=[stdev_col], inplace=True)
 
     # Final Polish: Save to a new file
-    output_file = "data/Compared_Results.xlsx"
+    output_file = ensure_dir(FASTSOLV_VS_EXPERIMENT)
     df.to_excel(output_file, index=False)
     
     print(f"Done! Coherence analysis saved to: {output_file}")

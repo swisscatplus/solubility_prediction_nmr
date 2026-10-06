@@ -3,6 +3,8 @@ from urllib.parse import quote
 import pandas as pd
 from fastsolv import fastsolv
 import os
+from pathlib import Path
+from config import INTERIM, ensure_dir
 import pubchempy as pcp
 import json
 from rdkit import Chem
@@ -58,7 +60,7 @@ def prepare_fastsolv_input(df_with_smiles):
 
 # Cleaning function, because data was repeating i didn't notice all the different analytical columns used 
 # Using the cas number to do this, i'm also adding a line of code that removes rows where no signal was obtained
-def cleaning_array_by_cas(input_file, cas_column_name='CAS '):
+def cleaning_array_by_cas(input_file, cas_column_name='CAS ', output_file=None):
    
     # Loads the "dirty" data
     df = pd.read_excel(input_file)
@@ -91,7 +93,9 @@ def cleaning_array_by_cas(input_file, cas_column_name='CAS '):
     print("----------------------------------")
 
     # 4. Save the lean version
-    output_file = input_file.replace(".xlsx", "_Unique_CAS.xlsx")
+    if output_file is None:
+        output_file = INTERIM / f"{Path(input_file).stem}_unique.xlsx"
+    ensure_dir(output_file)
     df_unique.to_excel(output_file, index=False)
     
     return df_unique

@@ -205,3 +205,22 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ------------------------------------------------------------------
+# Project-specific
+# ------------------------------------------------------------------
+# macOS / Windows junk
+.DS_Store
+*Zone.Identifier
+
+# CatBoost writes this folder wherever it is run
+catboost_info/
+
+# EPFL chemical inventory: internal data (owners, rooms) and large files (15-30 MB).
+# Keep it locally, share it outside GitHub.
+data/raw/epfl_inventory.csv
+data/interim/epfl_inventory_smiles*.csv
+data/archive/
+
+# Personal scratch files
+sandbox/

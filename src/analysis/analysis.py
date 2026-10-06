@@ -11,6 +11,8 @@ from sklearn.metrics import precision_recall_fscore_support, accuracy_score, pre
 from sklearn.model_selection import GroupShuffleSplit, learning_curve, GroupKFold
 from sklearn.feature_selection import SelectKBest, chi2
 import xgboost as xgb
+from config import (FIG_EDA, FIG_FASTSOLV_ERRORS, FIG_ABLATION, FIG_LEARNING_CURVES,
+                    REP_ABLATION_RF, REP_ABLATION_XGB, REP_LEARNING_CURVES, ensure_dir)
 
 
 def count_over_under_estimation(compared_results_file, solvent_dict):
@@ -221,9 +223,8 @@ def plot_ordered_solubility_array(compared_results_file, solvent_name):
     
     sns.despine()
     plt.tight_layout()
+    plt.savefig(ensure_dir(FIG_EDA / 'solubility_arrays' / f'solubility_array_{solvent_name}.png'), dpi=300, bbox_inches='tight')
     plt.show()
-
-    plt.savefig(f'data/solubility_arrays/solubility_array_{solvent_name}.png', dpi=300, bbox_inches='tight')
 
     return fig
 
@@ -283,7 +284,7 @@ def plot_rt_ordered_solubility(compared_results_file, solvent_name):
     sns.despine()
     
     # Save to your data folder as requested
-    plt.savefig(f'data/RT_trends/RT_trend_{solvent_name}.png', dpi=300, bbox_inches='tight')
+    plt.savefig(ensure_dir(FIG_EDA / 'rt_trends' / f'rt_trend_{solvent_name}.png'), dpi=300, bbox_inches='tight')
     plt.show()
 
     return fig
@@ -352,7 +353,7 @@ def plot_master_overlaid_multi_trends(compared_results_file, solvent_dict, refer
     plt.grid(axis='y', linestyle=':', alpha=0.5)
 
     # Save to data folder
-    save_name = f'data/overlaid_trends/Multi_Trend_Overlaid_by_{reference_solvent}.png'
+    save_name = ensure_dir(FIG_EDA / 'overlaid_trends' / f'overlaid_trends_{reference_solvent}.png')
     plt.savefig(save_name, dpi=300, bbox_inches='tight')
     plt.show()
 
@@ -398,13 +399,13 @@ def analyze_plot_chemical_bias(compared_results_file, solvent_name):
     plt.ylabel('Solubility (logS)', fontsize=12)
     
     sns.despine()
+    plt.savefig(ensure_dir(FIG_FASTSOLV_ERRORS / 'chemical_bias' / f'chemical_bias_{solvent_name}.png'), dpi=300, bbox_inches='tight')
     plt.show()
 
     # Print a quick summary
     mismatches = df[df[incoh_col] == 'False']
     print(f"\n--- Bias Analysis for {solvent_name} ---")
 
-    plt.savefig(f'data/chemical_biases/chemical_bias_{solvent_name}.png', dpi=300, bbox_inches='tight')
 
 
 # This function was recommended to be made to interpret the results of the overlaid graphs
@@ -451,7 +452,7 @@ def plot_solvent_correlation_heatmap(compared_results_file, solvent_dict):
     plt.title('Prediction Redundancy: Inter-Solvent logS Correlation', fontsize=16, pad=20)
     
     # 6. Save and Show
-    save_path = 'data/Solvent_Correlation_Heatmap.png'
+    save_path = ensure_dir(FIG_EDA / 'solvent_correlation_heatmap.png')
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     print(f"Correlation Heatmap saved to: {save_path}")
     
@@ -516,7 +517,7 @@ def plot_mw_error_distribution(compared_results_file, solvent_name):
     plt.ylabel('Molecular Weight (g/mol)', fontsize=12)
     sns.despine()
     
-    plt.savefig(f'data/MW_Error_Dist/MW_Error_Dist_{solvent_name}.png', dpi=300, bbox_inches='tight')
+    plt.savefig(ensure_dir(FIG_FASTSOLV_ERRORS / 'mw_error' / f'mw_error_{solvent_name}.png'), dpi=300, bbox_inches='tight')
     plt.show()
     
     mean_true = df[df['Match'] == 'TRUE']['MW'].mean()
@@ -585,7 +586,7 @@ def plot_hydrogen_bonding_bias(compared_results_file, solvent_name):
     plt.legend(title='Model Prediction Correct?', bbox_to_anchor=(0.90, 1), loc='upper left')
     sns.despine()
     
-    save_path = f'data/HBond_bias/HBond_Bias_{solvent_name}.png'
+    save_path = ensure_dir(FIG_FASTSOLV_ERRORS / 'hbond_bias' / f'hbond_bias_{solvent_name}.png')
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.show()
 
@@ -711,10 +712,7 @@ def run_ablation_study(mega_df, features_to_remove=None):
     else:
         safe_feature_name = "None"
 
-    txt_filename = f"ablation_results_no_{safe_feature_name}.txt"
-
-    output_folder = "/Users/arthurbenard/Project 1B/src/analysis/model_analysis_results"
-    full_filepath = os.path.join(output_folder, txt_filename)
+    full_filepath = ensure_dir(REP_ABLATION_RF / f"no_{safe_feature_name}.txt")
 
     with open(full_filepath, 'w') as f:
         f.write(f"=== RESULTS WITH [{removed_str}] REMOVED ===\n\n")
@@ -777,8 +775,7 @@ def plot_comparison(master_df):
     plt.tight_layout()
 
 
-    output_folder = "/Users/arthurbenard/Project 1B/src/analysis/model_analysis_results"
-    save_path = os.path.join(output_folder, 'Ablation_SuperPlot.png')
+    save_path = ensure_dir(FIG_ABLATION / 'rf_ablation_summary.png')
 
 
     plt.savefig(save_path, dpi=300)
@@ -876,10 +873,7 @@ def run_data_fraction(mega_df, train_percent_of_total):
 
     # Save to Text File
     results_df = pd.DataFrame(results)
-    txt_filename = f"dynamic_learning_curve_{int(train_percent_of_total * 100)}pct.txt"
-    
-    output_folder = "/Users/arthurbenard/Project 1B/src/analysis/learning_curve_results"
-    full_filepath = os.path.join(output_folder, txt_filename)
+    full_filepath = ensure_dir(REP_LEARNING_CURVES / f"data_fraction_{int(train_percent_of_total * 100)}pct.txt")
 
     with open(full_filepath, 'w') as f:
         f.write(f"=== LEARNING CURVE: {int(train_percent_of_total * 100)}% TRAINING DATA ===\n\n")
@@ -942,8 +936,7 @@ def plot_learning_curve(master_lc_df):
     plt.tight_layout()
     
     # Save it to results folder
-    output_folder = "/Users/arthurbenard/Project 1B/src/analysis/learning_curve_results"
-    save_path = os.path.join(output_folder, 'Learning_Curve_Plot.png')
+    save_path = ensure_dir(FIG_LEARNING_CURVES / 'data_fraction.png')
     
     plt.savefig(save_path, dpi=300)
     print(f"-> Plot successfully saved to {save_path}")
@@ -1061,11 +1054,7 @@ def run_ablation_xgboost(mega_df, features_to_remove=None):
         safe_feature_name = "None"
 
     # Updated filename so it doesn't overwrite your Random Forest text files!
-    txt_filename = f"ablation_XGBOOST_no_{safe_feature_name}.txt"
-
-    output_folder = "/Users/arthurbenard/Project 1B/src/analysis/model_analysis_results"
-    
-    full_filepath = os.path.join(output_folder, txt_filename)
+    full_filepath = ensure_dir(REP_ABLATION_XGB / f"no_{safe_feature_name}.txt")
 
     with open(full_filepath, 'w') as f:
         f.write(f"=== XGBOOST RESULTS WITH [{removed_str}] REMOVED ===\n\n")

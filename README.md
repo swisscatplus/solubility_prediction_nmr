@@ -41,7 +41,8 @@ Top feature by Gini importance: **Molecular Weight (~17.8%)** alone, but all Mat
 ## Usage
 
 ```bash
-python script.py --input your_molecules.csv
+pip install -r requirements.txt
+python scripts/predict.py --input examples/example_input.csv
 ```
 
 The script:
@@ -53,14 +54,91 @@ The script:
 
 ## Repository structure
 
+Every path is defined once in `src/config.py`. Scripts and notebooks import it, so the
+project runs from any machine without editing paths.
+
 ```
 .
-├── src/
-│   └── main.py
-├── script.py
+├── data/
+│   ├── raw/                 source files, never modified
+│   │   ├── hplc_rt_solubility.xlsx        RT + experimental solubility (main dataset)
+│   │   ├── swisscat_hplc_database.csv     full SwissCat+ HPLC database
+│   │   ├── hplc_matrix_ids.xlsx           HPLC column/method matrix
+│   │   └── epfl_inventory.csv             EPFL chemical inventory (not on git)
+│   ├── interim/             cleaned / enriched tables (SMILES, unique CAS, fastsolv logS…)
+│   ├── processed/           ML-ready data: train.csv, test.csv, matrix_ids.joblib
+│   └── archive/             old copies of the inventory (not on git)
+│
+├── models/
+│   ├── xgb_model_e_16features.joblib     final model (Model E), used by scripts/predict.py
+│   ├── xgb_hansen_6features.joblib       model trained in notebooks/02_train_model.ipynb
+│   └── archive/catboost_logs/            CatBoost training logs (abandoned model)
+│
+├── notebooks/               01_split_data → 02_train_model → 03_evaluate_model → 04_robustness_check
+│
+├── src/                     reusable code (library)
+│   ├── config.py            all project paths
+│   ├── main.py              fastsolv analysis pipeline
+│   ├── controller/          feature generation, training helpers
+│   ├── data_converter/      HPLC data cleaning, SMILES, descriptors
+│   ├── analysis/            plots, ablations, learning curves
+│   └── interface/           SMILES input interface (prototype)
+│
+├── scripts/                 runnable entry points
+│   ├── predict.py           rank NMR solvents for new molecules
+│   ├── data_prep/           add_new_molecules.py, fetch_smiles_from_cas.py
+│   ├── dmso_search/         find_dmso_insoluble.py (candidates from EPFL inventory)
+│   └── experiments/         random-forest experiments (fingerprint / RT / logS)
+│
+├── results/
+│   ├── figures/             eda/, fastsolv_errors/, learning_curves/, ablation/, experiments/
+│   ├── reports/             text outputs: ablation/, learning_curves/, experiments/
+│   └── dmso_search/         top-50 DMSO-insoluble candidates + structure images
+│
+├── examples/example_input.csv    input format for scripts/predict.py
+├── sandbox/                 debug dumps (not on git)
+├── requirements.txt
 ├── README.md
 └── LICENSE
 ```
+
+Run scripts from the project root, e.g. `python src/main.py` or
+`python scripts/experiments/rf_fingerprint_rt.py`.
+
+<details>
+<summary>Old → new file names</summary>
+
+| Old | New |
+|---|---|
+| `data/Fichier final (RT+sol).xlsx` | `data/raw/hplc_rt_solubility.xlsx` |
+| `data/Fichier final (RT+sol)_MAJ.xlsx` | `data/interim/hplc_rt_solubility_updated.xlsx` |
+| `data/Fichier final (RT+sol)_with_smiles.{csv,xlsx}` | `data/interim/hplc_rt_solubility_smiles.{csv,xlsx}` |
+| `data/Fichier final (RT+sol)_with_smiles_Unique_CAS[_Unique_CAS].xlsx` | `data/interim/molecules_unique.xlsx` |
+| `data/Fichier final (RT+sol)_with_smiles_Unique_CAS_MAJ.xlsx` | `data/interim/molecules_unique_updated.xlsx` |
+| `data/Master_Solubility_Matrix[_Unique_CAS].xlsx` | `data/interim/fastsolv_predictions[_unique].xlsx` |
+| `data/Compared_Results.xlsx` | `data/interim/fastsolv_vs_experiment.xlsx` |
+| `data/VERIFIED_df_desc.xlsx` | `data/interim/features_descriptors.xlsx` |
+| `src/dev/Chemistry_Project_Final_Data.xlsx` | `data/interim/features_all_solvents.xlsx` |
+| `data/final_database.csv` | `data/raw/swisscat_hplc_database.csv` |
+| `data/matrixIDs.xlsx` | `data/raw/hplc_matrix_ids.xlsx` |
+| `data/find_DMSO_insol_mol/containers.csv` | `data/raw/epfl_inventory.csv` |
+| `data/find_DMSO_insol_mol/containers_with_smiles.csv` | `data/interim/epfl_inventory_smiles.csv` |
+| `data/smiles_progress_temp.csv` | `data/interim/epfl_inventory_smiles_progress.csv` |
+| `data/ML_Ready_Dataset.csv` | `data/processed/ml_ready_dataset.csv` |
+| `data/all_matrix_ids.joblib` | `data/processed/matrix_ids.joblib` |
+| `src/dev/final_model.joblib` | `models/xgb_model_e_16features.joblib` |
+| `data/xgboost_all_solvents_model.joblib` | `models/xgb_hansen_6features.joblib` |
+| `src/dev/script.py` | `scripts/predict.py` |
+| `src/dev/find_new_data.py` | `scripts/data_prep/add_new_molecules.py` |
+| `src/dev/smilesparsing.py` | `scripts/data_prep/fetch_smiles_from_cas.py` |
+| `src/dev/DMSOinsolubleatEPFL.py` | `scripts/dmso_search/find_dmso_insoluble.py` |
+| `src/analysis/model_analysis_RT.py` | `scripts/experiments/rf_fingerprint_rt.py` |
+| `src/analysis/model_analysis_logS_RT.py` | `scripts/experiments/rf_fingerprint_rt_logs.py` |
+| `src/analysis/model_analysis_fingerprint_solvent.py` | `scripts/experiments/rf_fingerprint_solvent.py` |
+| `src/split_data.ipynb`, `training.ipynb`, `testing_model.ipynb`, `robustnesscheck.ipynb` | `notebooks/01_…` to `04_…` |
+| `src/dev/test_molecules.csv` | `examples/example_input.csv` |
+
+</details>
 
 ### Main Weaknesses
 
