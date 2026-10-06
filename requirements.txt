@@ -8,5 +8,9 @@ seaborn
 openpyxl
 joblib
 pubchempy
-fastsolv
 jupyter
+
+# Optionnel, uniquement pour src/main.py (prédictions fastsolv).
+# Installer PyTorch en version CPU d'abord, sinon pip télécharge plusieurs Go de CUDA :
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   pip install fastsolv
