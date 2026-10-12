@@ -34,14 +34,14 @@ Settings: 1000 trees, learning rate 0.01, depth 4, `subsample=0.8`, `colsample_b
 
 To rank solvents for one molecule, the predicted probabilities are averaged over its HPLC columns and the solvents are sorted from most to least likely.
 
-### Performance (5-fold cross-validation × 3 repeats, 187 molecules)
+### Performance (notebook 04: 5-fold cross-validation × 3 repeats, 187 molecules)
 
 | Metric | Model E | Simple rule |
 |---|---|---|
 | Correct first solvent (top-1) | **80 %** | 73 % (always DMSO) |
 | Working solvent in the first 2 suggestions (top-2)¹ | 94 % | 97 % (fixed order DMSO > CHCl₃ > DCM > MeOH > ACN) |
-| Balanced accuracy (row level) | 62 % | 50 % (random) |
-| Accuracy (row level) | 65 % | 68 % (always soluble) |
+| Balanced accuracy (row level) | 60 % | 50 % (random) |
+| Accuracy (row level) | 64 % | 69 % (always soluble) |
 
 ¹ over the molecules soluble in at least one solvent; top-1 on those is 86 %.
 
@@ -116,6 +116,7 @@ Every path is defined once in `src/config.py`. Scripts and notebooks import it, 
 │
 ├── src/                     reusable code (library)
 │   ├── config.py            all project paths
+│   ├── plot_style.py        one figure style for notebooks 04 and 05 (slide-ready)
 │   ├── main.py              fastsolv analysis pipeline
 │   ├── controller/          feature generation, training helpers
 │   ├── data_converter/      HPLC data cleaning, SMILES, descriptors, solvent properties
