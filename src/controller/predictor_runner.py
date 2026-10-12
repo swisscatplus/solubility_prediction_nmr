@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from fastsolv import fastsolv
 import os
 from pathlib import Path
 from config import INTERIM, FASTSOLV_PREDICTIONS, FASTSOLV_VS_EXPERIMENT, ensure_dir
@@ -66,7 +65,8 @@ def solubility_calculator(df_clean, solvent_name, solvent_smiles, temp=298.15):
         "temperature": [temp] * len(df_clean)
     }, index=df_clean.index)
 
-    # Run the engine (fastsolv)
+    # Run the engine (fastsolv). Imported here so the rest of the project works without it.
+    from fastsolv import fastsolv
     raw_results = fastsolv(fastsolv_ready_df)
 
     # Rename columns with the solvent suffix (e.g., logS_methanol)
@@ -743,20 +743,20 @@ def generate_ml_ready_file_hansen(cleaned_df, solvent_name, solvent_dict, all_ma
 
     df_filtered = cleaned_df.dropna(subset=['solute_smiles', 'RT', 'Matrix ID Name', solvent_name]).copy()
 
-    # Masse molaire calculée depuis le SMILES
+    # Molecular weight computed from the SMILES
     df_filtered['MolWt'] = df_filtered['solute_smiles'].apply(
         lambda smiles: Descriptors.MolWt(Chem.MolFromSmiles(smiles)) if Chem.MolFromSmiles(smiles) else None
     )
     df_filtered = df_filtered.dropna(subset=['MolWt']).copy()
 
-    # One-hot de la Matrix ID (liste fixe passée en paramètre, cohérente entre train/test)
+    # One-hot encoding of the Matrix ID (fixed list passed as a parameter, consistent between train/test)
     def matrix_id_to_onehot(matrix_id):
         one_hot = np.zeros(len(all_matrix_ids), dtype=int)
         if matrix_id in all_matrix_ids:
             one_hot[all_matrix_ids.index(matrix_id)] = 1
         return one_hot
 
-    # Hansen du solvant (les 3 mêmes valeurs répétées sur toutes les lignes)
+    # Solvent Hansen parameters (the same 3 values repeated on every row)
     hansen = solvent_dict[solvent_name]
     hansen_array = np.array([hansen['Hansen_D'], hansen['Hansen_P'], hansen['Hansen_H']])
 
@@ -772,5 +772,3 @@ def generate_ml_ready_file_hansen(cleaned_df, solvent_name, solvent_dict, all_ma
     ml_df = ml_df.reset_index(drop=True)
 
     return ml_df
-
-print("Fonction generate_ml_ready_file_hansen définie.")    

@@ -1,7 +1,6 @@
 from urllib.request import urlopen
 from urllib.parse import quote
 import pandas as pd
-from fastsolv import fastsolv
 import os
 from pathlib import Path
 from config import INTERIM, ensure_dir

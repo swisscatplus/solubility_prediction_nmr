@@ -1,160 +1,159 @@
 # Project 1B - Solubility Prediction NMR
-Predicting deuterated NMR solvent solubility rankings for organic molecules using only HPLC retention data, no structural information (SMILES, fingerprints) required.
+
+Predicting which deuterated NMR solvents an organic molecule dissolves in, from its HPLC retention time and molecular weight, without fingerprints or other structural descriptors.
 
 Developed as part of Project 1B within the [SwissCat+](https://swisscat.org/) research platform at EPFL.
 
 ## Motivation
 
-Choosing a deuterated NMR solvent for a new compound is usually guesswork or trial-and-error. This project asks: **can we predict which NMR solvents a molecule will dissolve in using only its HPLC retention behavior?**
+Choosing a deuterated NMR solvent for a new compound is usually guesswork or trial and error, and deuterated solvents are expensive. This project asks: **can we rank the NMR solvents a molecule will dissolve in using only what the HPLC already measured?**
 
-The constraint is no SMILES, no molecular fingerprints, no structural descriptors. Only what an HPLC column and method output (retention time, method metadata) are used as input. This makes it a genuinely blind prediction problem, closer to what's available in a real lab workflow before any structural characterization is done.
+The inputs are the retention time (RT), the HPLC column it was measured on, the molecular weight and the physical properties of each solvent. No fingerprints and no structural descriptors are used, which keeps the prediction close to what is available in a real lab workflow before full characterization.
 
 ## Data
 
-- **151** unique molecules
-- **5** deuterated NMR solvents: MeOH, ACN, DMSO, DCM, CHCl₃
-- **7** HPLC methods
-- **16** input features derived from HPLC retention data and method characterization
-- Labels are **real experimental solubility outcomes** (not predicted logS values), which makes the prediction task harder but scientifically honest
+| | |
+|---|---|
+| Molecules | **187**: 151 from the original dataset + 36 from 3 plate experiments (exp1, exp2, exp3) |
+| Solvents | **5** deuterated NMR solvents: MeOH, ACN, DMSO, DCM, CHCl₃ |
+| HPLC columns | **7** (BlueBird 1 preferred; another column is used when BlueBird 1 has no signal) |
+| Rows for Model E | 5,525 (one row per molecule × HPLC column × solvent) |
+| Labels | **real experimental solubility** (soluble = 1, insoluble = 0) |
+
+The plate molecules were chosen on purpose to be **insoluble in DMSO**, to fight the model's tendency to always suggest DMSO. Their labels come from the "Mon observation" column of the plate file when it is filled, otherwise from the vision model "prediction" (27 observed labels, 153 from the vision model).
 
 ## Model
 
-Final model: **XGBoost** ("Model E" internally), selected after comparison against CatBoost (which underperformed despite tuning — eval metric issues on imbalanced classes, eval_set leakage, and early-stopping instability were all encountered and addressed).
+**Model E** (Arthur's final model, `rt_prediction_continued.ipynb` on the `restructuring` branch), an XGBoost classifier with 16 features:
 
-### Performance (test set, 22 held-out molecules)
+- `RT` and `MolWt` (molecular weight, computed from the SMILES);
+- the solvent: dielectric constant and Hansen parameters D, P, H;
+- the HPLC column: RTs of 10 standard compounds measured on it (`Matrix_Vector_1..10`, from `data/raw/hplc_matrix_ids.xlsx`), so that RTs from different columns can be compared.
 
-| Metric | Value |
-|---|---|
-| Accuracy | ~72% |
-| Precision | ~82% |
-| Recall | ~77% |
-| Critical failure rate (per-molecule ranking) | 13.6% |
+Settings: 1000 trees, learning rate 0.01, depth 4, `subsample=0.8`, `colsample_bytree=0.5`, `colsample_bynode=0.9`, `gamma=0.8`, `min_child_weight=10`, `reg_lambda=5`, `reg_alpha=1`, `scale_pos_weight` to balance soluble/insoluble, `random_state=72`. Splits are grouped by molecule, so no molecule is ever both in training and test.
 
-Splits are done with `GroupShuffleSplit` grouped by molecule (SMILES) to prevent data leakage between train and test sets.
+To rank solvents for one molecule, the predicted probabilities are averaged over its HPLC columns and the solvents are sorted from most to least likely.
 
-### Feature importance
+### Performance (5-fold cross-validation × 3 repeats, 187 molecules)
 
-Top feature by Gini importance: **Molecular Weight (~17.8%)** alone, but all Matrix features combined give a **~30%** importance. SHAP analysis confirms the model recovers real, interpretable chemistry:
-- A hydrophobicity–retention time relationship
-- A molecular weight "cliff" around ~300 Da
+| Metric | Model E | Simple rule |
+|---|---|---|
+| Correct first solvent (top-1) | **80 %** | 73 % (always DMSO) |
+| Working solvent in the first 2 suggestions (top-2)¹ | 94 % | 97 % (fixed order DMSO > CHCl₃ > DCM > MeOH > ACN) |
+| Balanced accuracy (row level) | 62 % | 50 % (random) |
+| Accuracy (row level) | 65 % | 68 % (always soluble) |
 
-## Usage
+¹ over the molecules soluble in at least one solvent; top-1 on those is 86 %.
+
+Without the plates, the original single split reproduces Arthur's numbers exactly (accuracy 0.7257, precision 0.8221 on the test set).
+
+### What the analysis notebook shows (`05_analyse`)
+
+- **Feature importance:** molecular weight > RT > solvent properties; the 10 column standards add almost nothing.
+- **Calibration:** probabilities are too pessimistic (Brier score 0.227 vs 0.217 for a constant). They should be recalibrated before being used in a cost function.
+- **Errors:** labels from your own observation are mispredicted 63 % of the time, vision-model labels 40 %, original data 33 %. The plate molecules are the hard cases, as intended.
+- **Effect of the plates:** top-1 on DMSO-insoluble molecules rises from 33 % (original data) to 41 % (+ 3 plates), overall top-1 stays at 80 %.
+- **Learning curve:** Model E is still improving with more molecules, so more plates should help.
+- **Solvents that behave alike:** DCM and CHCl₃ agree on 91 % of molecules, MeOH and ACN on 84 %.
+
+## Workflow
+
+1. **Add a plate.** Put the plate file (`*_output.xlsx`, sheet `Resultats`) in `data/raw/experiments/`.
+2. **Rebuild the datasets.**
+   ```bash
+   python scripts/data_prep/add_new_molecules.py          # add --no-pubchem to work offline
+   ```
+   It fills the plate labels into the training tables, takes the BlueBird 1 RT (or another column when BlueBird 1 has no signal), finds SMILES (PubChem by CAS, then by name; `data/raw/manual_smiles.csv` for manual fixes) and writes `data/interim/model_e_dataset.xlsx`.
+3. **Run the notebooks, in order:**
+
+   | Notebook | What it does |
+   |---|---|
+   | `01_split_data` | builds the Model E features and the fixed train/test split (`data/processed/train.csv`, `test.csv`) |
+   | `02_train_model` | trains Model E and saves `models/xgb_model_e_16features.joblib` (`TRAIN_ON_ALL = True` for the final model on all data) |
+   | `03_evaluate_model` | scores on the test set: row level and solvent choice per molecule |
+   | `04_robustness_check` | cross-validation on all molecules, with simple-rule baselines |
+   | `05_analyse` | data analysis (Venn, histograms, solvent similarity) and model analysis (learning curve, calibration, top-k, feature importance, errors, effect of each plate) |
+
+4. **Predict new molecules.**
+   ```bash
+   python scripts/predict.py --input examples/example_input.csv
+   ```
+   The input needs `MolWt`, `RT`, `Matrix ID Name` and `Matrix_Vector_1..10` (see `examples/example_input.csv`).
+
+## Installation
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-python scripts/predict.py --input examples/example_input.csv
 ```
 
-The script:
-- Accepts a CSV of molecules with HPLC retention data
-- Validates required columns against the model's expected feature set (`model.feature_names_in_`)
-- Loops over molecules and predicts a solvent solubility ranking for each
-- Handles missing solvents gracefully
-
+In VS Code, select `.venv` as the Jupyter kernel. `fastsolv` (which pulls in PyTorch) is only needed for `src/main.py` and `scripts/dmso_search/`.
 
 ## Repository structure
 
-Every path is defined once in `src/config.py`. Scripts and notebooks import it, so the
-project runs from any machine without editing paths.
+Every path is defined once in `src/config.py`. Scripts and notebooks import it, so the project runs on any machine without editing paths. Run scripts from the project root.
 
 ```
 .
 ├── data/
 │   ├── raw/                 source files, never modified
-│   │   ├── hplc_rt_solubility.xlsx        RT + experimental solubility (main dataset)
+│   │   ├── hplc_rt_solubility.xlsx        RT + experimental solubility (original dataset)
 │   │   ├── swisscat_hplc_database.csv     full SwissCat+ HPLC database
-│   │   ├── hplc_matrix_ids.xlsx           HPLC column/method matrix
+│   │   ├── hplc_matrix_ids.xlsx           RTs of the 10 standards on each HPLC column
+│   │   ├── experiments/                   plate experiments (*_output.xlsx)
+│   │   ├── manual_smiles.csv              optional manual SMILES (CAS,SMILES)
 │   │   └── epfl_inventory.csv             EPFL chemical inventory (not on git)
-│   ├── interim/             cleaned / enriched tables (SMILES, unique CAS, fastsolv logS…)
-│   ├── processed/           ML-ready data: train.csv, test.csv, matrix_ids.joblib
+│   ├── interim/             generated tables: model_e_dataset.xlsx, molecules_unique_updated.xlsx, SMILES, fastsolv logS…
+│   ├── processed/           train.csv, test.csv
 │   └── archive/             old copies of the inventory (not on git)
 │
 ├── models/
-│   ├── xgb_model_e_16features.joblib     final model (Model E), used by scripts/predict.py
-│   ├── xgb_hansen_6features.joblib       model trained in notebooks/02_train_model.ipynb
+│   ├── xgb_model_e_16features.joblib     Model E, used by scripts/predict.py
 │   └── archive/catboost_logs/            CatBoost training logs (abandoned model)
 │
-├── notebooks/               01_split_data → 02_train_model → 03_evaluate_model → 04_robustness_check
+├── notebooks/               01_split_data → 02_train_model → 03_evaluate_model → 04_robustness_check → 05_analyse
 │
 ├── src/                     reusable code (library)
 │   ├── config.py            all project paths
 │   ├── main.py              fastsolv analysis pipeline
 │   ├── controller/          feature generation, training helpers
-│   ├── data_converter/      HPLC data cleaning, SMILES, descriptors
+│   ├── data_converter/      HPLC data cleaning, SMILES, descriptors, solvent properties
 │   ├── analysis/            plots, ablations, learning curves
 │   └── interface/           SMILES input interface (prototype)
 │
 ├── scripts/                 runnable entry points
 │   ├── predict.py           rank NMR solvents for new molecules
 │   ├── data_prep/           add_new_molecules.py, fetch_smiles_from_cas.py
-│   ├── dmso_search/         find_dmso_insoluble.py (candidates from EPFL inventory)
+│   ├── dmso_search/         find_dmso_insoluble.py (candidates from the EPFL inventory)
 │   └── experiments/         random-forest experiments (fingerprint / RT / logS)
 │
 ├── results/
-│   ├── figures/             eda/, fastsolv_errors/, learning_curves/, ablation/, experiments/
-│   ├── reports/             text outputs: ablation/, learning_curves/, experiments/
+│   ├── figures/             eda/data_analysis/, model_analysis/, experiments/, learning_curves/, ablation/, fastsolv_errors/
+│   ├── reports/             text outputs
 │   └── dmso_search/         top-50 DMSO-insoluble candidates + structure images
 │
 ├── examples/example_input.csv    input format for scripts/predict.py
 ├── sandbox/                 debug dumps (not on git)
 ├── requirements.txt
-├── README.md
 └── LICENSE
 ```
 
-Run scripts from the project root, e.g. `python src/main.py` or
-`python scripts/experiments/rf_fingerprint_rt.py`.
+## Limitations
 
-<details>
-<summary>Old → new file names</summary>
+- **DMSO bias.** DMSO dissolves most molecules, so the model suggests it first for about half of them. The plates targeting DMSO-insoluble molecules help (33 % → 41 % top-1 on those), but more are needed.
+- **Row-level accuracy is below "always soluble".** The model is useful for ranking solvents, not for a yes/no answer per solvent.
+- **Calibration.** Predicted probabilities are not reliable as absolute values yet.
+- **Vision-model labels.** Most plate labels come from the vision model; the error analysis lists the pairs worth re-checking by eye.
 
-| Old | New |
-|---|---|
-| `data/Fichier final (RT+sol).xlsx` | `data/raw/hplc_rt_solubility.xlsx` |
-| `data/Fichier final (RT+sol)_MAJ.xlsx` | `data/interim/hplc_rt_solubility_updated.xlsx` |
-| `data/Fichier final (RT+sol)_with_smiles.{csv,xlsx}` | `data/interim/hplc_rt_solubility_smiles.{csv,xlsx}` |
-| `data/Fichier final (RT+sol)_with_smiles_Unique_CAS[_Unique_CAS].xlsx` | `data/interim/molecules_unique.xlsx` |
-| `data/Fichier final (RT+sol)_with_smiles_Unique_CAS_MAJ.xlsx` | `data/interim/molecules_unique_updated.xlsx` |
-| `data/Master_Solubility_Matrix[_Unique_CAS].xlsx` | `data/interim/fastsolv_predictions[_unique].xlsx` |
-| `data/Compared_Results.xlsx` | `data/interim/fastsolv_vs_experiment.xlsx` |
-| `data/VERIFIED_df_desc.xlsx` | `data/interim/features_descriptors.xlsx` |
-| `src/dev/Chemistry_Project_Final_Data.xlsx` | `data/interim/features_all_solvents.xlsx` |
-| `data/final_database.csv` | `data/raw/swisscat_hplc_database.csv` |
-| `data/matrixIDs.xlsx` | `data/raw/hplc_matrix_ids.xlsx` |
-| `data/find_DMSO_insol_mol/containers.csv` | `data/raw/epfl_inventory.csv` |
-| `data/find_DMSO_insol_mol/containers_with_smiles.csv` | `data/interim/epfl_inventory_smiles.csv` |
-| `data/smiles_progress_temp.csv` | `data/interim/epfl_inventory_smiles_progress.csv` |
-| `data/ML_Ready_Dataset.csv` | `data/processed/ml_ready_dataset.csv` |
-| `data/all_matrix_ids.joblib` | `data/processed/matrix_ids.joblib` |
-| `src/dev/final_model.joblib` | `models/xgb_model_e_16features.joblib` |
-| `data/xgboost_all_solvents_model.joblib` | `models/xgb_hansen_6features.joblib` |
-| `src/dev/script.py` | `scripts/predict.py` |
-| `src/dev/find_new_data.py` | `scripts/data_prep/add_new_molecules.py` |
-| `src/dev/smilesparsing.py` | `scripts/data_prep/fetch_smiles_from_cas.py` |
-| `src/dev/DMSOinsolubleatEPFL.py` | `scripts/dmso_search/find_dmso_insoluble.py` |
-| `src/analysis/model_analysis_RT.py` | `scripts/experiments/rf_fingerprint_rt.py` |
-| `src/analysis/model_analysis_logS_RT.py` | `scripts/experiments/rf_fingerprint_rt_logs.py` |
-| `src/analysis/model_analysis_fingerprint_solvent.py` | `scripts/experiments/rf_fingerprint_solvent.py` |
-| `src/split_data.ipynb`, `training.ipynb`, `testing_model.ipynb`, `robustnesscheck.ipynb` | `notebooks/01_…` to `04_…` |
-| `src/dev/test_molecules.csv` | `examples/example_input.csv` |
+## Next steps
 
-</details>
-
-### Main Weaknesses
-
-- **DMSO class imbalance (297:1).** Only a handful of DMSO-insoluble examples exist (DMSO is 99% soluble across the dataset), so the model has almost nothing to learn the insoluble class from. SMOTE, oversampling, and class weights were all tried and all failed. DMSO chemically dissolves nearly everything, so this is **data-bound, not model-bound**. Targeted measurements of known DMSO-insoluble molecules are the only thing that would unblock this class.
-- **~72% feature ceiling.** This is the current absolute accuracy ceiling. The learning curve confirms more data won't push past it: RT and MolWt encode hydrophobicity, not the full solubility picture. Getting past this requires new features, not more rows, nevertheless peak shape (asymmetry and width) is a possible leading candidate, since it likely carries column–molecule interaction information that RT alone misses.
-- **13.6% critical failure rate.** 3 of 22 test molecules had the model's top-ranked solvent turn out to be insoluble, an honest failure mode, not hidden. (86.4% of the time the top pick does work, and 68.2% of the time the full ranking is exactly right.)
-- **Possible selection-bias in per-solvent accuracy.** When a solvent shows higher held-out accuracy, is that because the model is genuinely better for that solvent, or simply because most of the molecules tested against it happen to be soluble (making the prediction easier by base rate)? Not yet disentangled — worth checking before presenting per-solvent accuracy as a measure of model quality.
-
-### Changes to make
-
-- [ ] Collect targeted experimental data for known DMSO-insoluble molecules to address the 297:1 class imbalance.
-- [ ] Engineer peak-shape features (asymmetry, width) as the next lever past the accuracy ceiling.
-- [ ] Check whether per-solvent accuracy differences reflect genuine model performance or just base-rate solubility differences across solvents.
-
-Work in progress...
+- [ ] Cost function: rank solvents by expected cost using deuterated solvent prices and calibrated probabilities.
+- [ ] Group solvents that behave alike (DCM/CHCl₃, MeOH/ACN) and use it in the model.
+- [ ] Recalibrate the probabilities (e.g. isotonic or Platt scaling).
+- [ ] More plates of DMSO-insoluble molecules (the learning curve is still rising).
+- [ ] Peak-shape features (asymmetry, width) as new information beyond RT.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE).

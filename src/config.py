@@ -23,6 +23,7 @@ HPLC_RT_SOLUBILITY = RAW / "hplc_rt_solubility.xlsx"          # RT + experimenta
 SWISSCAT_DATABASE = RAW / "swisscat_hplc_database.csv"        # full SwissCat+ HPLC database
 MATRIX_IDS_TABLE = RAW / "hplc_matrix_ids.xlsx"               # HPLC column/method matrix description
 EPFL_INVENTORY = RAW / "epfl_inventory.csv"                   # EPFL chemical inventory export
+EXPERIMENTS = RAW / "experiments"                             # plate experiments (*.xlsx, sheet "Resultats")
 
 # interim
 HPLC_RT_SOLUBILITY_UPDATED = INTERIM / "hplc_rt_solubility_updated.xlsx"
@@ -33,6 +34,7 @@ FASTSOLV_PREDICTIONS = INTERIM / "fastsolv_predictions.xlsx"  # fastsolv logS fo
 FASTSOLV_VS_EXPERIMENT = INTERIM / "fastsolv_vs_experiment.xlsx"
 FEATURES_DESCRIPTORS = INTERIM / "features_descriptors.xlsx"
 FEATURES_ALL_SOLVENTS = INTERIM / "features_all_solvents.xlsx"
+MODEL_E_DATASET = INTERIM / "model_e_dataset.xlsx"            # Arthur's input format (all HPLC columns) + plate experiments
 EPFL_INVENTORY_SMILES = INTERIM / "epfl_inventory_smiles.csv"
 EPFL_INVENTORY_SMILES_PROGRESS = INTERIM / "epfl_inventory_smiles_progress.csv"
 
@@ -45,7 +47,6 @@ MATRIX_IDS = PROCESSED / "matrix_ids.joblib"
 # --------------------------------------------------------------- models
 MODELS = ROOT / "models"
 MODEL_E = MODELS / "xgb_model_e_16features.joblib"            # final model described in the README
-MODEL_HANSEN = MODELS / "xgb_hansen_6features.joblib"         # model trained in notebooks/02_train_model
 
 # -------------------------------------------------------------- results
 RESULTS = ROOT / "results"
