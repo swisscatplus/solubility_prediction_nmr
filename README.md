@@ -14,13 +14,13 @@ The inputs are the retention time (RT), the HPLC column it was measured on, the 
 
 | | |
 |---|---|
-| Molecules | **187**: 151 from the original dataset + 36 from 3 plate experiments (exp1, exp2, exp3) |
+| Molecules | **194**: 151 from the original dataset + 43 from 4 plate experiments (exp1, exp2, exp3, expDMSO2) |
 | Solvents | **5** deuterated NMR solvents: MeOH, ACN, DMSO, DCM, CHCl₃ |
-| HPLC columns | **7** (BlueBird 1 preferred; another column is used when BlueBird 1 has no signal) |
-| Rows for Model E | 5,525 (one row per molecule × HPLC column × solvent) |
+| HPLC columns | **7** (RTs from the SwissCat+ database; for plate molecules missing from it, the RT and column written in the plate file) |
+| Rows for Model E | 5,560 (one row per molecule × HPLC column × solvent) |
 | Labels | **real experimental solubility** (soluble = 1, insoluble = 0) |
 
-The plate molecules were chosen on purpose to be **insoluble in DMSO**, to fight the model's tendency to always suggest DMSO. Their labels come from the "Mon observation" column of the plate file when it is filled, otherwise from the vision model "prediction" (27 observed labels, 153 from the vision model).
+The plate molecules were chosen on purpose to be **insoluble in DMSO**, to fight the model's tendency to always suggest DMSO. Their labels come from the "Mon observation" column of the plate file when it is filled, otherwise from the vision model "prediction" (33 observed labels, 207 from the vision model). Plate compounds with neither a CAS nor an RT cannot be used (5 in expDMSO2).
 
 ## Model
 
@@ -34,27 +34,27 @@ Settings: 1000 trees, learning rate 0.01, depth 4, `subsample=0.8`, `colsample_b
 
 To rank solvents for one molecule, the predicted probabilities are averaged over its HPLC columns and the solvents are sorted from most to least likely.
 
-### Performance (notebook 04: 5-fold cross-validation × 3 repeats, 187 molecules)
+### Performance (notebook 04: 5-fold cross-validation × 3 repeats, 194 molecules)
 
 | Metric | Model E | Simple rule |
 |---|---|---|
-| Correct first solvent (top-1) | **80 %** | 73 % (always DMSO) |
-| Working solvent in the first 2 suggestions (top-2)¹ | 94 % | 97 % (fixed order DMSO > CHCl₃ > DCM > MeOH > ACN) |
-| Balanced accuracy (row level) | 60 % | 50 % (random) |
-| Accuracy (row level) | 64 % | 69 % (always soluble) |
+| Correct first solvent (top-1) | **78 %** ± 5 | 71 % (always DMSO) |
+| Working solvent in the first 2 suggestions (top-2)¹ | 94 % | 97 % (fixed order CHCl₃ > DMSO > DCM > MeOH > ACN) |
+| Balanced accuracy (row level) | 62 % | 50 % (random) |
+| Accuracy (row level) | 65 % | 69 % (always soluble) |
 
-¹ over the molecules soluble in at least one solvent; top-1 on those is 86 %.
+¹ over the molecules soluble in at least one solvent; top-1 on those is 85 %.
 
 Without the plates, the original single split reproduces Arthur's numbers exactly (accuracy 0.7257, precision 0.8221 on the test set).
 
 ### What the analysis notebook shows (`05_analyse`)
 
 - **Feature importance:** molecular weight > RT > solvent properties; the 10 column standards add almost nothing.
-- **Calibration:** probabilities are too pessimistic (Brier score 0.227 vs 0.217 for a constant). They should be recalibrated before being used in a cost function.
-- **Errors:** labels from your own observation are mispredicted 63 % of the time, vision-model labels 40 %, original data 33 %. The plate molecules are the hard cases, as intended.
-- **Effect of the plates:** top-1 on DMSO-insoluble molecules rises from 33 % (original data) to 41 % (+ 3 plates), overall top-1 stays at 80 %.
-- **Learning curve:** Model E is still improving with more molecules, so more plates should help.
-- **Solvents that behave alike:** DCM and CHCl₃ agree on 91 % of molecules, MeOH and ACN on 84 %.
+- **Calibration:** low probabilities are too pessimistic (announced 15-30 %, actually about 45 % soluble); Brier score 0.222 vs 0.221 for a constant. Recalibrate before using the probabilities in a cost function.
+- **Errors:** error rate 34 % on the original labels, 35 % on vision-model labels, 47 % on labels from your own observation (31 pairs).
+- **Effect of the plates:** top-1 on DMSO-insoluble molecules rises from 32 % (original data) to 39 % (+ 4 plates); overall top-1 stays at 78 %.
+- **Learning curve:** balanced accuracy still rises with more molecules (58 % → 64 %); top-1 levels off around 78 %.
+- **Solvents that behave alike:** DCM and CHCl₃ agree on 91 % of molecules, MeOH and ACN on 84 %. When the model puts CHCl₃ first it puts DCM second, which is why the fixed order wins at top-2.
 
 ## Workflow
 
@@ -63,7 +63,7 @@ Without the plates, the original single split reproduces Arthur's numbers exactl
    ```bash
    python scripts/data_prep/add_new_molecules.py          # add --no-pubchem to work offline
    ```
-   It fills the plate labels into the training tables, takes the BlueBird 1 RT (or another column when BlueBird 1 has no signal), finds SMILES (PubChem by CAS, then by name; `data/raw/manual_smiles.csv` for manual fixes) and writes `data/interim/model_e_dataset.xlsx`.
+   It fills the plate labels into the training tables, takes the RTs from the SwissCat+ HPLC database (or, for molecules that are not in it, the RT and column written in the plate file; method 1 when the method is not given), finds SMILES (PubChem by CAS, then by name; `data/raw/manual_smiles.csv` for manual fixes) and writes `data/interim/model_e_dataset.xlsx`.
 3. **Run the notebooks, in order:**
 
    | Notebook | What it does |
@@ -71,8 +71,8 @@ Without the plates, the original single split reproduces Arthur's numbers exactl
    | `01_split_data` | builds the Model E features and the fixed train/test split (`data/processed/train.csv`, `test.csv`) |
    | `02_train_model` | trains Model E and saves `models/xgb_model_e_16features.joblib` (`TRAIN_ON_ALL = True` for the final model on all data) |
    | `03_evaluate_model` | scores on the test set: row level and solvent choice per molecule |
-   | `04_robustness_check` | cross-validation on all molecules, with simple-rule baselines |
-   | `05_analyse` | data analysis (Venn, histograms, solvent similarity) and model analysis (learning curve, calibration, top-k, feature importance, errors, effect of each plate) |
+   | `04_robustness_check` | the cross-validation (the only one): score on all molecules vs simple rules; saves the predictions to `data/processed/cv_predictions.csv` |
+   | `05_analyse` (after 04) | data analysis (Venn, histograms, solvent similarity) and model analysis (learning curve, calibration, top-k, feature importance, errors, effect of each plate) |
 
 4. **Predict new molecules.**
    ```bash
@@ -142,7 +142,7 @@ Every path is defined once in `src/config.py`. Scripts and notebooks import it, 
 
 ## Limitations
 
-- **DMSO bias.** DMSO dissolves most molecules, so the model suggests it first for about half of them. The plates targeting DMSO-insoluble molecules help (33 % → 41 % top-1 on those), but more are needed.
+- **DMSO bias.** DMSO dissolves most molecules, so the model suggests it first for about half of them. The plates targeting DMSO-insoluble molecules help (32 % → 39 % top-1 on those), but more are needed.
 - **Row-level accuracy is below "always soluble".** The model is useful for ranking solvents, not for a yes/no answer per solvent.
 - **Calibration.** Predicted probabilities are not reliable as absolute values yet.
 - **Vision-model labels.** Most plate labels come from the vision model; the error analysis lists the pairs worth re-checking by eye.

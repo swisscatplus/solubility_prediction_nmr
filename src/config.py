@@ -42,6 +42,7 @@ EPFL_INVENTORY_SMILES_PROGRESS = INTERIM / "epfl_inventory_smiles_progress.csv"
 ML_READY_DATASET = PROCESSED / "ml_ready_dataset.csv"
 TRAIN = PROCESSED / "train.csv"
 TEST = PROCESSED / "test.csv"
+CV_PREDICTIONS = PROCESSED / "cv_predictions.csv"   # written by notebook 04, read by notebook 05
 MATRIX_IDS = PROCESSED / "matrix_ids.joblib"
 
 # --------------------------------------------------------------- models

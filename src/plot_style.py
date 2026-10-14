@@ -4,6 +4,7 @@ Rules: one idea per figure, no figure title (the slide or the notebook heading g
 EPFL red for what we look at, grey for references, text always in ink colours.
 """
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
 from matplotlib.ticker import FuncFormatter
 
 RED = '#FF0000'        # EPFL red: Model E, plates, the thing we look at
@@ -22,9 +23,15 @@ WIDE, HALF, SQUARE = (11, 4.4), (6.2, 4.4), (5.4, 5.0)
 pct = FuncFormatter(lambda v, _: f"{v:.0%}")
 
 
+def _font():
+    """Arial when installed, else a look-alike (Linux/WSL usually has no Arial)."""
+    available = {f.name for f in font_manager.fontManager.ttflist}
+    return next((f for f in ['Arial', 'Liberation Sans', 'Helvetica', 'DejaVu Sans'] if f in available), 'DejaVu Sans')
+
+
 def apply():
     plt.rcParams.update({
-        'font.family': ['Arial', 'Liberation Sans', 'DejaVu Sans'], 'font.size': 13,
+        'font.family': _font(), 'font.size': 13,
         'axes.labelsize': 13, 'xtick.labelsize': 12, 'ytick.labelsize': 12, 'legend.fontsize': 12,
         'axes.spines.top': False, 'axes.spines.right': False, 'axes.spines.left': False,
         'axes.edgecolor': MUTED, 'axes.labelcolor': INK, 'text.color': INK,

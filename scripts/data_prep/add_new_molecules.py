@@ -182,6 +182,7 @@ def read_experiment(path):
                                f"(columns found: {list(df.columns)})")
             df = df.rename(columns={found[0]: name})
     df = df.dropna(subset=["compose", "solvant"])
+    column_col = next((c for c in df.columns if c.lower().startswith(("colonne", "column"))), None)
     warnings = []
 
     # Excel auto-fill bug: the CAS is incremented down the plate (13055-63-5, -6, -7...).
@@ -192,6 +193,10 @@ def read_experiment(path):
     if n_fixed:
         warnings.append(f"{n_fixed} CAS corrected (Excel auto-increment), first well of each compound kept")
     df["CAS"] = first_cas
+    if "RT" in df:
+        df["RT"] = pd.to_numeric(df["RT"], errors="coerce").groupby(df["compose"]).transform("first")
+    if column_col:
+        df[column_col] = df.groupby("compose")[column_col].transform("first")
 
     observed = df["Mon observation"] if "Mon observation" in df else pd.Series(None, index=df.index)
     label_txt = observed.where(observed.map(is_filled), df["prediction"])
@@ -205,9 +210,42 @@ def read_experiment(path):
             warnings.append(f"well {well}: unknown solvent '{r['solvant']}' or label '{label_txt[i]}', skipped")
             continue
         records.append({"cas": r["CAS"], "name": r["compose"], "solvent": solvent, "label": label,
-                        "rt": r.get("RT"), "source": f"{path.name}:{well}",
-                        "from_observation": is_filled(observed[i])})
+                        "rt": r.get("RT"), "column": r.get(column_col) if column_col else None,
+                        "source": f"{path.name}:{well}", "from_observation": is_filled(observed[i])})
     return records, warnings
+
+
+def plate_matrix(value):
+    """'BlueBird' -> ('BlueBird', 'method_1', 'BlueBird 1'); 'PFP 2' -> ('PFP', 'method_2', 'PFP 2')."""
+    if not is_filled(value):
+        return None
+    parts = str(value).strip().split()
+    known = {c.lower(): c for c, _ in [PREFERRED] + FALLBACK_ORDER}
+    column = known.get(parts[0].lower())
+    if column is None:
+        return None
+    number = parts[1] if len(parts) > 1 and parts[1].isdigit() else "1"
+    return column, f"method_{number}", f"{column} {number}"
+
+
+def add_plate_only_molecules(ws, exp, headers):
+    """Molecules of a plate that are neither in the file nor in the SwissCat database:
+    add one row with the RT and HPLC column written in the plate file (method 1 when not given)."""
+    in_file = {norm_cas(r[headers.index(CAS_COL_FINAL)].value) for r in ws.iter_rows(min_row=2)}
+    added = []
+    for cas, g in exp.dropna(subset=["cas"]).groupby("cas"):
+        if cas in in_file:
+            continue
+        rt = pd.to_numeric(g["rt"], errors="coerce").dropna()
+        matrix = next((m for m in map(plate_matrix, g["column"]) if m), None)
+        if rt.empty or rt.iloc[0] <= 0 or matrix is None:
+            continue
+        column, method, matrix_name = matrix
+        values = {"Column": column, "Method": method, "Sample Name": str(g["name"].iloc[0]).strip(),
+                  CAS_COL_FINAL: cas, "RT": float(rt.iloc[0]), "Signal": 1, "Matrix ID Name": MATRIX_PREFIX + matrix_name}
+        ws.append([values.get(h) for h in headers])
+        added.append(f"{values['Sample Name']} ({cas}) -> {matrix_name}, RT = {values['RT']}")
+    return added
 
 
 def fill_from_experiments(ws):
@@ -239,6 +277,7 @@ def fill_from_experiments(ws):
 
     headers = [c.value for c in ws[1]]
     col = {h: i for i, h in enumerate(headers)}
+    added_from_plate = add_plate_only_molecules(ws, exp, headers)
     filled, conflicts, rows_by_cas = 0, [], {}
     for row in ws.iter_rows(min_row=2):
         cas = norm_cas(row[col[CAS_COL_FINAL]].value)
@@ -257,6 +296,7 @@ def fill_from_experiments(ws):
                 conflicts.append(f"{cas} in {solvent}: file = {int(cell.value)}, experiment = {labels[key]} (file kept)")
 
     missing = sorted({c for c, _ in labels} - set(rows_by_cas))
+    no_cas = sorted(exp.loc[exp["cas"].isna(), "name"].astype(str).str.strip().unique())
     rt_gaps = []
     for cas, g in exp.groupby("cas"):
         rts = [rt for rt in rows_by_cas.get(cas, []) if rt is not None]
@@ -265,9 +305,13 @@ def fill_from_experiments(ws):
             rt_gaps.append(f"{g['name'].iloc[0]} ({cas}): experiment RT {rt_exp.iloc[0]}, file RT {rts}")
 
     print(f"Labels (molecule x solvent): {len(labels)} -> {filled} cells filled")
+    if added_from_plate:
+        print(f"Not in the HPLC database, RT and column taken from the plate file: {len(added_from_plate)}")
+        for it in added_from_plate:
+            print(f"    {it}")
     for title, items in [("Wells that disagree (not used)", disagreements),
                          ("Already labelled differently in the file", conflicts),
-                         ("Compounds not found in the file (no RT, not used)", missing),
+                         ("Compounds without CAS or RT anywhere (not used)", missing + no_cas),
                          ("RT different from the file", rt_gaps)]:
         if items:
             print(f"{title}: {len(items)}")
@@ -377,6 +421,10 @@ def build_model_e_table():
         "Column": db["column"], "Method": db["method"], "Sample Name": db["Sample Name"], CAS_COL_FINAL: db["_cas"],
         "RT": db["RT"], "Signal": db["Signal"], "Matrix ID Name": MATRIX_PREFIX + db["Matrix ID Name"],
     })
+    # plate molecules absent from the database: their row of the updated file (RT and column from the plate)
+    plate_only = updated[updated[CAS_COL_FINAL].isin(set(new_cas) - set(db["_cas"]))
+                         & updated["Matrix ID Name"].astype(str).str.replace(MATRIX_PREFIX, "", regex=False).str.strip().isin(known_matrices)]
+    new_rows = pd.concat([new_rows, plate_only[new_rows.columns]], ignore_index=True)
     for s in SOLVENTS:
         new_rows[s] = new_rows[CAS_COL_FINAL].map(first[s])
 
