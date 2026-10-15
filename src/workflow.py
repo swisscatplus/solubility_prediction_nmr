@@ -44,6 +44,7 @@ MODEL_WEIGHTS = {
 
 FASTSOLV_THRESHOLD = 0.05      # mol/L: soluble above this (same threshold as src/main.py)
 FASTSOLV_TEMPERATURE = 298.15  # K
+FASTSOLV_N_CPUS = 1            # processes for fastsolv's descriptors (more = faster but much more memory)
 MZ_TO_MASS = -1.007            # [M+H]+  ->  molar mass = m/z - 1.007 (only used without SMILES)
 
 # --- Penalties: score = P / (PENALTY_OFFSET + sum(weight * penalty))
@@ -184,6 +185,8 @@ def proba_fastsolv(solvents, smiles):
             from fastsolv import fastsolv   # imported here: case A works without fastsolv / PyTorch
         except Exception as e:
             raise WorkflowError(f"fastsolv is not available ({e})") from e
+        import fastprop.descriptors     # fastprop starts one process per CPU, each reloading PyTorch:
+        fastprop.descriptors._N_CPUS = FASTSOLV_N_CPUS   # too much memory on a small machine
         data = pd.DataFrame({
             "solute_smiles": [smiles] * len(solvents),
             "solvent_smiles": [SOLVENTS[s]["smiles"] for s in solvents],
