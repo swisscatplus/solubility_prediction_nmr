@@ -18,10 +18,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))  # make src/ importable
 
 import pandas as pd
-from config import MODEL_E_DATASET, INTERIM, ensure_dir
+from config import MODEL_E_DATASET, INTERIM, FASTSOLV_PREDICTIONS_ALL, ensure_dir
 from data_converter.hplc_data_handler import NMR_SOLVENTS
 
-OUTPUT = INTERIM / "fastsolv_predictions_all.xlsx"
+OUTPUT = FASTSOLV_PREDICTIONS_ALL                              # read by notebook 03b (Model E*)
 PROGRESS = INTERIM / "fastsolv_predictions_all_progress.csv"   # one row per (molecule, solvent), deleted at the end
 TEMPERATURE = 298.15
 

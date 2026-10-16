@@ -32,6 +32,7 @@ MOLECULES_UNIQUE = INTERIM / "molecules_unique.xlsx"          # one row per CAS,
 MOLECULES_UNIQUE_UPDATED = INTERIM / "molecules_unique_updated.xlsx"
 FASTSOLV_PREDICTIONS = INTERIM / "fastsolv_predictions.xlsx"  # fastsolv logS for every solvent
 FASTSOLV_VS_EXPERIMENT = INTERIM / "fastsolv_vs_experiment.xlsx"
+FASTSOLV_PREDICTIONS_ALL = INTERIM / "fastsolv_predictions_all.xlsx"  # fastsolv logS of every molecule, used by Model E*
 FEATURES_DESCRIPTORS = INTERIM / "features_descriptors.xlsx"
 FEATURES_ALL_SOLVENTS = INTERIM / "features_all_solvents.xlsx"
 MODEL_E_DATASET = INTERIM / "model_e_dataset.xlsx"            # Arthur's input format (all HPLC columns) + plate experiments
@@ -43,11 +44,13 @@ ML_READY_DATASET = PROCESSED / "ml_ready_dataset.csv"
 TRAIN = PROCESSED / "train.csv"
 TEST = PROCESSED / "test.csv"
 CV_PREDICTIONS = PROCESSED / "cv_predictions.csv"   # written by notebook 04, read by notebook 05
+CV_PREDICTIONS_E_STAR = PROCESSED / "cv_predictions_e_star.csv"   # written by notebook 03b (Model E*)
 MATRIX_IDS = PROCESSED / "matrix_ids.joblib"
 
 # --------------------------------------------------------------- models
 MODELS = ROOT / "models"
 MODEL_E = MODELS / "xgb_model_e_16features.joblib"            # final model described in the README
+MODEL_E_STAR = MODELS / "xgb_model_e_star_17features.joblib"  # Model E + fastsolv logS (notebook 03b)
 
 # -------------------------------------------------------------- results
 RESULTS = ROOT / "results"
